@@ -16,6 +16,8 @@ ocr-api: https://ocr.space
 
 deep learning: https://hackernoon.com/latest-deep-learning-ocr-with-keras-and-supervisely-in-15-minutes-34aecd630ed8
 
+text-recognition: best path decoding algorithm
+
 ocr-deep-learning: https://nicholastsmith.wordpress.com/2017/10/14/deep-learning-ocr-using-tensorflow-and-python/
 
 TFANN: A neural network module containing implementations of MLP, and CNN networks in TensorFlow.
@@ -70,6 +72,9 @@ Funktioniert nur mit einer bestimmten Sorte von Image Dateien. PDF's müssen in 
 
 **** Beispiel Repos ****
 
+OCR with lstm RCNN architecture
+https://github.com/vinayakkailas/Deeplearning-OCR
+
 OCR-Model
 https://github.com/tensorflow/models/tree/master/research/attention_ocr
 
@@ -83,3 +88,29 @@ https://github.com/pierluigiferrari/ssd_keras
  
  LSTM: Populärste Netzarchitektur zur Erkennung von Sequenzstrukturierten Input. Default Architektur zur
  Erkennung von Text. 
+ 
+ *** Neuronal network infos ***
+ 
+ ** Networks **
+ 
+ CNN takes no vector but multichanneled image 
+ 
+ ** Layers **
+ 
+ convolutional layer: A filter with a defined 2d-size slides over the complete image. for each image chunk the filter
+slides over a dot product is produced. for each produced dot product a scalar is the result. for each filter another
+feature map is created. with 6 independent filters it will produce 6 feature maps. Another conv Layer would produce
+dot products from the previous conv-layer output containing dot products from the original img.
+
+pooling layer: the function of pooling is to progressively reduce the spartial size of the representration to reduce
+the amount of parameters in the network. they operatre on each feature map independently. Max pooling is the most common
+technique. with a specific 2d filter it takes the highest weighted neuron
+ 
+Fully connected layer: all neurons in the layer are connected to all neurons in the previous layer.
+
+Relu Layer(aktivierungsfunktion):
+ Multilayer perceptrons: fully connected networks - each neuron is connected to each neuron in the next layer
+ 
+
+ 
+ 
