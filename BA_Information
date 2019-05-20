@@ -1,16 +1,32 @@
 **** BACHELORARBEIT ****
 
+**** FUNCTIONS ****
+
+np.stack: stacks x 1D arrays into a matrix with shapes of given arrays
+np.vstack: stack x arrays rowwise
+np.hstack: stack x arrays columnwise
+
+
+
 **** QUELLEN ****
 
 allg.: https://scholar.google.de
 
-ocr: https://ocr.space
+ocr-api: https://ocr.space
+
+deep learning: https://hackernoon.com/latest-deep-learning-ocr-with-keras-and-supervisely-in-15-minutes-34aecd630ed8
 
 ocr-deep-learning: https://nicholastsmith.wordpress.com/2017/10/14/deep-learning-ocr-using-tensorflow-and-python/
 
+TFANN: A neural network module containing implementations of MLP, and CNN networks in TensorFlow.
+
 https://towardsdatascience.com/a-gentle-introduction-to-ocr-ee1469a201aa
 
+deep learning, tesseract, ocr: https://www.learnopencv.com/deep-learning-based-text-recognition-ocr-using-tesseract-and-opencv/
+
 **** OCR ****
+
+The method of extracting text from images is also called Optical Character Recognition (OCR) or sometimes simply text recognition.
 
 bsp. code: https://www.pyimagesearch.com/2017/07/10/using-tesseract-ocr-python/
 
@@ -59,3 +75,11 @@ https://github.com/tensorflow/models/tree/master/research/attention_ocr
 
 Single Shot MultiBox Detector
 https://github.com/pierluigiferrari/ssd_keras
+
+
+ To recognize an image containing a single character, we typically use a Convolutional Neural Network (CNN).
+ Text of arbitrary length is a sequence of characters, and such problems are solved using RNNs and LSTM is a
+ popular form of RNN. Read this post to learn more about LSTM.
+ 
+ LSTM: Populärste Netzarchitektur zur Erkennung von Sequenzstrukturierten Input. Default Architektur zur
+ Erkennung von Text. 
