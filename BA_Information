@@ -1,0 +1,61 @@
+**** BACHELORARBEIT ****
+
+**** QUELLEN ****
+
+allg.: https://scholar.google.de
+
+ocr: https://ocr.space
+
+ocr-deep-learning: https://nicholastsmith.wordpress.com/2017/10/14/deep-learning-ocr-using-tensorflow-and-python/
+
+https://towardsdatascience.com/a-gentle-introduction-to-ocr-ee1469a201aa
+
+**** OCR ****
+
+bsp. code: https://www.pyimagesearch.com/2017/07/10/using-tesseract-ocr-python/
+
+Automatisierte Texterkennung innerhalb von Bildern
+
+Deep-Learning netzwerke verwendet auf das OCR-Problem - Mit Python und Tensorflow. TFANN als Lib für CNN mit ANNC als Klasse.
+
+OCR Texterkennung über API oder Local?
+
+Generell: Text von jeden möglichen Bild extrahieren. Texterkennungsprozesse sind auch Straßenschilder, Captchas oder Nummerschilder zu lesen.
+
+Attribute der OCR-Aufgaben:
+
+1. Textdichte: sollte möglicht dicht sein. 
+
+2. Textstruktur: Text auf Seite sollte strukturiert sein, meist in strengen Zeilen.
+dense (as in printed document) or sparse (As text in the wild)
+
+
+3. Schriften: Gedruckte Schriften sind einfacher als handgeschriebene Zeichen
+
+4. Zeichentyp: Text kann in anderer Sprache verfasst sein, die sehr unterschiedlich sein kann. 
+
+5. Artefakte: Es können Ausreißer vorkommen.
+
+6. Ort: Einige Aufgaben enthalten aussgeschnittene/zentrierte Texte während sich in anderen Aufgaben Text an zufälligen Stellen im Bild befindet.
+
+Nachdem die Stufe der Zeilen/wörter erkannt wurden ist können wir auf mögliche Lösungen auswählen:
+
+1. Klassische Computer vision techniken
+
+2. Spezialisiertes Deep Learning.
+
+3. Standart Deep Learning (Detection)
+
+**** TESSERACT ****
+
+Arbeitet am besten wenn eine saubere segementierung des Vordergrundtextes zum Hintergrund. Um dies zu gewährleisten neigt man zu domänenspezifische Bildklassifikatoren und detektoren zu trainieren.
+
+Funktioniert nur mit einer bestimmten Sorte von Image Dateien. PDF's müssen in kleine dateien gesplittet werden, damit darauf OCR angewendet werden können.
+
+**** Beispiel Repos ****
+
+OCR-Model
+https://github.com/tensorflow/models/tree/master/research/attention_ocr
+
+Single Shot MultiBox Detector
+https://github.com/pierluigiferrari/ssd_keras
