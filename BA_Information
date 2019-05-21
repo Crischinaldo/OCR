@@ -70,6 +70,10 @@ Arbeitet am besten wenn eine saubere segementierung des Vordergrundtextes zum Hi
 
 Funktioniert nur mit einer bestimmten Sorte von Image Dateien. PDF's müssen in kleine dateien gesplittet werden, damit darauf OCR angewendet werden können.
 
+*** Handwritten Text Recognition ***
+
+Using Keras lstm: https://towardsdatascience.com/build-a-handwritten-text-recognition-system-using-tensorflow-2326a3487cd5
+
 **** Beispiel Repos ****
 
 OCR with lstm RCNN architecture
@@ -81,13 +85,26 @@ https://github.com/tensorflow/models/tree/master/research/attention_ocr
 Single Shot MultiBox Detector
 https://github.com/pierluigiferrari/ssd_keras
 
+Keras Example lstm
+https://keras.io/examples/image_ocr/
 
- To recognize an image containing a single character, we typically use a Convolutional Neural Network (CNN).
- Text of arbitrary length is a sequence of characters, and such problems are solved using RNNs and LSTM is a
- popular form of RNN. Read this post to learn more about LSTM.
- 
+
+ *** Recurrent neuronal network architecture - LTSM - ***
+
  LSTM: Populärste Netzarchitektur zur Erkennung von Sequenzstrukturierten Input. Default Architektur zur
  Erkennung von Text. 
+
+ ** Ablauf **
+ CNN: Der Input in Form eines Images wird in CNN Layers gefüttert. Die Schichten sind dazu trainiert um relevante Merkmale aus dem Bild zu extrahieren. Jede Schicht führt 3 Operationen aus:
+ 1. Faltungsoperation (convolution operation): TODO
+
+
+ Quelle: https://en.wikipedia.org/wiki/Connectionist_temporal_classification
+ CTC: Typ von Outputs eines neuronalen Netzwerks und gleichzeitig Bewertungsfunktion zum trainieren von RNNs (wiederkehrende Neuronale Netzwerke) wie LSTM-Netzwerke. Diese Netzwerke sind darauf ausgelegt Sequenzprobleme zu lösen wo das Timing variabel ist. Es kann u.A. zum erkennen von handschriftlichen Text genutzt werden. CTC bezieht sich auf die Ausgaben und die Bewertung unabhängig von den Aufbau der neuronales Netzstruktur.
+ Der Input ist eine Sequenz aus Beobachtungen und die Ausgaben sind eine Sequenz von Klassen (labels) welche auch leere Ausgaben enthalten können. Die Schwierigkeit des trainings ergibt sich daraus, dass es viel mehr Beobachtungen als Klassen gibt.
+ Ein CTC-Netzwerk hat eine kontinuierliche Ausgabe (zb. Softmax), die durch Training angepasst wird, um die Wahrscheinlichkeit einer Klasse zu modellieren.
+ CTC-Scores können dann mit dem Back-Propagation-Algorithmus verwendet werden, um die Gewichte des neuronalen Netzwerks zu aktualisieren.
+
  
  *** Neuronal network infos ***
  
@@ -103,8 +120,7 @@ feature map is created. with 6 independent filters it will produce 6 feature map
 dot products from the previous conv-layer output containing dot products from the original img.
 
 pooling layer: the function of pooling is to progressively reduce the spartial size of the representration to reduce
-the amount of parameters in the network. they operatre on each feature map independently. Max pooling is the most common
-technique. with a specific 2d filter it takes the highest weighted neuron
+the amount of parameters in the network. they operatre on each feature map independently. Max pooling is the most common used technique. with a specific 2d filter it takes the highest weighted neuron
  
 Fully connected layer: all neurons in the layer are connected to all neurons in the previous layer.
 
