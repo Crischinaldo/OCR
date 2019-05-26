@@ -95,8 +95,12 @@ https://keras.io/examples/image_ocr/
  Erkennung von Text. 
 
  ** Ablauf **
- CNN: Der Input in Form eines Images wird in CNN Layers gefüttert. Die Schichten sind dazu trainiert um relevante Merkmale aus dem Bild zu extrahieren. Jede Schicht führt 3 Operationen aus:
- 1. Faltungsoperation (convolution operation): TODO
+ 1. CNN: Der Input in Form eines Images wird in CNN Layers gefüttert. Die Schichten sind dazu trainiert um relevante Merkmale aus dem Bild zu extrahieren. Jede Schicht führt 3 Operationen aus:
+ 1. Faltungsoperation (convolution operation): Ein Filter kernel mit der größte 5x5 wird in den ersten beiden schichten und ein filter mit der größe 3x3 in den letzten drei schichten über das Bild iteriert. Dann wird die RELU Funktion (Aktivierungsfunktion) angewandt. Letztendlich wird mit einem Pooling Layer die Image regionen summiert und es wird ein runterskalierte Version vom Input ausgegeben. Während die Bildgröße um 2 pro Schicht runterskaliert werden, werden feature maps(channels) hinzugefügt sodass die Ausgabe als feature map (oder sequenz) eine größe von 32x256 hat. Anzahl Layer: 5
+
+ 2. RNN: die Merkmalssequenz enthält 256 features pro Zeitschritt. Das RNN verbreitet relevante Informationen durch die Sequenz. Die beliebte Long Short-Term Memory (LSTM)-Implementierung von RNN's wird verwendet, da sie Informationen über größere Entferungen verbreiten kann und robustere Trainingseigenschaften bietet als Vanilla-RNN. Die RNN-Ausgabesequenz wird auf eine Matrix der größe 32x80 abgebildet. Der IAM-Datensatz besteht aus 79 verschiedenen Zeichen, für die CTC-Operationen wird zusätzlich ein Zeichen (CTC Blank Label) benötigt, daher gibt es für jeden der 32 Zeitschritte 80 Einträge. Anzahl Layer: 2
+
+ 3. CTC: Während des Trainings der NN enthält die CTC die RNN-Ausgangsmatrix und den Grundwahrheitstext und berechnet den Verlustwert (loss value). Beim ABleiten erhält der CTC nur die Matrix und decodiert sie in den entgültigen Text. Sowohl der Grundwahrheitstext als auch der erkannte text können höchstens 32 Zeichen lang sein.
 
 
  Quelle: https://en.wikipedia.org/wiki/Connectionist_temporal_classification
