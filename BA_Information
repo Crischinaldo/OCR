@@ -10,6 +10,12 @@ np.hstack: stack x arrays columnwise
 
 **** QUELLEN ****
 
+IAM-Dataset
+http://www.fki.inf.unibe.ch/databases/iam-handwriting-database
+
+Handwritten text recognition in historical documents / von Harald Scheidl
+https://repositum.tuwien.ac.at/obvutwhs/content/titleinfo/2874742
+
 allg.: https://scholar.google.de
 
 ocr-api: https://ocr.space
@@ -90,6 +96,8 @@ https://keras.io/examples/image_ocr/
 
 
  *** Recurrent neuronal network architecture - LTSM - ***
+
+ Repo: https://github.com/githubharald/SimpleHTR
 
  LSTM: Populärste Netzarchitektur zur Erkennung von Sequenzstrukturierten Input. Default Architektur zur
  Erkennung von Text. 
