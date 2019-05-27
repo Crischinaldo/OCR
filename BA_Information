@@ -99,8 +99,12 @@ https://keras.io/examples/image_ocr/
 
  Repo: https://github.com/githubharald/SimpleHTR
 
+ https://github.com/githubharald/CTCWordBeamSearch
+
  LSTM: Populärste Netzarchitektur zur Erkennung von Sequenzstrukturierten Input. Default Architektur zur
  Erkennung von Text. 
+ 
+
 
  ** Ablauf **
  1. CNN: Der Input in Form eines Images wird in CNN Layers gefüttert. Die Schichten sind dazu trainiert um relevante Merkmale aus dem Bild zu extrahieren. Jede Schicht führt 3 Operationen aus:
@@ -121,7 +125,25 @@ https://keras.io/examples/image_ocr/
  *** Neuronal network infos ***
  
  ** Networks **
- 
+
+ * RNN *
+
+ RNN: Recurrent neuronal networks (wiederkehrende neuronale netzwerke): Eine Art von Netz mit dem Muster in Datensequenzen wie Text, Genomen, Handschrift, gesprochenem Wort oder numerischen Zeitreihendaten erkannt werden können. Die Alrithmen berücksichtigen Zeit und Reihenfolge, sie haben eine zeitliche Dimension.
+
+ Neben den Aufmerksamkeitsmechanismus und der Speichernetzwerken ist es einer der leistungsstärksten und nützlichsten Arten von NN's. RNN's sind sogar auf Bilder anwendbar, die in einer Reihe von Patches zerlegt werden und diese somit als Sequenz behandelt werden können.
+ Da wiederkehrende Netzwerke eine bestimmte Art von Gedächnis besitzen wie Menschen.
+
+
+ Grundlage: Feedforward-Netzwerke. Informationen werden durch eine Reihe von mathematische Operationen geleitet, die an den Knoten des Netzwerkes ausgeführt werden. Eine führt Informationen direkt durch, also wird der Knoten niemals zweimal berührt. Andere Knoten durchlaufen Informationen als eine Schleife. Diese Knoten werden als wiederkehrend bezeichnet.
+
+ Bei Feedforward-Netzwerken werden Eingabebeispiele in das netzwerk eingespeist und in eine Ausgabe umgewandelt.
+ Bei überwachten Lernen werden Muster gelernt die bei einer Eingabe signalisieren um es sich ein bestimmtes Objekt handelt. Es wird mit gelabelten Bilder trainiert bis der Fehler beim Erraten der Kategorien minimiert ist. Resultierend werden Knoten so parametisiert, dass die Fehlerrate minimiert ist. Das Netzwerk ist nun in der Lage Daten zu kategorisieren, die es noch nie gesehen hat. Wenn das erste Foto klassifiert wurden ist, hat diese Entscheidung keinen Einfluss auf die Klassifikation der 
+
+
+ quelle: https://skymind.ai/wiki/lstm
+
+ * CNN *
+
  CNN takes no vector but multichanneled image 
  
  ** Layers **
