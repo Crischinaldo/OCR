@@ -182,7 +182,8 @@ Bei einer Reihe von Buchstaben verwendet ein wiederkehrendes Netzwerk das erste 
 
  diese Gates wirken auf empfangende Signale und blockieren oder leiten Informationen ähnlich wie die Knoten des neuronales Netzwerks mit Gewichtungsstärke und Eingänge weiter, die sie mit ihren eigenen Gewichten filtern. Diese Gewichte, die den Eingangs und den verborgenen Zustand modulieren, werden mit den Lernprozess des RNN's angepasst. Dh. Alle Zellen lernen, wann Daten eingegeben, verlassen oder gelöscht werden dürfen, indem sie iterativ Vermutungen anstellen, Fehler rückgängig zu machen (Backpropagation) und Gewichte über den Gradientenabstieg anzupassen.
 
- 
+ code example:
+ https://machinelearningmastery.com/sequence-classification-lstm-recurrent-neural-networks-python-keras/
 
 
 
