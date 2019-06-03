@@ -572,7 +572,7 @@ thispagestyle{empty}
 \end_layout
 
 \begin_layout Standard
-\align center
+\align left
 
 \series bold
 \size larger
@@ -584,13 +584,28 @@ Bachelorarbeit
 \end_inset
 
  
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% oder Masterarbeit, Projektbericht, etc.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
 \begin_inset VSpace 2cm
 \end_inset
 
-
+ 
 \series bold
-\size larger
-Dokumenten und -Texterkennung anhand von Rechnungsbelegen
+\size giant
+Instructions for Writing a
 \series default
 \size default
 
@@ -601,6 +616,12 @@ Dokumenten und -Texterkennung anhand von Rechnungsbelegen
 \begin_inset VSpace 3mm*
 \end_inset
 
+ 
+\series bold
+\size giant
+Bachelor or Master Thesis
+\series default
+\size default
 
 \begin_inset Newline newline
 \end_inset
@@ -651,7 +672,7 @@ begin{tabbing}
 
 \end_inset
 
- abgegeben von: 
+ Submitted by: 
 \begin_inset space \hspace{}
 \length 0.5cm
 \end_inset
@@ -669,7 +690,7 @@ status collapsed
 
 \end_inset
 
-Christoph Thomas
+Max Mustermann
 \begin_inset Newline newline
 \end_inset
 
@@ -681,7 +702,7 @@ Christoph Thomas
 \begin_inset Newline newline
 \end_inset
 
- Abteilung: 
+ Department: 
 \begin_inset ERT
 status collapsed
 
@@ -694,11 +715,11 @@ status collapsed
 
 \end_inset
 
-Elektrotechnik und Informatik
+Electrical Engineering and Computer Science
 \begin_inset Newline newline
 \end_inset
 
- Studiengang: 
+ Degree program: 
 \begin_inset ERT
 status collapsed
 
@@ -711,7 +732,7 @@ status collapsed
 
 \end_inset
 
-Informatik/Softwaretechnologie
+Information Technology
 \begin_inset Newline newline
 \end_inset
 
@@ -730,7 +751,7 @@ status collapsed
 
 Prof.
  Dr.
- Ehlers
+ Musterfrau
 \begin_inset Newline newline
 \end_inset
 
@@ -738,7 +759,7 @@ Prof.
 \begin_inset Newline newline
 \end_inset
 
- Anfangsdatum: 
+ Date handing in: 
 \begin_inset ERT
 status collapsed
 
@@ -751,13 +772,13 @@ status collapsed
 
 \end_inset
 
-01.07.2019
+XXth month 20ZZ
 \begin_inset Newline newline
 \end_inset
 
- Abgabedatum: 
+ Date handing out: 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -768,7 +789,7 @@ status open
 
 \end_inset
 
-31.10.2019
+XXth month 20ZZ
 \begin_inset Newline newline
 \end_inset
 
@@ -790,6 +811,41 @@ end{tabbing}
 \end_inset
 
  
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{Large}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\align right
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{Large}
+\end_layout
+
+\end_inset
+
+ (Professor Dr.
+ Andreas Hanemann)
+\begin_inset Newline newline
+\end_inset
+
+ Head of Examination Board 
 \begin_inset ERT
 status collapsed
 

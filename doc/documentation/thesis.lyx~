@@ -1,9 +1,9 @@
-#LyX file created by tex2lyx 2.3
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin C:/Users/Chrus/Desktop/Template LaTeX/documentation/
+\origin unavailable
 \textclass scrbook
 \begin_preamble
 %
@@ -18,7 +18,7 @@
 
 
 % addition "`oneside"' for single-sided printing 
-\usepackage[english]{babel}
+\usepackage[german]{babel}
 \usepackage{bibgerm}% deutsche Literaturverzeichnisse
 % for German "`Umlaute"'
 % To insert figures  - for PDF-LaTeX: .pdf and .png (.jpg possible, but should be avoided)
@@ -60,8 +60,6 @@
 \setcounter{biburllcpenalty}{9000}% Kleinbuchstaben
 \setcounter{biburlucpenalty}{9000}% Großbuchstaben
 %Das ist ganz wichtig. Das durch Biblatex erzeugte Literaturverzeichnis kann Links enthalten, die mit \url erzeugt worden sind. Dabei kann es sein, dass die über den Rand hinaus gehen. Durch die beiden Befehle \setcounter wird einfach am Rand abgebrochen, sodass der Link noch funktioniert und die Optik beim Blockschreibsatz bleibt.
-
-
 \end_preamble
 \options bibliography=totoc,listof=totoc,BCOR=5mm,DIV=12
 \use_default_options false
@@ -90,15 +88,15 @@
 \paperfontsize default
 \spacing single
 \use_hyperref true
-\pdf_bookmarks 0
-\pdf_bookmarksnumbered 0
-\pdf_bookmarksopen 0
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
 \pdf_bookmarksopenlevel 1
-\pdf_breaklinks 0
-\pdf_pdfborder 0
-\pdf_colorlinks 0
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
 \pdf_backref section
-\pdf_pdfusetitle 0
+\pdf_pdfusetitle false
 \papersize default
 \use_geometry false
 \use_package amsmath 1
@@ -114,10 +112,10 @@
 \cite_engine biblatex
 \cite_engine_type authoryear
 \biblio_style plainnat
-\use_bibtopic false
 \biblio_options backend=biber
 \biblatex_bibstyle alphabetic
 \biblatex_citestyle alphabetic
+\use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
@@ -149,11 +147,11 @@
 \begin_body
 
 \begin_layout Standard
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 % ---------------------------------------------------------------
 \end_layout
 
@@ -169,6 +167,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
+
 \backslash
 frontmatter
 \end_layout
@@ -180,6 +179,7 @@ frontmatter
 status collapsed
 
 \begin_layout Plain Layout
+
 % front pages and declaration
 \end_layout
 
@@ -195,6 +195,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
+
 \backslash
 pagestyle
 \end_layout
@@ -206,6 +207,7 @@ pagestyle
 status collapsed
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
@@ -216,6 +218,7 @@ empty
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -226,6 +229,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 % switch off page numbering
 \end_layout
 
@@ -238,7 +242,6 @@ status collapsed
  
 \begin_inset CommandInset include
 LatexCommand include
-preview false
 filename "title-thl.lyx"
 
 \end_inset
@@ -248,6 +251,7 @@ filename "title-thl.lyx"
 status collapsed
 
 \begin_layout Plain Layout
+
 % title pages for FHL 
 \end_layout
 
@@ -264,7 +268,6 @@ status collapsed
 
 \begin_inset CommandInset include
 LatexCommand include
-preview false
 filename "abstract.lyx"
 
 \end_inset
@@ -274,6 +277,7 @@ filename "abstract.lyx"
 status collapsed
 
 \begin_layout Plain Layout
+
 % abstract 
 \end_layout
 
@@ -290,7 +294,6 @@ status collapsed
 
 \begin_inset CommandInset include
 LatexCommand include
-preview false
 filename "declaration-thl.lyx"
 
 \end_inset
@@ -300,6 +303,7 @@ filename "declaration-thl.lyx"
 status collapsed
 
 \begin_layout Plain Layout
+
 % declaration (own work)
 \end_layout
 
@@ -316,7 +320,6 @@ status collapsed
 
 \begin_inset CommandInset include
 LatexCommand include
-preview false
 filename "summary.lyx"
 
 \end_inset
@@ -326,6 +329,7 @@ filename "summary.lyx"
 status collapsed
 
 \begin_layout Plain Layout
+
 % optional
 \end_layout
 
@@ -347,6 +351,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
+
 \backslash
 addtocontents{toc}{
 \end_layout
@@ -358,6 +363,7 @@ addtocontents{toc}{
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 protect
@@ -371,6 +377,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
+
 \backslash
 thispagestyle{empty}
 \end_layout
@@ -382,6 +389,7 @@ thispagestyle{empty}
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -391,11 +399,11 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 % ---------------------------------------------------------------
 \end_layout
 
@@ -411,6 +419,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
+
 \backslash
 mainmatter
 \end_layout
@@ -422,6 +431,7 @@ mainmatter
 status collapsed
 
 \begin_layout Plain Layout
+
 % main part of the work
 \end_layout
 
@@ -437,6 +447,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
+
 \backslash
 pagestyle
 \end_layout
@@ -448,6 +459,7 @@ pagestyle
 status collapsed
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
@@ -458,6 +470,7 @@ plain
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -468,6 +481,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 % switch on page numbering
 \end_layout
 
@@ -480,7 +494,6 @@ status collapsed
  
 \begin_inset CommandInset include
 LatexCommand input
-preview false
 filename "chapter1.lyx"
 
 \end_inset
@@ -488,7 +501,6 @@ filename "chapter1.lyx"
  
 \begin_inset CommandInset include
 LatexCommand input
-preview false
 filename "chapter2.lyx"
 
 \end_inset
@@ -496,7 +508,6 @@ filename "chapter2.lyx"
  
 \begin_inset CommandInset include
 LatexCommand input
-preview false
 filename "chapter3.lyx"
 
 \end_inset
@@ -504,7 +515,6 @@ filename "chapter3.lyx"
  
 \begin_inset CommandInset include
 LatexCommand input
-preview false
 filename "chapter4.lyx"
 
 \end_inset
@@ -512,7 +522,6 @@ filename "chapter4.lyx"
  
 \begin_inset CommandInset include
 LatexCommand input
-preview false
 filename "chapter5.lyx"
 
 \end_inset
@@ -520,7 +529,6 @@ filename "chapter5.lyx"
  
 \begin_inset CommandInset include
 LatexCommand input
-preview false
 filename "chapter6.lyx"
 
 \end_inset
@@ -529,11 +537,11 @@ filename "chapter6.lyx"
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 % ---------------------------------------------------------------
 \end_layout
 
@@ -549,6 +557,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
+
 \backslash
 backmatter
 \end_layout
@@ -560,6 +569,7 @@ backmatter
 status collapsed
 
 \begin_layout Plain Layout
+
 % no numbering after this point
 \end_layout
 
@@ -572,7 +582,6 @@ status collapsed
  
 \begin_inset CommandInset include
 LatexCommand input
-preview false
 filename "faq.lyx"
 
 \end_inset
@@ -590,8 +599,7 @@ filename "faq.lyx"
 
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "./bib/thesis"
-options ""
+bibfiles "bib/thesis"
 
 \end_inset
 

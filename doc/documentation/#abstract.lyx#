@@ -91,55 +91,6 @@
 \begin_body
 
 \begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-thispagestyle{empty}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{large}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename images/header_examinationboard.png
-	width 100text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset VSpace 2cm*
 \end_inset
 
@@ -147,23 +98,13 @@ begin{large}
 \end_layout
 
 \begin_layout Standard
-\noindent
+\align center
 
 \series bold
-Erklärung zur Bachelorarbeit
+Arbeitsauftrag
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace 1.5cm*
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-Ich versichere, dass ich die Arbeit selbst¨andig, ohne fremde Hilfe verfasst
- habe.
 \begin_inset VSpace 1cm*
 \end_inset
 
@@ -172,81 +113,68 @@ Ich versichere, dass ich die Arbeit selbst¨andig, ohne fremde Hilfe verfasst
 
 \begin_layout Standard
 \noindent
-Bei der Abfassung der Arbeit sind nur die angegebenen Quellen benutzt worden.W¨or
-tlich oder dem Sinne nach entnommene Stellen sind als solche gekennzeichnet.
-\begin_inset VSpace 1cm*
-\end_inset
-
-
+International students face the challenge to write a thesis at the end of
+ their studies.
+ As many rules and examples of theses at the Lübeck University of Applied
+ Sciences are available in German exclusively they are not suited for the
+ international students.
+ Although many good guidelines are available online they do not cover the
+ specialties of the Lübeck University of Applied Sciences.
+ Therefore, a special guideline is necessary.
+ Besides very specific rules for this university some common mistakes are
+ covered in this guideline.
 \end_layout
 
 \begin_layout Standard
 \noindent
-Ich bin damit einverstanden, dass meine Arbeit ver¨o↵entlicht wird, insbesondere
- dass die Arbeit Dritten zur Einsichtnahme vorgelegt oder Kopien der Arbeit
- zurWeitergabe an Dritte angefertigt werden.
-\begin_inset VSpace 2cm
-\end_inset
+The task for this work is: 
+\end_layout
 
+\begin_layout Enumerate
+Collection of the German guidelines and existing examples of successful
+ thesis documents.
+ 
+\end_layout
 
+\begin_layout Enumerate
+Analysis of the important rules and common mistakes of students when writing
+ an English thesis.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Creation of a comprehensive document serving as a template and a guideline
+ for the students.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Prepare a comprehensive Questions and Answers section.
+ 
 \end_layout
 
 \begin_layout Standard
 \noindent
-Lübeck, Month XXth 20ZZ
+The deliveries are: 
 \end_layout
 
-\begin_layout Standard
-\begin_inset VSpace 3cm
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset space \hspace*{}
-\length 7cm
-\end_inset
-
-
-\begin_inset space \dotfill{}
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
+\begin_layout Itemize
+A document that is well structured and serves as a guideline and template
  
-\begin_inset space \hspace*{}
-\length 10cm
-\end_inset
+\end_layout
 
-
-\shape italic
-(signature)
+\begin_layout Itemize
+A list of frequently asked questions + answers 
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{large}
-\end_layout
-
-\end_inset
-
- 
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "./bib/thesis"
+bibfiles "bib/thesis"
 
 \end_inset
 

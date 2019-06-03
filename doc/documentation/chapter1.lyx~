@@ -1,0 +1,258 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\options bibliography=totoc,listof=totoc,BCOR=5mm,DIV=12
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding iso8859-1
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref section
+\pdf_pdfusetitle false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine biblatex
+\cite_engine_type authoryear
+\biblio_style plainnat
+\biblio_options backend=biber
+\biblatex_bibstyle alphabetic
+\biblatex_citestyle alphabetic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Einleitung
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "chap_introduction"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Motivation
+\end_layout
+
+\begin_layout Standard
+Bei firmeninternen Schadensabwicklungen werden täglich eine Vielzahl von
+ Bildern von Rechnungsbelegen hochgeladen, die auf einen Archiv-Server gespeiche
+rt werden.
+ Darüber hinaus wird ein Formular ausgefüllt werden, um den Schaden zu registrie
+ren.
+ Die Informationen, die auf den Rechnungsbelegen bildlich darlegen, werden
+ vom Nutzer in die Formularfelder eingetragen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 1cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Machine Learning ist aus der heutigen Welt nicht mehr wegzudenken und gewinnt
+ immer mehr an Bedeutung.
+ Durch den Einsatz von intelligenten Technologien können Prozesse automatisiert
+ werden und somit den damit verbundenen Aufwand erspart werden.
+ Durch Datenbestände in form von Bildern kann eine künstliche Intelligenz
+ trainiert werden Muster zu erkennen und eigenständig Lösungen für Probleme
+ zu finden.
+\begin_inset VSpace 1cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Es gibt eine Vielzahl von Klassifikatoren, die jeweils Anwendungsgebiete
+ haben, in denen sie besonders gut Probleme Prognostizieren können.
+\end_layout
+
+\begin_layout Section
+Zielsetzung
+\end_layout
+
+\begin_layout Standard
+This document is intended to assist the final-year students in the international
+ study programs at THL to write their theses.
+ The goal of the document is twofold.
+ On one hand, it serves as a guideline for the students looking for practical
+ help, including structure, language, writing strategies, format, etc.
+ On the other hand, this document is also a template of a thesis created
+ with LaTeX (more precisely MikTeX in combination with TeXstudio under Microsoft
+ Windows; Biber is used instead of Bibtex).
+ It strictly follows the formatting requirements for a thesis at THL.
+ Students are encouraged to replace the text with their own content and
+ use this template as a starting point of their theses.
+\end_layout
+
+\begin_layout Section
+Gliederung der schriftlichen Ausarbeitung
+\end_layout
+
+\begin_layout Standard
+The rest of the document is structured as follows.
+ Chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap_process"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ explains the procedure for writing a thesis at THL.
+ It comprises the colloquium as well.
+ Chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap_structure"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ explains the typical structure for a thesis and provides a typical example.
+ Chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap_writing"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ discusses the use of language in a thesis and specifies the formatting
+ requirements.
+ Chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap_summary"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ summarizes the work, and suggests future work that could be done to improve
+ this document.
+ In the Appendix a list of frequently asked questions covers many questions
+ often asked by students.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+endinput
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "bib/thesis"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

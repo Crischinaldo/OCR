@@ -6,7 +6,7 @@
 \origin unavailable
 \textclass scrbook
 \options bibliography=totoc,listof=totoc,BCOR=5mm,DIV=12
-\use_default_options false
+\use_default_options true
 \maintain_unincluded_children false
 \language english
 \language_package default
@@ -70,8 +70,9 @@
 \shortcut idx
 \color #008000
 \end_index
-\secnumdepth 3
-\tocdepth 3
+\leftmargin 1cm
+\secnumdepth 2
+\tocdepth 2
 \paragraph_separation indent
 \paragraph_indentation default
 \is_math_indent 0
@@ -79,7 +80,7 @@
 \quotes_style english
 \dynamic_quotes 0
 \papercolumns 1
-\papersides 1
+\papersides 2
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
@@ -90,11 +91,122 @@
 
 \begin_body
 
+\begin_layout Chapter
+Einleitung
+\end_layout
+
 \begin_layout Standard
-\begin_inset Newpage newpage
+\begin_inset CommandInset label
+LatexCommand label
+name "chap_introduction"
+
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Motivation
+\end_layout
+
+\begin_layout Standard
+Bei firmeninternen Schadensabwicklungen werden täglich eine Vielzahl von
+ Bildern von Rechnungsbelegen hochgeladen, die auf einen Archiv-Server gespeiche
+rt werden.
+ Darüber hinaus wird ein Formular ausgefüllt werden, um den Schaden zu registrie
+ren.
+ Die Informationen, die auf den Rechnungsbelegen bildlich darlegen, werden
+ vom Nutzer in die Formularfelder eingetragen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 1cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Machine Learning ist aus der heutigen Welt nicht mehr wegzudenken und gewinnt
+ immer mehr an Bedeutung.
+ Durch den Einsatz von intelligenten Technologien können Prozesse automatisiert
+ werden und
+\end_layout
+
+\begin_layout Section
+Goal
+\end_layout
+
+\begin_layout Standard
+This document is intended to assist the final-year students in the international
+ study programs at THL to write their theses.
+ The goal of the document is twofold.
+ On one hand, it serves as a guideline for the students looking for practical
+ help, including structure, language, writing strategies, format, etc.
+ On the other hand, this document is also a template of a thesis created
+ with LaTeX (more precisely MikTeX in combination with TeXstudio under Microsoft
+ Windows; Biber is used instead of Bibtex).
+ It strictly follows the formatting requirements for a thesis at THL.
+ Students are encouraged to replace the text with their own content and
+ use this template as a starting point of their theses.
+\end_layout
+
+\begin_layout Section
+Organization
+\end_layout
+
+\begin_layout Standard
+The rest of the document is structured as follows.
+ Chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap_process"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ explains the procedure for writing a thesis at THL.
+ It comprises the colloquium as well.
+ Chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap_structure"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ explains the typical structure for a thesis and provides a typical example.
+ Chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap_writing"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ discusses the use of language in a thesis and specifies the formatting
+ requirements.
+ Chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap_summary"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ summarizes the work, and suggests future work that could be done to improve
+ this document.
+ In the Appendix a list of frequently asked questions covers many questions
+ often asked by students.
 \end_layout
 
 \begin_layout Standard
@@ -105,136 +217,7 @@ status collapsed
 
 
 \backslash
-thispagestyle{empty}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{large}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename images/header_examinationboard.png
-	width 100text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace 2cm*
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-
-\series bold
-Erklärung zur Bachelorarbeit
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace 1.5cm*
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-Ich versichere, dass ich die Arbeit selbst¨andig, ohne fremde Hilfe verfasst
- habe.
-\begin_inset VSpace 1cm*
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-Bei der Abfassung der Arbeit sind nur die angegebenen Quellen benutzt worden.W¨or
-tlich oder dem Sinne nach entnommene Stellen sind als solche gekennzeichnet.
-\begin_inset VSpace 1cm*
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-Ich bin damit einverstanden, dass meine Arbeit ver¨o↵entlicht wird, insbesondere
- dass die Arbeit Dritten zur Einsichtnahme vorgelegt oder Kopien der Arbeit
- zurWeitergabe an Dritte angefertigt werden.
-\begin_inset VSpace 2cm
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-Lübeck, Month XXth 20ZZ
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace 3cm
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset space \hspace*{}
-\length 7cm
-\end_inset
-
-
-\begin_inset space \dotfill{}
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
- 
-\begin_inset space \hspace*{}
-\length 10cm
-\end_inset
-
-
-\shape italic
-(signature)
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{large}
+endinput
 \end_layout
 
 \end_inset
@@ -246,7 +229,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "./bib/thesis"
+bibfiles "bib/thesis"
 
 \end_inset
 
