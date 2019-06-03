@@ -1,0 +1,263 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.9 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{anyt/global//global/global}
+    \entry{cha02}{manual}{}
+      \name{author}{1}{}{%
+        {{hash=4f3f340daa9ee6de248f587ce693c25f}{%
+           family={Chandrasekhar},
+           familyi={C\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{4f3f340daa9ee6de248f587ce693c25f}
+      \strng{fullhash}{4f3f340daa9ee6de248f587ce693c25f}
+      \strng{bibnamehash}{4f3f340daa9ee6de248f587ce693c25f}
+      \strng{authorbibnamehash}{4f3f340daa9ee6de248f587ce693c25f}
+      \strng{authornamehash}{4f3f340daa9ee6de248f587ce693c25f}
+      \strng{authorfullhash}{4f3f340daa9ee6de248f587ce693c25f}
+      \field{labelalpha}{Cha02}
+      \field{sortinit}{C}
+      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{\url{http://ciips.ee.uwa.edu.au/pub/HowToWriteAThesis.pdf}}
+      \field{title}{How to Write a Thesis: A Working Guide}
+      \field{year}{2002}
+    \endentry
+    \entry{coll13}{manual}{}
+      \name{author}{1}{}{%
+        {{hash=a38948cb5bbba756540dcdb4534f6290}{%
+           family={{Collis Bird \& Withey Bookbinders}},
+           familyi={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{a38948cb5bbba756540dcdb4534f6290}
+      \strng{fullhash}{a38948cb5bbba756540dcdb4534f6290}
+      \strng{bibnamehash}{a38948cb5bbba756540dcdb4534f6290}
+      \strng{authorbibnamehash}{a38948cb5bbba756540dcdb4534f6290}
+      \strng{authornamehash}{a38948cb5bbba756540dcdb4534f6290}
+      \strng{authorfullhash}{a38948cb5bbba756540dcdb4534f6290}
+      \field{labelalpha}{Col13}
+      \field{sortinit}{C}
+      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{2}
+      \field{note}{\url{http://www.thesisbookbinding.co.uk/thesis-binding-service.html}}
+      \field{title}{Thesis Binding}
+      \field{year}{2013}
+    \endentry
+    \entry{har11}{manual}{}
+      \name{author}{1}{}{%
+        {{hash=9e8340d489e6ccb813b41338147d1a42}{%
+           family={Harris},
+           familyi={H\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{9e8340d489e6ccb813b41338147d1a42}
+      \strng{fullhash}{9e8340d489e6ccb813b41338147d1a42}
+      \strng{bibnamehash}{9e8340d489e6ccb813b41338147d1a42}
+      \strng{authorbibnamehash}{9e8340d489e6ccb813b41338147d1a42}
+      \strng{authornamehash}{9e8340d489e6ccb813b41338147d1a42}
+      \strng{authorfullhash}{9e8340d489e6ccb813b41338147d1a42}
+      \field{labelalpha}{Har11}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{11}
+      \field{note}{\url{http://www.virtualsalt.com/transits.htm}}
+      \field{title}{Transitional Words and Phrases}
+      \field{year}{2011}
+    \endentry
+    \entry{hew03}{manual}{}
+      \name{author}{1}{}{%
+        {{hash=df9ea704e76d3e83192380d27ecd8632}{%
+           family={Hewitt},
+           familyi={H\bibinitperiod},
+           given={Janice\bibnamedelima L.},
+           giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \strng{namehash}{df9ea704e76d3e83192380d27ecd8632}
+      \strng{fullhash}{df9ea704e76d3e83192380d27ecd8632}
+      \strng{bibnamehash}{df9ea704e76d3e83192380d27ecd8632}
+      \strng{authorbibnamehash}{df9ea704e76d3e83192380d27ecd8632}
+      \strng{authornamehash}{df9ea704e76d3e83192380d27ecd8632}
+      \strng{authorfullhash}{df9ea704e76d3e83192380d27ecd8632}
+      \field{labelalpha}{Hew03}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{\url{http://www.owlnet.rice.edu/~cainproj/writingtips/preciseverbs.html}}
+      \field{title}{Writing Tips: Choose active, precise verbs}
+      \field{year}{2003}
+    \endentry
+    \entry{ieeecitation09}{manual}{}
+      \name{author}{1}{}{%
+        {{hash=472abfae8142fdb6f39d081303e8af85}{%
+           family={IEEE},
+           familyi={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{472abfae8142fdb6f39d081303e8af85}
+      \strng{fullhash}{472abfae8142fdb6f39d081303e8af85}
+      \strng{bibnamehash}{472abfae8142fdb6f39d081303e8af85}
+      \strng{authorbibnamehash}{472abfae8142fdb6f39d081303e8af85}
+      \strng{authornamehash}{472abfae8142fdb6f39d081303e8af85}
+      \strng{authorfullhash}{472abfae8142fdb6f39d081303e8af85}
+      \field{labelalpha}{IEE09}
+      \field{sortinit}{I}
+      \field{sortinithash}{320bc8fe8101b9376f9f21cd507de0e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{9}
+      \field{note}{\url{https://ieee-dataport.org/sites/default/files/analysis/27/IEEE\%20Citation\%20Guidelines.pdf}}
+      \field{title}{IEEE Citation Guide}
+      \field{year}{2009}
+    \endentry
+    \entry{kun08}{manual}{}
+      \name{author}{1}{}{%
+        {{hash=20eb53a5e804997b0daf8f11185e629a}{%
+           family={Kunze},
+           familyi={K\bibinitperiod},
+           given={Hans-Günter},
+           giveni={H\bibinithyphendelim G\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {FH Lübeck}%
+      }
+      \strng{namehash}{20eb53a5e804997b0daf8f11185e629a}
+      \strng{fullhash}{20eb53a5e804997b0daf8f11185e629a}
+      \strng{bibnamehash}{20eb53a5e804997b0daf8f11185e629a}
+      \strng{authorbibnamehash}{20eb53a5e804997b0daf8f11185e629a}
+      \strng{authornamehash}{20eb53a5e804997b0daf8f11185e629a}
+      \strng{authorfullhash}{20eb53a5e804997b0daf8f11185e629a}
+      \field{labelalpha}{Kun08}
+      \field{sortinit}{K}
+      \field{sortinithash}{9fd838a31ba64d981e8f44562bd33f89}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Leaflet for the making of diploma thesis}
+      \field{year}{2008}
+    \endentry
+    \entry{les06}{book}{}
+      \name{author}{1}{}{%
+        {{hash=f5a11d845addf642c53c3ac3bce9b7f2}{%
+           family={Lester},
+           familyi={L\bibinitperiod},
+           given={James},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Good Year Books}%
+      }
+      \strng{namehash}{f5a11d845addf642c53c3ac3bce9b7f2}
+      \strng{fullhash}{f5a11d845addf642c53c3ac3bce9b7f2}
+      \strng{bibnamehash}{f5a11d845addf642c53c3ac3bce9b7f2}
+      \strng{authorbibnamehash}{f5a11d845addf642c53c3ac3bce9b7f2}
+      \strng{authornamehash}{f5a11d845addf642c53c3ac3bce9b7f2}
+      \strng{authorfullhash}{f5a11d845addf642c53c3ac3bce9b7f2}
+      \field{labelalpha}{Les06}
+      \field{sortinit}{L}
+      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{3.}
+      \field{title}{The Research Paper Handbook}
+      \field{year}{2006}
+    \endentry
+    \entry{poss}{manual}{}
+      \name{author}{1}{}{%
+        {{hash=1ddfaa59989e6b75c679810427a6b8b3}{%
+           family={Possel},
+           familyi={P\bibinitperiod},
+           given={Heiko},
+           giveni={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{1ddfaa59989e6b75c679810427a6b8b3}
+      \strng{fullhash}{1ddfaa59989e6b75c679810427a6b8b3}
+      \strng{bibnamehash}{1ddfaa59989e6b75c679810427a6b8b3}
+      \strng{authorbibnamehash}{1ddfaa59989e6b75c679810427a6b8b3}
+      \strng{authornamehash}{1ddfaa59989e6b75c679810427a6b8b3}
+      \strng{authorfullhash}{1ddfaa59989e6b75c679810427a6b8b3}
+      \field{labelalpha}{Pos}
+      \field{sortinit}{P}
+      \field{sortinithash}{8d51b3d5b78d75b54308d706b9bbe285}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{\url{http://www.smart-words.org/transition-words.html}}
+      \field{title}{Transition Words}
+    \endentry
+    \entry{wik13a}{manual}{}
+      \name{author}{1}{}{%
+        {{hash=9c677286866aad38f8e9b660f5411814}{%
+           family={Wikipedia},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{fullhash}{9c677286866aad38f8e9b660f5411814}
+      \strng{bibnamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authorbibnamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authornamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authorfullhash}{9c677286866aad38f8e9b660f5411814}
+      \field{labelalpha}{Wik13}
+      \field{sortinit}{W}
+      \field{sortinithash}{ecb89ff85896a47dc313960773ac311d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{1}
+      \field{note}{\url{https://en.wikipedia.org/wiki/Emphasis_(typography)}}
+      \field{title}{Emphasis (typography)}
+      \field{year}{2013}
+    \endentry
+    \entry{sch96}{manual}{}
+      \name{author}{1}{}{%
+        {{hash=770e3cca9580952ecc6af51966810d61}{%
+           family={Wolfe},
+           familyi={W\bibinitperiod},
+           given={Joe},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {School of Physics, University of New South Wales}%
+      }
+      \list{location}{1}{%
+        {Sydney, Australia}%
+      }
+      \strng{namehash}{770e3cca9580952ecc6af51966810d61}
+      \strng{fullhash}{770e3cca9580952ecc6af51966810d61}
+      \strng{bibnamehash}{770e3cca9580952ecc6af51966810d61}
+      \strng{authorbibnamehash}{770e3cca9580952ecc6af51966810d61}
+      \strng{authornamehash}{770e3cca9580952ecc6af51966810d61}
+      \strng{authorfullhash}{770e3cca9580952ecc6af51966810d61}
+      \field{labelalpha}{Wol96}
+      \field{sortinit}{W}
+      \field{sortinithash}{ecb89ff85896a47dc313960773ac311d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{\url{http://www.phys.unsw.edu.au/~jw/thesis.html}}
+      \field{title}{{How to Write a PhD Thesis}}
+      \field{year}{1996}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

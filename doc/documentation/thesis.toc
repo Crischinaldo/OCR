@@ -1,0 +1,117 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {english}{}
+\babel@toc {english}{}
+\defcounter {refsection}{0}\relax 
+\thispagestyle {empty}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.1}Motivation}{1}{section.1.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.2}Goal}{1}{section.1.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.3}Organization}{2}{section.1.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {2}Work on the Thesis}{3}{chapter.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.1}Thesis registration form}{3}{section.2.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.2}Specification of a thesis subject}{3}{section.2.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.1}Given topic}{3}{subsection.2.2.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.2}Joint specification of a topic}{4}{subsection.2.2.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.3}Registration form back to secretariat (via first advisor)}{5}{section.2.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.4}Thesis duration}{5}{section.2.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.5}Advice}{5}{section.2.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.5.1}Advice for an internal thesis}{5}{subsection.2.5.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.5.2}Advice for an external thesis}{6}{subsection.2.5.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.5.3}Intermediate versions of the thesis}{6}{subsection.2.5.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.6}Second advisor}{6}{section.2.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.7}Deadline and submission}{6}{section.2.7}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.8}Finding an oral examination date}{8}{section.2.8}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.9}Colloquium}{8}{section.2.9}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {3}Structure}{9}{chapter.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.1}Cover page}{9}{section.3.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.2}Task description}{9}{section.3.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.3}Declaration}{9}{section.3.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.4}Abstract}{10}{section.3.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.5}Table of contents}{10}{section.3.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.6}Chapter 1: Introduction}{11}{section.3.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.7}Chapter 2 to N-1: Main body}{13}{section.3.7}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.7.1}Example organization}{13}{subsection.3.7.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.7.2}A common pitfall}{14}{subsection.3.7.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.8}Chapter n: Conclusion and outlook}{14}{section.3.8}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.9}Acknowledgements}{14}{section.3.9}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.10}Appendices}{15}{section.3.10}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.11}Bibliography or references}{15}{section.3.11}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.12}Enclosed CD}{15}{section.3.12}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {4}Advise on writing the thesis}{16}{chapter.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.1}Number of pages}{16}{section.4.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.2}Writing style}{16}{section.4.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.3}Active verbs}{17}{section.4.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.4}Transitional words and phrases}{17}{section.4.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.5}Tenses}{18}{section.4.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.6}Formatting requirements}{18}{section.4.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.7}Emphasis}{18}{section.4.7}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.8}Citations}{19}{section.4.8}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.9}Figures and tables}{19}{section.4.9}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.10}Program code}{20}{section.4.10}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.11}Acronyms and terms}{21}{section.4.11}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.12}Spelling and grammar}{21}{section.4.12}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {5}Conclusions and outlook}{22}{chapter.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {6}Acknowledgements}{23}{chapter.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\nonumberline Acknowledgments by Horst Hellbr\"uck}{23}{section*.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\nonumberline Acknowledgements by Ren Zhong}{23}{section*.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\nonumberline Acknowledgements by Andreas Hanemann}{23}{section*.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\nonumberline Appendix A: Frequently asked questions}{24}{chapter*.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\nonumberline List of Figures}{25}{chapter*.7}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\nonumberline List of Tables}{26}{chapter*.8}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\nonumberline Bibliography}{27}{chapter*.9}

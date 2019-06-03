@@ -1,0 +1,27 @@
+Name:
+Peter Miller
+
+Thesis Title:
+Integration of an Acceleration Sensor into an Embedded System for Sensor Networks.
+
+Date of the Report:
+2008 June 8th
+
+Period of the Report:
+2008 June 1st - 7th (l week)
+
+Implementation:
+1. Add filter to the algorithms
+
+
+Implementation Results:
+1.  extensions to source file acc.c
+
+Documentation:
+1. Added part filter to implementation chapter in /doc/Thesis.doc
+2. added 5 movement logs /material/logs/filter*.log and /material/log/readme.txt)
+3. Start to write chapter evaluation /doc/Thesis.doc 
+
+Plan for the near future:
+1. 2008 June 15th - add a new filter type and evaluate it 
+2. 2008 June 15th - finish compete draft of thesis document

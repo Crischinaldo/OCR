@@ -1,0 +1,602 @@
+#LyX file created by tex2lyx 2.3
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin C:/Users/Chrus/Desktop/Template LaTeX/documentation/
+\textclass scrbook
+\begin_preamble
+%
+% Simple LaTeX template for student theses
+% - optimized for use with usual LaTeX editors
+% - works without make file and changes to the directory structure
+% - uses komascript for nicer layout (from European perspective)
+% 
+% v1, 2007 (Michael Brenner,MNM-Team,LRZ-München
+% This version: v1.1, 2012 (Michael Brenner, MNM-Team, LRZ-München)
+% adopted for FH Lübeck by Andreas Hanemann
+
+
+% addition "`oneside"' for single-sided printing 
+\usepackage[english]{babel}
+\usepackage{bibgerm}% deutsche Literaturverzeichnisse
+% for German "`Umlaute"'
+% To insert figures  - for PDF-LaTeX: .pdf and .png (.jpg possible, but should be avoided)
+\usepackage{url}% improve URL formatting (e.g. in the literature) 
+\usepackage[onehalfspacing]{setspace}% for appropriate spacing
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{listings}%to display source code with \begin{1stlisting}... \end{1stlisting}
+\usepackage{color}
+\definecolor{lightestyellow}{rgb}{1,1,0.9}
+% takes care of links in pdf documents
+% \usepackage{glossaries} glossary can be generated this way, not recommended for bachelor or master theses
+% \makeglossaries
+% \include{glossary} file glossary.tex could contain glossary terms, use of \newglossaryentry{} and \newacronym{} commands
+%starting from here there are package which can be useful, turn on if needed; recommendations by Marco Trettner
+% \usepackage{float} %for floats
+% \usepackage{tabularx} %for tables
+% \usepackage{ragged2e} %formatting of formulas or tables
+% \usepackage{amsmath} %better math functions
+% \usepackage{amssymb} %more math symbols
+% \usepackage[decimalsymbol=comma]{siunitx}, um Werte mit ihren Einheiten schön darzustellen. Anstatt "I=5mA" schreibt man dann "I=\SI{5}{\milli\ampere}. Dann entsteht automatisch ein schöner kleiner Abstand zwischen dem Wert und der Einheit. Außerdem wird die Einheit nicht kursiv geschrieben. Das geht natürlich nur in einer Mathe-Umgebung.
+% \usepackage[nolist]{acronym} für Abkürzungen. Dazu habe ich noch eine Datei eingefügt mit "\input{acronym}", in der die Abkürzungen in der Umgebung \begin{acronym}[Bash] durch z.B. \acro{IP}{Internet Protocol} aufgelistet werden. Im Dokument selbst gibt man dann nur \ac{IP} ein und das erste Vorkommen wird ausgeschrieben. Es gibt noch ein paar Möglichkeiten, die das Paket liefert. Z.B. wir durch \acp der Plural auch angezeigt, was manchmal sehr hilfreich ist. Das Argument [nolist] habe ich genommen, damit die Abkürzungen nicht extra aufgelistet werden in einem Glossar.
+% \usepackage{textcomp} für "TM" Symbole
+% \usepackage[babel, german=quotes]{csquotes}; \usepackage[backend=biber, style=ieee]{biblatex} für Zitate mithilfe von Biblatex. Der Style "ieee" sorgt z.B. für die fortlaufende Nummerierung von Beginn an. Es gibt aber auch irgendwie 30 verschiedene Styles, die man einstellen kann.
+% \usepackage{etoolbox}; \usepackage{hyperref} für URLs
+% end of recommendations by Marco Trettner
+%bibliography is generated via biber instead of Biblatex ; configure biber in development environment as needed
+
+\graphicspath{{./figures/}}
+\input{hyphenation} % put words there it the separation does not work properly
+
+% special commands by Marco Trettner; third one switched on by default
+% \sisetup{exponent-product = \cdot, output-product = \cdot}
+%Damit kriegt man die "X" bei der Darstellung von Exponentialzahlen zu einem Multiplikationszeichen gewandelt (4.5 x 10^3 wird zu 4.5 \cdot 10^-3)
+%\lstdefinestyle{customC}{language=C, frame=lr, rulecolor=\color{blue!80!black}, keywordstyle=\bfseries\color{blue!80!black}, basicstyle=\footnotesize\ttfamily,}
+%\lstdefinestyle{Console}{backgroundcolor=\color{white}, basicstyle=\scriptsize\color{black}\ttfamily}
+%Das sind zwei Listing Styles, die ich für mich verwende, um C-Code oder um Konsolenausgaben anzuzeigen. Ist auch eine schöne Sache dieses Tool.
+\apptocmd{\UrlBreaks}{\do\f\do\m}{}{}
+\setcounter{biburllcpenalty}{9000}% Kleinbuchstaben
+\setcounter{biburlucpenalty}{9000}% Großbuchstaben
+%Das ist ganz wichtig. Das durch Biblatex erzeugte Literaturverzeichnis kann Links enthalten, die mit \url erzeugt worden sind. Dabei kann es sein, dass die über den Rand hinaus gehen. Durch die beiden Befehle \setcounter wird einfach am Rand abgebrochen, sodass der Link noch funktioniert und die Optik beim Blockschreibsatz bleibt.
+
+
+\end_preamble
+\options bibliography=totoc,listof=totoc,BCOR=5mm,DIV=12
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding iso8859-1
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks 0
+\pdf_bookmarksnumbered 0
+\pdf_bookmarksopen 0
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks 0
+\pdf_pdfborder 0
+\pdf_colorlinks 0
+\pdf_backref section
+\pdf_pdfusetitle 0
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine biblatex
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\biblio_options backend=biber
+\biblatex_bibstyle alphabetic
+\biblatex_citestyle alphabetic
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+% ---------------------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+frontmatter
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+% front pages and declaration
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+pagestyle
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+empty
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+% switch off page numbering
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset include
+LatexCommand include
+preview false
+filename "title-thl.lyx"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+% title pages for FHL 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Newpage cleardoublepage
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand include
+preview false
+filename "abstract.lyx"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+% abstract 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Newpage cleardoublepage
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand include
+preview false
+filename "declaration-thl.lyx"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+% declaration (own work)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Newpage cleardoublepage
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand include
+preview false
+filename "summary.lyx"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+% optional
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+addtocontents{toc}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+protect
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+% ---------------------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+mainmatter
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+% main part of the work
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+pagestyle
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+plain
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+% switch on page numbering
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset include
+LatexCommand input
+preview false
+filename "chapter1.lyx"
+
+\end_inset
+
+ 
+\begin_inset CommandInset include
+LatexCommand input
+preview false
+filename "chapter2.lyx"
+
+\end_inset
+
+ 
+\begin_inset CommandInset include
+LatexCommand input
+preview false
+filename "chapter3.lyx"
+
+\end_inset
+
+ 
+\begin_inset CommandInset include
+LatexCommand input
+preview false
+filename "chapter4.lyx"
+
+\end_inset
+
+ 
+\begin_inset CommandInset include
+LatexCommand input
+preview false
+filename "chapter5.lyx"
+
+\end_inset
+
+ 
+\begin_inset CommandInset include
+LatexCommand input
+preview false
+filename "chapter6.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+% ---------------------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+backmatter
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+% no numbering after this point
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset include
+LatexCommand input
+preview false
+filename "faq.lyx"
+
+\end_inset
+
+ 
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\begin_inset FloatList table
+
+\end_inset
+
+
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "./bib/thesis"
+options ""
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
