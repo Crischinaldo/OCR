@@ -1,0 +1,1276 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+chapter{Advise on writing the thesis}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "chap_writing"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The thesis is an own scientific work of the student.
+ It will be read in any case by the first and second advisor, but it should
+ be written in a way that it is understandable to anyone from the corresponding
+ scientific area without the need to read additional literature.
+ This holds in particular for employees of companies where the work has
+ been carried out (in case of external theses).
+\end_layout
+
+\begin_layout Section
+Number of pages
+\end_layout
+
+\begin_layout Standard
+It is not possible to give a general recommendation for the reasonable length
+ of a thesis.
+ This depends on the subject.
+ For instance, a subject which includes a detailed comparison of related
+ work may require more pages than a subject with a focus on the practical
+ implementation.
+ Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:pages"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ contains some suggestions for different kinds of theses.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Tables can be put in a figure environment - the use of a table environment
+ is in particular usefulif many tables are included
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float table
+placement htb
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="4">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="none" valignment="top" width="3cm">
+<column alignment="none" valignment="top" width="3cm">
+<column alignment="none" valignment="top" width="3cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Type of work
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Minimum
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Average
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Maximum
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Project report 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10 pages + appendix (+ CD) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15 pages + appendix (+ CD) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+30 pages + appendix (+ CD)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Bachelor thesis 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+30 pages + appendix + CD 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+45 pages + appendix + CD 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100 pages + appendix + CD
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Master thesis 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+60 pages + appendix + CD 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+75 pages + appendix + CD 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+130 pages + appendix + CD 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Suggestions for the number of pages
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:pages"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Please note that the number of pages does not have an implication whether
+ the thesis is good or bad (Einstein's PhD thesis had 17 pages).
+ As discussed in the writing style section it is better to be precise and
+ short rather than to describe something with many words.
+\end_layout
+
+\begin_layout Section
+Writing style
+\end_layout
+
+\begin_layout Standard
+A thesis document is comparable to a research report or scientific book,
+ like Tanenbaum's 
+\begin_inset Quotes eld
+\end_inset
+
+Computer Networks
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Scientific writing has to be a formal document - much more formal than
+ many articles in the Internet.
+ Colloquial and informal writing is undesirable.
+\end_layout
+
+\begin_layout Standard
+Formal and informal English differ in word choice, word usage, and grammatical
+ structures.
+ Informal writing might utilize the words 
+\begin_inset Quotes eld
+\end_inset
+
+kid
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+how come
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+quote
+\begin_inset Quotes erd
+\end_inset
+
+ as a noun.
+ A formal writer might prefer 
+\begin_inset Quotes eld
+\end_inset
+
+child
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+why
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+quotation
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "sch96"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Non-native speakers should note that the word-by-word translations from
+ another language like Chinese or German does not work in writing a thesis,
+ so students are suggested to always use an English book as a reference
+ for language.
+\end_layout
+
+\begin_layout Standard
+Three keywords for scientific writing are 
+\shape italic
+clarity
+\shape default
+, 
+\shape italic
+precision
+\shape default
+ and 
+\shape italic
+brevity
+\shape default
+.
+ They can serve as the watchwords to ensure a thesis is readable, persuasive
+ and concise.
+ Pages 18-26 in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cha02"
+literal "false"
+
+\end_inset
+
+ provide some very useful hints on understanding the three words and discusses
+ some other issues on the use of language in thesis writing.
+\end_layout
+
+\begin_layout Standard
+An important stylistic choice in scientific writing is between active voice
+ and passive voice.
+ One way to express what was done is to e.g.
+\begin_inset space ~
+\end_inset
+
+say 
+\begin_inset Quotes eld
+\end_inset
+
+I performed frequency measurements
+\begin_inset Quotes erd
+\end_inset
+
+.
+ In this way it becomes obvious what was done by the author.
+ However, this kind of writing is uncommon in scientific work and should
+ be used only when there would be uncertainties about who contributed which
+ pieces of work.
+ A better alternative writing to make this obvious is use a sentence similar
+ to 
+\begin_inset Quotes eld
+\end_inset
+
+Frequency measurements were conducted by the author
+\begin_inset Quotes erd
+\end_inset
+
+.
+ In most situations a passive form like 
+\begin_inset Quotes eld
+\end_inset
+
+Frequency measurements were conducted
+\begin_inset Quotes erd
+\end_inset
+
+ is the best option.
+\end_layout
+
+\begin_layout Standard
+In a scientific thesis it is very unusual to address the reader directly
+ as 
+\begin_inset Quotes eld
+\end_inset
+
+you
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Thus, one should change sentences like 
+\begin_inset Quotes eld
+\end_inset
+
+This chapter tells you the reason why ...
+\begin_inset Quotes erd
+\end_inset
+
+ to 
+\begin_inset Quotes eld
+\end_inset
+
+This chapter gives reasons why ...
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Active verbs
+\end_layout
+
+\begin_layout Standard
+Using precise, active verbs can make the thesis more concise, precise and
+ persuasive.
+ For example, instead of saying 
+\begin_inset Quotes eld
+\end_inset
+
+This work is a generalization of Smith's earlier algorithm.
+\begin_inset Quotes erd
+\end_inset
+
+, it is better to write 
+\begin_inset Quotes eld
+\end_inset
+
+This work generalizes Smith's earlier algorithm.
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hew03"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Some frequently used active verbs include: present, summarize, illustrate,
+ clarify, reveal, introduce, indicate, propose, specify...
+\end_layout
+
+\begin_layout Standard
+For more useful hints and a list of active verbs, please refer to 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hew03"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Transitional words and phrases
+\end_layout
+
+\begin_layout Standard
+Transitional words and phrases provide the glue that holds ideas together
+ in writing.
+ They help the reader to understand the relationships between ideas, and
+ can be used to connect sentences, paragraphs, or even entire sections 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "har11"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The following paragraph is an example on how transitional expressions establish
+ relationships between ideas and connect sentences to form a logical chain.
+ In order to notice the difference read the paragraph with and without the
+ words in 
+\shape italic
+italics
+\shape default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Quotes eld
+\end_inset
+
+
+\shape italic
+Unlike
+\shape default
+ some common protocols 
+\shape italic
+such as
+\shape default
+ UDP, the original CCN protocol does not have any fixed-length fields in
+ the messages.
+ 
+\shape italic
+Instead
+\shape default
+, the message formats are defined by XML schemas 
+\shape italic
+and
+\shape default
+ each field can be of arbitrary length ...
+\end_layout
+
+\begin_layout Standard
+Such protocol design, 
+\shape italic
+however
+\shape default
+, is not applicable to wireless sensor networks, which generally have very
+ limited communication bandwidth.
+ 
+\shape italic
+In particular
+\shape default
+, the MAC layer frame size on our platform is merely 127 bytes ...
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Some more suggestions and a well-organized list of transitional words and
+ phrases can be found in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "har11"
+literal "false"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "poss"
+literal "false"
+
+\end_inset
+
+ (both online).
+\end_layout
+
+\begin_layout Section
+Tenses
+\end_layout
+
+\begin_layout Standard
+Usually the thesis should be written in present tense.
+ Sometimes it may be necessary to describe steps which have led to a current
+ result.
+ In this case it can be useful to use the past tense to explain the steps.
+ It is important to use the tenses in a consistent manner.
+\end_layout
+
+\begin_layout Section
+Formatting requirements
+\end_layout
+
+\begin_layout Standard
+The following layout settings are suggested for a thesis.
+ 
+\end_layout
+
+\begin_layout Description
+Paper: A4 
+\end_layout
+
+\begin_layout Description
+Font: Times New Roman 12pt or Arial 11pt; the font sizes should be at least
+ 11 pt; no fancy fonts should be used 
+\end_layout
+
+\begin_layout Description
+Justification: Use justification; avoid empty spaces by appropriate word
+ separations 
+\end_layout
+
+\begin_layout Description
+Margins: All around 2.5 cm (0.98 inches) 
+\end_layout
+
+\begin_layout Description
+Spacing: one half spacing; is achieved by using the 
+\shape italic
+setspace
+\shape default
+ package 
+\end_layout
+
+\begin_layout Description
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+Page use:
+\end_layout
+
+\end_inset
+
+ single sided print for the two final printouts; the option 
+\shape italic
+oneside
+\shape default
+ in 
+\shape italic
+documentclass
+\shape default
+ is activated in this template 
+\end_layout
+
+\begin_layout Description
+Tables: For the table of contents, table of figures, etc there is no need
+ to write them by hand.
+ Use LaTeX commands to generate them automatically.
+ 
+\end_layout
+
+\begin_layout Section
+Emphasis
+\end_layout
+
+\begin_layout Standard
+In scientific writing, there are several ways to highlight or emphasize
+ some words or phrases within a paragraph, including 
+\series bold
+boldface
+\series default
+, 
+\shape italic
+italics
+\shape default
+, 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+underline{underlining}
+\end_layout
+
+\end_inset
+
+ and CAPITALIZATION.
+ Generally speaking, boldface and italics are recommended while underling
+ and capitalization should be avoided.
+ However, even boldface and italics should be used 
+\shape italic
+sparingly
+\shape default
+ (especially boldface), because too many highlights will just do the opposite.
+\end_layout
+
+\begin_layout Standard
+A student can use either boldface or italics or both in her or his writing,
+ but the usage should be 
+\shape italic
+consistent
+\shape default
+ throughout the entire thesis.
+ There is a subtle difference between boldface and italics.
+ Within a large body of text, a word in 
+\shape italic
+italics
+\shape default
+ does not stand out much.
+ Instead, it signifies a context difference only 
+\shape italic
+while
+\shape default
+ the text is being read.
+ It is useful for highlighting the introduction of new terms.
+ In contrast, a word in 
+\series bold
+boldface
+\series default
+ can easily attract human eyeball and is therefore recommended for keywords
+ that the readers might be looking for 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wik13a"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Citations
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec_citations"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is necessary to cite if foreign work has been included into the thesis.
+ A reference has to be added which points to the bibliography and the bibliograp
+hy has to contain enough information to find the sources.
+ There are multiple standards on the format of citations.
+ For scientific writing, the IEEE citation style is usually recommended.
+ The detailed IEEE citation standard can be found online in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ieeecitation09"
+literal "false"
+
+\end_inset
+
+.
+ The BibTeX file belonging to this template contains examples for references
+ to different sources.
+\end_layout
+
+\begin_layout Standard
+The use of footnotes is possible, but is not recommended because it leads
+ to a replication of information if the same source is cited multiple times
+ (there may be a pointer to an earlier footnote to avoid this, but this
+ solution is inconvenient for the reader).
+ In addition, the use of footnotes disrupts the reader from the main text
+ and is rather uncommon in electrical engineering or computer science documents
+ in contrast to other scientific areas.
+\end_layout
+
+\begin_layout Standard
+Citations which use the wording of the foreign text need to be indicated
+ with quotation marks.
+ In electrical engineering and computer science word-by-word quotes are
+ not useful in many cases and should be avoided.
+ If they are used, they should be as brief as possible.
+ It is preferable to explain something by using one's own words (it is of
+ course still necessary to point to the source).
+ One exception is the definition of important terms since an explanation
+ using own terms may easily lead to a loss of precision.
+ In this case the source needs to be provided with a detailed reference,
+ e.g.
+ indicating the page in a book.
+\end_layout
+
+\begin_layout Standard
+When referencing Internet pages it needs to be taken into account that these
+ may be changed over time.
+ There should be a remark when they have been accessed for the last time.
+ They should be downloaded (if possible) to make sure that the content is
+ preserved.
+\end_layout
+
+\begin_layout Section
+Figures and tables
+\end_layout
+
+\begin_layout Standard
+Figures and tables are always a good complement to the written text.
+ They can visualize some complicated concepts or ideas, and help the readers
+ understand the text better.
+ Especially for those theses involving programming, a 
+\shape italic
+class diagram
+\shape default
+ can easily clarify the design of a program.
+\end_layout
+
+\begin_layout Standard
+Similar to the use of boldface and italics, figures and tables should also
+ be used 
+\shape italic
+sparingly
+\shape default
+ and 
+\shape italic
+selectively
+\shape default
+.
+ A common pitfall is to include too many screenshots in the thesis.
+ Remember a thesis is basically a formal record of the author's original
+ research, not a software tutorial or a user manual.
+ Each figure has to provide an added value for the reader.
+ This does not hold for company logos or startup screens.
+\end_layout
+
+\begin_layout Standard
+Each figure or table should be labeled with a caption briefly stating its
+ content.
+ If the figure or table is taken from elsewhere, a reference has to be included
+ in the caption as well.
+\end_layout
+
+\begin_layout Standard
+Figures and tables are illustrations that complement the text.
+ These illustrations can 
+\shape italic
+never
+\shape default
+ substitute text.
+ Consequently, figures and tables need to be described and referenced in
+ the text accordingly.
+ A common pitfall is that students expect the reader to 
+\begin_inset Quotes eld
+\end_inset
+
+read
+\begin_inset Quotes erd
+\end_inset
+
+ the figures.
+ A figure which is not referenced will may be considered by the reader,
+ because she or he does not know when to look at the figure.
+\end_layout
+
+\begin_layout Section
+Program code
+\end_layout
+
+\begin_layout Standard
+In computer-related books and articles, a piece of code is formally referred
+ to as a listing or program listing.
+ Similarly, program listings should also be used very sparingly, as all
+ the source code will be available in the enclosed CD.
+ Like figures and tables listings can only be used as a complement to the
+ written text.
+ Sometimes it is useful to explain something with a pseudocode rather than
+ to provide all details of the actual code.
+\end_layout
+
+\begin_layout Standard
+Although there is no universal format for a listing, some basic rules should
+ be followed.
+ First, a listing should always be labeled, just like a figure or a table.
+ Second, the font for the code should be mono-spaced (e.g.
+ Courier New, etc.).
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:examplecode"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is a simple example of a listing (the format is not required but recommended).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement htb
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename images/examplecode.png
+	width 70text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Program listing example
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:examplecode"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If a thesis contains only very few program listings, they might also be
+ labeled as figures and included in the List of Figures.
+ Otherwise, it is suggested to provide a List of Listings.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstset
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+emph=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+int,for
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+,emphstyle=
+\family typewriter
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+color{red}
+\end_layout
+
+\end_inset
+
+, backgroundcolor=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+color{lightestyellow}
+\end_layout
+
+\end_inset
+
+, stringstyle=, basicstyle=, numbers=left
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset listings
+lstparams "frame=trb,captionpos=b,caption={Display of program code using 1stlisting},label={lst:examplecode}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+int $i;
+\end_layout
+
+\begin_layout Plain Layout
+
+for($i = 0; $i < 10; $i++) {
+\end_layout
+
+\begin_layout Plain Layout
+
+echo $i;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Alternatively the program code can be shown by using a special LaTeX package
+ named listings.
+ The listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lst:examplecode"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ serves as an example.
+\end_layout
+
+\begin_layout Standard
+If the thesis involves programming work, it is recommended to use code versionin
+g software.
+ In the material folder a Subversion tutorial is provided for this.
+\end_layout
+
+\begin_layout Section
+Acronyms and terms
+\end_layout
+
+\begin_layout Standard
+The use of acronyms is common in scientific writing since it keeps the brevity
+ of the text.
+ However, when using an acronym for the first time, the phrase should be
+ spelled out and followed by the acronym in parentheses (not in a footnote).
+ Note that the phrase itself is usually in lower case.
+ For example, wireless sensor networks (WSNs).
+\end_layout
+
+\begin_layout Standard
+In order to avoid ambiguity it is not recommended to use different terms
+ for the same concept.
+ For instance, it may be unclear whether there are differences when terms
+ like computer, machine, or device are used.
+\end_layout
+
+\begin_layout Standard
+For bachelor or master theses it is not necessary to provide a glossary
+ or a list of abbreviations.
+ A key word index is also not useful.
+\end_layout
+
+\begin_layout Section
+Spelling and grammar
+\end_layout
+
+\begin_layout Standard
+Spelling mistakes and wrong sentence structures give a bad impression and
+ have to be avoided.
+ In addition to the use of an automatic spell check further people should
+ read the thesis when it is ready to be submitted.
+ Otherwise, the readers may guess that not only the writing is inaccurate,
+ but also the contents.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+endinput
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

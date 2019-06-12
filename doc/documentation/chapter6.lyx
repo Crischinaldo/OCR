@@ -1,0 +1,180 @@
+#LyX file created by tex2lyx 2.3
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin C:/Users/Chrus/Desktop/Template LaTeX/documentation/
+\textclass scrbook
+\options bibliography=totoc,listof=totoc,BCOR=5mm,DIV=12
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding iso8859-1
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks 0
+\pdf_bookmarksnumbered 0
+\pdf_bookmarksopen 0
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks 0
+\pdf_pdfborder 0
+\pdf_colorlinks 0
+\pdf_backref section
+\pdf_pdfusetitle 0
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine biblatex
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\biblio_options backend=biber
+\biblatex_bibstyle alphabetic
+\biblatex_citestyle alphabetic
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Acknowledgements
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset label
+LatexCommand label
+name "chap_acknowledgements"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This section contains acknowledgements from the main authors of this document.
+\end_layout
+
+\begin_layout Paragraph
+Acknowledgments by Horst Hellbrück
+\end_layout
+
+\begin_layout Standard
+I want to thank all staff members and students that have participated in this document by giving tips or by asking questions. When I have started this guide in 2009 with a vague idea in mind, I could not foresee that this document becomes such a great help for all the students. My special thanks go to Zhi Haolin and Ren Zhong from the international study program Information Technology at Lübeck University of Applied Sciences together with ECUST in Shanghai. They have written most of the texts and provided references and figures. Without their valuable contribution this guide would have stayed at a conceptual level.
+\end_layout
+
+\begin_layout Paragraph
+Acknowledgements by Ren Zhong
+\end_layout
+
+\begin_layout Standard
+I would like to express my gratitude to Prof. Dr.-Ing Horst Hellbrück, who wrote the first draft of this document, and offered me such a great opportunity to contribute to this meaningful work.
+\end_layout
+
+\begin_layout Paragraph
+Acknowledgements by Andreas Hanemann
+\end_layout
+
+\begin_layout Standard
+I would like to thank the people who have worked on this document earlier (Horst Hellbrück, Zhi Haolin, Aida Bahta, Ren Zhong). Some advice from Hermann Hochhaus and Hans-Günter Kunze has also been included into the document.
+\end_layout
+
+\begin_layout Standard
+Recommendations by Marco Trettner for additional packages and commands have been included in the beginning of the document.
+\end_layout
+
+\begin_layout Paragraph
+
+\end_layout
+
+\begin_layout Standard
+The authors hope that students can benefit from the document and that more students may add contributions to this document to improve it.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+endinput
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+\begin_layout Plain Layout
+
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "./bib/thesis"
+
+\end_inset
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
