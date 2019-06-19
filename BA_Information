@@ -209,7 +209,30 @@ Relu Layer(aktivierungsfunktion):
  Multilayer perceptrons: fully connected networks - each neuron is connected to each neuron in the next layer
  
 
- 
- Quellen: 
+ books:
+
+ pattern analysis and machine intelligence
+ https://www.computer.org/csdl/journal/tp/2000/01/i0038/13rRUxDItib
+
+Document image analysis: A primer
+ https://link.springer.com/article/10.1007/BF02703309
+
+ optical character recognition
+ https://dl.acm.org/citation.cfm?id=553104
+
+ Wissenschaftliche Quellen: 
+
  Deep Learning for Document Image Analysis:
  https://scholarsarchive.byu.edu/cgi/viewcontent.cgi?article=8389&context=etd 
+ 
+ Image Processing Methods for Document Image Analysis
+ https://books.google.de/books?hl=de&lr=&id=yn6DN5hAPywC&oi=fnd&pg=PA1&dq=document+image+analysis&ots=QGgo-FcND4&sig=tq-0p1WeSMtRI8jXpkWAc8NmNK0#v=onepage&q=document%20image%20analysis&f=false
+
+https://patentimages.storage.googleapis.com/ee/6a/50/fb62a4fe24bfdb/US5600732.pdf
+
+Document image analysis
+
+https://pdfs.semanticscholar.org/c435/05cc450b647f6f3b4a6f9004ae7d414e2bea.pdf
+
+OCR
+http://cmp.felk.cvut.cz/~cernyad2/TextCaptchaPdf/Optical%20Character%20Recognition%20An%20illustrated%20guide%20to%20the%20frontier.pdf
