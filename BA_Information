@@ -26,6 +26,8 @@ text-recognition: best path decoding algorithm
 
 ocr-deep-learning: https://nicholastsmith.wordpress.com/2017/10/14/deep-learning-ocr-using-tensorflow-and-python/
 
+
+
 TFANN: A neural network module containing implementations of MLP, and CNN networks in TensorFlow.
 
 https://towardsdatascience.com/a-gentle-introduction-to-ocr-ee1469a201aa
@@ -242,3 +244,5 @@ http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.673.8061&rep=rep1&type=
 
 OCR Tesseract
 https://www.researchgate.net/profile/Chirag_Patel27/publication/235956427_Optical_Character_Recognition_by_Open_source_OCR_Tool_Tesseract_A_Case_Study/links/00463516fa43a64739000000.pdf
+
+https://opus4.kobv.de/opus4-bib-info/frontdoor/index/index/docId/16351 
