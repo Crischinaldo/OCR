@@ -113,60 +113,66 @@ Arbeitsauftrag
 
 \begin_layout Standard
 \noindent
-International students face the challenge to write a thesis at the end of
- their studies.
- As many rules and examples of theses at the Lübeck University of Applied
- Sciences are available in German exclusively they are not suited for the
- international students.
- Although many good guidelines are available online they do not cover the
- specialties of the Lübeck University of Applied Sciences.
- Therefore, a special guideline is necessary.
- Besides very specific rules for this university some common mistakes are
- covered in this guideline.
+In der heutigen Software ist Machine Learning zu einem nicht mehr wegzudenkenden
+ Teilgebiet geworden.
+ Durch die Verwendung intelligenter Systeme können Ressourcen wie Zeit und
+ Aufwand gespart werden.
+ Unternehmen, die mit dieser Technologie arbeiten, haben einen ökonimischen
+ Vorteilen gegenüber der Konkurrenz und heben sich von Diesen ab.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 1cm*
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \noindent
-The task for this work is: 
-\end_layout
-
-\begin_layout Enumerate
-Collection of the German guidelines and existing examples of successful
- thesis documents.
- 
-\end_layout
-
-\begin_layout Enumerate
-Analysis of the important rules and common mistakes of students when writing
- an English thesis.
- 
-\end_layout
-
-\begin_layout Enumerate
-Creation of a comprehensive document serving as a template and a guideline
- for the students.
- 
-\end_layout
-
-\begin_layout Enumerate
-Prepare a comprehensive Questions and Answers section.
- 
+Die Automatisierung soll anhand einer künstlichen Intelligenz erfolgen.
 \end_layout
 
 \begin_layout Standard
 \noindent
-The deliveries are: 
+Der Erkennungsprozess wird in drei Phasen untergliedert:
 \end_layout
 
-\begin_layout Itemize
-A document that is well structured and serves as a guideline and template
- 
+\begin_layout Enumerate
+Mustererkennung
 \end_layout
 
-\begin_layout Itemize
-A list of frequently asked questions + answers 
+\begin_deeper
+\begin_layout Standard
+Ein Klassifikator ist in der Lage Datenmuster in den Rechnungsbelegen zu
+ erkennen und einem Belegtyp zuzuordnen.
 \end_layout
 
+\end_deeper
+\begin_layout Enumerate
+Belegextraktion
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Auf Basis der Mustererkennung kann eine Extraktion der Informationen durchgeführ
+t werden.
+ Die Positionen der Daten werden durch die Musterkennung ermittelt.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Evaluation
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Eine Quantifizierung evaluiert die nachträglich ausgefüllten Felder, fehlerhafte
+ Erkennungen und die durchschnittliche Zeitersparnis.
+ Ergebnisse sollen visuell dargestellt werden.
+\end_layout
+
+\end_deeper
 \begin_layout Standard
 \begin_inset Note Note
 status open

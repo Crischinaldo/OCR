@@ -148,7 +148,7 @@
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -163,7 +163,7 @@ status collapsed
 
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -176,7 +176,7 @@ frontmatter
 
  
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -191,7 +191,7 @@ status collapsed
 
  
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -226,7 +226,7 @@ status collapsed
 
  
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -248,7 +248,7 @@ filename "title-thl.lyx"
 
  
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -326,7 +326,7 @@ filename "summary.lyx"
 
  
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -347,7 +347,7 @@ LatexCommand tableofcontents
 
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -360,7 +360,7 @@ addtocontents{toc}{
 
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -373,7 +373,7 @@ protect
 
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -400,7 +400,7 @@ status collapsed
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -415,7 +415,7 @@ status collapsed
 
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -428,7 +428,7 @@ mainmatter
 
  
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -494,14 +494,14 @@ status collapsed
  
 \begin_inset CommandInset include
 LatexCommand input
-filename "chapter1.lyx"
+filename "introduction.lyx"
 
 \end_inset
 
  
 \begin_inset CommandInset include
 LatexCommand input
-filename "chapter2.lyx"
+filename "requirements.lyx"
 
 \end_inset
 
@@ -566,7 +566,7 @@ backmatter
 
  
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 

@@ -91,7 +91,7 @@
 \begin_body
 
 \begin_layout Chapter
-Work on the Thesis
+Dokumentenerkennung
 \end_layout
 
 \begin_layout Standard
@@ -105,51 +105,143 @@ name "chap_process"
 \end_layout
 
 \begin_layout Standard
-This chapter explains the procedure for writing a thesis at THL.
+Dieser Chapter fügt sich in den Bereich der Document Image Analysis (DIA).
 \end_layout
 
 \begin_layout Section
-Thesis registration form
+Forschungsstand
 \end_layout
 
 \begin_layout Standard
-Approx.
- three weeks in advance of the start it is necessary to begin the process
- to check the fulfillment of requirements for writing a thesis at the secretaria
-t.
- The student can either fill out a form at the secretariat directly or can
- ask via e-mail to ei@th-luebeck.de to perform the checks.
- This does not mean that the student is immediately registered for the thesis,
- it is just a check of requirements.
- If all requirements are fulfilled with respect to the examination regulations,
- the first advisor will get a notification (with CC to the student).
- The first advisor then provides the title, official start date, and may
- also provide a task description.
- This official start date determines the final thesis hand-in date three
- months later (six months in case of master thesis).
+\noindent
+DIA bezeichnet allgemein eine große Gruppe von Techniken, die visuelle Informati
+onen charakterisieren können.
+ Dia gehört zu den ältesten Bereichen der Informatik.
+ 1913 Erfand Edmund Fournier das Optophon, mit dem dunkle Schriftzeichen
+ auf einem Stück Papier erkannt werden können und als Töne interpretiert
+ wurden.
 \end_layout
 
 \begin_layout Standard
-First advisor of a thesis can in general be any member of the faculty as
- long as the scientific area of this person matches to the topic of the
- thesis.
- For some members of the faculty who are not professors it is necessary
- that their role as first advisor is confirmed by the examination board.
-\end_layout
-
-\begin_layout Standard
-Remark for Chinese students: Since all Chinese students start their theses
- on the same day, a special procedure applies.
- Please note the remarks on this in the lecture of Ms.
- Hanesova.
+\noindent
+Heutzutage durchlaufen moderne DIA-Algorithmen Rasterbilder, die mit Scannern,
+ Kameras oder anderen Digitalisierungsgeräten erzeugt wurden.
 \end_layout
 
 \begin_layout Section
-Specification of a thesis subject
+Probleme
 \end_layout
 
 \begin_layout Standard
-Several situations are possible for finding a thesis topic.
+Durch die stetige Weiterentwicklung von DIA ist die Vielfalt der Probleme
+ gewachsen:
+\end_layout
+
+\begin_layout Itemize
+Binarisierung - Klassifizieren welche Pixel im Vordergrund un welche im
+ Hintergrund ist
+\end_layout
+
+\begin_layout Itemize
+Korrektur - Korrigieren der perspektivischen Verzerrung.
+ Dies passiert wenn die Kamera nicht orthogonal zum Physikalischen Dokument
+ positioniert ist
+\end_layout
+
+\begin_layout Itemize
+Seitensegmentierung - Unterteilen einer Seite in homogene Komponenten wie
+ Text, Bilder und Grafiken
+\end_layout
+
+\begin_layout Itemize
+Textsegmentierung - Unterteilen eines Textabschnitts in Zeilen
+\end_layout
+
+\begin_layout Itemize
+Dokumentklassifizierung - Klassifizierung des Dokumenttyps
+\end_layout
+
+\begin_layout Itemize
+Schrift und - Spracherkennung - Klassifizieren mit welcher Schrift geschrieben
+ wurde und welche Sprache benutzt wird
+\end_layout
+
+\begin_layout Itemize
+Zeichensegmentierung - Segmentiert ein Wortbild in individuelle Charaktere
+\end_layout
+
+\begin_layout Itemize
+Grafische Erkennung - Erkennung von graphischen Komponenten
+\end_layout
+
+\begin_layout Itemize
+Tabellenlayout-Struktur Erkennung - Wiederherstellen der Zeilen und- Spaltenstru
+ktur von einem Bild einer Tabelle
+\end_layout
+
+\begin_layout Itemize
+Öffentlich genutzte Text und Grafiken erkennen - In der Öffentlichkeit genutzen
+ Text und Grapfiken klassifizieren, wie beispielsweise Nummerschilder und
+ Straßenzeichen
+\end_layout
+
+\begin_layout Itemize
+Identifikation des Verfassers - Das bestimmen von indivuellen Charakteristiken
+ des Verfassers des Textes, wie beispielsweise Geschlecht oder Alter
+\end_layout
+
+\begin_layout Itemize
+Messung der Dokumentenqualität
+\end_layout
+
+\begin_layout Itemize
+Handgeschriebenen Text erkennen - Texterkennung bei handgeschrieben Text
+ von individuellen Verfassern
+\end_layout
+
+\begin_layout Section
+Vorgehensweise in DIA
+\end_layout
+
+\begin_layout Standard
+Die typische Bildverarbeitungspipeline für Dokumente besteht aus drei allgemeine
+n Schritten.
+\end_layout
+
+\begin_layout Enumerate
+Vorverarbeitung - Das preprocessing der Dokumente beinhaltet das Entfernen
+ von Rauschen und Unschärfe, Korrektur, Entzerrung und Binarisierung.
+\end_layout
+
+\begin_layout Enumerate
+Layout-Analyse - Verstehen der Dokumentstruktur um Regionen die im Interesse
+ (Regions of Interest) liegen zu identifizieren.
+\end_layout
+
+\begin_layout Enumerate
+Erkennung - Extrahieren von den Informationen aus jeder Rol.
+\end_layout
+
+\begin_layout Section
+Optical Charakter Recognition (OCR)
+\end_layout
+
+\begin_layout Standard
+\noindent
+Eine Technik von DIA ist die optische Zeichenerkennung (OCR), die auf das
+ Erkennen gedruckter Zeichen ausgelegt ist.
+ Die Technologie findet derzeit bei der automatisierten Weiterleitung von
+ E-Mails statt, indem Postleitzahlen von Briefumschlägen geparst werden.
+\end_layout
+
+\begin_layout Standard
+\noindent
+Generell kann OCR als möglicherweise gelöstest Problem für maschinell gedruckte
+ und gescannte Bürodokumente in Englischer Schrift betrachtet werden.
+ Es werden Genauigkeiten von mehr als 99% erzielt.
+ Jedoch gibt es über 3000 geschriebene Sprachen und bei der optischen Zeichenerk
+ennung ist bei der Mehrheit der Sprachen ein ungelöstes Problem, welches
+ sich in laufender Forschung befindet.
 \end_layout
 
 \begin_layout Subsection
@@ -231,7 +323,7 @@ The choice of the subject needs to reflect a suitable challenge and effort.
 
 \begin_layout Itemize
 The task description together with the outline needs to address the following
- questions: 
+ questions:
 \end_layout
 
 \begin_deeper
