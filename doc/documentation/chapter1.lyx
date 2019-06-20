@@ -90,8 +90,27 @@
 
 \begin_body
 
-\begin_layout Chapter
-Dokumentenerkennung
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+chapter{Dokumentenerkennung}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "chap_introduction"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -134,7 +153,15 @@ Probleme
 
 \begin_layout Standard
 Durch die stetige Weiterentwicklung von DIA ist die Vielfalt der Probleme
- gewachsen:
+ gewachsen
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DIA_CAT"
+literal "false"
+
+\end_inset
+
+:
 \end_layout
 
 \begin_layout Itemize
@@ -244,566 +271,66 @@ ennung ist bei der Mehrheit der Sprachen ein ungelöstes Problem, welches
  sich in laufender Forschung befindet.
 \end_layout
 
-\begin_layout Subsection
-Given topic
+\begin_layout Section
+Funktionsweise von OCR
 \end_layout
 
 \begin_layout Standard
-It is possible that the first advisor already has a clear idea about a subject.
- She or he may already provide a title and also a description of the task.
- Nevertheless, a discussion of the subject and the tasks should take place
- between student and first advisor.
- It is possible to change or improve the task description as a consequence
- of this discussion.
- The student should verify together with the first advisor that those aspects
- as discussed in Section 
+In 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec_newtopic"
+reference "flowchart_ocr"
 plural "false"
 caps "false"
 noprefix "false"
 
 \end_inset
 
- have been taken into account.
+ ist die seqentuelle Work ow von dem Erkennen eines Textes abgebildet.
+ Das Bild wird als Dokument hochgeladen und mit preprocessing wird das Bild
+ fur den Klassierungsprozess aufbereitet.
+ Abhangig von den bestimmten Schwellwert wird das Bild binarisiert.
+ Texte werden als weie Pixel dargestellt, wahrend alle darumliegende Pixel
+ zu schwarz konvertiert werden.
+ Somit hebt sich der Text komplett vom Hintergrund ab.
+ Nun konnen Zeilenweise die Worter segmentiert werden, um diese wiederum
+ in Charakter zu segmentieren.
+ Die Charaktere werden als einzelnde als Merkmale extrahiert und klassiziert.
 \end_layout
 
 \begin_layout Standard
-Remark: This is the typical situation for Chinese students doing their work
- inside of THL.
-\end_layout
-
-\begin_layout Subsection
-Joint specification of a topic
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
-name "sec_newtopic"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-For theses where the student has a proposal for a subject (which is often
- the case for theses in cooperation with companies) it is necessary to jointly
- specify a task description.
- The proposal for the topic and task description draft should be provided
- in a written manner by the student.
- One or two pages are sufficient for that.
- The (potential) first advisor should get the possibility to judge from
- the description whether the topic is suited for a thesis.
- The description should comprise a draft for an outline.
-\end_layout
-
-\begin_layout Standard
-The following aspects are relevant for the task description: 
-\end_layout
-
-\begin_layout Itemize
-The choice of the subject needs to reflect a suitable challenge and effort.
- On the one hand, this means that the topic for a bachelor thesis has to
- be appropriate to address it within three months.
- These three months have to be sufficient even if unexpected difficulties
- arise (e.g.
- hard to find programming errors; unclear requirements which become apparent
- later).
- On the other hand, the topic needs to require knowledge which has been
- gained throughout the studies.
- Very often a combination of theoretical considerations combined with a
- (prototypical) practical implementation is chosen.
- A task description which means just an implementation of given concepts
- would be regarded as not sufficiently demanding.
- 
-\end_layout
-
-\begin_layout Itemize
-The task description together with the outline needs to address the following
- questions:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-What is the main problem? It should be tried to answer this question precisely
- in one or two sentences.
- 
-\end_layout
-
-\begin_layout Itemize
-Why is it important to find a solution for the problem? 
-\end_layout
-
-\begin_layout Itemize
-Why are existing solutions regarded as insufficient? 
-\end_layout
-
-\begin_layout Itemize
-How is the way to address the problem? 
-\end_layout
-
-\begin_layout Itemize
-How can it be checked (later on) whether the developed solution actually
- solves the problem? This is typically done by a catalog of criteria which
- needs to be developed first.
- 
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-The thesis has to match with scientific standards also in cases where the
- thesis is done in collaboration with an external company.
- The steps which are taken in the course of the thesis need to have technical
- reasons.
- An argumentation that a certain way to address a problem is desired by
- senior employees is not allowed.
- The thesis needs to be approached in an objective manner and not with respect
- to the company's views.
- This is also necessary for the written thesis where it is unacceptable
- to repeat advertisement messages of the company (e.g.
- 
-\begin_inset Quotes eld
-\end_inset
-
-company X the worldwide leader in manufacturing of product Y ...
-\begin_inset Quotes erd
-\end_inset
-
-).
- 
-\end_layout
-
-\begin_layout Itemize
-The student should consider her or his own professional future in the cooperatio
-n with the company.
- For instance, it should be taken into account whether work similar to the
- one conducted throughout the thesis is also interesting for the student
- on the long run.
- The choice of the topic will be subject of hiring talks in the future and
- can be helpful to show skills in an area that matches to the offered job.
- 
-\end_layout
-
-\begin_layout Itemize
-The task description and title of the thesis need to be considered carefully
- so that it is possible to get a clear idea of the topic, but also to show
- that it is a challenging topic.
- It is important to note that the title is chosen at the beginning and cannot
- be changed afterwards.
- 
-\end_layout
-
-\begin_layout Standard
-The official task description is derived from the proposal as Word or simple
- text file in collaboration with the first advisor.
-\end_layout
-
-\begin_layout Standard
-For many theses there is a preparation of the work in front of the official
- registration of the thesis.
- This is a common procedure in particular in the collaboration with companies.
-\end_layout
-
-\begin_layout Standard
-Remark for Chinese students: Due to the strict time line a preparation of
- work is only possible in February and March in front of the official registrati
-on in the second half of March.
-\end_layout
-
-\begin_layout Section
-Registration form back to secretariat (via first advisor)
-\end_layout
-
-\begin_layout Standard
-Based on the task description which is provided on the form the secretariat
- derives the official task description.
- The official source of the topic and task description is the examination
- board represented by its head.
- The student does not write anything on the form.
- A request to fetch the official task description is sometimes provided
- by paper mail.
-\end_layout
-
-\begin_layout Section
-Thesis duration
-\end_layout
-
-\begin_layout Standard
-The thesis has to be finished until a predefined date and needs to be completed
- with respect to the required formalities.
- The duration of a bachelor thesis is three months.
- A master thesis takes six months.
-\end_layout
-
-\begin_layout Section
-Advice
-\end_layout
-
-\begin_layout Standard
-There are differences between the advice for internal and external theses.
-\end_layout
-
-\begin_layout Subsection
-Advice for an internal thesis
-\end_layout
-
-\begin_layout Standard
-For the advice on internal theses it is common to agree on weekly or biweekly
- meetings.
- It is sufficient in many cases if conducted and future work is discussed
- orally.
-\end_layout
-
-\begin_layout Subsection
-Advice for an external thesis
-\end_layout
-
-\begin_layout Standard
-For an external thesis in a company short written reports which are sent
- via e-mail are better suited.
- They may be sent for a time interval of three weeks for example.
- For those reports the following outline is suitable: Student name, thesis
- title, report date, report interval, status (e.g.
-\begin_inset space ~
-\end_inset
-
-implementation, measurements, calculations, or simulation), results (same
- category, but concrete work, e.g.
- finished prototype platform), documentation (specific information, e.g.
-\begin_inset space ~
-\end_inset
-
-finished related work chapter), plan for the next time interval (specific
- information like: measurement preparation in the next week, conducting
- of measurements in the following week, finish measurement report in the
- third week).
- Those short reports are helpful for planning and for the early detection
- of timing issues.
-\end_layout
-
-\begin_layout Standard
-During the work at an external company the first advisor will visit the
- students as needed.
- The agreement on the date of the visit is usually done via e-mail.
-\end_layout
-
-\begin_layout Subsection
-Intermediate versions of the thesis
-\end_layout
-
-\begin_layout Standard
-The student sends intermediate versions of the thesis to the advisor.
- This holds both for internal and external theses.
- The student should use version numbers in an obvious way and should mark
- for the advisor which parts of thesis are new or have been revised significantl
-y.
- This is eases the correction work for the advisor.
-\end_layout
-
-\begin_layout Section
-Second advisor
-\end_layout
-
-\begin_layout Standard
-Approx.
-\begin_inset space ~
-\end_inset
-
-four weeks before the end of the work on the thesis the student should get
- in contact with a second advisor.
- The second advisor should be familiar with the scientific area to which
- the subject of the thesis is related.
- The first advisor can be asked for help to recommend a second advisor.
-\end_layout
-
-\begin_layout Standard
-Important: The student has to take care of the coordination of dates.
-\end_layout
-
-\begin_layout Section
-Deadline and submission
-\end_layout
-
-\begin_layout Standard
-The submission of the demanded 
-\series bold
-two hard copies
-\series default
- can be done by personal delivery to the secretariat or be done via paper
- mail (address: Technische Hochschule Lübeck, Fachbereich Elektrotechnik
- und Informatik, Prüfungsausschuss, Mönkhofer Weg 239, 23562 Lübeck, Germany).
- In the second case, the postmark stamp fixes the submission date.
- In addition to the written thesis the thesis itself and further material
- (program code, etc) has to be put on a CD and has to be attached to each
- hard copy (inside of the back cover).
- One of the hard copies will be archived later.
- The second one is checked by the first advisor and will remain in her or
- his office.
-\end_layout
-
-\begin_layout Standard
-The 
-\series bold
-deadline
-\series default
- has to be met in any case since the thesis is regarded as 
-\series bold
-failed
-\series default
- otherwise.
- An exception is only possible in case of third party mistakes (e.g.
-\begin_inset space ~
-\end_inset
-
-if the external company has not delivered important documents as promised)
- or in case of illness.
- In these situations a request for a prolongation of the thesis duration
- has to be posed in front of the expiry of the submission date.
- A deadline extension due to an inaccurate time organization of the student
- is not possible.
- The topic of the thesis may be returned once within the first one-third
- of the thesis duration.
- This has to be stated in a written manner towards the examination board.
- If the thesis is regarded as 
-\begin_inset Quotes eld
-\end_inset
-
-failed
-\begin_inset Quotes erd
-\end_inset
-
- at the end, a second attempt (but no third attempt) is possible (the request
- for doing a second attempt has to be posed within the next two semesters).
-\end_layout
-
-\begin_layout Standard
-The submitted thesis copies must be printed and bound to archives.
- The binding can be done in the print office in building 36, but also in
- town.
- Students should not have the thesis bound until the supervisor has approved
- the final draft, including all extra pages both preceding and following
- the main text.
- There are two types of binding available as illustrated in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:bindings"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-.
- Both simple binding and hard binding are allowed.
- However, it is a good idea to ask the supervisor for her or his choice.
- The student should make sure that all pages are there and that they have
- the right order.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-%Figure from PNG-File - take care that the figure has a sufficient resolution
- (so that a scaling >300dpi can be used in the printout) 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
 \begin_inset Float figure
-placement htb
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-
-\backslash
-centering
 \end_layout
 
-\end_inset
-
- 
+\begin_layout Plain Layout
 \begin_inset Graphics
-	filename images/simple_binding.png
-	width 40text%
-
-\end_inset
-
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% PNG-File
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename images/hardcover.png
-	width 40text%
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% PNG-File
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Simple binding (left) and hard cover (right) 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "coll13"
-literal "false"
+	filename images/flowchart_ocr.png
+	scale 70
 
 \end_inset
 
 
 \end_layout
 
-\end_inset
-
-
+\begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:bindings"
-
-\end_inset
-
- 
-\end_layout
+name "flowchart_ocr"
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
-Sometimes it is useful to make more hard copies, e.g.
-\begin_inset space ~
 \end_inset
 
-for employees from companies where the thesis work has been done.
-\end_layout
 
-\begin_layout Standard
-Remark for Chinese students: Please consider that the same deadline holds
- for the other students as well.
- Therefore, queues are possible if everyone wants to print the thesis on
- the same day.
-\end_layout
-
-\begin_layout Section
-Finding an oral examination date
-\end_layout
-
-\begin_layout Standard
-The student should agree with the advisors on the date, time and place of
- the oral examination (called 
-\begin_inset Quotes eld
-\end_inset
-
-colloquium
-\begin_inset Quotes erd
-\end_inset
-
-) well in advance.
- Dates outside of the lecture weeks can be hard to arrange.
- The student should ask the advisor about her or his ideas on the course
- of the colloquium (exact duration of the presentation, use of media, short
- demonstration possible).
-\end_layout
-
-\begin_layout Section
-Colloquium
-\end_layout
-
-\begin_layout Standard
-The student prepares a slide set for the colloquium which is designed to
- take 25 minutes to be presented (deviations are possible in particular
- for online degree programs, check with first advisor).
- It is estimated that it takes two or three minutes to present a single
- slide so that approx.
-\begin_inset space ~
-\end_inset
-
-10 slides should be used.
- Spelling mistakes on the slides should be avoided.
- The presentation may include the use of a blackboard, the showing of physical
- prototypes or a short demonstration.
-\end_layout
-
-\begin_layout Standard
-The focus of the slides should be the work that the student has done.
- This means that it is inappropriate to spend too much time on explaining
- the background or discuss related work.
- Often the student can use a similar outline as the one used in the written
- thesis.
- An important difference is that the presentation should not strive for
- completeness, but can select specific examples.
- A file with advice on the colloquium slides can be found in the folder
- about the presentation.
-\end_layout
-
-\begin_layout Standard
-The colloquium itself takes place in a seminar room or a small lecture room.
- During the time of the presentation the public can participate, but the
- public is excluded when the advisors pose their questions.
- It is a pity that the colloquium often takes place without additional listeners
- which is inappropriate in relation to the effort that is invested into
- many theses.
- The student should check the availability of the technical equipment in
- advance.
- She or he should be in the room on time to cope with (frequent) difficulties,
- e.g.
- that the beamer does not want to cooperate with the notebook, and to resolve
- them before the start of the colloquium.
-\end_layout
-
-\begin_layout Standard
-At the end of the colloquium the presentation should be delivered to the
- first advisor.
 \end_layout
 
 \begin_layout Standard

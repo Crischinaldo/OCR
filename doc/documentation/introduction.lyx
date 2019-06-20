@@ -91,8 +91,20 @@
 
 \begin_body
 
-\begin_layout Chapter
-Einleitung
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+chapter{Einleitung}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -267,6 +279,26 @@ OCR mit Tesseract
 
 \begin_layout Section
 Meilensteinplan
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename images/Work_Plan_1.png
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename images/work_plan_2.png
+	scale 20
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

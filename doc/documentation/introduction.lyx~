@@ -91,8 +91,20 @@
 
 \begin_body
 
-\begin_layout Chapter
-Einleitung
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+chapter{Einleitung}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -121,7 +133,7 @@ rt werden.
 
 \begin_layout Standard
 \noindent
-\begin_inset VSpace 1cm
+\begin_inset VSpace 0.5cm
 \end_inset
 
 
@@ -144,7 +156,7 @@ Eine Automatisierung über Bilderkennung würde den Kunden viel Zeit ersparen
 
 \begin_layout Standard
 \noindent
-\begin_inset VSpace 1cm
+\begin_inset VSpace 0.5cm
 \end_inset
 
 
@@ -167,7 +179,7 @@ Auf dem Archivserver ist eine Vielzahl von Bildern vorhanden, welche als
 
 \begin_layout Standard
 \noindent
-\begin_inset VSpace 1cm
+\begin_inset VSpace 0.5cm
 \end_inset
 
 
@@ -254,7 +266,7 @@ Die Arbeit unterteilt sich in momentan 3 Kernbereiche:
 \end_layout
 
 \begin_layout Itemize
-Dokumentenerkennung (Document Image Analysis) 
+Dokumentenerkennung (Document Image Analysis)
 \end_layout
 
 \begin_layout Itemize
@@ -267,6 +279,25 @@ OCR mit Tesseract
 
 \begin_layout Section
 Meilensteinplan
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename images/Work_Plan_1.png
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename images/work_plan_2.png
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

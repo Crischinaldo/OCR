@@ -172,8 +172,8 @@ Ich versichere, dass ich die Arbeit selbst¨andig, ohne fremde Hilfe verfasst
 
 \begin_layout Standard
 \noindent
-Bei der Abfassung der Arbeit sind nur die angegebenen Quellen benutzt worden.W¨or
-tlich oder dem Sinne nach entnommene Stellen sind als solche gekennzeichnet.
+Bei der Abfassung der Arbeit sind nur die angegebenen Quellen benutzt worden.Wört
+lich oder dem Sinne nach entnommene Stellen sind als solche gekennzeichnet.
 \begin_inset VSpace 1cm*
 \end_inset
 
@@ -182,7 +182,7 @@ tlich oder dem Sinne nach entnommene Stellen sind als solche gekennzeichnet.
 
 \begin_layout Standard
 \noindent
-Ich bin damit einverstanden, dass meine Arbeit ver¨o↵entlicht wird, insbesondere
+Ich bin damit einverstanden, dass meine Arbeit veröffentlicht wird, insbesondere
  dass die Arbeit Dritten zur Einsichtnahme vorgelegt oder Kopien der Arbeit
  zurWeitergabe an Dritte angefertigt werden.
 \begin_inset VSpace 2cm
@@ -193,7 +193,20 @@ Ich bin damit einverstanden, dass meine Arbeit ver¨o↵entlicht wird, insbesond
 
 \begin_layout Standard
 \noindent
-Lübeck, Month XXth 20ZZ
+Lübeck, den 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+today
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

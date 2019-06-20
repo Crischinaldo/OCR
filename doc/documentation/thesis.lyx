@@ -18,7 +18,7 @@
 
 
 % addition "`oneside"' for single-sided printing 
-\usepackage[german]{babel}
+\usepackage[english]{babel}
 \usepackage{bibgerm}% deutsche Literaturverzeichnisse
 % for German "`Umlaute"'
 % To insert figures  - for PDF-LaTeX: .pdf and .png (.jpg possible, but should be avoided)
@@ -56,7 +56,7 @@
 %\lstdefinestyle{customC}{language=C, frame=lr, rulecolor=\color{blue!80!black}, keywordstyle=\bfseries\color{blue!80!black}, basicstyle=\footnotesize\ttfamily,}
 %\lstdefinestyle{Console}{backgroundcolor=\color{white}, basicstyle=\scriptsize\color{black}\ttfamily}
 %Das sind zwei Listing Styles, die ich für mich verwende, um C-Code oder um Konsolenausgaben anzuzeigen. Ist auch eine schöne Sache dieses Tool.
-\apptocmd{\UrlBreaks}{\do\f\do\m}{}{}
+
 \setcounter{biburllcpenalty}{9000}% Kleinbuchstaben
 \setcounter{biburlucpenalty}{9000}% Großbuchstaben
 %Das ist ganz wichtig. Das durch Biblatex erzeugte Literaturverzeichnis kann Links enthalten, die mit \url erzeugt worden sind. Dabei kann es sein, dass die über den Rand hinaus gehen. Durch die beiden Befehle \setcounter wird einfach am Rand abgebrochen, sodass der Link noch funktioniert und die Optik beim Blockschreibsatz bleibt.
@@ -148,7 +148,7 @@
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -163,7 +163,7 @@ status open
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -176,7 +176,7 @@ frontmatter
 
  
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -191,7 +191,7 @@ status open
 
  
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -226,7 +226,7 @@ status collapsed
 
  
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -248,7 +248,7 @@ filename "title-thl.lyx"
 
  
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -326,7 +326,7 @@ filename "summary.lyx"
 
  
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -347,7 +347,7 @@ LatexCommand tableofcontents
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -360,7 +360,7 @@ addtocontents{toc}{
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -373,7 +373,7 @@ protect
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -400,7 +400,7 @@ status collapsed
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -415,7 +415,7 @@ status open
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -428,7 +428,7 @@ mainmatter
 
  
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -491,7 +491,7 @@ status collapsed
 
 \end_inset
 
- 
+
 \begin_inset CommandInset include
 LatexCommand input
 filename "introduction.lyx"
@@ -502,34 +502,6 @@ filename "introduction.lyx"
 \begin_inset CommandInset include
 LatexCommand input
 filename "chapter1.lyx"
-
-\end_inset
-
- 
-\begin_inset CommandInset include
-LatexCommand input
-filename "chapter3.lyx"
-
-\end_inset
-
- 
-\begin_inset CommandInset include
-LatexCommand input
-filename "chapter4.lyx"
-
-\end_inset
-
- 
-\begin_inset CommandInset include
-LatexCommand input
-filename "chapter5.lyx"
-
-\end_inset
-
- 
-\begin_inset CommandInset include
-LatexCommand input
-filename "chapter6.lyx"
 
 \end_inset
 
@@ -566,7 +538,7 @@ backmatter
 
  
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -576,13 +548,6 @@ status open
 \begin_layout Plain Layout
 
 \end_layout
-
-\end_inset
-
- 
-\begin_inset CommandInset include
-LatexCommand input
-filename "faq.lyx"
 
 \end_inset
 
@@ -599,7 +564,7 @@ filename "faq.lyx"
 
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "bib/thesis"
+bibfiles "./bib/thesis"
 
 \end_inset
 
