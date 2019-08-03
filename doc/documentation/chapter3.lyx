@@ -1,9 +1,9 @@
-#LyX file created by tex2lyx 2.3
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin C:/Users/Chrus/OCR/doc/documentation/
+\origin unavailable
 \textclass scrbook
 \options bibliography=totoc,listof=totoc,BCOR=5mm,DIV=12
 \use_default_options false
@@ -32,15 +32,15 @@
 \paperfontsize default
 \spacing single
 \use_hyperref true
-\pdf_bookmarks 0
-\pdf_bookmarksnumbered 0
-\pdf_bookmarksopen 0
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
 \pdf_bookmarksopenlevel 1
-\pdf_breaklinks 0
-\pdf_pdfborder 0
-\pdf_colorlinks 0
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
 \pdf_backref section
-\pdf_pdfusetitle 0
+\pdf_pdfusetitle false
 \papersize default
 \use_geometry false
 \use_package amsmath 1
@@ -56,10 +56,10 @@
 \cite_engine biblatex
 \cite_engine_type authoryear
 \biblio_style plainnat
-\use_bibtopic false
 \biblio_options backend=biber
 \biblatex_bibstyle alphabetic
 \biblatex_citestyle alphabetic
+\use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
@@ -90,625 +90,109 @@
 
 \begin_body
 
-\begin_layout Chapter
-Structure
-\end_layout
-
 \begin_layout Standard
-
-\begin_inset CommandInset label
-LatexCommand label
-name "chap_structure"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-A thesis must be a coherent document of a research project, not a collection of loosely connected pages. This chapter walks through the typical structure of a thesis from cover to cover, and discusses the aim and content of each part. Sections 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec_coverpage"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- through 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec_declaration"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- describe the mandatory pages that must be included in each thesis.
-\end_layout
-
-\begin_layout Section
-Cover page
-\end_layout
-
-\begin_layout Standard
-
-\begin_inset CommandInset label
-LatexCommand label
-name "sec_coverpage"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The cover page is officially provided by THL and signed by the supervisor and the board of examinations, as can be seen at the first page of this document and in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:coverpage"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-. Students will receive an original version and a black-white copy of the official cover page, each of which serves as the cover of the two thesis copies.
-\end_layout
-
-\begin_layout Standard
-
-\begin_inset Float figure
-placement htb
-wide false
-sideways false
+\begin_inset ERT
 status open
 
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
 \begin_layout Plain Layout
+
 
 \backslash
-centering
+chapter{Grundlagen}
 \end_layout
 
 \end_inset
 
  
-\begin_inset Graphics 
-	filename titlepage_small
-	scale 80
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Example of a page 1 - Cover page
 \end_layout
 
-\end_inset
-
-
+\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:coverpage"
+name "chap_basics"
 
 \end_inset
 
- 
+
 \end_layout
 
-\end_inset
-
-
+\begin_layout Standard
+Die Lösungsansätze im Automatisierungskontext setzen Kenntnisse über das
+ vorhandene System und Techniken im Bereich des Machine Learning vorraus.
 \end_layout
 
 \begin_layout Section
-Task description
+Systembeschreibung
 \end_layout
 
 \begin_layout Standard
-The task description covers some background information about the thesis, lists the major steps during the work, and specifies the deliverables of the thesis. It can be seen as a contract between the student and the supervisor or the company and is the basis for grading. Therefore, students should make sure the listed tasks are reasonable to be finished within the time constraints. Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:task"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- shows an example of this page.
+Grundlegend stellt das System eine Schnittstelle zwischen Versicherungsunternehm
+en und Logististikunternehmen dar.
+ Es existiert als Webanwendung unter einer Domäne und setzt eine Registration
+ des Kunden vorraus, um es zu gebrauchen.
+ Benutzer oder Mandanten verfügen im Kontext der Webanwendung über bestimmte
+ administrative Rechte, die mittels einer Rollenvergabe organisiert werden.
+ Auch die Unterscheidung zwischen Versicherer oder Spediteur findet über
+ die Rollenidentifikation statt.
 \end_layout
 
 \begin_layout Standard
-
-\begin_inset Float figure
-placement htb
-wide false
-sideways false
-status open
-
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics 
-	filename thesistask_small
-	scale 80
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Example of a page 2 - Task description
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:task"
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Declaration
-\end_layout
-
-\begin_layout Standard
-
-\begin_inset CommandInset label
-LatexCommand label
-name "sec_declaration"
-
+\begin_inset VSpace smallskip
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-Students are required to sign the declaration of the thesis provided by THL (see Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:declaration"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-), which includes 
-\begin_inset CommandInset citation
-LatexCommand cite
-after ""
-before ""
-key "kun08"
-literal "false"
-
-\end_inset
-
-: 
-\end_layout
-
-\begin_layout Itemize
-The fact that she or he writes the work independently without outside help. 
-\end_layout
-
-\begin_layout Itemize
-The fact that she or he has used only the cited sources. 
-\end_layout
-
-\begin_layout Itemize
-The fact that she or he agrees with a publication of the work. 
-\end_layout
-
-\begin_layout Standard
-The first two items are mandatory while the last one is optional. Pay attention that some students working in companies are required to sign a Non-Disclosure Agreement (NDA) with the companies, and some companies do not agree to publish the thesis work. In this case, the last paragraph must be removed from the declaration.
-\end_layout
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-%Figure from pdf file - preferred option since it allows to include true vector graphics 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-placement htb
-wide false
-sideways false
-status open
-
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics 
-	filename thesis_statement
-	scale 40
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-% PDF-File
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Declaration form
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:declaration"
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Abstract
-\end_layout
-
-\begin_layout Standard
-The abstract is one page maximum, including information from the cover sheet plus the abstract of the work. By default the secretariat will hand out a form that the students can fill in. Many students, however, have developed their own page for this purpose.
-\end_layout
-
-\begin_layout Standard
-The abstract is one of the most important parts of a thesis, because it leaves the very 
-\shape italic
-first impression
-\shape default
- of the following text. It has to be 
-\shape italic
-self-contained
-\shape default
-, which means it can be understood separately from the thesis itself.
-\end_layout
-
-\begin_layout Section
-Table of contents
-\end_layout
-
-\begin_layout Standard
-A table of contents is a list of all chapters and sections with page numbers. It enables the readers to easily find information they are looking for. A LaTeX command automatically generates the table of contents.
-\end_layout
-
-\begin_layout Standard
-The titles of chapters and sections should have a good naming so that the reader can easily imagine what the content is about. This is important if the thesis is briefly read by someone (e.g.
-\begin_inset space ~
-
-\end_inset
-
-from a company that considers to hire the student) in the future who wants to get an impression whether the work has been carried out in a good way.
-\end_layout
-
-\begin_layout Standard
-The work should be provided as a pdf file later. It is nice if the table on contents is linked with the sections so that a click on a section title in the table of contents leads to a jump into the section. A similar functionality should also be provided for other links (e.g.
-\begin_inset space ~
-
-\end_inset
-
-to the bibliography). This functionality is already contained in this LaTeX template, but should be conserved when converting it into pdf.
-\end_layout
-
-\begin_layout Section
-Chapter 1: Introduction
-\end_layout
-
-\begin_layout Standard
-The purpose of the introduction is to stimulate the readers' interest and guide the reader into the subject. Before writing a good introduction usually the author needs to know the body of the thesis, so it is suggested to write the introduction after completing the rest of the thesis.
-\end_layout
-
-\begin_layout Standard
-An introduction typically contains 3 basic parts 
-\begin_inset CommandInset citation
-LatexCommand cite
-after ""
-before ""
-key "les06"
-literal "false"
-
-\end_inset
-
-: 
-\end_layout
-
-\begin_layout Itemize
-Background or motivation of the thesis 
-\end_layout
-
-\begin_layout Itemize
-Goal of the thesis 
-\end_layout
-
-\begin_layout Itemize
-Organization of the following chapters 
-\end_layout
-
-\begin_layout Standard
-The first part briefly states what the problem is and why it is desired to address this problem in the thesis. The second part presents the goal to be achieved in this thesis, i.e. solution to this problem. It is not a good idea to transfer the text from the task description into this chapter. Students are expected to explain the problem and the goal in their own words. Finally, a preview of the rest of the document should be provided chapter by chapter to tell the reader what can be expected.
-\end_layout
-
-\begin_layout Standard
-The benefit of a preview is that the reader will be able to scan the thesis at first and have a good sense of what will be covered in each chapter. This allows the reader to select individual chapters if she or he wants to skip parts of the document. To make the thesis as readable as possible, it is suggested to use this strategy throughout the thesis by writing an introductory paragraph at the beginning of each chapter (or even some sections if necessary). See the beginning of the next section for a simple example.
-\end_layout
-
-\begin_layout Section
-Chapter 2 to N-1: Main body
-\end_layout
-
-\begin_layout Standard
-The body is the major component of the thesis. It describes how the author accomplished the task step by step and how she or he achieved the results. There is no fixed structure of the main body, as it may vary according to the task description, but Section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec_examplestructure"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- describes a common way of organizing the chapters. Section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec_pitfall"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- introduces a common pitfall in writing the main body the thesis.
+Bei Erfassen eines Schadens seitens des Spediteurs wird für ihm eine Schadensakt
+e angelegt.
+ Eine Funktion in der Schadensakte beinhaltet das Hochladen von Nachweisen
+ für die Schadensdokumentation, darunter Rechnungsbelege, die es zu erkennen
+ gilt.
 \end_layout
 
 \begin_layout Subsection
-Example organization
+Technische Details
 \end_layout
 
 \begin_layout Standard
-
-\begin_inset CommandInset label
-LatexCommand label
-name "sec_examplestructure"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-In computer science topics there is often a task description which foresees the development of a theoretical concept combined with a prototypical implementation. The following outline can be used in this case.
-\end_layout
-
-\begin_layout Standard
-In the second chapter the problem is analyzed in depth by using one or several scenarios. At the end of the chapter there is a list of requirements which have to be fulfilled to provide a solution to the problem. The requirements do not have to be pure technical requirements, but may include license issues and economic constraints (e.g.
-\begin_inset space ~
-
-\end_inset
-
-low investment costs).
-\end_layout
-
-\begin_layout Standard
-In the third chapter literature and related work (in standardization documents, research papers, and existing systems) is examined whether there is already a solution to the problem. This should not be the case because the work would otherwise already be finished in this chapter. At the end of this chapter a table is provided which shows the examination results and details which requirements are fulfilled by each existing approach. All related work has to cover some smaller or bigger part of the requirements. Otherwise, they cannot be regarded as related work, but it is necessary to point out their deficits with respect to the problem.
-\end_layout
-
-\begin_layout Standard
-In chapter four a theoretical approach to the problem is drafted. Often a basic idea for the solution of the problem is presented at the beginning which is elaborated afterwards. At the end of the chapter the developed solution is compared to the requirements to verify whether all of them are fulfilled. This should be the case for the mandatory requirements. Some optional requirements may not or partially be fulfilled.
-\end_layout
-
-\begin_layout Standard
-In the fifth chapter a practical implementation of the theoretical concept is presented. Technical information on the implementation is given, e.g.
-\begin_inset space ~
-
-\end_inset
-
-used programming languages, development tools, hardware, etc. This chapter demonstrates that the theoretical solution works in reality.
-\end_layout
-
-\begin_layout Standard
-It is important to note that the structure of the thesis does not match to the actual way how the thesis subject has been addressed. For many chapters material is collected at the beginning and is drafted as bullet point lists. Towards the end of the thesis time it is converted into text. In addition, it has to be checked before the start of the thesis that there is no perfect solution available for the problem which can be applied easily.
-\end_layout
-
-\begin_layout Standard
-The first advisor for the thesis can give recommendations on how to structure the thesis. A discussion on this should happen relatively early after the start of the thesis.
-\end_layout
-
-\begin_layout Subsection
-A common pitfall
-\end_layout
-
-\begin_layout Standard
-
-\begin_inset CommandInset label
-LatexCommand label
-name "sec_pitfall"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-While writing a thesis, the student has only limited time, energy and number of pages to describe the work which has been accomplished. Hence, some parts need to be elaborated while others just briefly mentioned. In general, it depends on the significance of the particular part of the work.
-\end_layout
-
-\begin_layout Standard
-However, one common pitfall is that some students devote too many pages describing the detailed software implementation and put many blocks of code in their thesis. Even if the majority of the thesis is about software implementation, one should not describe too many details of the source code. What should be elaborated and emphasized is the class interfaces, program framework, design considerations and implementation trade-offs behind the trivial details. As will be mentioned in Section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec_CD"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-, an enclosed CD will provide the entire source code for reference. Consequently, include source code only when it helps to clarify significant issues.
+Die Webanwendung ist mit der Programmiersprache Python 2.7 geschrieben wurden,
+ wobei Schnittstellen bereits mit Python 3 arbeiten.
+ Die Datenübertragung zwischen Frontend und Backend findet über HTTP-Requests
+ statt.
+ TODO: Erklärung HTTP Requests, Abfangen im Backend genauer beschreiben
 \end_layout
 
 \begin_layout Section
-Chapter n: Conclusion and outlook
+Künstliche Intelligenz
 \end_layout
 
 \begin_layout Standard
-The final chapter comprises the major results of the thesis and the outlook. It summarizes the achievement and the results of the work in technical terms. At this point it can be assumed that the previous chapters of the thesis are known to the reader (in contrast to the summary at the beginning). Nevertheless, it should be taken into account that there are quick readers who have skipped several chapters and just want to have an impression of the major findings of the work.
-\end_layout
-
-\begin_layout Standard
-The outlook proposes future possible extensions or challenges of this work. Optional requirements which have not or only partially been fulfilled may give a hint for this.
-\end_layout
-
-\begin_layout Section
-Acknowledgements
-\end_layout
-
-\begin_layout Standard
-The author is free to acknowledge the supervisor(s) and anyone who helped the author: 
-\end_layout
-
-\begin_layout Itemize
-Technically (including materials, supplies) 
-\end_layout
-
-\begin_layout Itemize
-Intellectually (assistance, advice) 
-\end_layout
-
-\begin_layout Itemize
-Financially (for example, departmental support, travel grants, parents) 
-\end_layout
-
-\begin_layout Section
-Appendices
-\end_layout
-
-\begin_layout Standard
-Appendices can include the list of figures, tables or listings and other materials which are either too long to be inserted into the main chapters of the thesis, or which are interesting, but not essential to understand the main text 
 \begin_inset CommandInset citation
 LatexCommand cite
-after ""
-before ""
-key "les06"
+key "AI_SR_PN"
 literal "false"
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Section
-Bibliography or references
+Machine Learning
 \end_layout
 
 \begin_layout Standard
-In this section, the student should provide a list of referenced literature in alphabetical order or in the order that the references appear in the main text. Each entry in the bibliography has to be mentioned at least once in the main text. For the formatting of bibliography, please refer to Section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec_citations"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Section
-Enclosed CD
-\end_layout
-
-\begin_layout Standard
-
-\begin_inset CommandInset label
-LatexCommand label
-name "sec_CD"
+Machine Learning beruht auf den Gebiet der Mustererkennung, die sich mit
+ der automatischen Erkennung von Regelmäßigkeiten in Daten unter Verwendung
+ von Algorithmen befasst.
+ Durch das Erkennen von Regelmäßigkeiten werden Maßnahmen zur Klassifierung
+ der Daten in verschiedene Kategorien ergriffen.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ML_CB"
+literal "false"
 
 \end_inset
 
@@ -716,15 +200,142 @@ name "sec_CD"
 \end_layout
 
 \begin_layout Standard
-If software implementation is an important part of the thesis, it is recommended that a CD containing the source code be enclosed on the back cover of the thesis.
+\begin_inset VSpace smallskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
+Machine Learning ist die Wissenschaft Computer so zu programmieren, sodass
+ sie in der Lage sind von Daten zu lernen.
+ 
+\end_layout
 
+\begin_layout Standard
+Sie ist bereits eine weiterforschte Technologie, die Verwendung in hochtechnolog
+ischen Produkten findet.
+ Sie ist veranwortlich für die Realiserung von unter anderem die Spracherkennung
+ in Smartphones, das Empfehlen von Videos auf Videoportale und das Ranking
+ von Suchergebnissen im Internet-Suchmaschinen.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ML_AG"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Erklärung anhand eines Beispiels
+\end_layout
+
+\begin_layout Standard
+Eine der ersten populärsten Anwendungsfälle von Machine Learning ist der
+ Filter um Spam-Mails zu erkennen.
+ Der Spamfilter ist dazu in der Lage seriösen Mails von Spam-Mails zu unterschei
+den und als solche zu kennzeichnen.
+ Eine dementsprechende Intelligenz setzt voraus, dass der Software beigebracht
+ werden muss wie es eine Spam-Mail als solche erkennt.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Spam-Mails weisen Regelmäßigkeiten auf, die sie von seriösen Mails unterscheiden.
+ Ein ausgelegter Filter überprüft unter anderem auf Regelmäßigkeiten wie
+ sowohl das Fehlen der E-Mail-Adresse im 
+\emph on
+An: Feld
+\emph default
+ oder
+\emph on
+ Cc: Feld
+\emph default
+, invalide Angaben in den zuletzt genannten Felder und keine oder eine Verdächti
+ge ID der Nachricht.
+ Ein sehr prägnantes Merkmale einer Spammail ist der Inhalt der Nachricht.
+ Wörter wie 
+\emph on
+kostenlos, schnelles Geld, reich werden, risikofrei
+\emph default
+ und 
+\emph on
+hier klicken
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "SM_MS"
+literal "false"
+
+\end_inset
+
+ sind Indize dafür, dass es sich um eine Spam-Mail handelt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Damit ein intelligenter Filter in der Lage ist Spam-Mails zu erkennen, muss
+ er die korrespondierenden Regelmäßigkeiten kennen.
+ Das notwendige Wissen eignet sich die Software über ein Verfahren im Maschinell
+en Lernen an: Es wird eine Vielzahl von Daten benötigt, die zum Trainieren
+ der Software dient, damit sie Charakteristiken von Spam-Mails erkennen
+ kann.
+ Dieser Datensatz nennt sich 
+\emph on
+Trainingssatz 
+\emph default
+und wird zum Einstellen von Parametern eines adaptiven Modells benötigt.
+ Im Falle eines Spamfilters gäbe es zwei Zielmerkmale:
+\end_layout
+
+\begin_layout Enumerate
+True: Es handelt sich um eine Spam-Mail
+\end_layout
+
+\begin_layout Enumerate
+False: Es handelt sich um keine Spam-Mail
+\end_layout
+
+\begin_layout Standard
+Das Modell adaptiert Erkennungsmuster anhand von den Trainingssatz und kann
+ bei neuen Daten anhand der Charakteristiken das Zielmerkmal prognostizieren.
+ Im Kontext des Spamfilters wurden Spam-Mails von Benutzern gekennzeichnet,
+ gesammelt und als Trainingsdaten verwendet.
+\end_layout
+
+\begin_layout Subsection
+Überführung auf die Belegerkennung
+\end_layout
+
+\begin_layout Standard
+Es soll eine Bilderkennung auf die Hochgeladenen Nachweise praktiziert werden,
+ wobei Rechnungsbelege anhand ihrer Datenmuster zu erkennen sind.
+ 
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 endinput
@@ -735,13 +346,14 @@ endinput
  
 \begin_inset Note Note
 status open
-\begin_layout Plain Layout
 
+\begin_layout Plain Layout
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "./bib/thesis"
+bibfiles "bib/thesis"
 
 \end_inset
+
 
 \end_layout
 

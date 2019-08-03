@@ -98,7 +98,7 @@ status open
 
 
 \backslash
-chapter{Dokumentenerkennung}
+chapter{Anforderungsanalyse}
 \end_layout
 
 \end_inset
@@ -106,7 +106,7 @@ chapter{Dokumentenerkennung}
  
 \begin_inset CommandInset label
 LatexCommand label
-name "chap_introduction"
+name "chap_chapter1"
 
 \end_inset
 
@@ -124,106 +124,534 @@ name "chap_process"
 \end_layout
 
 \begin_layout Standard
-Dieser Chapter fügt sich in den Bereich der Document Image Analysis (DIA).
+Im Laufe dieser Arbeit soll eine Softwarelösung mithilfe von Machine Learning
+ entwickelt werden, die in der Lage ist Belege zu erkennen und Informationen
+ zu extrahieren.
+ Die Daten sollen automatisch in Formularfelder eingetragen werden, wobei
+ der Benutzer die Möglichkeit hat Korrekturen vorzunehmen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Präzisionsrate Der Belegextrahierung und die durchschnittliche Zeitersparnis
+ beim Ausfüllen des Formulars sollen quantitativ evaluiert und schließlich
+ visualisiert werden.
 \end_layout
 
 \begin_layout Section
-Forschungsstand
+Anwendungsfall
 \end_layout
 
 \begin_layout Standard
-\noindent
-DIA bezeichnet allgemein eine große Gruppe von Techniken, die visuelle Informati
-onen charakterisieren können.
- Dia gehört zu den ältesten Bereichen der Informatik.
- 1913 Erfand Edmund Fournier das Optophon, mit dem dunkle Schriftzeichen
- auf einem Stück Papier erkannt werden können und als Töne interpretiert
- wurden.
-\end_layout
-
-\begin_layout Standard
-\noindent
-Heutzutage durchlaufen moderne DIA-Algorithmen Rasterbilder, die mit Scannern,
- Kameras oder anderen Digitalisierungsgeräten erzeugt wurden.
-\end_layout
-
-\begin_layout Section
-Probleme
-\end_layout
-
-\begin_layout Standard
-Durch die stetige Weiterentwicklung von DIA ist die Vielfalt der Probleme
- gewachsen
-\begin_inset CommandInset citation
-LatexCommand cite
-key "DIA_CAT"
-literal "false"
+Im 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:doc_rec_use_case"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
-:
+ wird der automatisierte Prozess veranschaulicht.
+ Beim Hochladen eines Nachweises in Bildform prognostiziert ein Klassifikator,
+ der darauf trainiert ist Belege zu erkennen, ob es sich um einen Rechnungsbeleg
+ handelt.
+ Sollte die Prognose eintreffen, werden Informationen von einem Klassifikationsm
+odell extrahiert, das auf Texterkennung trainiert ist.
+ Das System soll mit den extrahierten Informationen das Formular ausfüllen
+ und bei Falschinformationen den Benutzer Korrekturen vornehmen lassen.
 \end_layout
 
-\begin_layout Itemize
-Binarisierung - Klassifizieren welche Pixel im Vordergrund un welche im
- Hintergrund ist
+\begin_layout Standard
+Für die Schadensfallabwicklung ist das Hochladen von Nachweisen optional.
+ Der Benutzer ist weiterhin in der Lage die Formularfelder manuell auszufüllen.
 \end_layout
 
-\begin_layout Itemize
-Korrektur - Korrigieren der perspektivischen Verzerrung.
- Dies passiert wenn die Kamera nicht orthogonal zum Physikalischen Dokument
- positioniert ist
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/doc_rec_usecase_v2.png
+	scale 40
+
+\end_inset
+
+
 \end_layout
 
-\begin_layout Itemize
-Seitensegmentierung - Unterteilen einer Seite in homogene Komponenten wie
- Text, Bilder und Grafiken
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Chapter 1 - Anwendungsfalldiagramm
 \end_layout
 
-\begin_layout Itemize
-Textsegmentierung - Unterteilen eines Textabschnitts in Zeilen
+\end_inset
+
+
 \end_layout
 
-\begin_layout Itemize
-Dokumentklassifizierung - Klassifizierung des Dokumenttyps
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:doc_rec_use_case"
+
+\end_inset
+
+
 \end_layout
 
-\begin_layout Itemize
-Schrift und - Spracherkennung - Klassifizieren mit welcher Schrift geschrieben
- wurde und welche Sprache benutzt wird
+\end_inset
+
+Aus den Kontext des Anwendungsfall ergeben sich mehrere funktionale Anforderunge
+n die an die Klassifikatoren und an das System gestellt werden.
 \end_layout
 
-\begin_layout Itemize
-Zeichensegmentierung - Segmentiert ein Wortbild in individuelle Charaktere
+\begin_layout Section
+Funktionale Anforderungen
 \end_layout
 
-\begin_layout Itemize
-Grafische Erkennung - Erkennung von graphischen Komponenten
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ID
 \end_layout
 
-\begin_layout Itemize
-Tabellenlayout-Struktur Erkennung - Wiederherstellen der Zeilen und- Spaltenstru
-ktur von einem Bild einer Tabelle
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Beschreibung
 \end_layout
 
-\begin_layout Itemize
-Öffentlich genutzte Text und Grafiken erkennen - In der Öffentlichkeit genutzen
- Text und Grapfiken klassifizieren, wie beispielsweise Nummerschilder und
- Straßenzeichen
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TRS010
 \end_layout
 
-\begin_layout Itemize
-Identifikation des Verfassers - Das bestimmen von indivuellen Charakteristiken
- des Verfassers des Textes, wie beispielsweise Geschlecht oder Alter
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Weitergabe der hochgeladenen Nachweisen an Belegerkennung
 \end_layout
 
-\begin_layout Itemize
-Messung der Dokumentenqualität
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TRS020
 \end_layout
 
-\begin_layout Itemize
-Handgeschriebenen Text erkennen - Texterkennung bei handgeschrieben Text
- von individuellen Verfassern
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Erfassen der extrahierten Informationen
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TRS030
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Gliedern der Informationen in Sinnabschnitte
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TRS040
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Validation der erfassten Daten
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TRS050
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sinnvolles Ausfüllen der Formularfelder
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TRS060
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Messung der für die Schadensabwicklung aufgewendete Zeit 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TRS070
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Bewertung des Korrekturverhalten des Nutzers 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Chapter 1 - Technische Anforderungen System
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:teq_req_sys"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ID
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Beschreibung
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TRRR010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Entgegennahme der übermittelten Nachweise
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TRRR020
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Erkennung der Belege ( Richtige Prognose > 90% ) 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TRRR030
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Interpretation des prognostizierten Merkmals
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Chapter 1 - Technische Anforderungen Belegerkennung
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:teq_req_receipt_recog"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ID
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Beschreibung
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TRTR010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Entgegennahme der übermittelten Belege
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TRTR020
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Extrahieren der auf Beleg abgebildeten Informationen
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Chapter 1 - Technische Anforderungen Texterkennung
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:teq_req_text_recog"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -279,7 +707,7 @@ Funktionsweise von OCR
 In 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "flowchart_ocr"
+reference "fig:doc_rec_use_case"
 plural "false"
 caps "false"
 noprefix "false"
@@ -296,49 +724,6 @@ noprefix "false"
  Nun konnen Zeilenweise die Worter segmentiert werden, um diese wiederum
  in Charakter zu segmentieren.
  Die Charaktere werden als einzelnde als Merkmale extrahiert und klassiziert.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename images/flowchart_ocr.png
-	scale 70
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "flowchart_ocr"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard

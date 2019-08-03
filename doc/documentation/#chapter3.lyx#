@@ -1,0 +1,366 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\options bibliography=totoc,listof=totoc,BCOR=5mm,DIV=12
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding iso8859-1
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref section
+\pdf_pdfusetitle false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine biblatex
+\cite_engine_type authoryear
+\biblio_style plainnat
+\biblio_options backend=biber
+\biblatex_bibstyle alphabetic
+\biblatex_citestyle alphabetic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+chapter{Grundlagen}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "chap_basics"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Lösungsansätze im Automatisierungskontext setzen Kenntnisse über das
+ vorhandene System und Techniken im Bereich des Machine Learning vorraus.
+\end_layout
+
+\begin_layout Section
+Systembeschreibung
+\end_layout
+
+\begin_layout Standard
+Grundlegend stellt das System eine Schnittstelle zwischen Versicherungsunternehm
+en und Logististikunternehmen dar.
+ Es existiert als Webanwendung unter einer Domäne und setzt eine Registration
+ des Kunden vorraus, um es zu gebrauchen.
+ Benutzer oder Mandanten verfügen im Kontext der Webanwendung über bestimmte
+ administrative Rechte, die mittels einer Rollenvergabe organisiert werden.
+ Auch die Unterscheidung zwischen Versicherer oder Spediteur findet über
+ die Rollenidentifikation statt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Bei Erfassen eines Schadens seitens des Spediteurs wird für ihm eine Schadensakt
+e angelegt.
+ Eine Funktion in der Schadensakte beinhaltet das Hochladen von Nachweisen
+ für die Schadensdokumentation, darunter Rechnungsbelege, die es zu erkennen
+ gilt.
+\end_layout
+
+\begin_layout Subsection
+Technische Details
+\end_layout
+
+\begin_layout Standard
+Die Webanwendung ist mit der Programmiersprache Python 2.7 geschrieben wurden,
+ wobei Schnittstellen bereits mit Python 3 arbeiten.
+ Die Datenübertragung zwischen Frontend und Backend findet über HTTP-Requests
+ statt.
+ TODO: Erklärung HTTP Requests, Abfangen im Backend genauer beschreiben
+\end_layout
+
+\begin_layout Section
+Künstliche Intelligenz
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand cite
+key "AI_SR_PN"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Machine Learning
+\end_layout
+
+\begin_layout Standard
+Machine Learning beruht auf den Gebiet der Mustererkennung, die sich mit
+ der automatischen Erkennung von Regelmäßigkeiten in Daten unter Verwendung
+ von Algorithmen befasst.
+ Durch das Erkennen von Regelmäßigkeiten werden Maßnahmen zur Klassifierung
+ der Daten in verschiedene Kategorien ergriffen.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ML_CB"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Machine Learning ist die Wissenschaft Computer so zu programmieren, sodass
+ sie in der Lage sind von Daten zu lernen.
+ 
+\end_layout
+
+\begin_layout Standard
+Sie ist bereits eine weiterforschte Technologie, die Verwendung in hochtechnolog
+ischen Produkten findet.
+ Sie ist veranwortlich für die Realiserung von unter anderem die Spracherkennung
+ in Smartphones, das Empfehlen von Videos auf Videoportale und das Ranking
+ von Suchergebnissen im Internet-Suchmaschinen.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ML_AG"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Erklärung anhand eines Beispiels
+\end_layout
+
+\begin_layout Standard
+Eine der ersten populärsten Anwendungsfälle von Machine Learning ist der
+ Filter um Spam-Mails zu erkennen.
+ Der Spamfilter ist dazu in der Lage seriösen Mails von Spam-Mails zu unterschei
+den und als solche zu kennzeichnen.
+ Eine dementsprechende Intelligenz setzt voraus, dass der Software beigebracht
+ werden muss wie es eine Spam-Mail als solche erkennt.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Spam-Mails weisen Regelmäßigkeiten auf, die sie von seriösen Mails unterscheiden.
+ Ein ausgelegter Filter überprüft unter anderem auf Regelmäßigkeiten wie
+ sowohl das Fehlen der E-Mail-Adresse im 
+\emph on
+An: Feld
+\emph default
+ oder
+\emph on
+ Cc: Feld
+\emph default
+, invalide Angaben in den zuletzt genannten Felder und keine oder eine Verdächti
+ge ID der Nachricht.
+ Ein sehr prägnantes Merkmale einer Spammail ist der Inhalt der Nachricht.
+ Wörter wie 
+\emph on
+kostenlos, schnelles Geld, reich werden, risikofrei
+\emph default
+ und 
+\emph on
+hier klicken
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "SM_MS"
+literal "false"
+
+\end_inset
+
+ sind Indize dafür, dass es sich um eine Spam-Mail handelt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Damit ein intelligenter Filter in der Lage ist Spam-Mails zu erkennen, muss
+ er die korrespondierenden Regelmäßigkeiten kennen.
+ Das notwendige Wissen eignet sich die Software über ein Verfahren im Maschinell
+en Lernen an: Es wird eine Vielzahl von Daten benötigt, die zum Trainieren
+ der Software dient, damit sie Charakteristiken von Spam-Mails erkennen
+ kann.
+ Dieser Datensatz nennt sich 
+\emph on
+Trainingssatz 
+\emph default
+und wird zum Einstellen von Parametern eines adaptiven Modells benötigt.
+ Im Falle eines Spamfilters gäbe es zwei Zielmerkmale:
+\end_layout
+
+\begin_layout Enumerate
+True: Es handelt sich um eine Spam-Mail
+\end_layout
+
+\begin_layout Enumerate
+False: Es handelt sich um keine Spam-Mail
+\end_layout
+
+\begin_layout Standard
+Das Modell adaptiert Erkennungsmuster anhand von den Trainingssatz und kann
+ bei neuen Daten anhand der Charakteristiken das Zielmerkmal prognostizieren.
+ Im Kontext des Spamfilters wurden Spam-Mails von Benutzern gekennzeichnet,
+ gesammelt und als Trainingsdaten verwendet.
+\end_layout
+
+\begin_layout Subsection
+Überführung auf die Belegerkennung
+\end_layout
+
+\begin_layout Standard
+Es soll eine Bilderkennung auf die Hochgeladenen Nachweise praktiziert werden,
+ wobei Rechnungsbelege anhand ihrer Datenmuster zu erkennen sind.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+endinput
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "bib/thesis"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
