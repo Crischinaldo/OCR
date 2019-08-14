@@ -1,4 +1,8 @@
 flask
-keras
 tensorflow
+keras
 requests
+sqlalchemy
+psycopg2-binary
+pybase64
+flask_cors

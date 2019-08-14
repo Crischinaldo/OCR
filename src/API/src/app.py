@@ -4,12 +4,16 @@
 # Imports
 
 from flask import Flask
-from src.routes import home
-from src.routes import document_analysis
+from src.views import home, files
+from src.views import classify
+from flask_cors import CORS
 
 app = Flask(__name__)
-app.register_blueprint(home.api, url_prefix='/')
-app.register_blueprint(document_analysis.api, url_prefix='/')
+CORS(app)
+app.register_blueprint(home.api)
+app.register_blueprint(classify.api)
+app.register_blueprint(files.api)
+
 app.secret_key = 'voll geheimer schlüssel'
 app.config['SESSION_TYPE'] = 'Sessiontyp'
 

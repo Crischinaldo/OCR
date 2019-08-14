@@ -1,1 +1,5 @@
 /data
+src/API/src/controllers/__pycache__/
+src/API/src/views/__pycache__/
+src/API/venv/
+src/API/.idea/*
