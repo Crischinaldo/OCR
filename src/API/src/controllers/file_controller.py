@@ -1,17 +1,17 @@
-from src.models.files import DBFile
+from src.models.db.files import DBFile
 from src.service.database import Database
 from src.service.util import time_
-from src.service.logging_ import Log
-from flask import jsonify
+try:
+    from PIL import Image
+except ImportError:
+    import Image
 
 
-class File:
-
+class FileController:
     @staticmethod
     def post(req):
         sess = Database().session()
-
-        sess.add(DBFile(created_at=time_(), base64_img=req.get('base64_img'), name=req.get('name')))
+        sess.add(DBFile(created_at=time_(), hex_img=req.get('hex_img'), name=req.get('name')))
         sess.commit()
 
         sess.close()

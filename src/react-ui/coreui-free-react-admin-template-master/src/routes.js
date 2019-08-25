@@ -38,6 +38,7 @@ const Users = React.lazy(() => import('./views/Users/Users'));
 const Upload = React.lazy(() => import('./views/Document/Images/Upload'));
 const Archive = React.lazy(() => import('./views/Document/Images/Archive'));
 const Classify = React.lazy(() => import('./views/MachineLearning/Classify'));
+const TextExtraction = React.lazy(() => import('./views/MachineLearning/TextExtraction'));
 
 
 
@@ -48,10 +49,11 @@ const routes = [
   { path: '/theme', exact: true, name: 'Theme', component: Colors },
   { path: '/theme/colors', name: 'Colors', component: Colors },
   { path: '/theme/typography', name: 'Typography', component: Typography },
-  { path: '/document', exact: true, name: 'Base', component: Document },
+  { path: '/document', exact: true, name: 'Document', component: Document },
   { path: '/document/upload', name: 'Upload', component: Upload },
   { path: '/document/archive', name: 'Archive', component: Archive },
   { path: '/classify', name: 'Classify', component: Classify },
+  { path: '/text_extraction', name: 'TextExtraction', component: TextExtraction },
   { path: '/base', exact: true, name: 'Base', component: Cards },
   { path: '/base/cards', name: 'Cards', component: Cards },
   { path: '/base/forms', name: 'Forms', component: Forms },

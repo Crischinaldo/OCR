@@ -15,8 +15,8 @@ const navigation = {
           icon: 'icon-calculator',
         },
         {
-          name: 'Text Analysis',
-          url: '/text_analysis',
+          name: 'Text Extraction',
+          url: '/text_extraction',
           icon: 'icon-book-open',
         },
         ]
@@ -38,11 +38,7 @@ const navigation = {
         },
         ]
     },
-    {
-      name: 'Text Analysis',
-      url: '/text_analysis',
-      icon: 'icon-book-open',
-    },
+
      {
       name: 'Statistics',
       url: '/statistic',

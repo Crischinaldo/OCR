@@ -12,7 +12,7 @@ class Log:
                             filemode='w')
 
     def info(self, msg, *args, **kwargs):
-        self.log.info(msg)
+        self.log.info(msg, *args, **kwargs)
 
     def exception(self, msg, *args, **kwargs):
         self.log.exception(msg)

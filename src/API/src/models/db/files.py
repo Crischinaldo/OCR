@@ -18,15 +18,15 @@ class DBFile(Base):
 
     # Set Attributes
     created_at = Column(Date)
-    base64_img = Column(String(500000))
+    hex_img = Column(String(500000))
     name = Column(String(100))
 
-    def __init__(self, created_at, base64_img, name):
+    def __init__(self, created_at, hex_img, name):
         self.engine = Database().engine
         # create file table if not exist
         if not self.engine.dialect.has_table(self.engine, self.__tablename__):
             Base.metadata.create_all(self.engine)
 
         self.created_at = created_at
-        self.base64_img = base64_img
+        self.hex_img = hex_img
         self.name = name

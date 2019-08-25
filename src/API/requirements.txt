@@ -6,3 +6,7 @@ sqlalchemy
 psycopg2-binary
 pybase64
 flask_cors
+pillow
+opencv-python
+pytesseract
+numpy

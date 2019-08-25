@@ -14,6 +14,7 @@ class Upload extends Component {
        waitingForFileUpload: false,
     };
      this.onDrop = this.onDrop.bind(this);
+     this.postImage = this.postImage.bind(this)
   }
 
   static readFile = (inputFile) => {
@@ -33,8 +34,7 @@ class Upload extends Component {
   });
 };
 
-  onDrop  = async files => {
-
+  onDrop  = async (files) => {
     const API = "http://localhost:8090/files";
     this.setState({
       files: this.state.files.concat(files),
@@ -49,7 +49,9 @@ class Upload extends Component {
             uploadedFileContents: fileContent,
             waitingForFileUpload: false
           });
-          formData.append('base64_img', fileContent.split(',')[1]);
+          const buffer = Buffer.from(fileContent.split(',')[1], 'base64');
+          const hexStr = buffer.toString('hex');
+          formData.append('hex_img', hexStr);
           formData.append('name', file.name);
         }
     } catch (e) {
@@ -58,10 +60,10 @@ class Upload extends Component {
         waitingForFileUpload: false
       });
     }
-     //for (var key of formData.entries()) {
-    //console.log(key[0] + ', ' + key[1]);
-  //}
+    this.postImage(API, formData)
+    };
 
+  postImage = (API, formData) => {
     axios({
       method: 'post',
       url: API,
@@ -79,7 +81,7 @@ class Upload extends Component {
           console.log(response);
           console.log('error');
       });
-    };
+  }
 
   render() {
     const maxSize = 1048576;

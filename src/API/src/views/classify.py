@@ -3,7 +3,7 @@ classify route
 """
 
 from flask import Blueprint, request, jsonify
-from src.controllers.classify import Classifier
+from src.controllers.classification_controller import ClassificationController
 from src.service.logging_ import Log
 
 log = Log()
@@ -17,7 +17,9 @@ def classifier():
         log.info('classify - Request-method: "{method}"'.format(method=request.method))
         return jsonify('document classifier')
     if request.method == 'POST':
+   
         log.info('classify - Request-method: "{method}"'.format(method=request.method))
-        data = request.json
-       # Classifier.post(img=data)
-        return jsonify("<h1> classify <h1>")
+        data = request.form.to_dict()
+        resp = ClassificationController.post(req=data)
+
+        return jsonify(resp)

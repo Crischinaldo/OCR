@@ -5,12 +5,8 @@ import Upload from '../Document/Images/Upload.js'
 import Dropzone from 'react-dropzone'
 import axios from "axios";
 
-const Prediction = (props) => {
-  console.log(props.predictedClass);
-  return <h2> predicted class: { props.predictedClass == null ? 'not loaded' : props.predictedClass } </h2>
-};
 
-class Classify extends Component {
+class TextExtraction extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,7 +19,7 @@ class Classify extends Component {
 
    onDrop  = async (files) => {
     this.setState({ classifyFile: true });
-    const API = "http://localhost:8090/classify";
+    const API = "http://localhost:8090/extract";
     this.setState({
       classifyFile: true,
     });
@@ -120,4 +116,4 @@ class Classify extends Component {
   }
 }
 
-export default Classify
+export default TextExtraction
