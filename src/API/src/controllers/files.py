@@ -10,13 +10,15 @@ api = Blueprint('/files', __name__)
 
 
 @api.route('/files', methods=['GET', 'POST'])
-def files():
+@api.route('/files/page/<int:page>')
+def files(page=1):
     log.info('files - has been entered...')
     if request.method == 'POST':
         log.info('files - Request-method: "{method}"'.format(method=request.method))
         data = request.form.to_dict()
         FileController.post(data)
         return jsonify("POST FILE SUCCED")
+   
 
     if request.method == 'GET':
         log.info('files - Request-method: "{method}"'.format(method=request.method))

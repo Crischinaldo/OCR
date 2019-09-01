@@ -1,7 +1,23 @@
 import React, { Component } from 'react'
-import {Card, CardBody, CardHeader} from "reactstrap";
+import {Card, CardBody, CardHeader, Pagination} from "reactstrap";
 import axios from 'axios';
 import Preview from './Preview.js'
+import ReactPaginate from 'react-paginate'
+import PropTypes from 'prop-types';
+
+class ImageList extends Component {
+  static propTypes = {
+    data: PropTypes.array.isRequired,
+  };
+
+  render() {
+    return (
+      <ul>
+      <Preview/>
+      </ul>
+    );
+  }
+}
 
 class Archive extends Component {
 
@@ -10,6 +26,9 @@ class Archive extends Component {
      this.state = {
        files: [],
     };
+     this.offset = 0;
+     this.FileUpload = false;
+     this.data = [];
      this.componentDidMount = this.componentDidMount.bind(this);
      this.getImages = this.getImages.bind(this);
   }
@@ -23,6 +42,7 @@ class Archive extends Component {
     axios({
       method: 'get',
       url: API,
+      data: { limit: this.props.perPage, offset: this.state.offset },
       config: {
         headers: {
           'Access-Control-Allow-Origin': '*',
@@ -31,11 +51,14 @@ class Archive extends Component {
       }
     })
       .then(function (response) {
-        const files = [];
-        response.data.forEach(file => {
+        self.setState({
+          data: data.files,
+          pageCount: Math.ceil(data.meta.total_count / data.meta.limit),
+        });
+       /* response.data.forEach(file => {
           file.hex_img = Buffer.from(file.hex_img, 'hex').toString('base64');
           files.push(file);
-        });
+        }); */
         self.setState({files: files});
         console.log(response);
       })
@@ -46,19 +69,31 @@ class Archive extends Component {
       });
   };
 
+
+  handlePageClick = data => {
+    let selected = data.selected;
+    let offset = Math.ceil(selected * this.props.perPage);
+
+    this.setState({ offset: offset }, () => {
+      this.loadCommentsFromServer();
+    });
+  };
+
+
   render() {
+
     return (
         <Card>
             <CardHeader>
               <h3> Uploads </h3>
             </CardHeader>
           <CardBody>
-            <ul>
-              <Preview
-                files={this.state.files}
 
+            <div className="imageBox">
+              <ImageList
+                data={this.state.data}
               />
-            </ul>
+            </div>
           </CardBody>
         </Card>
     );

@@ -33,6 +33,7 @@
     "react-dom": "^16.9.0",
     "react-dropzone": "^10.1.7",
     "react-image-file-resizer": "^0.2.0",
+    "react-paginate": "^6.3.0",
     "react-router-config": "^5.0.1",
     "react-router-dom": "^5.0.1",
     "react-test-renderer": "^16.8.6",
