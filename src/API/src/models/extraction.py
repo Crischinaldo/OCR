@@ -1,7 +1,7 @@
 import pytesseract
 from service.helpers import decode_hex_to_img
 from service.preprocessing import convert_grayscale, binarize_img
-
+import re
 
 class TextExtractor:
     tesseract_path = 'C:/Program Files/Tesseract-OCR/tesseract'

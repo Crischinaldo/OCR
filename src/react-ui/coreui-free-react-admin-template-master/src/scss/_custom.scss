@@ -62,7 +62,7 @@
 
 .ParameterTable{
   border: 1px solid black;
-  background-color: darkslategrey;
+  background-color: darkcyan;
 }
 
 .ParameterTable.p{
@@ -78,14 +78,22 @@
 .ResponseExample {
   border: 1px solid black;
   margin-top: 1vh;
-  background-color: greenyellow;
+  background-color: yellowgreen;
 }
 
 .ResponseHeader {
   font-weight: bold;
+  font-size: 15px;
+  color: black;
 }
 
 #file-preview{
   border: black solid 1px;
+}
+
+.serviceFont {
+  color: black;
+  font-size: 15px;
+  font-weight: bold;
 }
 

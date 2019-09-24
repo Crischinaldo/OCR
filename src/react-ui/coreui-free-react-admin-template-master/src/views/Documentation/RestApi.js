@@ -52,7 +52,7 @@ class RestApi extends Component {
                                 <div className="animated fadeIn">
                                   <Row>
                               <Col xs="12" lg="6">
-                                    Payload Parameters
+                                <div className="serviceFont">&nbsp;Payload Parameters</div>
                                     <Table responsive>
                                       <thead>
                                       <tr>
@@ -69,6 +69,12 @@ class RestApi extends Component {
                                         <td>True</td>
                                         <td>Image as decoded hex String</td>
                                       </tr>
+                                       <tr>
+                                        <td>file_type</td>
+                                        <td>string</td>
+                                        <td>True</td>
+                                        <td>file type can be pdf or img</td>
+                                      </tr>
                                       </tbody>
                                     </Table>
                               </Col>
@@ -79,7 +85,7 @@ class RestApi extends Component {
                               <div className="animated fadeIn">
                                   <Row>
                               <Col xs="12" lg="6">
-                                    Reponses for Requested Resource
+                                <div className="serviceFont">&nbsp;Reponses for Requested Resource</div>
                                     <Table responsive>
                                       <thead>
                                       <tr>
@@ -104,10 +110,11 @@ class RestApi extends Component {
                               </div>
 
                               <div className='ResponseExample'>
-                                <div className='ResponseHeader'>Response (Status 200)</div>
+                                <div className='ResponseHeader'>&nbsp;Response (Status 200)</div>
                                 &nbsp;&#123;<br/>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": "CLR00342"<br/>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"class": "rechnungsbeleg"
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"name": "imgfile.jpg"<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pred_class": "rechnungsbeleg"<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"accuracy": "75.32"
                                 <br/>&nbsp;&#125;
                               </div>
 
@@ -131,7 +138,7 @@ class RestApi extends Component {
                                 <div className="animated fadeIn">
                                   <Row>
                               <Col xs="12" lg="6">
-                                <div>Payload Parameters</div>
+                                <div className="serviceFont">&nbsp;Payload Parameters</div>
                                     <Table responsive>
                                       <thead>
                                       <tr>
@@ -148,6 +155,12 @@ class RestApi extends Component {
                                         <td>True</td>
                                         <td>Image as decoded hex String</td>
                                       </tr>
+                                       <tr>
+                                        <td>file_type</td>
+                                        <td>string</td>
+                                        <td>True</td>
+                                        <td>file type can be pdf or img</td>
+                                      </tr>
                                       </tbody>
                                     </Table>
                               </Col>
@@ -158,7 +171,7 @@ class RestApi extends Component {
                               <div className="animated fadeIn">
                                   <Row>
                               <Col xs="12" lg="6">
-                                    Reponses for Requested Resource
+                                <div className="serviceFont">&nbsp;Reponses for Requested Resource</div>
                                     <Table responsive>
                                       <thead>
                                       <tr>
@@ -183,10 +196,11 @@ class RestApi extends Component {
                               </div>
 
                               <div className='ResponseExample'>
-                                <div className='ResponseHeader'>Response (Status 200)</div>
+                                <div className='ResponseHeader'>&nbsp;Response (Status 200)</div>
                                 &nbsp;&#123;<br/>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": "CLR00342"<br/>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"class": "rechnungsbeleg"
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"name": "imgfile.jpg"<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pred_class": "rechnungsbeleg"<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"accuracy": "75.32"
                                 <br/>&nbsp;&#125;
                               </div>
 
@@ -210,7 +224,7 @@ class RestApi extends Component {
                                 <div className="animated fadeIn">
                                   <Row>
                               <Col xs="12" lg="6">
-                                    Payload Parameters
+                                <div className="serviceFont">&nbsp;Payload Parameters</div>
                                     <Table responsive>
                                       <thead>
                                       <tr>
@@ -225,7 +239,13 @@ class RestApi extends Component {
                                         <td>file</td>
                                         <td>string</td>
                                         <td>True</td>
-                                        <td>Image as decoded hex String</td>
+                                        <td>file decoded hex String</td>
+                                      </tr>
+                                       <tr>
+                                        <td>file_type</td>
+                                        <td>string</td>
+                                        <td>True</td>
+                                        <td>file type can be pdf or img</td>
                                       </tr>
                                       </tbody>
                                     </Table>
@@ -237,7 +257,7 @@ class RestApi extends Component {
                               <div className="animated fadeIn">
                                   <Row>
                               <Col xs="12" lg="6">
-                                    Reponses for Requested Resource
+                                <div className="serviceFont">&nbsp;Reponses for Requested Resource</div>
                                     <Table responsive>
                                       <thead>
                                       <tr>
@@ -261,10 +281,11 @@ class RestApi extends Component {
                                 </div>
                               </div>
                               <div className='ResponseExample'>
-                                <div className='ResponseHeader'>Response (Status 200)</div>
+                                <div className='ResponseHeader'>&nbsp;Response (Status 200)</div>
                                 &nbsp;&#123;<br/>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"class_id": "CLR00342"<br/>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"class": "rechnungsbeleg"
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"name": "imgfile.jpg"<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pred_class": "rechnungsbeleg"<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"accuracy": "75.32"<br/>
                                 <br/>&nbsp;&#125;
                               </div>
 
@@ -277,7 +298,7 @@ class RestApi extends Component {
                                 <Button className="ServiceType" id="GetButton" onClick={() => this.toggle(3)}>GET</Button>
                               </Col>
                               <Col sm={5}>
-                              <div className='ServiceDescription'>/evaluation/]{this.state.query}</div>
+                              <div className='ServiceDescription'>/evaluation/{this.state.query}</div>
                               </Col>
                               </Row>
                           <Collapse isOpen={this.state.collapse[3]}>
@@ -286,7 +307,7 @@ class RestApi extends Component {
                                 <div className="animated fadeIn">
                                   <Row>
                               <Col xs="12" lg="6">
-                                    Payload Parameters
+                                <div className="serviceFont">&nbsp;Payload Parameters</div>
                                     <Table responsive>
                                       <thead>
                                       <tr>
@@ -313,7 +334,7 @@ class RestApi extends Component {
                               <div className="animated fadeIn">
                                   <Row>
                               <Col xs="12" lg="6">
-                                    Reponses for Requested Resource
+                                <div className="serviceFont">&nbsp;Reponses for Requested Resource</div>
                                     <Table responsive>
                                       <thead>
                                       <tr>
@@ -337,10 +358,11 @@ class RestApi extends Component {
                                 </div>
                               </div>
                               <div className='ResponseExample'>
-                                <div className='ResponseHeader'>Response (Status 200)</div>
+                                <div className='ResponseHeader'>&nbsp;Response (Status 200)</div>
                                 &nbsp;&#123;<br/>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": "CLR00342"<br/>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"class": "rechnungsbeleg"
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"name": "imgfile.jpg"<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pred_class": "rechnungsbeleg"<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"accuracy": "75.32"
                                 <br/>&nbsp;&#125;
                               </div>
 
