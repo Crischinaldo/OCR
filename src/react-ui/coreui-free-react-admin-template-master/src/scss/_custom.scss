@@ -36,3 +36,56 @@
    width: 16vh;
   height: 20vh;
 }
+
+.ServiceType {
+  width: 10vh;
+  color: white;
+  border: black solid 1px;
+}
+
+#PostButton {
+  background-color: green;
+}
+
+#GetButton {
+  background-color: blue;
+}
+.ServiceDetails {
+  padding-top: 1vh;
+}
+.ServiceDescription {
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.ParameterTable{
+  border: 1px solid black;
+  background-color: darkslategrey;
+}
+
+.ParameterTable.p{
+  color: white;
+}
+
+.ResponseTable {
+  margin-top: 1vh;
+  background-color: darkcyan;
+  border: 1px solid black;
+}
+
+.ResponseExample {
+  border: 1px solid black;
+  margin-top: 1vh;
+  background-color: greenyellow;
+}
+
+.ResponseHeader {
+  font-weight: bold;
+}
+
+#file-preview{
+  border: black solid 1px;
+}
+

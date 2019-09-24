@@ -51,15 +51,11 @@ class Archive extends Component {
       }
     })
       .then(function (response) {
-        self.setState({
-          data: data.files,
-          pageCount: Math.ceil(data.meta.total_count / data.meta.limit),
-        });
-       /* response.data.forEach(file => {
+
+        response.data.forEach(file => {
           file.hex_img = Buffer.from(file.hex_img, 'hex').toString('base64');
-          files.push(file);
-        }); */
-        self.setState({files: files});
+          this.state.files.push(file);
+        });
         console.log(response);
       })
       .catch(function (response) {

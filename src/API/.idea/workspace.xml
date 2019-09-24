@@ -5,30 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81a067c7-7cf7-49e9-87a5-7eea89f96ae3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/controllers/classification_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API_log.log" beforeDir="false" afterPath="$PROJECT_DIR$/API_log.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/classify.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/file.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/file_controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/text_extraction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/text_extraction_controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/files.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/db/files.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/invoice_classification.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/classification.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/logging_.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/logging_.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/classify.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/classify.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/files.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/files.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react-ui/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../react-ui/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react-ui/coreui-free-react-admin-template-master/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../react-ui/coreui-free-react-admin-template-master/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react-ui/coreui-free-react-admin-template-master/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../react-ui/coreui-free-react-admin-template-master/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react-ui/coreui-free-react-admin-template-master/src/_nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-ui/coreui-free-react-admin-template-master/src/_nav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react-ui/coreui-free-react-admin-template-master/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-ui/coreui-free-react-admin-template-master/src/routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react-ui/coreui-free-react-admin-template-master/src/scss/_custom.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../react-ui/coreui-free-react-admin-template-master/src/scss/_custom.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react-ui/coreui-free-react-admin-template-master/src/views/Document/Images/Archive.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-ui/coreui-free-react-admin-template-master/src/views/Document/Images/Archive.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react-ui/coreui-free-react-admin-template-master/src/views/Document/Images/Upload.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-ui/coreui-free-react-admin-template-master/src/views/Document/Images/Upload.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Classify.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Classify.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Textextraction.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/TextExtraction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/files.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/files.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/db/files.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/db/files.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,24 +22,21 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/files.py">
+        <entry file="file://$PROJECT_DIR$/src/controllers/files.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="67">
-              <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
-              <folding>
-                <element signature="e#19#55#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="105">
+              <caret line="5" column="32" lean-forward="true" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="38" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/views/extract.py">
+        <entry file="file://$PROJECT_DIR$/src/models/db/files.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="20" column="26" lean-forward="true" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+            <state relative-caret-position="714">
+              <caret line="34" column="8" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="8" />
               <folding>
-                <element signature="e#26#71#0" expanded="true" />
+                <element signature="e#0#55#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -73,20 +50,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/service/logging_.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="376">
-              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controllers/classification_controller.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="24" column="31" lean-forward="true" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
-              <folding>
-                <element signature="e#1#53#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="441">
+              <caret line="21" selection-start-line="21" selection-end-line="21" />
             </state>
           </provider>
         </entry>
@@ -94,8 +59,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+            <state relative-caret-position="441">
+              <caret line="21" selection-start-line="21" selection-end-line="21" />
               <folding>
                 <element signature="e#58#81#0" expanded="true" />
               </folding>
@@ -104,22 +69,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controllers/text_extraction_controller.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="17" column="14" lean-forward="true" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
-              <folding>
-                <element signature="e#1#53#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/service/helpers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="13" column="38" lean-forward="true" selection-start-line="13" selection-start-column="38" selection-end-line="13" selection-end-column="38" />
+            <state relative-caret-position="273">
+              <caret line="13" column="38" selection-start-line="13" selection-start-column="38" selection-end-line="13" selection-end-column="38" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -130,7 +83,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/models/classification.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
+            <state relative-caret-position="546">
               <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
@@ -143,7 +96,7 @@
         <entry file="file://$PROJECT_DIR$/src/models/text_extraction.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
-              <caret line="10" column="23" lean-forward="true" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+              <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -180,7 +133,6 @@
         <option value="$PROJECT_DIR$/src/views/home.py" />
         <option value="$PROJECT_DIR$/src/views/document_analysis.py" />
         <option value="$PROJECT_DIR$/src/service/util.py" />
-        <option value="$PROJECT_DIR$/src/controllers/files.py" />
         <option value="$PROJECT_DIR$/src/models/file.py" />
         <option value="$PROJECT_DIR$/src/service/database.py" />
         <option value="$PROJECT_DIR$/src/models/files.py" />
@@ -200,6 +152,8 @@
         <option value="$PROJECT_DIR$/src/service/logging_.py" />
         <option value="$PROJECT_DIR$/src/service/helpers.py" />
         <option value="$PROJECT_DIR$/src/controllers/text_extraction_controller.py" />
+        <option value="$PROJECT_DIR$/src/controllers/files.py" />
+        <option value="$PROJECT_DIR$/src/models/db/files.py" />
       </list>
     </option>
   </component>
@@ -215,8 +169,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="58" />
-    <option name="y" value="60" />
+    <option name="x" value="96" />
+    <option name="y" value="62" />
     <option name="width" value="1788" />
     <option name="height" value="959" />
   </component>
@@ -254,13 +208,14 @@
               <item name="API" type="b2602c69:ProjectViewProjectNode" />
               <item name="API" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="API" type="b2602c69:ProjectViewProjectNode" />
               <item name="API" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -359,17 +314,18 @@
       <workItem from="1566109978149" duration="13911000" />
       <workItem from="1566202121020" duration="3657000" />
       <workItem from="1566208422577" duration="4356000" />
+      <workItem from="1567346780800" duration="206000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71567000" />
+    <option name="totallyTimeSpent" value="71773000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="58" y="60" width="1788" height="959" extended-state="0" />
+    <frame x="96" y="62" width="1788" height="959" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19328703" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19560185" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -425,16 +381,12 @@
     <entry file="file://$PROJECT_DIR$/invoice_classifier.h5">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/__init__.py" />
     <entry file="file://$PROJECT_DIR$/src/business_logic/models.py" />
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/keras/__init__.py" />
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/keras/backend/tensorflow_backend.py" />
     <entry file="file://$PROJECT_DIR$/src/API_log.log" />
-    <entry file="file://$PROJECT_DIR$/src/views/evaluation.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/evaluation.py" />
     <entry file="file://$PROJECT_DIR$/src/service/util.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
@@ -442,13 +394,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/home.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/home.py" />
     <entry file="file://$PROJECT_DIR$/src/img1.png" />
     <entry file="file://$PROJECT_DIR$/src/service/database.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -458,23 +404,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/service.py" />
-    <entry file="file://$PROJECT_DIR$/src/controllers/file_controller.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/db/files.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
-          <folding>
-            <element signature="e#0#55#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/file_controller.py" />
     <entry file="file://$PROJECT_DIR$/src/service/_globals.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
@@ -489,46 +419,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/classify.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-          <folding>
-            <element signature="e#24#69#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/views/classify.py" />
+    <entry file="file://$PROJECT_DIR$/src/controllers/classification_controller.py" />
+    <entry file="file://$PROJECT_DIR$/src/controllers/text_extraction_controller.py" />
+    <entry file="file://$PROJECT_DIR$/src/views/files.py" />
+    <entry file="file://$PROJECT_DIR$/src/views/extract.py" />
+    <entry file="file://$PROJECT_DIR$/API_log.log">
+      <provider selected="true" editor-type-id="LogFileEditorProvider" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/service/helpers.py">
+    <entry file="file://$PROJECT_DIR$/src/service/logging_.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="13" column="38" lean-forward="true" selection-start-line="13" selection-start-column="38" selection-end-line="13" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="441">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+        <state relative-caret-position="441">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
           <folding>
             <element signature="e#58#81#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/text_extraction.py">
+    <entry file="file://$PROJECT_DIR$/src/service/helpers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="23" lean-forward="true" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+        <state relative-caret-position="273">
+          <caret line="13" column="38" selection-start-line="13" selection-start-column="38" selection-end-line="13" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/models/classification.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
+        <state relative-caret-position="546">
           <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
@@ -536,52 +464,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/service/logging_.py">
+    <entry file="file://$PROJECT_DIR$/src/models/text_extraction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+        <state relative-caret-position="210">
+          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/API_log.log">
-      <provider selected="true" editor-type-id="LogFileEditorProvider" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/classification_controller.py">
+    <entry file="file://$PROJECT_DIR$/src/controllers/files.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="24" column="31" lean-forward="true" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
-          <folding>
-            <element signature="e#1#53#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="105">
+          <caret line="5" column="32" lean-forward="true" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/text_extraction_controller.py">
+    <entry file="file://$PROJECT_DIR$/src/models/db/files.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="17" column="14" lean-forward="true" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
+        <state relative-caret-position="714">
+          <caret line="34" column="8" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="8" />
           <folding>
-            <element signature="e#1#53#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/files.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="67">
-          <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
-          <folding>
-            <element signature="e#19#55#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/extract.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="20" column="26" lean-forward="true" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
-          <folding>
-            <element signature="e#26#71#0" expanded="true" />
+            <element signature="e#0#55#0" expanded="true" />
           </folding>
         </state>
       </provider>

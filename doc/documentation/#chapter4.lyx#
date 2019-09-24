@@ -98,7 +98,7 @@ status open
 
 
 \backslash
-chapter{Architektur und Training des Faltenden neuronalen Netzes}
+chapter{Architektur des neuralen Netzwerkes}
 \end_layout
 
 \end_inset
@@ -116,13 +116,8 @@ name "chap_neural_network-4"
 
 \end_layout
 
-\begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
-https://medium.com/datadriveninvestor/five-powerful-cnn-architectures-b939c9ddd57
-b
+\begin_layout Chapter
+Architektur des mehrschichtigen neuronaler Netzwerkes
 \end_layout
 
 \begin_layout Subsubsection
@@ -154,26 +149,11 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-Die Rektifizierende Aktivierungsfunktion wird mit der folgenden Funktion
- beschrieben:
-\begin_inset Formula 
-\[
-f(x)=max(0,x)
-\]
-
+Die Rektifizierende Aktivierungsfunktion wird mit der Funktion 
+\begin_inset Formula $f(x)=max(0,x)$
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-Wenn der Input eines Neurons, welcher mit 
-\emph on
-x 
-\emph default
-beschrieben ist, größer als null sein, berechnet der Neuron diesen Wert.
- Wenn der Input gleich oder kleiner null ist, dann wird das Neuron ausgeschaltet
-, sprich auf null gesetzt.
 \end_layout
 
 \begin_layout Standard
@@ -185,7 +165,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename images/Rectifier_and_softplus_functions.png
-	scale 40
+	scale 60
 
 \end_inset
 

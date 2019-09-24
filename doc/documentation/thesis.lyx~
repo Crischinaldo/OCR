@@ -428,7 +428,7 @@ mainmatter
 
  
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -509,6 +509,20 @@ filename "chapter1.lyx"
 \begin_inset CommandInset include
 LatexCommand input
 filename "chapter2.lyx"
+
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand input
+filename "chapter3.lyx"
+
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand input
+filename "chapter4.lyx"
 
 \end_inset
 

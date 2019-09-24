@@ -208,13 +208,8 @@ literal "false"
 
 \begin_layout Standard
 Machine Learning ist die Wissenschaft Computer so zu programmieren, sodass
- sie in der Lage sind von Daten zu lernen.
- 
-\end_layout
-
-\begin_layout Standard
-Sie ist bereits eine weiterforschte Technologie, die Verwendung in hochtechnolog
-ischen Produkten findet.
+ sie in der Lage sind von Daten zu lernen und ist bereits eine weiterforschte
+ Technologie, die Verwendung in hochtechnologischen Produkten findet.
  Sie ist veranwortlich für die Realiserung von unter anderem die Spracherkennung
  in Smartphones, das Empfehlen von Videos auf Videoportale und das Ranking
  von Suchergebnissen im Internet-Suchmaschinen.
@@ -230,7 +225,7 @@ literal "false"
 \end_layout
 
 \begin_layout Subsection
-Erklärung anhand eines Beispiels
+Spamfilter
 \end_layout
 
 \begin_layout Standard
@@ -240,7 +235,6 @@ Eine der ersten populärsten Anwendungsfälle von Machine Learning ist der
 den und als solche zu kennzeichnen.
  Eine dementsprechende Intelligenz setzt voraus, dass der Software beigebracht
  werden muss wie es eine Spam-Mail als solche erkennt.
- 
 \end_layout
 
 \begin_layout Standard
@@ -253,7 +247,7 @@ den und als solche zu kennzeichnen.
 \begin_layout Standard
 Spam-Mails weisen Regelmäßigkeiten auf, die sie von seriösen Mails unterscheiden.
  Ein ausgelegter Filter überprüft unter anderem auf Regelmäßigkeiten wie
- sowohl das Fehlen der E-Mail-Adresse im 
+ das Fehlen der E-Mail-Adresse im 
 \emph on
 An: Feld
 \emph default
@@ -261,8 +255,7 @@ An: Feld
 \emph on
  Cc: Feld
 \emph default
-, invalide Angaben in den zuletzt genannten Felder und keine oder eine Verdächti
-ge ID der Nachricht.
+, invalide Angaben und auf eine Verdächtige ID der Nachricht.
  Ein sehr prägnantes Merkmale einer Spammail ist der Inhalt der Nachricht.
  Wörter wie 
 \emph on
@@ -302,7 +295,7 @@ en Lernen an: Es wird eine Vielzahl von Daten benötigt, die zum Trainieren
 Trainingssatz 
 \emph default
 und wird zum Einstellen von Parametern eines adaptiven Modells benötigt.
- Im Falle eines Spamfilters gäbe es zwei Zielmerkmale:
+ Im Fall desSpamfilters gibt es zwei Zielmerkmale:
 \end_layout
 
 \begin_layout Enumerate
@@ -316,7 +309,7 @@ False: Es handelt sich um keine Spam-Mail
 \begin_layout Standard
 Das Modell adaptiert Erkennungsmuster anhand von den Trainingssatz und kann
  bei neuen Daten anhand der Charakteristiken das Zielmerkmal prognostizieren.
- Im Kontext des Spamfilters wurden Spam-Mails von Benutzern gekennzeichnet,
+ Um Trainingsdaten zu generieren wurden Spam-Mails von Benutzern gekennzeichnet,
  gesammelt und als Trainingsdaten verwendet.
 \end_layout
 
@@ -327,7 +320,733 @@ Das Modell adaptiert Erkennungsmuster anhand von den Trainingssatz und kann
 \begin_layout Standard
 Es soll eine Bilderkennung auf die Hochgeladenen Nachweise praktiziert werden,
  wobei Rechnungsbelege anhand ihrer Datenmuster zu erkennen sind.
+\end_layout
+
+\begin_layout Section
+Neuronale Netzwerke
+\end_layout
+
+\begin_layout Standard
+Neuron -> Etwas, was eine Nummer hält.
+ Eine Nummer zwischen 0 und 1.
+ Die Nummer wird als Aktivierung bezeichnet.
+\end_layout
+
+\begin_layout Standard
+Neuron -> Funktion, die alle Gewichte von den den Neuronen der vorherigen
+ schicht als Input nimmt und eine Nummer zwischen 0 und 1 zurückgibt.
+\end_layout
+
+\begin_layout Standard
+Gesamte Netz als funktion mit (x0..., x738) Pixel als input und Vek[y0....y9] als
+ output
+\end_layout
+
+\begin_layout Standard
+Neuronale Netze bestehen aus Neuronen die schichtenweise in 
+\emph on
+Layern 
+\emph default
+angeordnet sind.
+ Jedes Neuron einer Schicht ist immer mit allen Neuronen der darauffolgenden
+ Schicht vernetzt.
+\end_layout
+
+\begin_layout Standard
+Gewicht ->
+\end_layout
+
+\begin_layout Standard
+Neuronale Netze sind eine leistungsstarke Technologie zur Klassifizierung
+ visueller Eingaben von Dokumenten.
+ in den frühen 1990 waren Neuronale Netze im Verruf, da sie im Gegensatz
+ zu anderen Klassifikationsstrategien wie 
+\begin_inset Quotes eld
+\end_inset
+
+Support Vector Machines
+\begin_inset Quotes erd
+\end_inset
+
+ und Bayische Netzwerke schlechter abschnitten
+\begin_inset CommandInset citation
+LatexCommand cite
+key "CNN_SSP"
+literal "false"
+
+\end_inset
+
+.
+ Sie arbeiten mit Vektoren ohne Kenntnisse über die Eingabetopologie
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand cite
+key "NC_JAH"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Mehrschichtige Netzwerke
+\end_layout
+
+\begin_layout Standard
+Mehrschichtige Netzwerke kennzeichnet sich durch zusätzliche eingebettete
+ verborgenen Schichten, wobei die Anzahl sehr variiert.
+\end_layout
+
+\begin_layout Standard
+Das Erlernen von Charakteristiken tiefer neuronaler Netze arbeiten ähnlich
+ wie das visuelle System von Primaten.
+ Die Wahrnehmung von Objekten verläuft anhand einer Abfolge von Verarbeitungsstu
+fen: Das Erkennen von einzelnen Kanten bis hin zu komplexeren Polygonen
  
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RECT_XAY"
+literal "false"
+
+\end_inset
+
+.
+ Diese Eigenschaft werden durch verborgene Schichten realisiert.
+\end_layout
+
+\begin_layout Standard
+<bild gemäß https://www.youtube.com/watch?v=aircAruvnKk>
+\end_layout
+
+\begin_layout Standard
+In höheren Schichten werden zunehmend faktorenunabhängig gegenüber Variation
+ wie Kamerabewegungen und sind dadurch flexibler.
+\end_layout
+
+\begin_layout Standard
+Sobald einem Neuronalen Netz mindestens eine Verborgene Schicht hinzugeügt
+ wurden ist, werden sie als Mehrschichtige Netzwerke bezeichnet.
+ Sie kategorisieren sich inherhalb von Deep learning.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Aktivierungsfunktion
+\end_layout
+
+\begin_layout Standard
+Die Aktivierungsfunktion definiert den Aktivierungszustand eines Neurons,
+ abhängig von den Eingaben aller anderen verbundenen Neuronen.
+ Ein Neuron kann abhänging von der Aktivierungsfunktion in einem aktiven
+ oder inaktiven Zustand versetzt werden.
+\end_layout
+
+\begin_layout Standard
+Mit der Aktivierungsfunktion wird die Aktivierungsstufe eines Neuronen in
+ ein Ausgangssignal umgewandelt.
+ Es gibt eine Vielzahl von Aktivierungsfunktionen die bei künstlichen neuronalen
+ Netzen angewandt werden.
+ Generell finden Aktivierungsfunktionen viel Anwendung in künstlichen neuronalen
+ Netzen und gelten als populär, da sie als Transferfunktionen verwendet
+ werden.
+ Vorteile bieten Aktivierungsfunktionen durch ihre schnelle Berechenbarkeit
+ der Funktion und ihrer Ableitung.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "AF_BA"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/neuronal_network.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Chapter 3 - Beispiel eines tiefen Neuronalen Netzes (Quelle: in Anlehnung
+ an
+\begin_inset CommandInset citation
+LatexCommand cite
+key "NN_ABB_SV"
+literal "false"
+
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Jeder Eingabe x i ist ein Gewicht w i zugeordnet.
+ Die Summe aller gewichteten Eingaben x i w i wird dann durch eine nichtlineare
+ Aktivierungsfunktion f geleitet, um den Voraktivierungspegel des Neurons
+ in eine Ausgabe y j umzuwandeln.
+ Der Einfachheit halber wurden die Verzerrungsterme weggelassen.
+ Die Ausgabe y j dient als Eingabe für einen Knoten in der nächsten Schicht.
+ Es stehen verschiedene Aktivierungsfunktionen zur Verfügung, die sich darin
+ unterscheiden, wie sie eine Voraktiverungsstufe einem Ausgabewert zuordnen.
+ Die meistgenutzeste Aktivierungsfunktion ist die Gleichrichterfunktion
+ (ReLu), bei denen Neuronen als gleichgerichtete Lineareinheit bezeichnet
+ wird.
+ In der Ausgabefunktion wird am häufigsten die Softmaxfunktion verwendet,
+ da hiermit die Wahrscheinlichkeit von Beschriftungen mit mehreren Klassen
+ berechnet werden kann.
+\end_layout
+
+\begin_layout Subsection
+Faltende Neuronale Netze
+\end_layout
+
+\begin_layout Standard
+Eine der meistgenutzesten und akkuratesten Methode für Bilderkennungsprobleme
+ ist die Anwendung eines faltenden neuronalen netzes.
+ Sie eignen sich besser als vollständtig verbundene Neuronale Netze bei
+ der Dokumentenerkennung.
+ Neuronale Faltungsnetze können die modernste Perfomance und erfordert keine
+ komplexen Methoden
+\begin_inset CommandInset citation
+LatexCommand cite
+key "CNN_SSP"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Rekurrente Neuronale Netze
+\end_layout
+
+\begin_layout Standard
+Rekurrente Neuronale Netze eignen sich besonders gut für bildbasierte Sequenzerk
+ennung 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RNN_SBY"
+literal "false"
+
+\end_inset
+
+.
+ Es wird eine Architektur neuronale Netzwerkes benötigt, die Sequenzmodellierung
+, Merksmalsextraktion und Transkription in ein einheitliches Framework integrier
+t.
+\end_layout
+
+\begin_layout Standard
+Es besitzt vier Eigenschaften:
+\end_layout
+
+\begin_layout Enumerate
+Ende-zu-Ende trainierbar, sprich die Komponenten werden seperat trainiert
+ und abgestimmt
+\end_layout
+
+\begin_layout Enumerate
+Es behandelt natürlich Sequenzen in willkürlichen Längen, die keine Zeichen,
+ Segementierung oder horizontale Normierung enthalten
+\end_layout
+
+\begin_layout Enumerate
+Nicht beschränkt auf jedes vordefinierte Lexikon.
+\end_layout
+
+\begin_layout Enumerate
+Es generiert ein viel kleineres Modell, das für reale Anwendungszenarien
+ praktischer ist.
+\end_layout
+
+\begin_layout Standard
+Anders wie bei Faltendenten Neuronalen Netzen, die nützlich bei der Erkennung
+ von einzelnen Objekten, die keine Korrelation zueinander haben, sind Rekurrente
+r neuronale Netze auf das Erkennen von sequenzähnlichen Objekten nützlich.
+ Das Klassifizieren von einer Reihe aus Objekten ist ein Problem, welches
+ allgemein als Sequenzerkennungsproblem bezeichnet wird.
+ Bei dem Erkennungsprozess können die Objekte von der Länge stark varieren.
+ Im OCR-Kontext gibt es Wörter die wie 
+\begin_inset Quotes eld
+\end_inset
+
+Ja
+\begin_inset Quotes erd
+\end_inset
+
+, die lediglich 2 Zeichen aufweisen, während 
+\begin_inset Quotes eld
+\end_inset
+
+Allgemeinmedizin
+\begin_inset Quotes erd
+\end_inset
+
+ 16 Zeichen aufweist.
+ Die Anzahl der Kombinationen aus Zeichen zu Sequenzen von beispielsweise
+ chinesischen Zeichen, Musiknoten und Wörter kann größer als 1 Million sein,
+ weshalb ein faltendes neuronales Netz durch die hohe Anzahl der Klassen
+ unbrauchbar wäre.
+ Das rekurrente neuronale Netzwerk ist ein weiterer wichtiger Zweig der
+ Familie von tiefen neuronalen Netzwerken und sind hauptsächlich für die
+ Klassifizierung von Sequenzen konzipiert.
+ Eine Eigenschaft von RNN's ist es, dass es nicht die Position von jedem
+ Element in einem Sequenzobjektbild benötigt beim Training und testen.
+ 
+\end_layout
+
+\begin_layout Standard
+Gut für Spracherkennung, Texterkennung.
+ Long short-term memory network
+\end_layout
+
+\begin_layout Subsubsection*
+Tesseract
+\end_layout
+
+\begin_layout Standard
+Seit Tesseract 4 ist die OCR-Engine auf Basis von neuronalen Netzen mit
+ der LSTM-Methodik umgestiegen.
+ Sie konzentriert sich auf Linienerkennung
+\end_layout
+
+\begin_layout Section
+Überwachtes Lernen
+\end_layout
+
+\begin_layout Standard
+Überwachtes Lernen ist die häufigste Form des Maschinellen Lernens um ein
+ klassifizierbares System aufzubauen.
+ Im Gegensatz zum unüberwachten Lernen erfordert Überwachtes Lernen einen
+ möglichst großen Datensatz zum Lernen.
+\end_layout
+
+\begin_layout Standard
+Wie lernt ein Neuronales netz? Beim Initliasieren des Netzes ist das Bias
+ und die Gewichte zufällig gewählt.
+ Es wird eine Kostenfunktion zum Lernen des Netzwerkes benutzt.
+ Die Funktion wird benutzt um die Kosten zu berechnen.
+ Es wird von den einzelnen Neuronen in der Ausgabeschicht die Differenz
+ von den tatsächlichen Ergebnissen der Kostenfunktion gebildet, exponeniert
+ und die die Summe gebildet <abbildung>.
+ Das wird die Kosten des einzelnen Trainingsbeispiel genannt.
+ Die Kosten sind niedrig, wenn das Netzwerk das Bild richtig klassifiziert
+ und hoch wenn das Netzwerk das Bild falsch klassifizert.
+ Der Durchschnitt aus der Summe aller Kosten ist ein Messwert für die Klassifika
+tionsrate des Netzwerkes.
+ Um das Minimum der Kostenfunktion mit allen Gewichten und Biases für das
+ Trainingsbeispiel zu finden, wird die Steigung berechnet und abhängig von
+ der Lernrate wird der Input abhängig von der Steigung weiter nach rechts
+ oder links verlagert wodurch nach mehreren Beispielen das lokale Minimum
+ gefunden wird.
+ Es wird der Gradient der Kostenfunktion berechnet um den 
+\begin_inset Quotes eld
+\end_inset
+
+steilsten
+\begin_inset Quotes erd
+\end_inset
+
+ Weg zum lokalen Minimum zu finden.
+ Der Gradient ist ein Indikator für diesen 
+\begin_inset Quotes eld
+\end_inset
+
+steilsten
+\begin_inset Quotes erd
+\end_inset
+
+ Weg.
+ Die Gewichte werden als Vektor dargestellt.
+ Der negative Gradientenvektor wird auf den den Gewichtsvektor, der den
+ schnellsten steilsten Abstieg anzeigt.
+ so werden die Kosten niedrig.
+ der Bias stellt in Form eines Neurons mit der Aktivierung 
+\begin_inset Quotes eld
+\end_inset
+
+1
+\begin_inset Quotes erd
+\end_inset
+
+ eine Konstante dar, die Schichten dazu bringt, dass wenn die Funktion durch
+ den Ursprung verläuft, mehr Flexibiltät in den Verschiebungsprozess des
+ Graphen.
+ Der Bias ist besonders nützlich wenn der Eingabevektor nur nullen enthält,
+ da keine Allgemeingültigkeit verloren geht.
+\end_layout
+
+\begin_layout Subsection
+Testphase
+\end_layout
+
+\begin_layout Standard
+Die Daten sind mit der korrespondierenden Klasse kategorisiert, so dass
+ das Klassifkationsmodell lernt Datenmuster der entsprechenden Klasse zuzuordnen.
+ Mithilfe des Datensatzes berechnen wir eine objektive Funktion, die den
+ Fehler zwischen den ausgegebenen Bewertungen und dem gewünschten Bewertungsmust
+er misst.
+ Das Modell ändert dann ihre internen einstellbaren Parameter, um die Fehler
+ zu reduzieren.
+ Die Parameter, auch als Gewichte bezeichnet, werden anhand von Zahlen abgebilde
+t, die die Eingabe/Ausgabe-Funktion des Modells definieren.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Gradientenverfahren
+\end_layout
+
+\begin_layout Standard
+Um den Gewichtsvektor richtig einzustellen, berechnen der Lernalgorithmus
+ einen Gradientenvektor, der für jedes Gewicht angibt, um welchen Betrag
+ der Fehler sich erhöhen oder verringern würde.
+ der Gewichtsvektor wird dann in entgesetzter Richtung zum Gradientenvektor
+ eingestellt.
+ Die über alle iterierte Trainingsbeispiele gemittelte Zielfunktion kann
+ als eine Art Hügellandschaft im hochdimensionalen Raum von Gewichtsvektoren
+ gesehen werden.
+ der negative Gradientenvektor gibt die Richtung des steilsten Abstieg in
+ dieser Landschaft an und geht dadurch näher an ein Minimum ran, wo der
+ Ausgabefehler im durchschnitt niedrig ist.
+\end_layout
+
+\begin_layout Standard
+In der Praxis wird meistens eine Prozedur angewandt, die sich Gradientenverfahre
+n (engl.
+ SGD) nennt.
+ Das Verfahren besteht aus den Anzeigen des Eingabevektors für ein paar
+ Beispiele aus dem Trainingsdatensatz, berechnen der Ausgaben und der Fehler,
+ dem Berechnen der durchschnittlichen Gradienten und dem ensprechenden Anpassen
+ der Gewichte.
+ Dieser Vorgang wird für viele Beispiele aus dem Trainingsdatensatz wiederholt,
+ bis der Durchschnitt von der Zielfunktionen nicht mehr kleiner wird.
+ Die Prozedur wird Storchastisch genannt, da jeder Satz von den Trainingsdaten
+ eine verrauschte Schätzung des durchschnittlichen Gradienten von jedem
+ Beispiel gibt.
+ Das Verfahren findet in der Regel relativ zu anderen Methoden überraschen
+ schnell einen guten Satz von Gewichten.
+\end_layout
+
+\begin_layout Standard
+Das Gradientenverfahren ist das mit Abstand am häuftigsten verwendete Optimierun
+gsverfahren für die Gewichte-Parametisierung und dient zur Fehlerminimierung
+ bei Prognosen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Das Verfahren wird mit der Funktion 
+\begin_inset Formula $\nabla E(h(a))$
+\end_inset
+
+ mathematisch dargestellt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\nabla E(h(a))=\left[\frac{\partial E(h(a))}{\partial a_{1}},...,\frac{\partial E(h(a))}{\partial a_{n}}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ziel des Verfahrens ist es Fehler 
+\emph on
+E
+\emph default
+ (Error) zu minimieren.
+ Es wird mit einer Hypothese 
+\emph on
+h 
+\emph default
+mithilfe von allen Attributen
+\emph on
+ a
+\emph default
+ eine Annahme getroffen, um welche Klasse es sich handelt.
+ Attribute werden aus den Trainingsdaten entnommen.
+\end_layout
+
+\begin_layout Standard
+Beispielsweise ist jeder Pixel eines Bildes Teilmenge der Attributmenge
+ 
+\emph on
+
+\begin_inset Formula $a_{1}...a_{n}$
+\end_inset
+
+, 
+\emph default
+welches an Hypothese 
+\emph on
+h
+\emph default
+ gegeben wird, um eine Vorhersage zu treffen, ob es sich bei dem Bild um
+ eine bestimme Klasse handelt.
+ eine Klasse kann ein Smartphone oder ein Laptop sein.
+\end_layout
+
+\begin_layout Standard
+Die Fehlerfunktion E ergibt sich aus einer Funktionsmenge abhängig von der
+ Attributmenge.
+ Die Funktionen repräsentieren die Ableitungen der Attributmenge 
+\emph on
+
+\begin_inset Formula $a_{1}...a_{n}$
+\end_inset
+
+ 
+\emph default
+als Vektor.
+\end_layout
+
+\begin_layout Standard
+Mit dem Wissen, was die Daten 
+\emph on
+a
+\emph default
+ tatsächlich sind, berechnet Fehlerfunktion 
+\emph on
+E 
+\emph default
+wie falsch die Hypothese ist.
+ Aus der Fehlerfunktion wird der Gradient gebildet, indem die Fehlerfunktion
+ abgeleitet wird.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\nabla a=-\mu*E(h(a))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Durch den berechneten Gradienten und der Lernrate
+\emph on
+ mu
+\emph default
+ können die Gewichte entsprechend jedes Attribut der Attributmenge 
+\emph on
+
+\begin_inset Formula $a_{1}...a_{n}$
+\end_inset
+
+ 
+\emph default
+jeweils so angepasst werden, dass die Fehlerrate reduziert wird.
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+a=a+\nabla a
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Der Vorgang wird so oft wiederholt, bis die Fehlerrate konvergiert.
+ Lernrate 
+\emph on
+mu 
+\emph default
+sollte so gesetzt sein, dass die Sprünge weder zu groß noch zu klein sind.
+ Das lokale Mimimum könnte bei einer zu großen Lernrate übersprungen werden,
+ sodass der Fehler niemals minimal wird.
+\end_layout
+
+\begin_layout Subsubsection*
+Fehlerrückführung
+\end_layout
+
+\begin_layout Standard
+Das eigentliche Training mehrschichtiger Architekturen finden anhand storchastis
+cher fallenden Gradienten, die durch das Gradientenverfahren ermittelt wurden
+ sind, statt.
+ Das Fehlerrückführungsverfahren berechnet die Gradienten einer Zielfunktion
+ mit der miteinbeziehung der Gewichte eines mehrschichtigen Modulstapels
+ anhand der Kettenregel für Gradienten.
+ Es kann der Gradient
+\end_layout
+
+\begin_layout Subsection
+Testphase
+\end_layout
+
+\begin_layout Standard
+Nach dem Trainieren wird die Perfomance durch einem anderen Satz von Daten
+ gemessen, welche Testdatensatz genannt wird.
+ Dies dient zum Testen der Fähigkeit sinnvolle Anworten auf neue Daten Eingaben,
+ die das Modell während des Trainings noch nie gesehen hat - die Verallgemeineru
+ngsfähigkeit
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DL_LBH"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Deep Learning
+\end_layout
+
+\begin_layout Standard
+Der Begriff Deep Learning umsammelt Methoden der künstlichen Intelligenz,
+ die die Funktionsweise des Menschlichen Gehirns bei der Verarbeitung von
+ Daten und der Erstellung von Mustern zu der Entscheidungsfindung imitiert.
+ Deep Learning Methoden werden auf eine Teilmenge von Klassifkatoren aus
+ den Bereich des Maschinellen Lernens angewandt, um die Präzision des Modells
+ zu verbessern.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DL_LBH"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Bilderkennung
+\end_layout
+
+\begin_layout Section
+Daten
+\end_layout
+
+\begin_layout Standard
+Daten existieren als Pixelmatritzen in Form von Bildern.
+ Beim Füttern des Neuronales Netzes wird die Matrix in einen Vektor umgewandelnd
+, also von einem 2d-array zu einem 1d-array.
+ Jedes Pixel wird jeweils ein Neuron in der Eingabeschicht zugewiesen.
+ bei einem 28x28 Bild müssten dafür 784 Neuronen in der Eingabeschicht exisitier
+en.
+\end_layout
+
+\begin_layout Standard
+Ein Neuron repräsentiert den Graustufenwert vom Entsprechenden Pixel eines
+ Bildes.
+ 0 = dunkel, 1 = hell.
+\end_layout
+
+\begin_layout Standard
+Es existieren soviele Neuronen in der Ausgabeschicht, wie es zuweisbare
+ Klassen gibt.
+ Die Aktivierung in den Neuronen in der Ausgabeschicht sagt aus, wie hoch
+ das Eingabebild mit der korrespondierenden Klasse übereintrifft.
+\end_layout
+
+\begin_layout Standard
+Spärliche Daten: Die Daten enthalten viele Nullen in den Daten.
+\end_layout
+
+\begin_layout Standard
+Dichte Daten: Viele Werte in den daten sind Nicht Null
+\end_layout
+
+\begin_layout Section
+Klassen
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DL_MS_RS"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

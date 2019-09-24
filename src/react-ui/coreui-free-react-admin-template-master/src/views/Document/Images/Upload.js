@@ -29,7 +29,7 @@ class Upload extends Component {
 
     temporaryFileReader.onload = () => {
       resolve(temporaryFileReader.result);
-    //  console.log(temporaryFileReader.result)
+
     };
   });
 };
@@ -81,7 +81,7 @@ class Upload extends Component {
           console.log(response);
           console.log('error');
       });
-  }
+  };
 
   render() {
     const maxSize = 1048576;
