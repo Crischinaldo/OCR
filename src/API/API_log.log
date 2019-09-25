@@ -3,3 +3,4 @@
 09-25 03:35 werkzeug     INFO      * Running on http://127.0.0.1:8090/ (Press CTRL+C to quit)
 09-25 03:35 service.logging_ INFO     /evaluation - has been entered...
 09-25 03:35 service.logging_ INFO     /evaluation - Request-method: "GET"
+09-25 03:35 werkzeug     INFO     127.0.0.1 - - [25/Sep/2019 03:35:37] "[37mGET /evaluation HTTP/1.1[0m" 200 -

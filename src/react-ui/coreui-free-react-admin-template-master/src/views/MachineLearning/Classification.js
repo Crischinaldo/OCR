@@ -97,7 +97,7 @@ class Classification extends Component {
     const maxSize = 10485000;
     const { accuracy, fileName, predictedClass, loading, UploadedFile, fileIsPDF} = this.state;
     return (
-      <div>
+      <div className="animated fadeIn">
         <Card body outline color="primary">
             <CardHeader tag="h3">Predict class of an Image</CardHeader>
           <CardBody>

@@ -16,11 +16,6 @@ const navigation = {
         },
         ]
     },
-     {
-      name: 'Statistics',
-      url: '/statistic',
-      icon: 'icon-chart',
-    },
     {
       name: 'Documentation',
       title: true,
