@@ -49,7 +49,7 @@ class Extraction extends Component {
          .then((response) => {
            if (response.data.result) {
              this.setState({
-               extractedText: response.data.result.extraction,
+               extractedText: response.data.result,
                loading: false,
              });
            }
@@ -67,11 +67,17 @@ class Extraction extends Component {
 
      const { extractedText, loading } = this.state;
     return (
-      <div>
+      <div className='animated fadeIn'>
         {
           loading
             ? <Spinner color="primary" />
-            : null
+            :
+            <div className='animated fadeIn'>
+            <Card>
+            <CardHeader> Extracted Text from Uploaded file </CardHeader>
+              <CardBody>{this.state.extractedText}</CardBody>
+            </Card>
+            </div>
           }
       </div>
     );

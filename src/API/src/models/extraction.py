@@ -19,21 +19,19 @@ class TextExtractor:
         extraction = {}
         decoded_img = decode_hex_to_img(req.get('file'), req.get('type'))
         grayscaled_img = convert_grayscale(decoded_img)
-        preprocessed_img = binarize_img(grayscaled_img)
+       # preprocessed_img = binarize_img(grayscaled_img)
 
-        extracted_text = self.extractor.image_to_string(preprocessed_img)
+        extracted_text = self.extractor.image_to_string(grayscaled_img)
         queries = ['Rechnungsbetrag', 'IBAN']
 
-        for line in extracted_text.split("\n"):
-            for query in queries:
+      #  for line in extracted_text.split("\n"):
+         #   for query in queries:
 
-                if query in line:
+         #       if query in line:
 
-                    key = line.split(" ")[0]
-                    val = line.split(" ")[1]
-                    extraction.update({key: val})
+         #           key = line.split(" ")[0]
+         #           val = line.split(" ")[1]
+          #          extraction.update({key: val})
         #if 'Rechnungsbetrag' in extracted_text:
-        import pdb;
-        pdb.set_trace()
 
-        return {'result': extraction}
+        return {'result': extracted_text}

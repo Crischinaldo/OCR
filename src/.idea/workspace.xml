@@ -8,16 +8,9 @@
     <list default="true" id="04cdebf0-ab62-4890-b0f3-78617639ad54" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/API_log.log" beforeDir="false" afterPath="$PROJECT_DIR$/API/API_log.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/_nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/_nav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/models/extraction.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/models/extraction.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Dashboard/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Dashboard/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Document/Images/Archive.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Document/Images/Dropzone.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Document/Images/Preview.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Document/Images/Progress.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Document/Images/Upload.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Documentation/RestApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Documentation/RestApi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Classification.js" beforeDir="false" afterPath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Classification.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Extraction.js" beforeDir="false" afterPath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Extraction.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,10 +38,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/API/src/controllers/evaluation.py">
+        <entry file="file://$PROJECT_DIR$/API/src/controllers/extraction.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+            <state relative-caret-position="399">
+              <caret line="21" column="22" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
               <folding>
                 <element signature="e#26#71#0" expanded="true" />
               </folding>
@@ -56,13 +49,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Dashboard/Dashboard.js">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/API/src/service/preprocessing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="427">
-              <caret line="530" column="29" selection-start-line="530" selection-start-column="29" selection-end-line="530" selection-end-column="29" />
+            <state relative-caret-position="105">
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
               <folding>
-                <element signature="e#0#57#0" expanded="true" />
+                <element signature="e#0#10#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -86,12 +79,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/API/src/models/evaluation.py">
+        <entry file="file://$PROJECT_DIR$/API/src/models/extraction.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1638">
-              <caret line="78" column="49" lean-forward="true" selection-start-line="78" selection-start-column="49" selection-end-line="78" selection-end-column="49" />
+            <state relative-caret-position="394">
+              <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
               <folding>
-                <element signature="e#0#37#0" expanded="true" />
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -100,8 +93,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Classification.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-42">
-              <caret line="92" column="4" lean-forward="true" selection-start-line="64" selection-start-column="2" selection-end-line="92" selection-end-column="4" />
+            <state relative-caret-position="205">
+              <caret line="99" column="21" lean-forward="true" selection-start-line="99" selection-start-column="21" selection-end-line="99" selection-end-column="37" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -109,11 +102,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Extraction.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
-              <caret line="72" column="41" lean-forward="true" selection-start-line="72" selection-start-column="14" selection-end-line="72" selection-end-column="41" />
+            <state relative-caret-position="58">
+              <caret line="50" column="28" lean-forward="true" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="28" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -201,11 +194,9 @@
         <option value="$PROJECT_DIR$/API/src/service/helpers.py" />
         <option value="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Prediction.js" />
         <option value="$PROJECT_DIR$/API/src/service/preprocessing.py" />
-        <option value="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Extraction.js" />
         <option value="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/scss/_custom.scss" />
         <option value="$PROJECT_DIR$/API/src/app.py" />
         <option value="$PROJECT_DIR$/API/src/models/classification.py" />
-        <option value="$PROJECT_DIR$/API/src/models/extraction.py" />
         <option value="$PROJECT_DIR$/API/src/controllers/evaluation.py" />
         <option value="$PROJECT_DIR$/API/src/models/evaluation.py" />
         <option value="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Documentation/RestApi.js" />
@@ -214,12 +205,14 @@
         <option value="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Evaluation/Evaluation.js" />
         <option value="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/routes.js" />
         <option value="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Dashboard/Dashboard.js" />
+        <option value="$PROJECT_DIR$/API/src/models/extraction.py" />
+        <option value="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Extraction.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="481" />
-    <option name="y" value="94" />
+    <option name="x" value="454" />
+    <option name="y" value="43" />
     <option name="width" value="1940" />
     <option name="height" value="984" />
   </component>
@@ -236,6 +229,31 @@
             <path>
               <item name="src" type="b2602c69:ProjectViewProjectNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="src" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="API" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="src" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="API" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="src" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="API" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="src" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="API" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="src" type="b2602c69:ProjectViewProjectNode" />
@@ -380,15 +398,15 @@
       <workItem from="1568674330177" duration="54035000" />
       <workItem from="1569257509135" duration="20479000" />
       <workItem from="1569343584550" duration="8489000" />
-      <workItem from="1569359937072" duration="15476000" />
+      <workItem from="1569359937072" duration="19389000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="129277000" />
+    <option name="totallyTimeSpent" value="133190000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="481" y="94" width="1940" height="984" extended-state="0" />
+    <frame x="454" y="43" width="1940" height="984" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16968085" />
@@ -402,11 +420,11 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32902467" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.28482586" />
-      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32905984" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.28319624" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32902467" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -577,26 +595,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/API/src/controllers/extraction.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="21" column="22" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
-          <folding>
-            <element signature="e#26#71#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/src/service/preprocessing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/scss/_custom.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="259">
@@ -627,16 +625,6 @@
           <caret line="37" column="25" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="58" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/src/models/extraction.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -672,6 +660,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Prediction.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="30" column="38" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#83#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/_nav.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="6" column="6" lean-forward="true" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" column="92" lean-forward="true" selection-start-line="10" selection-start-column="92" selection-end-line="10" selection-end-column="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Dashboard/Dashboard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="89">
+          <caret line="94" column="34" lean-forward="true" selection-start-line="94" selection-start-column="34" selection-end-line="94" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/src/service/preprocessing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/API/src/models/evaluation.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1638">
@@ -692,12 +724,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Prediction.js">
+    <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Classification.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="30" column="38" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="38" />
+        <state relative-caret-position="205">
+          <caret line="99" column="21" lean-forward="true" selection-start-line="99" selection-start-column="21" selection-end-line="99" selection-end-column="37" />
           <folding>
-            <element signature="e#0#83#0" expanded="true" />
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/src/controllers/extraction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="21" column="22" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
+          <folding>
+            <element signature="e#26#71#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/src/models/extraction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -705,46 +757,12 @@
     <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Evaluation/Evaluation.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/_nav.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="6" column="6" lean-forward="true" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="92" lean-forward="true" selection-start-line="10" selection-start-column="92" selection-end-line="10" selection-end-column="92" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Extraction.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="72" column="41" lean-forward="true" selection-start-line="72" selection-start-column="14" selection-end-line="72" selection-end-column="41" />
+        <state relative-caret-position="58">
+          <caret line="50" column="28" lean-forward="true" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="28" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Classification.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-42">
-          <caret line="92" column="4" lean-forward="true" selection-start-line="64" selection-start-column="2" selection-end-line="92" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Dashboard/Dashboard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="530" column="29" selection-start-line="530" selection-start-column="29" selection-end-line="530" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#57#0" expanded="true" />
           </folding>
         </state>
       </provider>
