@@ -6,7 +6,6 @@ import cv2
 import numpy as np
 from models.db.classifications import DBClassification, DBFile
 from service.util import time_
-import math
 
 
 class ClassificationException(Exception):

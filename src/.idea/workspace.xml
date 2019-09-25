@@ -2,17 +2,16 @@
 <project version="4">
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Documentation/RestApi.js" line="41" mnemonic="7" />
-    <bookmark url="file://$PROJECT_DIR$/API/src/models/classification.py" line="65" mnemonic="8" />
+    <bookmark url="file://$PROJECT_DIR$/API/src/models/classification.py" line="64" mnemonic="8" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="04cdebf0-ab62-4890-b0f3-78617639ad54" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/API_log.log" beforeDir="false" afterPath="$PROJECT_DIR$/API/API_log.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/src/controllers/evaluation.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/controllers/evaluation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/models/classification.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/models/classification.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/models/evaluation.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/models/evaluation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/src/models/extraction.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/models/extraction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/scss/_custom.scss" beforeDir="false" afterPath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/scss/_custom.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Documentation/RestApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Documentation/RestApi.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,8 +41,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/API/src/models/classification.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
+            <state relative-caret-position="777">
+              <caret line="37" column="25" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="58" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -51,8 +53,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/API/src/models/extraction.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="105">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -72,8 +74,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/API/src/controllers/evaluation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="16" column="82" selection-start-line="16" selection-start-column="82" selection-end-line="16" selection-end-column="82" />
+            <state relative-caret-position="234">
+              <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
               <folding>
                 <element signature="e#26#71#0" expanded="true" />
               </folding>
@@ -84,8 +86,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/API/src/models/evaluation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="24" column="23" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
+            <state relative-caret-position="212">
+              <caret line="79" column="23" selection-start-line="79" selection-start-column="23" selection-end-line="79" selection-end-column="23" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -96,7 +98,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/API/src/models/db/classifications.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="799">
+            <state relative-caret-position="1512">
               <caret line="72" column="20" lean-forward="true" selection-start-line="61" selection-start-column="8" selection-end-line="72" selection-end-column="20" />
               <folding>
                 <element signature="e#0#55#0" expanded="true" />
@@ -184,26 +186,26 @@
         <option value="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Document/Images/Upload.js" />
         <option value="$PROJECT_DIR$/API/src/controllers/classification.py" />
         <option value="$PROJECT_DIR$/API/requirements.txt" />
-        <option value="$PROJECT_DIR$/API/src/models/classification.py" />
         <option value="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Classification.js" />
         <option value="$PROJECT_DIR$/API/src/service/helpers.py" />
         <option value="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Prediction.js" />
         <option value="$PROJECT_DIR$/API/src/service/preprocessing.py" />
         <option value="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Extraction.js" />
-        <option value="$PROJECT_DIR$/API/src/models/extraction.py" />
         <option value="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/scss/_custom.scss" />
         <option value="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Documentation/RestApi.js" />
         <option value="$PROJECT_DIR$/API/src/app.py" />
+        <option value="$PROJECT_DIR$/API/src/models/classification.py" />
+        <option value="$PROJECT_DIR$/API/src/models/extraction.py" />
         <option value="$PROJECT_DIR$/API/src/controllers/evaluation.py" />
         <option value="$PROJECT_DIR$/API/src/models/evaluation.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="258" />
-    <option name="y" value="102" />
+    <option name="x" value="320" />
+    <option name="y" value="91" />
     <option name="width" value="1940" />
-    <option name="height" value="938" />
+    <option name="height" value="937" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -242,15 +244,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="API" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="src" type="b2602c69:ProjectViewProjectNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="API" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="db" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -332,15 +326,15 @@
       <workItem from="1568674330177" duration="54035000" />
       <workItem from="1569257509135" duration="20479000" />
       <workItem from="1569343584550" duration="8489000" />
-      <workItem from="1569359937072" duration="3965000" />
+      <workItem from="1569359937072" duration="12980000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="117766000" />
+    <option name="totallyTimeSpent" value="126781000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="258" y="102" width="1940" height="938" extended-state="0" />
+    <frame x="320" y="91" width="1940" height="937" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16968085" />
@@ -357,7 +351,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.28447205" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.28482586" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32905984" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -393,13 +387,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/node_modules/react-image-file-resizer/build/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="115" lean-forward="true" selection-start-column="115" selection-end-column="115" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Document/Images/Dropzone.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -640,13 +627,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/API/src/models/classification.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/API/src/controllers/classification.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -656,7 +636,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/API/src/models/db/classifications.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
+        <state relative-caret-position="1512">
           <caret line="72" column="20" lean-forward="true" selection-start-line="61" selection-start-column="8" selection-end-line="72" selection-end-column="20" />
           <folding>
             <element signature="e#0#55#0" expanded="true" />
@@ -664,12 +644,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/API/src/models/extraction.py">
+    <entry file="file://$PROJECT_DIR$/API/src/models/classification.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="777">
+          <caret line="37" column="25" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="58" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -681,20 +661,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/API/src/models/extraction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/API/src/controllers/evaluation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="16" column="82" selection-start-line="16" selection-start-column="82" selection-end-line="16" selection-end-column="82" />
+        <state relative-caret-position="234">
+          <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
           <folding>
             <element signature="e#26#71#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2018.3/system/python_stubs/-762174762/__builtin__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="3361" column="8" selection-start-line="3361" selection-start-column="8" selection-end-line="3361" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/API/src/models/evaluation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="24" column="23" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
+        <state relative-caret-position="212">
+          <caret line="79" column="23" selection-start-line="79" selection-start-column="23" selection-end-line="79" selection-end-column="23" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>

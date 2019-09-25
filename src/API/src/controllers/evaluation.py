@@ -11,10 +11,13 @@ api = Blueprint('/evaluation', __name__)
 
 
 @api.route('/evaluation', methods=['GET', 'POST'])
-def classifier():
+def evaluation():
     log.info(msg='/evaluation - has been entered...')
     if request.method == 'GET':
         log.info('/evaluation - Request-method: "{method}"'.format(method=request.method))
-        Evaluation.amount_classification()
-        Evaluation.amount_label(label='central-zener-1')
-        return jsonify('document classification')
+        if 'label' in request.args:
+            resp = Evaluation.evaluate(request.args['label'])
+        else:
+            resp = Evaluation.evaluate()
+
+        return jsonify(resp)
