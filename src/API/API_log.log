@@ -1,0 +1,35 @@
+09-25 05:42 werkzeug     WARNING   * Debugger is active!
+09-25 05:42 werkzeug     INFO      * Debugger PIN: 223-082-306
+09-25 05:42 werkzeug     INFO      * Running on http://127.0.0.1:8090/ (Press CTRL+C to quit)
+09-25 05:42 service.logging_ INFO     /machine-learning/classification - has been entered...
+09-25 05:42 service.logging_ INFO     classify - Request-method: "POST"
+09-25 05:42 tensorflow   WARNING  From C:\Users\Chrus\AppData\Local\Programs\Python\Python37\lib\site-packages\keras\backend\tensorflow_backend.py:541: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+09-25 05:42 tensorflow   WARNING  From C:\Users\Chrus\AppData\Local\Programs\Python\Python37\lib\site-packages\keras\backend\tensorflow_backend.py:4432: The name tf.random_uniform is deprecated. Please use tf.random.uniform instead.
+
+09-25 05:42 tensorflow   WARNING  From C:\Users\Chrus\AppData\Local\Programs\Python\Python37\lib\site-packages\keras\backend\tensorflow_backend.py:4267: The name tf.nn.max_pool is deprecated. Please use tf.nn.max_pool2d instead.
+
+09-25 05:42 tensorflow   WARNING  From C:\Users\Chrus\AppData\Local\Programs\Python\Python37\lib\site-packages\keras\backend\tensorflow_backend.py:66: The name tf.get_default_graph is deprecated. Please use tf.compat.v1.get_default_graph instead.
+
+09-25 05:42 tensorflow   WARNING  From C:\Users\Chrus\AppData\Local\Programs\Python\Python37\lib\site-packages\keras\backend\tensorflow_backend.py:148: The name tf.placeholder_with_default is deprecated. Please use tf.compat.v1.placeholder_with_default instead.
+
+09-25 05:42 tensorflow   WARNING  From C:\Users\Chrus\AppData\Local\Programs\Python\Python37\lib\site-packages\keras\backend\tensorflow_backend.py:3733: calling dropout (from tensorflow.python.ops.nn_ops) with keep_prob is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `rate` instead of `keep_prob`. Rate should be set to `rate = 1 - keep_prob`.
+09-25 05:42 tensorflow   WARNING  From C:\Users\Chrus\AppData\Local\Programs\Python\Python37\lib\site-packages\keras\backend\tensorflow_backend.py:190: The name tf.get_default_session is deprecated. Please use tf.compat.v1.get_default_session instead.
+
+09-25 05:42 tensorflow   WARNING  From C:\Users\Chrus\AppData\Local\Programs\Python\Python37\lib\site-packages\keras\optimizers.py:793: The name tf.train.Optimizer is deprecated. Please use tf.compat.v1.train.Optimizer instead.
+
+09-25 05:42 tensorflow   WARNING  From C:\Users\Chrus\AppData\Local\Programs\Python\Python37\lib\site-packages\tensorflow\python\ops\math_grad.py:1250: add_dispatch_support.<locals>.wrapper (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.where in 2.0, which has the same broadcast rule as np.where
+09-25 05:42 werkzeug     INFO     127.0.0.1 - - [25/Sep/2019 05:42:37] "[37mPOST /machine-learning/classification HTTP/1.1[0m" 200 -
+09-25 05:42 service.logging_ INFO     extract - has been entered...
+09-25 05:42 service.logging_ INFO     extract - Request-method: "POST"
+09-25 05:42 werkzeug     INFO     127.0.0.1 - - [25/Sep/2019 05:42:44] "[37mPOST /machine-learning/extraction HTTP/1.1[0m" 200 -
+09-25 05:43 service.logging_ INFO     /evaluation - has been entered...
+09-25 05:43 service.logging_ INFO     /evaluation - Request-method: "GET"
+09-25 05:43 werkzeug     INFO     127.0.0.1 - - [25/Sep/2019 05:43:17] "[37mGET /evaluation HTTP/1.1[0m" 200 -
+09-25 05:46 service.logging_ INFO     /evaluation - has been entered...
+09-25 05:46 service.logging_ INFO     /evaluation - Request-method: "GET"
+09-25 05:46 werkzeug     INFO     127.0.0.1 - - [25/Sep/2019 05:46:14] "[37mGET /evaluation HTTP/1.1[0m" 200 -

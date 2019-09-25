@@ -112,9 +112,12 @@ class RestApi extends Component {
                               <div className='ResponseExample'>
                                 <div className='ResponseHeader'>&nbsp;Response (Status 200)</div>
                                 &nbsp;&#123;<br/>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"name": "imgfile.jpg"<br/>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pred_class": "rechnungsbeleg"<br/>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"accuracy": "75.32"
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"result": &nbsp;&#123;<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"accuracies": &nbsp;&#123;<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"name": "imgfile.jpg"<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pred_class": "rechnungsbeleg"<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"accuracy": "75.32"<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#125;
                                 <br/>&nbsp;&#125;
                               </div>
 
@@ -197,10 +200,13 @@ class RestApi extends Component {
 
                               <div className='ResponseExample'>
                                 <div className='ResponseHeader'>&nbsp;Response (Status 200)</div>
-                                &nbsp;&#123;<br/>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"name": "imgfile.jpg"<br/>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pred_class": "rechnungsbeleg"<br/>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"accuracy": "75.32"
+                                 &nbsp;&#123;<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"result": &nbsp;&#123;<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"rechnungsbetrag": 240,00<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"name": "imgfile.jpg"<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pred_class": "rechnungsbeleg"<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"accuracy": "75.32"<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#125;
                                 <br/>&nbsp;&#125;
                               </div>
 
