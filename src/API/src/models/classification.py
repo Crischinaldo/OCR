@@ -4,9 +4,9 @@ from service._globals import labels
 from service.helpers import decode_hex_to_img
 import cv2
 import numpy as np
-from models.db.classifications import DBClassification, DBFile
+from models.db.classifications import DBClassification, DBFile, DBEvaluation
 from service.util import time_
-
+import binascii
 
 class ClassificationException(Exception):
     """General Exception handling for Classification"""
@@ -53,10 +53,8 @@ class Classification:
     #  im = cv2.imread(im)
 
         max_y_prob, pred = self.classify(image_4d)
-        self.db_entry(name=req.get('name'),
-                      file=DBFile(hexed_file=req.get('file')),
-                      pred_class=self.labels[pred[0]],
-                      accuracy=max_y_prob,
+        self.db_entry(file=DBFile(hexed_file=binascii.hexlify(scaled_img), name=req.get('name')),
+                      eval_data=DBEvaluation(label=self.labels[pred[0]], accuracy=max_y_prob)
                       )
         payload = {
             'result':
@@ -70,10 +68,8 @@ class Classification:
         return payload
 
     @staticmethod
-    def db_entry(name, file, pred_class, accuracy):
-        DBClassification(name=name,
-                         file=file,
-                         pred_class=pred_class,
-                         accuracy=accuracy,
+    def db_entry(file, eval_data):
+        DBClassification(file=file,
+                         evaldata=eval_data,
                          created_at=time_(),
                          ).post()

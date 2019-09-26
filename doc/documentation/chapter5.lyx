@@ -8,7 +8,7 @@
 \options bibliography=totoc,listof=totoc,BCOR=5mm,DIV=12
 \use_default_options false
 \maintain_unincluded_children false
-\language english
+\language ngerman
 \language_package default
 \inputencoding iso8859-1
 \fontencoding default
@@ -76,7 +76,7 @@
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style english
+\quotes_style german
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -98,7 +98,7 @@ status open
 
 
 \backslash
-chapter{Implementierung und Architektur}
+chapter{Architektur}
 \end_layout
 
 \end_inset
@@ -109,7 +109,7 @@ chapter{Implementierung und Architektur}
 \begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "chap_implementation_architecture"
+name "chap_architecture"
 
 \end_inset
 
@@ -117,10 +117,9 @@ name "chap_implementation_architecture"
 \end_layout
 
 \begin_layout Standard
-Dieses Kapitel befasst sich mit der Umsetzung der Anforderungen an die Software.
- Der erste Abschnitt beschreibt den technischen Entwurf der Software.
- Zur Umsetzung der Anwendung wurden Werkzeuge und Frameworks verwendet,
- welche in Anhang B aufgelistet und kurz beschrieben sind.
+Dieses Kapitel befasst sich mit dem technischen Entwurf der Software.
+ Zur Umsetzung der Anwendung wurden Bibliotheken und Frameworks verwendet,
+ welche im Anhang B aufgelistet und beschrieben sind.
 \end_layout
 
 \begin_layout Standard
@@ -130,16 +129,31 @@ Dieses Kapitel befasst sich mit der Umsetzung der Anforderungen an die Software.
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
+Architekturenentwurf
+\end_layout
+
+\begin_layout Standard
+In Diesen Unterkapitel wird die Architektur des Servers beschrieben und
+ visualisiert.
+\end_layout
+
+\begin_layout Subsubsection
 REST-Schnittstelle
 \end_layout
 
 \begin_layout Standard
-Sowohl das Faltende neuronale Netz als Belegerkennung als auch Tesseract
- als Textextrahierer werden als Servicekomponenten in einer REST-Schnittstelle
- zur Verfügung gestellt.
- Eine REST-Schnittstelle eignet sich gut als Architekturansatz, damit verteilte
- Systeme miteinander kommunizieren können 
+.
+ Der Begriff REST steht für 
+\emph on
+Representional State Transfer 
+\emph default
+und ist von Roy Fielding in seiner Dissertation 
+\emph on
+Architectural Styles and the Design of Network-based Software Architectures
+ 
+\emph default
+geprägt wurden
 \begin_inset CommandInset citation
 LatexCommand cite
 key "REST_RF"
@@ -148,14 +162,253 @@ literal "false"
 \end_inset
 
 .
- Die Klassifikatoren liegen hinter den Web-Services und können über HTTP/s-Reque
-sts angesprochen werden.
+ Die REST-Schnittstelle ist ein weitverbreiteteter Architekturansatz, der
+ dazu verwendet wird um eine Infrastruktur zwischen Client und Server zu
+ etablieren.
+ Die REST-Architektur ermöglicht, dass Ressourcen jeweils über 
+\emph on
+Webservices
+\emph default
+ mit 
+\emph on
+Anfragen
+\emph default
+ (requests) gefordert werden können.
+ Jeder Webservice verügt über eine
+\emph on
+ Uniform Ressource Identifier
+\emph default
+ (URI) und lässt sich damit eindeutig identifizieren.
+ Der Server schickt daraufhin eine 
+\emph on
+Antwort
+\emph default
+ (response), die die geforderten Ressourcen enthält.
+ Da eine REST-Schnittstelle zustandsslos ist und der Server keine gespeicherten
+ Daten zurückgreifen kann, müssen bei einer Anfrage alle nötigen Informationen
+ vom Client geliefert werden.
+ Die Clientseitige Anfragen basieren auf dem 
+\emph on
+HTTP/s-Protokoll 
+\emph default
+und verwenden die damit zusammenhängenden 
+\emph on
+Anfragemethoden 
+\emph default
+(request methods), die in der Tabelle 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "HTTP/s-Anfragemethoden"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ aufgeführt sind.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "HTTP/s-Anfragemethoden"
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+HTTP/s-Anfragemethoden
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Methoden 
+\emph on
+PUT
+\emph default
+ und 
+\emph on
+DELETE
+\emph default
+ werden aus Sicherheitsgründen kaum implementiert und werden in diesen Kontext
+ nicht weiter diskutiert.
+\end_layout
+
+\begin_layout Standard
+Um eine REST-konforme Schnittstelle zu programmieren, werden die Grundsätze
+ in der Regel eingehalten.
+ Bedingt können Webservices REST-konformalitäten abweichen.
+ Ein Webservice, über dessen Endpunkt ein Token angefordert werden kann,
+ wird als Anfragemethode ausschließlich 
+\emph on
+POST 
+\emph default
+verwenden, obwohl kein schreibender Zugriff erfordernlich ist.
+ Anders wie bei der 
+\emph on
+GET-methode 
+\emph default
+kann das Benutzerpasswort verschlüsselt an den Server übermittelt werden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Durch die Zustandslosigkeit können Webservices simpel skaliert werden, da
+ eine Vielzahl von Requests problemlos auf verschiedene Serverinstanzen
+ verteilt werden können.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Daten in sowohl den Anfragen und auch Antworten werden in einem spezifiziert
+en Datenformat übermittelt.
+ Hier bietet es sich an die Daten in einem JSON-format (
+\emph on
+JavaScript Object Notation
+\emph default
+) zu transferieren.
+ Das JSON-Format wurde von Douglas Crockford im Jahr 1999 auf der ECMA-262
+ spezifiert
+\begin_inset CommandInset citation
+LatexCommand cite
+key "JSON_DG"
+literal "false"
+
+\end_inset
+
+.
+ im Gegensatz zu XML (
+\emph on
+Extensible Markup Language
+\emph default
+) dynamisch ist und keine Spezifizierung notwendig ist.
+ Zudem ist das ein umgängliches und Sprachenunabhängiges Datenformat, da
+ es nach einer bekannten Datenstruktur aufgebaut ist - Der Schlüssel/Wert-Paare.
+ Diese universelle Datenstruktur wird in jeder modernen Programmiersprache
+ genutzt und ist deswegen einfach zu verarbeiten.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sowohl das Faltende neuronale Netz als Belegerkennung als auch Tesseract
+ als Textextrahierer werden als Servicekomponenten in einer REST-Schnittstelle
+ zur Verfügung gestellt
+\end_layout
+
+\begin_layout Standard
+Die Klassifikatoren liegen hinter den Web-Services und können über HTTP/s-Reques
+ts angesprochen werden.
  Da beide Klassifikatoren ein Bild als Eingabe erwarten, muss der HTTP-Request
  ein Bild in Hexadezimalnotation in einem JSON mitgeliefert werden.
 \end_layout
 
-\begin_layout Section
-Schnittstellenbeschreibung
+\begin_layout Subsubsection
+Schnittstellenspezifikation
+\end_layout
+
+\begin_layout Standard
+Die Schnittstellenspezifikation ist an das Beschreibungsformat 
+\emph on
+OpenAPI
+\emph default
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://www.openapis.org
+\end_layout
+
+\end_inset
+
+ angelehnt.
+ Sie befindet sich clientseitig auf dem Dashboard und wird später mit 
+\emph on
+Swagger
+\emph default
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://www.swagger.io
+\end_layout
+
+\end_inset
+
+, einer Beschreibungssprache für REST-Schnittstellen, in die unternehmensinterne
+n Schnittstellenbeschreibung überführt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/services.PNG
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+REST-Services
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -171,7 +424,7 @@ endinput
 
 \end_inset
 
- 
+
 \begin_inset Note Note
 status open
 

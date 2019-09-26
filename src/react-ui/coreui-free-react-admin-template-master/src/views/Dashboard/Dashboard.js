@@ -10,8 +10,6 @@ import {
   Row,
   Spinner,
 } from 'reactstrap';
-import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
-import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities'
 import axios from "axios";
 
 
@@ -28,7 +26,7 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    const API = 'http://localhost:8090/evaluation';
+    const API = 'http://localhost:8090/classification/evaluation';
     this.getResult(API)
   }
 
@@ -113,7 +111,7 @@ class Dashboard extends Component {
                 <Card>
             <CardHeader>Accuracy contribution</CardHeader>
             <CardBody>
-              <Doughnut
+              <Bar
                 data={data(Object.keys(this.state.accuracies),
                   Object.values(this.state.accuracies))} />
             </CardBody>

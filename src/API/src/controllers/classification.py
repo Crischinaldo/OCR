@@ -7,10 +7,10 @@ from models.classification import Classification
 from service.logging_ import Log
 
 log = Log()
-api = Blueprint('/machine-learning/classification', __name__)
+api = Blueprint('/classification', __name__)
 
 
-@api.route('/machine-learning/classification', methods=['GET', 'POST'])
+@api.route('/classification', methods=['GET', 'POST'])
 def classifier():
     log.info(msg='/machine-learning/classification - has been entered...')
     if request.method == 'GET':

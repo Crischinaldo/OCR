@@ -7,10 +7,10 @@ from service.logging_ import Log
 from models.evaluation import Evaluation
 
 log = Log()
-api = Blueprint('/evaluation', __name__)
+api = Blueprint('/classification/evaluation', __name__)
 
 
-@api.route('/evaluation', methods=['GET', 'POST'])
+@api.route('/classification/evaluation', methods=['GET', 'POST'])
 def evaluation():
     log.info(msg='/evaluation - has been entered...')
     if request.method == 'GET':

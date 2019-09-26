@@ -1,5 +1,5 @@
 from service.database import Database
-from models.db.classifications import DBClassification
+from models.db.classifications import DBEvaluation
 from sqlalchemy import select, func
 from collections import Counter
 from functools import reduce
@@ -18,9 +18,9 @@ class Evaluation:
         if label:
 
             rows = sess.query(func.count('*')
-                              .filter(DBClassification.pred_class == "{label}".format(label=label))).scalar()
+                              .filter(DBEvaluation.label == "{label}".format(label=label))).scalar()
         else:
-            rows = sess.query(func.count(DBClassification.classification_id)).scalar()
+            rows = sess.query(func.count(DBEvaluation.eval_id)).scalar()
         sess.close()
         return rows
 
@@ -35,7 +35,7 @@ class Evaluation:
         sess = Database().session()
 
         amounts = []
-        for label in sess.query(DBClassification.pred_class):
+        for label in sess.query(DBEvaluation.label):
             amounts.append(label)
 
         sess.close()
@@ -54,10 +54,10 @@ class Evaluation:
         """
         accuracies = {}
         sess = Database().session()
-        for label in sess.query(DBClassification.pred_class):
+        for label in sess.query(DBEvaluation.label):
                 label = list(label)[0]
-                acc_sum = sess.query(func.sum(DBClassification.accuracy)
-                                     ).filter(DBClassification.pred_class == "{label}"
+                acc_sum = sess.query(func.sum(DBEvaluation.accuracy)
+                                     ).filter(DBEvaluation.label == "{label}"
                                               .format(label=label)).scalar()
 
                 accuracies.update({label: round(acc_sum / Evaluation.count_predictions(label), 2)})

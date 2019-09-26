@@ -18,7 +18,7 @@
 
 
 % addition "`oneside"' for single-sided printing 
-\usepackage[english]{babel}
+\usepackage[german]{babel}
 \usepackage{bibgerm}% deutsche Literaturverzeichnisse
 % for German "`Umlaute"'
 % To insert figures  - for PDF-LaTeX: .pdf and .png (.jpg possible, but should be avoided)
@@ -248,7 +248,7 @@ filename "title-thl.lyx"
 
  
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -274,7 +274,7 @@ filename "abstract.lyx"
 
  
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -300,7 +300,7 @@ filename "declaration-thl.lyx"
 
  
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -313,7 +313,7 @@ status collapsed
 
 \end_inset
 
- 
+
 \begin_inset Newpage cleardoublepage
 \end_inset
 
@@ -326,7 +326,7 @@ filename "summary.lyx"
 
  
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -347,7 +347,7 @@ LatexCommand tableofcontents
 
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -360,7 +360,7 @@ addtocontents{toc}{
 
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -373,7 +373,7 @@ protect
 
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -400,7 +400,7 @@ status collapsed
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -415,7 +415,7 @@ status collapsed
 
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -523,6 +523,13 @@ filename "chapter3.lyx"
 \begin_inset CommandInset include
 LatexCommand input
 filename "chapter4.lyx"
+
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand input
+filename "chapter5.lyx"
 
 \end_inset
 

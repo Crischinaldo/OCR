@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import {Media, Card, CardBody, CardHeader, Spinner} from "reactstrap";
-import doc_analysis from '../../assets/img/icons/doc_analysis.png'
-import Upload from '../Document/Images/Upload.js'
+import {Card, CardBody, CardHeader, Spinner, Table} from "reactstrap";
 import axios from "axios";
 
 class Extraction extends Component {
@@ -20,7 +18,7 @@ class Extraction extends Component {
 
   extractedText = (file) => {
 
-    const API = "http://127.0.0.1:8090/machine-learning/extraction";
+    const API = "http://127.0.0.1:8090/extraction";
     let formData = new FormData();
     try {
 
@@ -49,7 +47,9 @@ class Extraction extends Component {
          .then((response) => {
            if (response.data.result) {
              this.setState({
-               extractedText: response.data.result,
+               iban: response.data.result.iban,
+               bic: response.data.result.bic,
+               balance_due: response.data.result.balance_due,
                loading: false,
              });
            }
@@ -74,8 +74,36 @@ class Extraction extends Component {
             :
             <div className='animated fadeIn'>
             <Card>
-            <CardHeader> Extracted Text from Uploaded file </CardHeader>
-              <CardBody>{this.state.extractedText}</CardBody>
+              <CardHeader> <h1>Extracted Information</h1> </CardHeader>
+              <CardBody>
+                <Table responsive>
+                  <thead>
+                  <tr>
+                    {this.state.amount
+                      ? <th>balance due</th>
+                      : null
+                    }
+                    {this.state.iban
+                      ? <th>iban</th>
+                      : null
+                    }
+                    {this.state.bic
+                      ? <th>bic</th>
+                      : null
+                    }
+                  </tr>
+                  </thead>
+                  <tbody>
+
+                  <tr>
+                      <td>{this.state.amount}</td>
+                      <td>{this.state.iban}</td>
+                      <td>{this.state.bic}</td>
+                  </tr>
+
+                  </tbody>
+                </Table>
+              </CardBody>
             </Card>
             </div>
           }

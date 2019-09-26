@@ -7,10 +7,10 @@ from models.extraction import TextExtractor
 from service.logging_ import Log
 
 log = Log()
-api = Blueprint('/machine-learning/extraction', __name__)
+api = Blueprint('/extraction', __name__)
 
 
-@api.route('/machine-learning/extraction', methods=['GET', 'POST'])
+@api.route('/extraction', methods=['GET', 'POST'])
 def extract():
     log.info(msg='extract - has been entered...')
     if request.method == 'GET':

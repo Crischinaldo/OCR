@@ -277,30 +277,6 @@ Bilderkennung mit einem neuronalen Netz
 OCR mit Tesseract
 \end_layout
 
-\begin_layout Section
-Meilensteinplan
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename images/Work_Plan_1.png
-	scale 20
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename images/work_plan_2.png
-	scale 20
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
 \begin_inset ERT
 status collapsed
