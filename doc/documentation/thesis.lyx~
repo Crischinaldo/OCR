@@ -28,6 +28,12 @@
 \usepackage{multicol}
 \usepackage{listings}%to display source code with \begin{1stlisting}... \end{1stlisting}
 \usepackage{color}
+\usepackage[
+  a4paper,
+  textwidth=175mm,
+  textheight=225mm,
+  heightrounded,
+]{geometry}
 \definecolor{lightestyellow}{rgb}{1,1,0.9}
 % takes care of links in pdf documents
 % \usepackage{glossaries} glossary can be generated this way, not recommended for bachelor or master theses
@@ -62,9 +68,9 @@
 %Das ist ganz wichtig. Das durch Biblatex erzeugte Literaturverzeichnis kann Links enthalten, die mit \url erzeugt worden sind. Dabei kann es sein, dass die über den Rand hinaus gehen. Durch die beiden Befehle \setcounter wird einfach am Rand abgebrochen, sodass der Link noch funktioniert und die Optik beim Blockschreibsatz bleibt.
 \end_preamble
 \options bibliography=totoc,listof=totoc,BCOR=5mm,DIV=12
-\use_default_options false
+\use_default_options true
 \maintain_unincluded_children false
-\language english
+\language ngerman
 \language_package default
 \inputencoding iso8859-1
 \fontencoding default
@@ -126,16 +132,16 @@
 \shortcut idx
 \color #008000
 \end_index
-\secnumdepth 3
-\tocdepth 3
+\secnumdepth 2
+\tocdepth 2
 \paragraph_separation indent
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style english
+\quotes_style german
 \dynamic_quotes 0
 \papercolumns 1
-\papersides 1
+\papersides 2
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
@@ -530,6 +536,20 @@ filename "chapter4.lyx"
 \begin_inset CommandInset include
 LatexCommand input
 filename "chapter5.lyx"
+
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand input
+filename "chapter6.lyx"
+
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand input
+filename "chapter7.lyx"
 
 \end_inset
 

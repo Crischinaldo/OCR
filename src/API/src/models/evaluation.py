@@ -1,8 +1,9 @@
 from service.database import Database
-from models.db.classifications import DBEvaluation
-from sqlalchemy import select, func
+from models.db.classifications import DBResult
+from sqlalchemy import func
 from collections import Counter
 from functools import reduce
+from sqlalchemy.exc import ProgrammingError
 
 
 class Evaluation:
@@ -18,9 +19,9 @@ class Evaluation:
         if label:
 
             rows = sess.query(func.count('*')
-                              .filter(DBEvaluation.label == "{label}".format(label=label))).scalar()
+                              .filter(DBResult.label == "{label}".format(label=label))).scalar()
         else:
-            rows = sess.query(func.count(DBEvaluation.eval_id)).scalar()
+            rows = sess.query(func.count(DBResult.eval_id)).scalar()
         sess.close()
         return rows
 
@@ -35,7 +36,7 @@ class Evaluation:
         sess = Database().session()
 
         amounts = []
-        for label in sess.query(DBEvaluation.label):
+        for label in sess.query(DBResult.label):
             amounts.append(label)
 
         sess.close()
@@ -54,10 +55,10 @@ class Evaluation:
         """
         accuracies = {}
         sess = Database().session()
-        for label in sess.query(DBEvaluation.label):
+        for label in sess.query(DBResult.label):
                 label = list(label)[0]
-                acc_sum = sess.query(func.sum(DBEvaluation.accuracy)
-                                     ).filter(DBEvaluation.label == "{label}"
+                acc_sum = sess.query(func.sum(DBResult.accuracy)
+                                     ).filter(DBResult.label == "{label}"
                                               .format(label=label)).scalar()
 
                 accuracies.update({label: round(acc_sum / Evaluation.count_predictions(label), 2)})
@@ -74,8 +75,10 @@ class Evaluation:
         of predictions
         """
         evaluation = {}
-
-        total_amount_split, total_amount = Evaluation.total_predictions()
+        try:
+            total_amount_split, total_amount = Evaluation.total_predictions()
+        except ProgrammingError:
+            return
         accuracies = Evaluation.calc_accuracies()
         keys = ['amount', 'predictions', 'accuracies']
 

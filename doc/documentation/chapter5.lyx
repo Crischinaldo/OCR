@@ -8,7 +8,7 @@
 \options bibliography=totoc,listof=totoc,BCOR=5mm,DIV=12
 \use_default_options false
 \maintain_unincluded_children false
-\language ngerman
+\language english
 \language_package default
 \inputencoding iso8859-1
 \fontencoding default
@@ -76,7 +76,7 @@
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style german
+\quotes_style english
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -98,7 +98,7 @@ status open
 
 
 \backslash
-chapter{Architektur}
+chapter{Konzept der Software}
 \end_layout
 
 \end_inset
@@ -109,7 +109,7 @@ chapter{Architektur}
 \begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "chap_architecture"
+name "chap_concept"
 
 \end_inset
 
@@ -117,121 +117,30 @@ name "chap_architecture"
 \end_layout
 
 \begin_layout Standard
-Dieses Kapitel befasst sich mit dem technischen Entwurf der Software.
- Zur Umsetzung der Anwendung wurden Bibliotheken und Frameworks verwendet,
- welche im Anhang B aufgelistet und beschrieben sind.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace smallskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Architekturenentwurf
-\end_layout
-
-\begin_layout Standard
-In Diesen Unterkapitel wird die Architektur des Servers beschrieben und
- visualisiert.
-\end_layout
-
-\begin_layout Subsubsection
-REST-Schnittstelle
-\end_layout
-
-\begin_layout Standard
-.
- Der Begriff REST steht für 
-\emph on
-Representional State Transfer 
-\emph default
-und ist von Roy Fielding in seiner Dissertation 
-\emph on
-Architectural Styles and the Design of Network-based Software Architectures
- 
-\emph default
-geprägt wurden
-\begin_inset CommandInset citation
-LatexCommand cite
-key "REST_RF"
-literal "false"
-
-\end_inset
-
-.
- Die REST-Schnittstelle ist ein weitverbreiteteter Architekturansatz, der
- dazu verwendet wird um eine Infrastruktur zwischen Client und Server zu
- etablieren.
- Die REST-Architektur ermöglicht, dass Ressourcen jeweils über 
-\emph on
-Webservices
-\emph default
- mit 
-\emph on
-Anfragen
-\emph default
- (requests) gefordert werden können.
- Jeder Webservice verügt über eine
-\emph on
- Uniform Ressource Identifier
-\emph default
- (URI) und lässt sich damit eindeutig identifizieren.
- Der Server schickt daraufhin eine 
-\emph on
-Antwort
-\emph default
- (response), die die geforderten Ressourcen enthält.
- Da eine REST-Schnittstelle zustandsslos ist und der Server keine gespeicherten
- Daten zurückgreifen kann, müssen bei einer Anfrage alle nötigen Informationen
- vom Client geliefert werden.
- Die Clientseitige Anfragen basieren auf dem 
-\emph on
-HTTP/s-Protokoll 
-\emph default
-und verwenden die damit zusammenhängenden 
-\emph on
-Anfragemethoden 
-\emph default
-(request methods), die in der Tabelle 
+Dieses Kapitel erklärt das Konzept des Systems.
+ Zunächst werden im Unterkapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "HTTP/s-Anfragemethoden"
+reference "sec:Anwendungsfälle"
 plural "false"
 caps "false"
 noprefix "false"
 
 \end_inset
 
- aufgeführt sind.
+ Anforderungen anhand eines Use-Case-Diagrams definiert, die das Vorgehen
+ in der Entwicklung erkennbar macht um eine abschließenden Lösungansatz
+ zu konzepieren.
+\end_layout
+
+\begin_layout Section
+Anwendungsfälle
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float table
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "HTTP/s-Anfragemethoden"
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-HTTP/s-Anfragemethoden
-\end_layout
-
-\end_inset
-
-
-\end_layout
+name "sec:Anwendungsfälle"
 
 \end_inset
 
@@ -239,140 +148,25 @@ HTTP/s-Anfragemethoden
 \end_layout
 
 \begin_layout Standard
-Die Methoden 
-\emph on
-PUT
-\emph default
- und 
-\emph on
-DELETE
-\emph default
- werden aus Sicherheitsgründen kaum implementiert und werden in diesen Kontext
- nicht weiter diskutiert.
-\end_layout
-
-\begin_layout Standard
-Um eine REST-konforme Schnittstelle zu programmieren, werden die Grundsätze
- in der Regel eingehalten.
- Bedingt können Webservices REST-konformalitäten abweichen.
- Ein Webservice, über dessen Endpunkt ein Token angefordert werden kann,
- wird als Anfragemethode ausschließlich 
-\emph on
-POST 
-\emph default
-verwenden, obwohl kein schreibender Zugriff erfordernlich ist.
- Anders wie bei der 
-\emph on
-GET-methode 
-\emph default
-kann das Benutzerpasswort verschlüsselt an den Server übermittelt werden.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace smallskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Durch die Zustandslosigkeit können Webservices simpel skaliert werden, da
- eine Vielzahl von Requests problemlos auf verschiedene Serverinstanzen
- verteilt werden können.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace smallskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Die Daten in sowohl den Anfragen und auch Antworten werden in einem spezifiziert
-en Datenformat übermittelt.
- Hier bietet es sich an die Daten in einem JSON-format (
-\emph on
-JavaScript Object Notation
-\emph default
-) zu transferieren.
- Das JSON-Format wurde von Douglas Crockford im Jahr 1999 auf der ECMA-262
- spezifiert
-\begin_inset CommandInset citation
-LatexCommand cite
-key "JSON_DG"
-literal "false"
+In der Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:use_case"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
-.
- im Gegensatz zu XML (
-\emph on
-Extensible Markup Language
-\emph default
-) dynamisch ist und keine Spezifizierung notwendig ist.
- Zudem ist das ein umgängliches und Sprachenunabhängiges Datenformat, da
- es nach einer bekannten Datenstruktur aufgebaut ist - Der Schlüssel/Wert-Paare.
- Diese universelle Datenstruktur wird in jeder modernen Programmiersprache
- genutzt und ist deswegen einfach zu verarbeiten.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace smallskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Sowohl das Faltende neuronale Netz als Belegerkennung als auch Tesseract
- als Textextrahierer werden als Servicekomponenten in einer REST-Schnittstelle
- zur Verfügung gestellt
-\end_layout
-
-\begin_layout Standard
-Die Klassifikatoren liegen hinter den Web-Services und können über HTTP/s-Reques
-ts angesprochen werden.
- Da beide Klassifikatoren ein Bild als Eingabe erwarten, muss der HTTP-Request
- ein Bild in Hexadezimalnotation in einem JSON mitgeliefert werden.
-\end_layout
-
-\begin_layout Subsubsection
-Schnittstellenspezifikation
-\end_layout
-
-\begin_layout Standard
-Die Schnittstellenspezifikation ist an das Beschreibungsformat 
-\emph on
-OpenAPI
-\emph default
-
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-https://www.openapis.org
-\end_layout
-
-\end_inset
-
- angelehnt.
- Sie befindet sich clientseitig auf dem Dashboard und wird später mit 
-\emph on
-Swagger
-\emph default
-
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-https://www.swagger.io
-\end_layout
-
-\end_inset
-
-, einer Beschreibungssprache für REST-Schnittstellen, in die unternehmensinterne
-n Schnittstellenbeschreibung überführt.
+ wird das Use-Case-Diagram veranschaulicht, aus welchem die funktionalen
+ Anforderungen abgeleitet werden sollen.
+ Der Webclient wird dazu verwendet über die UI eine Datei hochzuladen.
+ Sollte diese Datei das Bild oder PDF-Format haben, wird das Bild von einem
+ Klassifizierungs-Service als entweder Schadensfoto oder Rechnungsbeleg
+ klassifiziert.
+ Nachdem festgestellt wurden ist, ob es sich bei der hochgeladenen Datei
+ ein Rechnungsbeleg handelt, extrahiert ein Extraction-Service Informationen
+ aus dem Bild.
 \end_layout
 
 \begin_layout Standard
@@ -383,7 +177,15 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename images/services.PNG
+	filename images/use_case.png
+	scale 80
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:use_case"
 
 \end_inset
 
@@ -394,7 +196,739 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-REST-Services
+Use-Case-Diagram
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Anwendungsfälle bezüglich der Verwaltung und Authentifizierung von Nutzern
+ werden im weiteren Verlauf über den Unternehmenseigenen IAM-Server abgewickelt
+ und werden in diesem Kontext nicht berücksichtigt.
+\end_layout
+
+\begin_layout Section
+Spezifikation der Anforderungen
+\end_layout
+
+\begin_layout Standard
+In diesen Unterabschnitt werden die funktionalen und nicht funktionalen
+ Anforderungen spezifiert.
+\end_layout
+
+\begin_layout Subsection
+Funktionale Anforderungen
+\end_layout
+
+\begin_layout Standard
+Die Funktionalen Anforderungen sind untergliedert in drei Anwendungsszenarien.
+ Die funktionalen Anforderungen sind abhängig vom Szenario gegliedert und
+ tabellarisch aufgeführt.
+\end_layout
+
+\begin_layout Paragraph*
+1.
+ Rechnungsbeleg erkennen
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ID
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Beschreibung
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F-10010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+UI gibt Benutzer Auskunft über mögliche Dateitypen und Klassifikationsprozess
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F-10020
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Benutzer kann über UI eine Datei ausgewählen
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F-10030
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Benutzer kann interaktiv Datei als Anfrage an Klassifikations-Service senden
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F-10040
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Klassifikations-Service liefert eine Antwort
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F-10050
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+UI präsentiert dem Benutzer die Daten in der Antwort
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:szen_1"
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Dateien klassifizieren
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Ein Webclient soll in der Lage sein dem Benutzer zu ermöglichen Dateien
+ hochzuladen und an einem Klassifikations-Webservice zu senden.
+ Er präsentiert dem Benutzer die erhaltende Antwort.
+ Die Antwort beinhaltet unter anderem die Information, ob die Datei sich
+ als Rechnungsbeleg identifizieren lies.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Wenn ein Rechnungsbeleg erkannt wurde, wird dem Nutzer eine Extrahierung
+ der Informationen angeboten.
+ Die funktionalen Anforderungen zum Anwendungsszenario werden in Tabelle
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:szen_2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ aufgelistet und beschrieben..
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+2.
+ Informationen extrahieren
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ID
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Beschreibung
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F-20010
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sollte Datei als Rechnungsbeleg klassifiziert wurden sein, kann über die
+ UI interaktiv ein Extractionsprozess vom zuvor hochgeladenen Bild ausgeführt
+ werden
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F-20020
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Benutzer kann über UI Extractionsprozess starten
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F-20030
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+UI gibt Benutzer visuell Kenntniss über den Stand des Extractionsprozesses
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F-20040
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+UI stellt Benutzer die Extrahierten Informationen deklarativ dar
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F-20050
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Benutzer kann Korrekturen in den Informationen vornehmen
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F-20060
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Benutzer kann interaktiv ein Formular mit den Informationen ausfüllen
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:szen_2"
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Informationen aus Rechnungsbeleg extrahieren
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Der Webclient sendet das zuvor hochgeladene Bild an einem Extraktions-Webservice.
+ Der Client erhält eine Antwort die die extrahierten Daten enthält und sie
+ deklarativ dem Benutzer präsentiert.
+ Der Benutzer kann über die Oberfläche Korrekturen vornehmen und mit einer
+ einzelnen Interaktion die Informationen in die Formularfelder füllen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die ersten beiden Szenarien treten in diesem Kontext zusammenhängend auf,
+ da eine Extrahierung lediglich für Rechnungsbelege gedacht ist.
+ Aufgrund von universeller Einsetzbarkeit und Modularität werden sie als
+ zwei Webservices implementiert.
+ Mit der Servicearchitektur können die beiden Komponenten serverseitig komplett
+ voneinander gekapselt werden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+3.
+ Evaluationsergebnisse präsentieren
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ID
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Beschreibung
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F-30010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Beim Aufruf des Clients werden Evaluationsdaten vom Server geholt
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F-30020
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Der Client präsentiert visuell und informativ die Evaluationsdaten
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:szen_3"
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Evaluationsergebnisse präsentieren
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Ergebnisse der Klassifikationen werden im Client evaluiert.
+ Die Daten werden vom Service über den Klassifikations-Service abgerufen.
+\end_layout
+
+\begin_layout Subsection
+Nichtfunktionale Anforderungen
+\end_layout
+
+\begin_layout Standard
+In diesem Unterkapitel werden die nichtfunktionalen Anforderungen beschrieben.
+\end_layout
+
+\begin_layout Paragraph*
+Performance
+\end_layout
+
+\begin_layout Standard
+NF-10010: Die Zeit die der Aufruf des Klassifikations-Webservices benötigt
+ muss unter drei Sekunden sein.
+\end_layout
+
+\begin_layout Standard
+NF-10020: Die Zeit die der Aufruf des Extraktions-Webservices benötigt muss
+ unter drei Sekunden sein.
+\end_layout
+
+\begin_layout Paragraph*
+Usability
+\end_layout
+
+\begin_layout Standard
+NF-20010: Die UI muss gegenüber allen Devices responsive sein.
+\end_layout
+
+\begin_layout Standard
+NF-20020: Die UI muss ein zeitgemäßes Design haben.
+\end_layout
+
+\begin_layout Standard
+NF-10020: Die Zeit die der Aufruf des Extraktions-Webservices benötigt muss
+ unter drei Sekunden sein.
+\end_layout
+
+\begin_layout Standard
+....
+\end_layout
+
+\begin_layout Subsection
+Aktivitätsdiagramme
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/activity_classify.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Aktivitätsdiagramm Klassifikation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/activity_eval.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Aktivitätsdiagramm Extraktion
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/activity_eval.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Aktivitätsdiagramm Evaluation
 \end_layout
 
 \end_inset
@@ -424,7 +958,7 @@ endinput
 
 \end_inset
 
-
+ 
 \begin_inset Note Note
 status open
 

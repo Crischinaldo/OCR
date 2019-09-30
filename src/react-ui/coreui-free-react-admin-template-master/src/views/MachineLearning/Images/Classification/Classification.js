@@ -1,15 +1,22 @@
+// @author: ct
+
+// imports
 import React, { Component } from 'react'
 import {Media, Card, CardBody, CardHeader, Spinner} from "reactstrap";
-import doc_analysis from '../../assets/img/icons/doc_analysis.png'
-import Upload from '../Document/Images/Upload.js'
+import doc_analysis from '../../../../assets/img/icons/doc_analysis.png'
+import Upload from '../../../Document/Images/Upload.js'
 import Dropzone from 'react-dropzone'
 import axios from "axios";
 import Prediction from './Prediction'
 
-
+// Renders elements for classifying an image. Uploading an image creates
+// a component instance of the child component "./Prediction". "./Prediction"
+// in turn, renders its child-component "./Extraction".
 class Classification extends Component {
   constructor(props) {
     super(props);
+
+    // Init state with mostly prediction based variables for pass as properties to "./Prediction"
     this.state = {
       accuracy: null,
       fileName: null,
@@ -24,7 +31,7 @@ class Classification extends Component {
 
    onDrop  = async (files) => {
     console.log(files[0]);
-    const API = "http://127.0.0.1:8090/machine-learning/classification";
+    const API = "http://127.0.0.1:8090/classification";
     let formData = new FormData();
     try {
         for (const file of files) {
@@ -39,9 +46,9 @@ class Classification extends Component {
           });
 
           const buffer = Buffer.from(fileContent.split(',')[1], 'base64');
-          const hexStr = buffer.toString('hex');
+          const b64Str = buffer.toString('base64');
 
-          formData.append('file', encodeURI(hexStr));
+          formData.append('file', encodeURI(b64Str));
           formData.append('name', file.name);
           this.state.fileIsPDF
             ? formData.append('type', 'pdf')

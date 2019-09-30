@@ -2,11 +2,11 @@
 Default, home route
 """
 
-from flask import Blueprint
+from flask import Blueprint, jsonify
 
 api = Blueprint('/home', __name__)
 
 
-@api.route('/')
+@api.route('/', methods=['GET'])
 def home():
-    return "<h1> Home <h1>"
+    return jsonify({'status': 'running', 'author:': 'ct'})

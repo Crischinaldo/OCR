@@ -18,16 +18,17 @@ class Extraction extends Component {
 
   extractedText = (file) => {
 
+
     const API = "http://127.0.0.1:8090/extraction";
     let formData = new FormData();
     try {
 
       const buffer = Buffer.from(file.split(',')[1], 'base64');
-      const hexStr = buffer.toString('hex');
+      const b64Str = buffer.toString('base64');
       this.props.fileIsPDF
         ? formData.append('type', 'pdf')
         : formData.append('type', 'img');
-      formData.append('file', encodeURI(hexStr));
+      formData.append('file', encodeURI(b64Str));
       formData.append('name', file.name);
     } catch (e) {
       console.log(e);

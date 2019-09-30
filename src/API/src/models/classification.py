@@ -1,12 +1,13 @@
 from keras.models import load_model
 from keras import backend as K
 from service._globals import labels
-from service.helpers import decode_hex_to_img
+from service.helpers import decode_b64_to_img
 import cv2
 import numpy as np
-from models.db.classifications import DBClassification, DBFile, DBEvaluation
+from models.db.classifications import DBClassification, DBImages, DBResult
 from service.util import time_
 import binascii
+
 
 class ClassificationException(Exception):
     """General Exception handling for Classification"""
@@ -40,8 +41,10 @@ class Classification:
 
     def predict_class(self, req):
 
-        decoded_img = decode_hex_to_img(req.get('file'), file_type=req.get('type'))
+        decoded_img = decode_b64_to_img(req.get('file'), file_type=req.get('type'))
 
+        if decoded_img is None:
+            return
         scaled_img = cv2.resize(decoded_img, (32, 32))
         rgb_img = cv2.cvtColor(scaled_img, cv2.COLOR_RGB2BGR)
         image_4d = rgb_img[np.newaxis, ...]
@@ -53,9 +56,12 @@ class Classification:
     #  im = cv2.imread(im)
 
         max_y_prob, pred = self.classify(image_4d)
-        self.db_entry(file=DBFile(hexed_file=binascii.hexlify(scaled_img), name=req.get('name')),
-                      eval_data=DBEvaluation(label=self.labels[pred[0]], accuracy=max_y_prob)
-                      )
+        self.db_entry(result=DBResult(label=self.labels[pred[0]],
+                                      accuracy=max_y_prob,
+                                      img=DBImages(b64string=binascii.hexlify(scaled_img),
+                                                   name=req.get('name'),
+                                                   )))
+
         payload = {
             'result':
                 {
@@ -68,8 +74,7 @@ class Classification:
         return payload
 
     @staticmethod
-    def db_entry(file, eval_data):
-        DBClassification(file=file,
-                         evaldata=eval_data,
+    def db_entry(result):
+        DBClassification(result=result,
                          created_at=time_(),
-                         ).post()
+                         ).create_classification()

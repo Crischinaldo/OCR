@@ -28,6 +28,12 @@
 \usepackage{multicol}
 \usepackage{listings}%to display source code with \begin{1stlisting}... \end{1stlisting}
 \usepackage{color}
+\usepackage[
+  a4paper,
+  textwidth=175mm,
+  textheight=225mm,
+  heightrounded,
+]{geometry}
 \definecolor{lightestyellow}{rgb}{1,1,0.9}
 % takes care of links in pdf documents
 % \usepackage{glossaries} glossary can be generated this way, not recommended for bachelor or master theses
@@ -530,6 +536,27 @@ filename "chapter4.lyx"
 \begin_inset CommandInset include
 LatexCommand input
 filename "chapter5.lyx"
+
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand input
+filename "chapter6.lyx"
+
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand input
+filename "chapter7.lyx"
+
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand input
+filename "chapter8.lyx"
 
 \end_inset
 

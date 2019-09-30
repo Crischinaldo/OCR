@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Classification = React.lazy(() => import('./views/MachineLearning/Classification'));
-const Extraction = React.lazy(() => import('./views/MachineLearning/Extraction'));
-const RestApi = React.lazy(() => import('./views/Documentation/RestApi'));
+const Classification = React.lazy(() => import('./views/MachineLearning/Images/Classification/Classification'));
+const Extraction = React.lazy(() => import('./views/MachineLearning/Images/Extraction/Extraction'));
+const RestApi = React.lazy(() => import('./views/Documentation/REST/RestApi'));
 const Dashboard = React.lazy(() => import('./views/Dashboard'));
 
 const routes = [

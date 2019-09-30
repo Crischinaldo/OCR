@@ -98,8 +98,18 @@ status open
 
 
 \backslash
-chapter{Prinzip eines Neuronalen Netzwerkes}
+chapter{Grundlagen}
 \end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "chap_basics"
 
 \end_inset
 
@@ -107,13 +117,209 @@ chapter{Prinzip eines Neuronalen Netzwerkes}
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
-name "chap_principle"
+Die Lösungsansätze im Automatisierungskontext setzen Kenntnisse über das
+ vorhandene System und Techniken im Bereich des Machine Learning vorraus.
+\end_layout
+
+\begin_layout Section
+Systembeschreibung
+\end_layout
+
+\begin_layout Standard
+Grundlegend stellt das System eine Schnittstelle zwischen Versicherungsunternehm
+en und Logististikunternehmen dar.
+ Es existiert als Webanwendung unter einer Domäne und setzt eine Registration
+ des Kunden vorraus, um es zu gebrauchen.
+ Benutzer oder Mandanten verfügen im Kontext der Webanwendung über bestimmte
+ administrative Rechte, die mittels einer Rollenvergabe organisiert werden.
+ Auch die Unterscheidung zwischen Versicherer oder Spediteur findet über
+ die Rollenidentifikation statt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Bei Erfassen eines Schadens seitens des Spediteurs wird für ihm eine Schadensakt
+e angelegt.
+ Eine Funktion in der Schadensakte beinhaltet das Hochladen von Nachweisen
+ für die Schadensdokumentation, darunter Rechnungsbelege, die es zu erkennen
+ gilt.
+\end_layout
+
+\begin_layout Subsection
+Technische Details
+\end_layout
+
+\begin_layout Standard
+Die Webanwendung ist mit der Programmiersprache Python 2.7 geschrieben wurden,
+ wobei Schnittstellen bereits mit Python 3 arbeiten.
+ Die Datenübertragung zwischen Frontend und Backend findet über HTTP-Requests
+ statt.
+ TODO: Erklärung HTTP Requests, Abfangen im Backend genauer beschreiben
+\end_layout
+
+\begin_layout Section
+Künstliche Intelligenz
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand cite
+key "AI_SR_PN"
+literal "false"
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Machine Learning
+\end_layout
+
+\begin_layout Standard
+Machine Learning beruht auf den Gebiet der Mustererkennung, die sich mit
+ der automatischen Erkennung von Regelmäßigkeiten in Daten unter Verwendung
+ von Algorithmen befasst.
+ Durch das Erkennen von Regelmäßigkeiten werden Maßnahmen zur Klassifierung
+ der Daten in verschiedene Kategorien ergriffen.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ML_CB"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Machine Learning ist die Wissenschaft Computer so zu programmieren, sodass
+ sie in der Lage sind von Daten zu lernen und ist bereits eine weiterforschte
+ Technologie, die Verwendung in hochtechnologischen Produkten findet.
+ Sie ist veranwortlich für die Realiserung von unter anderem die Spracherkennung
+ in Smartphones, das Empfehlen von Videos auf Videoportale und das Ranking
+ von Suchergebnissen im Internet-Suchmaschinen.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ML_AG"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Spamfilter
+\end_layout
+
+\begin_layout Standard
+Eine der ersten populärsten Anwendungsfälle von Machine Learning ist der
+ Filter um Spam-Mails zu erkennen.
+ Der Spamfilter ist dazu in der Lage seriösen Mails von Spam-Mails zu unterschei
+den und als solche zu kennzeichnen.
+ Eine dementsprechende Intelligenz setzt voraus, dass der Software beigebracht
+ werden muss wie es eine Spam-Mail als solche erkennt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Spam-Mails weisen Regelmäßigkeiten auf, die sie von seriösen Mails unterscheiden.
+ Ein ausgelegter Filter überprüft unter anderem auf Regelmäßigkeiten wie
+ das Fehlen der E-Mail-Adresse im 
+\emph on
+An: Feld
+\emph default
+ oder
+\emph on
+ Cc: Feld
+\emph default
+, invalide Angaben und auf eine Verdächtige ID der Nachricht.
+ Ein sehr prägnantes Merkmale einer Spammail ist der Inhalt der Nachricht.
+ Wörter wie 
+\emph on
+kostenlos, schnelles Geld, reich werden, risikofrei
+\emph default
+ und 
+\emph on
+hier klicken
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "SM_MS"
+literal "false"
+
+\end_inset
+
+ sind Indize dafür, dass es sich um eine Spam-Mail handelt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Damit ein intelligenter Filter in der Lage ist Spam-Mails zu erkennen, muss
+ er die korrespondierenden Regelmäßigkeiten kennen.
+ Das notwendige Wissen eignet sich die Software über ein Verfahren im Maschinell
+en Lernen an: Es wird eine Vielzahl von Daten benötigt, die zum Trainieren
+ der Software dient, damit sie Charakteristiken von Spam-Mails erkennen
+ kann.
+ Dieser Datensatz nennt sich 
+\emph on
+Trainingssatz 
+\emph default
+und wird zum Einstellen von Parametern eines adaptiven Modells benötigt.
+ Im Fall desSpamfilters gibt es zwei Zielmerkmale:
+\end_layout
+
+\begin_layout Enumerate
+True: Es handelt sich um eine Spam-Mail
+\end_layout
+
+\begin_layout Enumerate
+False: Es handelt sich um keine Spam-Mail
+\end_layout
+
+\begin_layout Standard
+Das Modell adaptiert Erkennungsmuster anhand von den Trainingssatz und kann
+ bei neuen Daten anhand der Charakteristiken das Zielmerkmal prognostizieren.
+ Um Trainingsdaten zu generieren wurden Spam-Mails von Benutzern gekennzeichnet,
+ gesammelt und als Trainingsdaten verwendet.
+\end_layout
+
+\begin_layout Subsection
+Überführung auf die Belegerkennung
+\end_layout
+
+\begin_layout Standard
+Es soll eine Bilderkennung auf die Hochgeladenen Nachweise praktiziert werden,
+ wobei Rechnungsbelege anhand ihrer Datenmuster zu erkennen sind.
 \end_layout
 
 \begin_layout Section
@@ -790,6 +996,59 @@ literal "false"
 
 \end_layout
 
+\begin_layout Section
+Bilderkennung
+\end_layout
+
+\begin_layout Section
+Daten
+\end_layout
+
+\begin_layout Standard
+Daten existieren als Pixelmatritzen in Form von Bildern.
+ Beim Füttern des Neuronales Netzes wird die Matrix in einen Vektor umgewandelnd
+, also von einem 2d-array zu einem 1d-array.
+ Jedes Pixel wird jeweils ein Neuron in der Eingabeschicht zugewiesen.
+ bei einem 28x28 Bild müssten dafür 784 Neuronen in der Eingabeschicht exisitier
+en.
+\end_layout
+
+\begin_layout Standard
+Ein Neuron repräsentiert den Graustufenwert vom Entsprechenden Pixel eines
+ Bildes.
+ 0 = dunkel, 1 = hell.
+\end_layout
+
+\begin_layout Standard
+Es existieren soviele Neuronen in der Ausgabeschicht, wie es zuweisbare
+ Klassen gibt.
+ Die Aktivierung in den Neuronen in der Ausgabeschicht sagt aus, wie hoch
+ das Eingabebild mit der korrespondierenden Klasse übereintrifft.
+\end_layout
+
+\begin_layout Standard
+Spärliche Daten: Die Daten enthalten viele Nullen in den Daten.
+\end_layout
+
+\begin_layout Standard
+Dichte Daten: Viele Werte in den daten sind Nicht Null
+\end_layout
+
+\begin_layout Section
+Klassen
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DL_MS_RS"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset ERT
 status collapsed
@@ -803,14 +1062,14 @@ endinput
 
 \end_inset
 
-
+ 
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "./bib/thesis"
+bibfiles "bib/thesis"
 
 \end_inset
 

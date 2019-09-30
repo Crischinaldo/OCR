@@ -1,6 +1,6 @@
 import { Card, Button, CardBody, CardHeader, CardImg, Col, Row } from "reactstrap";
 import React, { Component } from 'react'
-import Extraction from './Extraction'
+import Extraction from '../Extraction/Extraction'
 import { Document, Page , pdfjs } from 'react-pdf';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 

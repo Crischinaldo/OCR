@@ -1,5 +1,5 @@
 import pytesseract
-from service.helpers import decode_hex_to_img
+from service.helpers import decode_b64_to_img
 from service.preprocessing import convert_grayscale, binarize_img
 import re
 import cv2
@@ -24,7 +24,9 @@ class TextExtractor:
 
     def extract(self, req):
         extraction = {}
-        decoded_img = decode_hex_to_img(req.get('file'), req.get('type'))
+        decoded_img = decode_b64_to_img(req.get('file'), req.get('type'))
+        if not decoded_img:
+            return
         grayscaled_img = convert_grayscale(decoded_img)
 
         extracted_text = self.extractor.image_to_string(grayscaled_img)

@@ -1,0 +1,1126 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\options bibliography=totoc,listof=totoc,BCOR=5mm,DIV=12
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding iso8859-1
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref section
+\pdf_pdfusetitle false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine biblatex
+\cite_engine_type authoryear
+\biblio_style plainnat
+\biblio_options backend=biber
+\biblatex_bibstyle alphabetic
+\biblatex_citestyle alphabetic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+chapter{Entwicklung des Servers}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "chap_architecture_server"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dieses Kapitel befasst sich mit dem technischen Entwurf der Software.
+ Zur Umsetzung der Anwendung wurden Bibiliotheken und Frameworks verwendet,
+ welche im Anhang B aufgelistet und beschrieben sind.
+\end_layout
+
+\begin_layout Section
+Architekturentwurf
+\end_layout
+
+\begin_layout Standard
+In Diesen Unterkapitel wird die Architektur des Servers beschrieben und
+ visualisiert.
+\end_layout
+
+\begin_layout Subsection
+REST-Schnittstelle
+\end_layout
+
+\begin_layout Standard
+Der Begriff REST steht für 
+\emph on
+Representional State Transfer 
+\emph default
+und ist von Roy Fielding in seiner Dissertation 
+\emph on
+Architectural Styles and the Design of Network-based Software Architectures
+ 
+\emph default
+geprägt wurden
+\begin_inset CommandInset citation
+LatexCommand cite
+key "REST_RF"
+literal "false"
+
+\end_inset
+
+.
+ Die REST-Schnittstelle ist ein weitverbreiteteter Architekturansatz, der
+ dazu verwendet wird um eine Infrastruktur zwischen Client und Server zu
+ etablieren.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die REST-Architektur ermöglicht, dass Ressourcen jeweils über 
+\emph on
+Webservices
+\emph default
+ mit 
+\emph on
+Anfragen
+\emph default
+ (requests) gefordert werden können.
+ Jeder Webservice verügt über eine
+\emph on
+ Uniform Ressource Identifier
+\emph default
+ (URI) und lässt sich damit eindeutig identifizieren.
+ Der Server schickt daraufhin eine 
+\emph on
+Antwort
+\emph default
+ (response), die die geforderten Ressourcen enthält.
+ Da eine REST-Schnittstelle zustandslos ist und der Server keine gespeicherten
+ Daten zurückgreifen kann, müssen bei einer Anfrage alle nötigen Informationen
+ vom Client geliefert werden.
+ Die Clientseitige Anfragen basieren auf dem 
+\emph on
+HTTP/s-Protokoll 
+\emph default
+und verwenden die damit zusammenhängenden 
+\emph on
+Anfragemethoden 
+\emph default
+(request methods), die in der Tabelle 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:HTTP/s-Anfragemethoden"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ aufgeführt sind.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Methode
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Grundsatz
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+GET
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Beschaffung von Informationen über eine Ressource
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+POST
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Erstellen einer Resource
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PUT
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Aktualisieren einer Resource
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+DELETE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Löschen einer Resource
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:HTTP/s-Anfragemethoden"
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+HTTP/s-Anfragemethoden
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Methoden 
+\emph on
+PUT
+\emph default
+ und 
+\emph on
+DELETE
+\emph default
+ werden aus Sicherheitsgründen kaum implementiert und werden in diesen Kontext
+ nicht weiter diskutiert.
+\end_layout
+
+\begin_layout Standard
+Um eine RESTkonforme Schnittstelle zu programmieren, werden die Grundsätze
+ in der Regel eingehalten.
+ Bedingt können Webservices REST-konformalitäten abweichen.
+ Ein Webservice, über dessen Endpunkt ein Token angefordert werden kann,
+ wird als Anfragemethode ausschließlich 
+\emph on
+POST 
+\emph default
+verwenden, obwohl kein schreibender Zugriff erfordernlich ist.
+ Anders wie bei der 
+\emph on
+GET-methode 
+\emph default
+kann das Benutzerpasswort verschlüsselt an den Server übermittelt werden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:REST-Architektur"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ ist dargestellt, wie die Kommunikation zwischen Client und Server verläuft
+ und wie intern der Server die Anfragen behandelt.
+ Zudem ist zu erkennen, dass die REST-Schnittstelle und die Geschäftslogik
+ auf Modullevel voneinander getrennt sind.
+\end_layout
+
+\begin_layout Standard
+Eine Anfrage wird im Server von der REST-Schnittstelle entgegengenommen
+ und an die zuständige Geschäftslogik weitergeleitet.
+ Die Geschäftslogik wickelt den HTTP-Anfragen entsprechend die Datenbankabfragen
+ ab und übermittelt über die REST-Schnittstelle eine Response mit den erwarteten
+ Ressourcen an den Client.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/REST.png
+	scale 70
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:REST-Architektur"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+REST-Architektur
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Architektur verwendet das bewährte MVC-Muster (Modell-View-Controller)
+ zur unterteilung des Systems.
+ Im Kontext stellt das Model die Geschäftslogik und der die Schnittstelle
+ der Controller dar.
+ Beide Komponenten befinden sich in der übergeordneten Server-Komponente.
+ Der in der Client-Komponente befindliche Webbrowser fungiert als Benutzeroberfl
+äche und ist die View des Systems.
+ Gemäß des MVC-Musters kommunizieren View (Webbrowser) und Model (Business
+ Logic) über den Controller (REST-API).
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Durch die Zustandslosigkeit können Webservices einfach skaliert werden,
+ da eine Vielzahl von Requests problemlos auf verschiedene Serverinstanzen
+ verteilt werden können.
+ Durch die Kapselung von Client-und Serverseitigen Logik sind die Systeme
+ als einzelne funktionsfähig.
+ Durch geschicktes mocken der Anfragen und Anworten können Server und Client
+ vollständig unabhängig voneinander entwickelt werden, sodass keine Rücksicht
+ bei der Enwicklung auf die Gegenseite genommen werden muss.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Daten in sowohl den Anfragen und auch Antworten werden in einem spezifiziert
+en Datenformat übermittelt.
+ Hier bietet es sich an die Daten in einem JSON-format (
+\emph on
+JavaScript Object Notation
+\emph default
+) zu transferieren.
+ Das JSON-Format wurde von Douglas Crockford im Jahr 1999 auf der ECMA-262
+ spezifiert
+\begin_inset CommandInset citation
+LatexCommand cite
+key "JSON_DG"
+literal "false"
+
+\end_inset
+
+.
+ im Gegensatz zu XML (
+\emph on
+Extensible Markup Language
+\emph default
+) dynamisch ist und keine Spezifizierung notwendig ist.
+ Zudem ist das ein umgängliches und Sprachenunabhängiges Datenformat, da
+ es nach einer bekannten Datenstruktur aufgebaut ist - Der Schlüssel/Wert-Paare.
+ Diese universelle Datenstruktur wird in jeder modernen Programmiersprache
+ genutzt und ist deswegen einfach zu verarbeiten.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Für die Implementierung der REST-Schnittstelle wird die Programmiersprache
+ Python
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://www.python.org/
+\end_layout
+
+\end_inset
+
+ an.
+ Python wird unternehmensintern verwendet, sodass im weiteren Verlauf die
+ Schnittstelle von anderen Entwickern mit weitergeführt werden können.
+ Das Pythonbezogene Webframework Flask
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://www.flask.palletsprojects.com
+\end_layout
+
+\end_inset
+
+ liefert hilfreiche Module zur Entwicklung einer REST-Schnittstelle und
+ wird verwendet um die zukünftige Architektur des Unternehmens technisch
+ umzusetzen.
+\end_layout
+
+\begin_layout Subsubsection
+Schnittstellenspezifikation
+\end_layout
+
+\begin_layout Standard
+Die Schnittstellenspezifikation ist an das Beschreibungsformat
+\emph on
+ OpenAPI
+\emph default
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://www.openapis.org
+\end_layout
+
+\end_inset
+
+ angelehnt.
+ Sie befindet sich clientseitig auf dem Dashboard und wird später mit 
+\emph on
+Swagger
+\emph default
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://www.swagger.io
+\end_layout
+
+\end_inset
+
+, einer Beschreibungssprache für REST-Schnittstellen, in die unternehmensinterne
+n Schnittstellenbeschreibung überführt.
+ In Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Service_routes"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ befinden sich die ansprechbaren Endpunkte für die zur Verfügung gestellten
+ Ressourcen.
+\end_layout
+
+\begin_layout Standard
+Für eine Einheit der Ressource 
+\emph on
+evaluation 
+\emph default
+wird die entsprechende Adresse nach dem folgenden Muster angesprochen:
+\emph on
+ .../classification/evaluation/{id}.
+ id 
+\emph default
+wird mit der Identifikationsnummer der Evaluation ersetzt, sodass ein Zugriff
+ auf genau die bestimmte Ressource erfolgt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/services.PNG
+	scale 50
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Service_routes"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+REST-Services
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Benutzer, welche die Routen ansprechen wollen, haben durch die Spezifikation
+ eine klare Übersicht.
+ Es wird veranschaulicht welche URI's Ressourcen zur Verfügung stellen und
+ welche Anfragemethode benutzt werden muss.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Jeder Webservice hat eine Definition für die Parameter, die bei der Anfrage
+ tranferiert werden müssen, die möglichen Status-Codes einer Antwort und
+ ein Beispiel für eine gelieferten Ressource bei einem reibungslosen Aufruf
+ des Services.
+\end_layout
+
+\begin_layout Standard
+Die Beschreibung der einzelnen Webservices können clientseitig, wie auf
+ Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: Extractions-Service"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ aufgezeigt, eingesehen werden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ein Nutzer mit der Intention 
+\emph on
+extraction 
+\emph default
+aufzurufen, muss die nötigen Parameter 
+\emph on
+file 
+\emph default
+und 
+\emph on
+file_type 
+\emph default
+als Nutzdaten (
+\emph on
+Payload
+\emph default
+) im JSON-Datenformat an die korrespondierende URI schicken.
+ Beide Parameter sind erforderlich, da der Server die Informationen benötigt
+ um die Anfrage zu bearbeiten und eine Antwort zu schicken.
+ Der Beschreibung von 
+\emph on
+file
+\emph default
+ zufolge muss die Datei in der Hexadezimalnotation vorliegen.
+ Der Typ der Datei kann entweder im PDF-Format oder in Bild-Format vorliegen.
+ Der Client muss also technisch in der Lage sein eine Datei in die entsprechende
+ Hexadezimalnotation zu kodieren und den Dateitypen zu kennen, damit eine
+ für den Server passende Anfrage konstruiert werden kann.
+ Der Server antwortet mit dem Statuscode 
+\emph on
+400 - BAD REQUEST 
+\emph default
+wenn die nötigen Informationen nicht vorhanden sind oder die falsche Anfragemeth
+ode gewählt wurden ist.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/service_extraction.PNG
+	scale 60
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: Extractions-Service"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Beschreibung des Extractions-Services
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Der Client bekommt
+\end_layout
+
+\begin_layout Subsection
+Authentifizierung
+\end_layout
+
+\begin_layout Standard
+Die Authentifierungprozedur wird über einen IAM-Server (
+\emph on
+Identity and Access Management
+\emph default
+) abgewickelt.
+ Das Akronym IAM bezeichnet das Identity and Access Management, welches
+ die Aufgabe der Zugriffssteuerung auf Ressourcen übernimmt.
+\end_layout
+
+\begin_layout Standard
+Um auf die Services zuzugreifen müssen sich Nutzer gegen den jeweiligen
+ Service authentifizieren.
+ Über Services, die der IAM-Server zur Verfügung stellt, können Nutzer erstellt,
+ verwaltet und wieder gelöscht werden.
+ 
+\end_layout
+
+\begin_layout Standard
+Es wird durch den unternehmensinternen IAM-Server ein Anmeldungsservice
+ angesprochen, bei dem für Benutzername und Passwort ein Token angefordert
+ werden kann.
+ Das Dashboard wird als ein geschützter Bereich (
+\emph on
+Realm
+\emph default
+) betrachtet.
+ Der Realm hat zugewiesene Benutzer, sessions dies das
+\end_layout
+
+\begin_layout Standard
+Um die zuvor genannten Services anzusprechen muss der Anfrage ein valider
+ Token in den Header hinzugefügt werden.
+ Der Token hat nur eine bestimmte Gültigkeitsspanne und muss nach Ablauf
+ der Gültigkeit erneut beim IAM-Anmeldungsservice beantragt werden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Aus Komplexitätsgründen ist die Authentifizierung in der jetzigen Implementierun
+g noch nicht berücksichtigt.
+\end_layout
+
+\begin_layout Subsection
+Persistierung
+\end_layout
+
+\begin_layout Standard
+Für die Persistierung der Daten wird eine PostgreSQL
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://www.postgresql.org
+\end_layout
+
+\end_inset
+
+-Datenbank verwendet.
+ PostgresSQL ist perfomant, hat eine fortgeschrittene Datenbanksprache und
+ ist zudem sehr kompatibel mit Python.
+ Python bietet den Datenbank-Driver psycopg2 für PostgreSQL.
+ Psycopg2 hat den Ruf schnell und stabil zu sein.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Aus dem Anwendungsszenario lassen sich folgende Datenbankmodelle ableiten:
+ Klassifikation, Evaluation und Bild.
+ Aus den Entitäten ergibt sich das Entity-Relation-Ship, das in Abbildung
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ERM"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ dargestellt ist.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/ERM.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Entity-Relationship-Modell
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ERM"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Eine Klassifikation wird durch ein Ergebniss evaluiert.
+ Ein Bild stellt eine Erweiterung eines Ergebnisses dar und ist damit einem
+ Ergebniss zugeordnet.
+\end_layout
+
+\begin_layout Subsubsection*
+Objektrelationale Abbildungen
+\end_layout
+
+\begin_layout Standard
+Das Akronym ORM bezeichnet das Object-Relational Mapping, welches eine Technik
+ beschreibt Objekte in eine relationale Datenbank abzulegen.
+\end_layout
+
+\begin_layout Standard
+Basierend auf dem ER-Modell werden in der Implementierung Objektrelationale
+ Abbildungen erzeugt.
+ Mithilfe vom ORM-Framework SQLAlchemy
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://www.sqlalchemy.org/
+\end_layout
+
+\end_inset
+
+ werden benutzerdefinierte Python-Klassen erzeugt, die in einer relationalen
+ Datenbank als Zeilen in den korrespondierenden Tabellen abgebildet werden.
+ Die Kardinalitäten werden als Attribute in den Klassenobjekten.
+ ORM synchronisiert die Zustände zwischen den Objekten und den zugehörigen
+ Tabellen.
+ Es werden Datenbankabfragen in Bezug auf die erzeugten Python-Klassen und
+ deren Beziehung untereinander programmatisch ausgedrückt.
+ Die zuständige Programmierung befindet sich in der Geschäftslogik.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die oben dargestellten Entitäten und deren Beziehungen untereinander werden
+ in abstrahierter Form mit Python-Objekten deren Attribute definiert.
+ Abhängig von Definition der Objekte und deren Beziehungen zueinander, können
+ Datenbankabfragen mit der SQLAlchemy-Ausdruckssprache geschrieben werden.
+ Sollte ein Zugriff auf die Datenbank erfolgen verändert der Ausdruck den
+ Zustand der Datenbank korrespondierend zu dem benutzerdefinierten Statement.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Das Klassenmodell, welches in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:class_dia"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ veranschaulicht ist, wird aus dem Entity-Relationship-Modell abgeleitet
+ und ist im Stil vom Objektorientierten Programmierparadigma in Python zu
+ überführen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/class_diagram.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Klassendiagramm
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:class_dia"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Zusätzlich sind die Primärschlüssel der Eltern-Entitäten zu den jeweiligen
+ Kind-Entitäten als Fremdschlüssel hinzugefügt.
+ Das Objekt DBClassification enthält zudem eine Methode, welche die Logik
+ enthält eine Klassifizierung zu erzeugen und diese zusammen mit den abhängigen
+ Entitäten in die Datenbank abzulegen.
+\end_layout
+
+\begin_layout Section
+Architekturenentwurf des Clients
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+endinput
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "./bib/thesis"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

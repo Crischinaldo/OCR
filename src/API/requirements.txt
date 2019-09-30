@@ -11,3 +11,4 @@ opencv-python
 pytesseract
 numpy
 pdf2image
+jsonschema
