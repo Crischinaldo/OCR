@@ -285,20 +285,8 @@ literal "false"
  Biologisch gesehen besteht das Gehirn aus Neuronen die untereinander verbunden
  sind und durch elektrische Signale kommunizieren.
  Gesendete Signale werden durch die Synapse, der Kopplungsstelle des Neurons
- empfangen und über dessen Axon an Dendriten (Leitungen) weitergereicht.
- Die Dendriten haben die Aufgabe die Signale an die Synapsen, die sich in
- Form einer Zelle am Neuron befindet, weiterzuleiten.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Das Gehirn eines Menschen besteht aus einem Netzwerk mit einer großen Summe
+ empfangen und über dessen Axon an Dendriten, einer weitergeleitet.
+ Das Gehirn eines Menschen besteht aus einem Netzwerk mit einer großen Summe
  an Neuronen, die wie ein binäres Schaltelement zwei Zustände annehmen kann
  - aktiv (1) oder inaktiv (0).
  Ein Neuron arbeitet wie ein Prozessor - es nimmt Eingaben und generiert
@@ -314,11 +302,11 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-Der Aktivitätszustand dieser Neuronen hängt von den Impulsen ausgehend vorherlie
-genden Neuronen ab, da diese einen direkten Einfluss auf die Synapsen haben.
- Es zwei Arten von Synapsen unterschieden werden - erregend und hemmend.
+Der Aktivitätszustand dieser Neuronen hängt von den Impulsen von Synapsen
+ ausgehend vorherliegenden Neuronen ab, wobei zwei Arten von Synapsen unterschie
+den werden - erregend und hemmend.
  Unter anbetracht von den Signalen, die das Neuron von den Synapsen erhält,
- wird dieses aktiv, wenn ein gewisser Schwellwert erreicht wird.
+ wird dieses nur aktiv, wenn ein gewisser Schwellwert erreicht wird.
 \end_layout
 
 \begin_layout Standard
@@ -329,11 +317,8 @@ genden Neuronen ab, da diese einen direkten Einfluss auf die Synapsen haben.
 \end_layout
 
 \begin_layout Standard
-Die hemmenden oder verstärkenden Wirkung der Synapsen, die sich im Laufe
- der Zeit ändern kann, charakterisieren mitunter das Lernverhalten.
- Das Verhalten der Synapsen wird im Bereich der Informatik durch Multiplikation
- mit positiven oder negativen Zahlen übernommen.
- Sie sind die Grundbausteine eines neuronalen Netzes.
+Das Gehirn lässt sich in ein Schichtenmodell abstrahieren, dessen Schichten
+ durch die darinliegenden Neuronen miteinander verbunden sind.
 \end_layout
 
 \begin_layout Standard

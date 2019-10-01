@@ -98,7 +98,7 @@ status open
 
 
 \backslash
-chapter{Entwicklung des Servers}
+chapter{Entwicklung des Klassifikators}
 \end_layout
 
 \end_inset
@@ -109,7 +109,7 @@ chapter{Entwicklung des Servers}
 \begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "chap_architecture_server"
+name "chap_architecture_classificator"
 
 \end_inset
 
@@ -117,977 +117,638 @@ name "chap_architecture_server"
 \end_layout
 
 \begin_layout Standard
-Dieses Kapitel befasst sich mit dem technischen Entwurf der Software.
- Zur Umsetzung der Anwendung wurden Bibiliotheken und Frameworks verwendet,
- welche im Anhang B aufgelistet und beschrieben sind.
+Dieses Kapitel befasst sich mit der Entwicklung des Klassifikators und ist
+ in den zwei Kapiteln Architektur und Implementierung gegliedert.
 \end_layout
 
 \begin_layout Section
-Architekturentwurf
+Technologien
 \end_layout
 
 \begin_layout Standard
-In Diesen Unterkapitel wird die Architektur des Servers beschrieben und
- visualisiert.
+Jupyter Notebook, Pandas, Keras, Tensorflow...
 \end_layout
 
 \begin_layout Subsection
-REST-Schnittstelle
+Jupyter Notebook
 \end_layout
 
 \begin_layout Standard
-Der Begriff REST steht für 
-\emph on
-Representional State Transfer 
-\emph default
-und ist von Roy Fielding in seiner Dissertation 
-\emph on
-Architectural Styles and the Design of Network-based Software Architectures
- 
-\emph default
-geprägt wurden
+Jupyter Notebook bietet die Möglichkeit in einer interaktiven Umgebung Programmc
+ode parallel durchlaufen zu können.
+ Es können Ergebisse als Live-Berechnung oder im festen Format an die Zellen
+ weitergereicht werden.
+ Dieser Vorteil bietet eine Abschnittsähnliche Ausführung von Code in den
+ jeweiligen Zellen.
+ Notebooks-Dateien enthalten komplette Aufzeichnungen aller Berechnungen
+ und können anderen Jupiter-Nutzern zur Verfügung gestellt werden.
+ Jupiter eignet sich sehr gut für das Visualisieren von Berechnungen im
+ Data Science Bereich.
+\end_layout
+
+\begin_layout Subsection
+Pandas
+\end_layout
+
+\begin_layout Standard
+Das Dataframe von Pandas ist eine Datenstruktur welche auf dem Schlüssel-Wert-Mu
+ster aufgebaut ist.
+ Sie tabellarisiert Schlüssel und die jeweiligen Werte in einem Dataframe,
+ welches sich gut zum präsentierten von den beinhalteten Daten eignet.
+\end_layout
+
+\begin_layout Subsection
+Tensorflow
+\end_layout
+
+\begin_layout Standard
+Tensorflow ist eine plattformunabhängige Bibliothek, die sich für Aufgaben
+ rund um maschinellen lernes einsetzen lässt und auf die Optimierung und
+ das Training neuronaler Netze ausgelegt.
+ Sie verwendet Datenflussdiagramme um Berechnungen zu visualisieren
 \begin_inset CommandInset citation
 LatexCommand cite
-key "REST_RF"
+key "A16"
 literal "false"
 
 \end_inset
 
 .
- Die REST-Schnittstelle ist ein weitverbreiteteter Architekturansatz, der
- dazu verwendet wird um eine Infrastruktur zwischen Client und Server zu
- etablieren.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Die REST-Architektur ermöglicht, dass Ressourcen jeweils über 
-\emph on
-Webservices
-\emph default
- mit 
-\emph on
-Anfragen
-\emph default
- (requests) gefordert werden können.
- Jeder Webservice verügt über eine
-\emph on
- Uniform Ressource Identifier
-\emph default
- (URI) und lässt sich damit eindeutig identifizieren.
- Der Server schickt daraufhin eine 
-\emph on
-Antwort
-\emph default
- (response), die die geforderten Ressourcen enthält.
- Da eine REST-Schnittstelle zustandslos ist und der Server keine gespeicherten
- Daten zurückgreifen kann, müssen bei einer Anfrage alle nötigen Informationen
- vom Client geliefert werden.
- Die Clientseitige Anfragen basieren auf dem 
-\emph on
-HTTP/s-Protokoll 
-\emph default
-und verwenden die damit zusammenhängenden 
-\emph on
-Anfragemethoden 
-\emph default
-(request methods), die in der Tabelle 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:HTTP/s-Anfragemethoden"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- aufgeführt sind.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float table
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Methode
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Grundsatz
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-GET
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Beschaffung von Informationen über eine Ressource
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-POST
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Erstellen einer Resource
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-PUT
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Aktualisieren einer Resource
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-DELETE
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Löschen einer Resource
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:HTTP/s-Anfragemethoden"
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-HTTP/s-Anfragemethoden
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Die Methoden 
-\emph on
-PUT
-\emph default
- und 
-\emph on
-DELETE
-\emph default
- werden aus Sicherheitsgründen kaum implementiert und werden in diesen Kontext
- nicht weiter diskutiert.
-\end_layout
-
-\begin_layout Standard
-Um eine RESTkonforme Schnittstelle zu programmieren, werden die Grundsätze
- in der Regel eingehalten.
- Bedingt können Webservices REST-konformalitäten abweichen.
- Ein Webservice, über dessen Endpunkt ein Token angefordert werden kann,
- wird als Anfragemethode ausschließlich 
-\emph on
-POST 
-\emph default
-verwenden, obwohl kein schreibender Zugriff erfordernlich ist.
- Anders wie bei der 
-\emph on
-GET-methode 
-\emph default
-kann das Benutzerpasswort verschlüsselt an den Server übermittelt werden.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-In Abbildung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:REST-Architektur"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- ist dargestellt, wie die Kommunikation zwischen Client und Server verläuft
- und wie intern der Server die Anfragen behandelt.
- Zudem ist zu erkennen, dass die REST-Schnittstelle und die Geschäftslogik
- auf Modullevel voneinander getrennt sind.
-\end_layout
-
-\begin_layout Standard
-Eine Anfrage wird im Server von der REST-Schnittstelle entgegengenommen
- und an die zuständige Geschäftslogik weitergeleitet.
- Die Geschäftslogik wickelt den HTTP-Anfragen entsprechend die Datenbankabfragen
- ab und übermittelt über die REST-Schnittstelle eine Response mit den erwarteten
- Ressourcen an den Client.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename images/REST.png
-	scale 70
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:REST-Architektur"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-REST-Architektur
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Die Architektur verwendet das bewährte MVC-Muster (Modell-View-Controller)
- zur unterteilung des Systems.
- Im Kontext stellt das Model die Geschäftslogik und der die Schnittstelle
- der Controller dar.
- Beide Komponenten befinden sich in der übergeordneten Server-Komponente.
- Der in der Client-Komponente befindliche Webbrowser fungiert als Benutzeroberfl
-äche und ist die View des Systems.
- Gemäß des MVC-Musters kommunizieren View (Webbrowser) und Model (Business
- Logic) über den Controller (REST-API).
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Durch die Zustandslosigkeit können Webservices einfach skaliert werden,
- da eine Vielzahl von Requests problemlos auf verschiedene Serverinstanzen
- verteilt werden können.
- Durch die Kapselung von Client-und Serverseitigen Logik sind die Systeme
- als einzelne funktionsfähig.
- Durch geschicktes mocken der Anfragen und Anworten können Server und Client
- vollständig unabhängig voneinander entwickelt werden, sodass keine Rücksicht
- bei der Enwicklung auf die Gegenseite genommen werden muss.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Die Daten in sowohl den Anfragen und auch Antworten werden in einem spezifiziert
-en Datenformat übermittelt.
- Hier bietet es sich an die Daten in einem JSON-format (
-\emph on
-JavaScript Object Notation
-\emph default
-) zu transferieren.
- Das JSON-Format wurde von Douglas Crockford im Jahr 1999 auf der ECMA-262
- spezifiert
-\begin_inset CommandInset citation
-LatexCommand cite
-key "JSON_DG"
-literal "false"
-
-\end_inset
-
-.
- im Gegensatz zu XML (
-\emph on
-Extensible Markup Language
-\emph default
-) dynamisch ist und keine Spezifizierung notwendig ist.
- Zudem ist das ein umgängliches und Sprachenunabhängiges Datenformat, da
- es nach einer bekannten Datenstruktur aufgebaut ist - Der Schlüssel/Wert-Paare.
- Diese universelle Datenstruktur wird in jeder modernen Programmiersprache
- genutzt und ist deswegen einfach zu verarbeiten.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Für die Implementierung der REST-Schnittstelle wird die Programmiersprache
- Python
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-https://www.python.org/
-\end_layout
-
-\end_inset
-
- an.
- Python wird unternehmensintern verwendet, sodass im weiteren Verlauf die
- Schnittstelle von anderen Entwickern mit weitergeführt werden können.
- Das Pythonbezogene Webframework Flask
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-http://www.flask.palletsprojects.com
-\end_layout
-
-\end_inset
-
- liefert hilfreiche Module zur Entwicklung einer REST-Schnittstelle und
- wird verwendet um die zukünftige Architektur des Unternehmens technisch
- umzusetzen.
-\end_layout
-
-\begin_layout Subsubsection
-Schnittstellenspezifikation
-\end_layout
-
-\begin_layout Standard
-Die Schnittstellenspezifikation ist an das Beschreibungsformat
-\emph on
- OpenAPI
-\emph default
-
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-https://www.openapis.org
-\end_layout
-
-\end_inset
-
- angelehnt.
- Sie befindet sich clientseitig auf dem Dashboard und wird später mit 
-\emph on
-Swagger
-\emph default
-
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-https://www.swagger.io
-\end_layout
-
-\end_inset
-
-, einer Beschreibungssprache für REST-Schnittstellen, in die unternehmensinterne
-n Schnittstellenbeschreibung überführt.
- In Abbildung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Service_routes"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- befinden sich die ansprechbaren Endpunkte für die zur Verfügung gestellten
- Ressourcen.
-\end_layout
-
-\begin_layout Standard
-Für eine Einheit der Ressource 
-\emph on
-evaluation 
-\emph default
-wird die entsprechende Adresse nach dem folgenden Muster angesprochen:
-\emph on
- .../classification/evaluation/{id}.
- id 
-\emph default
-wird mit der Identifikationsnummer der Evaluation ersetzt, sodass ein Zugriff
- auf genau die bestimmte Ressource erfolgt.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename images/services.PNG
-	scale 50
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Service_routes"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-REST-Services
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-Benutzer, welche die Routen ansprechen wollen, haben durch die Spezifikation
- eine klare Übersicht.
- Es wird veranschaulicht welche URI's Ressourcen zur Verfügung stellen und
- welche Anfragemethode benutzt werden muss.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Jeder Webservice hat eine Definition für die Parameter, die bei der Anfrage
- tranferiert werden müssen, die möglichen Status-Codes einer Antwort und
- ein Beispiel für eine gelieferten Ressource bei einem reibungslosen Aufruf
- des Services.
-\end_layout
-
-\begin_layout Standard
-Die Beschreibung der einzelnen Webservices können clientseitig, wie auf
- Abbildung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig: Extractions-Service"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- aufgezeigt, eingesehen werden.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Ein Nutzer mit der Intention 
-\emph on
-extraction 
-\emph default
-aufzurufen, muss die nötigen Parameter 
-\emph on
-file 
-\emph default
-und 
-\emph on
-file_type 
-\emph default
-als Nutzdaten (
-\emph on
-Payload
-\emph default
-) im JSON-Datenformat an die korrespondierende URI schicken.
- Beide Parameter sind erforderlich, da der Server die Informationen benötigt
- um die Anfrage zu bearbeiten und eine Antwort zu schicken.
- Der Beschreibung von 
-\emph on
-file
-\emph default
- zufolge muss die Datei in der Hexadezimalnotation vorliegen.
- Der Typ der Datei kann entweder im PDF-Format oder in Bild-Format vorliegen.
- Der Client muss also technisch in der Lage sein eine Datei in die entsprechende
- Hexadezimalnotation zu kodieren und den Dateitypen zu kennen, damit eine
- für den Server passende Anfrage konstruiert werden kann.
- Der Server antwortet mit dem Statuscode 
-\emph on
-400 - BAD REQUEST 
-\emph default
-wenn die nötigen Informationen nicht vorhanden sind oder die falsche Anfragemeth
-ode gewählt wurden ist.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename images/service_extraction.PNG
-	scale 60
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: Extractions-Service"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Beschreibung des Extractions-Services
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Der Client bekommt
+ Es werden Knoten eines Datenflussdiagrammes auf mehreren Computern zu einem
+ Cluster zusammengefasst.
+ Auf einem Computer werden sie über mehrere Computergeräten einschließlich
+ Multicore-CPU's (Computional Processing Units), GPU's (Graphical processing
+ Units) als TPU's (Tensor Processing Units) zusammengefasst.
+ Der Vorteil dieser Architektur bietet eine performanzbringende Einflußnahme
+ aller TPU's auf die prozesslastigen Lernalgorithmen, die für das Trainieren
+ eines neuronalen Netzwerkes angewant werden.
 \end_layout
 
 \begin_layout Subsection
-Authentifizierung
+Keras
 \end_layout
 
 \begin_layout Standard
-Die Authentifierungprozedur wird über einen IAM-Server (
-\emph on
-Identity and Access Management
-\emph default
-) abgewickelt.
- Das Akronym IAM bezeichnet das Identity and Access Management, welches
- die Aufgabe der Zugriffssteuerung auf Ressourcen übernimmt.
-\end_layout
-
-\begin_layout Standard
-Um auf die Services zuzugreifen müssen sich Nutzer gegen den jeweiligen
- Service authentifizieren.
- Über Services, die der IAM-Server zur Verfügung stellt, können Nutzer erstellt,
- verwaltet und wieder gelöscht werden.
- 
-\end_layout
-
-\begin_layout Standard
-Es wird durch den unternehmensinternen IAM-Server ein Anmeldungsservice
- angesprochen, bei dem für Benutzername und Passwort ein Token angefordert
- werden kann.
- Das Dashboard wird als ein geschützter Bereich (
-\emph on
-Realm
-\emph default
-) betrachtet.
- Der Realm hat zugewiesene Benutzer, sessions dies das
-\end_layout
-
-\begin_layout Standard
-Um die zuvor genannten Services anzusprechen muss der Anfrage ein valider
- Token in den Header hinzugefügt werden.
- Der Token hat nur eine bestimmte Gültigkeitsspanne und muss nach Ablauf
- der Gültigkeit erneut beim IAM-Anmeldungsservice beantragt werden.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Aus Komplexitätsgründen ist die Authentifizierung in der jetzigen Implementierun
-g noch nicht berücksichtigt.
-\end_layout
-
-\begin_layout Subsection
-Persistierung
-\end_layout
-
-\begin_layout Standard
-Für die Persistierung der Daten wird eine PostgreSQL
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-https://www.postgresql.org
-\end_layout
-
-\end_inset
-
--Datenbank verwendet.
- PostgresSQL ist perfomant, hat eine fortgeschrittene Datenbanksprache und
- ist zudem sehr kompatibel mit Python.
- Python bietet den Datenbank-Driver psycopg2 für PostgreSQL.
- Psycopg2 hat den Ruf schnell und stabil zu sein.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Aus dem Anwendungsszenario lassen sich folgende Datenbankmodelle ableiten:
- Klassifikation, Evaluation und Bild.
- Aus den Entitäten ergibt sich das Entity-Relation-Ship, das in Abbildung
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:ERM"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- dargestellt ist.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename images/ERM.png
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Entity-Relationship-Modell
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:ERM"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Eine Klassifikation wird durch ein Ergebniss evaluiert.
- Ein Bild stellt eine Erweiterung eines Ergebnisses dar und ist damit einem
- Ergebniss zugeordnet.
-\end_layout
-
-\begin_layout Subsubsection*
-Objektrelationale Abbildungen
-\end_layout
-
-\begin_layout Standard
-Das Akronym ORM bezeichnet das Object-Relational Mapping, welches eine Technik
- beschreibt Objekte in eine relationale Datenbank abzulegen.
-\end_layout
-
-\begin_layout Standard
-Basierend auf dem ER-Modell werden in der Implementierung Objektrelationale
- Abbildungen erzeugt.
- Mithilfe vom ORM-Framework SQLAlchemy
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-https://www.sqlalchemy.org/
-\end_layout
-
-\end_inset
-
- werden benutzerdefinierte Python-Klassen erzeugt, die in einer relationalen
- Datenbank als Zeilen in den korrespondierenden Tabellen abgebildet werden.
- Die Kardinalitäten werden als Attribute in den Klassenobjekten.
- ORM synchronisiert die Zustände zwischen den Objekten und den zugehörigen
- Tabellen.
- Es werden Datenbankabfragen in Bezug auf die erzeugten Python-Klassen und
- deren Beziehung untereinander programmatisch ausgedrückt.
- Die zuständige Programmierung befindet sich in der Geschäftslogik.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Die oben dargestellten Entitäten und deren Beziehungen untereinander werden
- in abstrahierter Form mit Python-Objekten deren Attribute definiert.
- Abhängig von Definition der Objekte und deren Beziehungen zueinander, können
- Datenbankabfragen mit der SQLAlchemy-Ausdruckssprache geschrieben werden.
- Sollte ein Zugriff auf die Datenbank erfolgen verändert der Ausdruck den
- Zustand der Datenbank korrespondierend zu dem benutzerdefinierten Statement.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Das Klassenmodell, welches in Abbildung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:class_dia"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- veranschaulicht ist, wird aus dem Entity-Relationship-Modell abgeleitet
- und ist im Stil vom Objektorientierten Programmierparadigma in Python zu
- überführen.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename images/class_diagram.png
-	scale 60
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Klassendiagramm
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:class_dia"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Zusätzlich sind die Primärschlüssel der Eltern-Entitäten zu den jeweiligen
- Kind-Entitäten als Fremdschlüssel hinzugefügt.
- Das Objekt DBClassification enthält zudem eine Methode, welche die Logik
- enthält eine Klassifizierung zu erzeugen und diese zusammen mit den abhängigen
- Entitäten in die Datenbank abzulegen.
+Keras ist eine Bibliothek die eine Abstraktionsebene auf Tensorflow darbietet.
 \end_layout
 
 \begin_layout Section
-Architekturenentwurf des Clients
+Architekturentwurf des Netzes
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+model = Sequential() 
+\end_layout
+
+\begin_layout Plain Layout
+
+model.add(Conv2D(32, (3, 3), padding='same', input_shape=(32,32,3))) 
+\end_layout
+
+\begin_layout Plain Layout
+
+model.add(Activation('relu')) model.add(Conv2D(32, (3, 3))) 
+\end_layout
+
+\begin_layout Plain Layout
+
+model.add(Activation('relu')) model.add(MaxPooling2D(pool_size=(2, 2))) 
+\end_layout
+
+\begin_layout Plain Layout
+
+model.add(Dropout(0.25))
+\end_layout
+
+\begin_layout Plain Layout
+
+model.add(Conv2D(64, (3, 3), padding='same')) model.add(Activation('relu'))
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+model.add(Conv2D(64, (3, 3))) model.add(Activation('relu')) 
+\end_layout
+
+\begin_layout Plain Layout
+
+model.add(MaxPooling2D(pool_size=(2, 2))) model.add(Dropout(0.25))
+\end_layout
+
+\begin_layout Plain Layout
+
+model.add(Flatten()) model.add(Dense(512)) model.add(Activation('relu')) 
+\end_layout
+
+\begin_layout Plain Layout
+
+model.add(Dropout(0.5)) model.add(Dense(12, activation='softmax'))
+\end_layout
+
+\begin_layout Plain Layout
+
+model.compile(optimizers.rmsprop(lr=0.0001) , loss="categorical_crossentropy",
+ metrics=["accuracy"])                
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+STEP_SIZE_TRAIN = train_generator.n
+\end_layout
+
+\begin_layout Plain Layout
+
+STEP_SIZE_VALID = valid_generator.n
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+valid_generator.batch_size model.fit_generator(generator=train_generator,
+\end_layout
+
+\begin_layout Plain Layout
+
+                                               steps_per_epoch=STEP_SIZE_TRAIN,
+                            
+\end_layout
+
+\begin_layout Plain Layout
+
+                                               validation_data=valid_generator,
+                                   
+\end_layout
+
+\begin_layout Plain Layout
+
+                                               validation_steps=STEP_SIZE_VALID,
+                          
+\end_layout
+
+\begin_layout Plain Layout
+
+                                               epochs=40)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Erstellung des Models
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In diesem Unterkapitel wird die Architektur des Klassifikators behandelt.
+\end_layout
+
+\begin_layout Section
+Trainingsdaten
+\end_layout
+
+\begin_layout Standard
+Die Bilder, mit dem das Faltende neuronale Netz trainiert werden soll, befinden
+ sich auf einem Unternehmensinternen Server.
+ Durch einen SSH-Tunnel wurden die nach Hochladedatum sortierten Bilder
+ im PDF-Format auf den den lokalen Rechner innerhalb des Unternehmens runtergela
+den.
+ Durch ein Skriptkommando, welches rekursiv durch die Verzeichnisse läuft,
+ wurden die Bilder in JPG-Format konvertiert und in einem Ordner lokalisiert.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Da die Daten weder gelabelt noch für das Training sinngemäß sortiert sind,
+ wurden einige Bilder händisch selektiert und kategorisch nach zwei Charakterist
+iken - Schadensfoto oder Rechnungsbeleg - sortiert.
+ Diese Daten werden jeweils in Trainings-und Testdaten unterteilt, wobei
+ das Verhältnis 80 Prozent zu 20 Prozent gilt.
+\end_layout
+
+\begin_layout Section
+Trainingsphase
+\end_layout
+
+\begin_layout Standard
+Trainings-und Testdaten wurden über Jupyter in einer Pandas-Dataframe-Datenstruk
+tur gemappt.
+ Der Schlüssel 
+\emph on
+id 
+\emph default
+sammelt die Dateipfade der jeweiligen Daten während der Schlüssel 
+\emph on
+label 
+\emph default
+die Klassen der jeweiligen Daten enthält.
+ Ähnlich wie in einer CSV-Datei sind die Werte Zeilenweise gruppiert, sodass
+ eine id dem jeweiligen label zugeordnet ist.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+def data_to_dict(img_dir, ext):
+\end_layout
+
+\begin_layout Plain Layout
+
+         img_dict = defaultdict(list)
+\end_layout
+
+\begin_layout Plain Layout
+
+         labels = []
+\end_layout
+
+\begin_layout Plain Layout
+
+         id_ = 0     
+\end_layout
+
+\begin_layout Plain Layout
+
+         columns = ['id', 'label']     
+\end_layout
+
+\begin_layout Plain Layout
+
+         ext = ext     
+\end_layout
+
+\begin_layout Plain Layout
+
+         for label in glob.glob('{dir}/*'.format(dir=img_dir)):
+\end_layout
+
+\begin_layout Plain Layout
+
+             label = Path(label).name
+\end_layout
+
+\begin_layout Plain Layout
+
+             labels.append(label)
+\end_layout
+
+\begin_layout Plain Layout
+
+             for label, idx in zip(labels, range(0, len(labels))):
+\end_layout
+
+\begin_layout Plain Layout
+
+                 for filename in glob.glob('{path}/{label}/*.png'.format(path=img_d
+ir,
+\end_layout
+
+\begin_layout Plain Layout
+
+                                                                       
+  label=label)):       
+\end_layout
+
+\begin_layout Plain Layout
+
+                                                                       
+                                             
+\end_layout
+
+\begin_layout Plain Layout
+
+                    im = cv.imread(filename)                            
+                    
+\end_layout
+
+\begin_layout Plain Layout
+
+                    img_dict[columns[0]].append(filename)            
+\end_layout
+
+\begin_layout Plain Layout
+
+                    img_dict[columns[1]].append(label)                  
+      
+\end_layout
+
+\begin_layout Plain Layout
+
+                    img_dict[columns[2]].append(np_im)                  
+              
+\end_layout
+
+\begin_layout Plain Layout
+
+               print("finished writing {percentage} percent...".format(
+\end_layout
+
+\begin_layout Plain Layout
+
+                                                 percentage=math.ceil((100/len(la
+bels))*(idx+1))))          
+\end_layout
+
+\begin_layout Plain Layout
+
+         return img_dict
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Funktion Mapping in Dictionary
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+df = pd.DataFrame.from_dict(df_dict)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Konvertieren in ein Pandas-Dataframe
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Keras bietet mit der Methode 
+\emph on
+flow_from_dataframe() 
+\emph default
+eine Generatorinstanz zu erzeugen.
+ Für die Übergabe der Trainingsdaten wird die Instanz an die Methode fit_generat
+or() der Modelinstanz übergeben.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+datagen=ImageDataGenerator(rescale=1./255)
+\end_layout
+
+\begin_layout Plain Layout
+
+train_generator=datagen.flow_from_dataframe(dataframe=train,
+\end_layout
+
+\begin_layout Plain Layout
+
+                                          x_col='id',
+\end_layout
+
+\begin_layout Plain Layout
+
+                                          y_col='label',
+\end_layout
+
+\begin_layout Plain Layout
+
+                                          class_mode='categorical',
+\end_layout
+
+\begin_layout Plain Layout
+
+                                          target_size=(32,32),
+\end_layout
+
+\begin_layout Plain Layout
+
+                                          batch_size=32)   
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+valid_generator=datagen.flow_from_dataframe(dataframe=test,
+\end_layout
+
+\begin_layout Plain Layout
+
+                                            x_col='id',
+\end_layout
+
+\begin_layout Plain Layout
+
+                                            y_col='label',
+\end_layout
+
+\begin_layout Plain Layout
+
+                                            class_mode='categorical',
+\end_layout
+
+\begin_layout Plain Layout
+
+                                            target_size=(32,32),
+\end_layout
+
+\begin_layout Plain Layout
+
+                                            batch_size=32)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Initialisierung der Generatoren
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Speichern und Laden des trainierten Models
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+model.save('invoice_classifier.h5')
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Speichern des Models
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

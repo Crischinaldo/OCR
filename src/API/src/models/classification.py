@@ -6,7 +6,7 @@ import cv2
 import numpy as np
 from models.db.classifications import DBClassification, DBImages, DBResult
 from service.util import time_
-import binascii
+from base64 import b64encode
 
 
 class ClassificationException(Exception):
@@ -30,13 +30,13 @@ class Classification:
         self._labels = values
 
     def classify(self, img):
+
         y_prob = self.model.predict(img)
-
         y_classes = y_prob.argmax(axis=-1)
-
         max_y_prob = y_prob[0][y_prob.argmax(axis=-1)[0]]
-        K.clear_session()
         max_percentage = round(float(max_y_prob) * 100, 2)
+        K.clear_session()
+
         return max_percentage, y_classes
 
     def predict_class(self, req):
@@ -58,7 +58,7 @@ class Classification:
         max_y_prob, pred = self.classify(image_4d)
         self.db_entry(result=DBResult(label=self.labels[pred[0]],
                                       accuracy=max_y_prob,
-                                      img=DBImages(b64string=binascii.hexlify(scaled_img),
+                                      img=DBImages(b64string=b64encode(scaled_img),
                                                    name=req.get('name'),
                                                    )))
 

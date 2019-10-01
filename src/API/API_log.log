@@ -1,3 +1,6 @@
-09-30 23:30 werkzeug     WARNING   * Debugger is active!
-09-30 23:30 werkzeug     INFO      * Debugger PIN: 223-082-306
-09-30 23:30 werkzeug     INFO      * Running on http://127.0.0.1:8090/ (Press CTRL+C to quit)
+10-02 00:58 werkzeug     WARNING   * Debugger is active!
+10-02 00:58 werkzeug     INFO      * Debugger PIN: 223-082-306
+10-02 00:58 werkzeug     INFO      * Running on http://127.0.0.1:8090/ (Press CTRL+C to quit)
+10-02 00:58 service.logging_ INFO     /machine-learning/classification - has been entered...
+10-02 00:58 service.logging_ INFO     /evaluation - Request-method: "GET"
+10-02 00:58 werkzeug     INFO     127.0.0.1 - - [02/Oct/2019 00:58:28] "[37mGET /classification HTTP/1.1[0m" 200 -

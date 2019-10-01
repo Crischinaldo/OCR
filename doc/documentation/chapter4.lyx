@@ -109,76 +109,7 @@ chapter{Prinzip eines Neuronalen Netzwerkes}
 \begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "chap_principle"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Neuronale Netzwerke
-\end_layout
-
-\begin_layout Standard
-Neuron -> Etwas, was eine Nummer hält.
- Eine Nummer zwischen 0 und 1.
- Die Nummer wird als Aktivierung bezeichnet.
-\end_layout
-
-\begin_layout Standard
-Neuron -> Funktion, die alle Gewichte von den den Neuronen der vorherigen
- schicht als Input nimmt und eine Nummer zwischen 0 und 1 zurückgibt.
-\end_layout
-
-\begin_layout Standard
-Gesamte Netz als funktion mit (x0..., x738) Pixel als input und Vek[y0....y9] als
- output
-\end_layout
-
-\begin_layout Standard
-Neuronale Netze bestehen aus Neuronen die schichtenweise in 
-\emph on
-Layern 
-\emph default
-angeordnet sind.
- Jedes Neuron einer Schicht ist immer mit allen Neuronen der darauffolgenden
- Schicht vernetzt.
-\end_layout
-
-\begin_layout Standard
-Gewicht ->
-\end_layout
-
-\begin_layout Standard
-Neuronale Netze sind eine leistungsstarke Technologie zur Klassifizierung
- visueller Eingaben von Dokumenten.
- in den frühen 1990 waren Neuronale Netze im Verruf, da sie im Gegensatz
- zu anderen Klassifikationsstrategien wie 
-\begin_inset Quotes eld
-\end_inset
-
-Support Vector Machines
-\begin_inset Quotes erd
-\end_inset
-
- und Bayische Netzwerke schlechter abschnitten
-\begin_inset CommandInset citation
-LatexCommand cite
-key "CNN_SSP"
-literal "false"
-
-\end_inset
-
-.
- Sie arbeiten mit Vektoren ohne Kenntnisse über die Eingabetopologie
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset citation
-LatexCommand cite
-key "NC_JAH"
-literal "false"
+name "chap_neuronal_network"
 
 \end_inset
 
@@ -202,7 +133,7 @@ fen: Das Erkennen von einzelnen Kanten bis hin zu komplexeren Polygonen
  
 \begin_inset CommandInset citation
 LatexCommand cite
-key "RECT_XAY"
+key "GBB11"
 literal "false"
 
 \end_inset
@@ -256,7 +187,7 @@ Mit der Aktivierungsfunktion wird die Aktivierungsstufe eines Neuronen in
  der Funktion und ihrer Ableitung.
 \begin_inset CommandInset citation
 LatexCommand cite
-key "AF_BA"
+key "B06"
 literal "false"
 
 \end_inset
@@ -294,7 +225,7 @@ Chapter 3 - Beispiel eines tiefen Neuronalen Netzes (Quelle: in Anlehnung
  an
 \begin_inset CommandInset citation
 LatexCommand cite
-key "NN_ABB_SV"
+key "VWA17"
 literal "false"
 
 \end_inset
@@ -342,7 +273,7 @@ Eine der meistgenutzesten und akkuratesten Methode für Bilderkennungsprobleme
  komplexen Methoden
 \begin_inset CommandInset citation
 LatexCommand cite
-key "CNN_SSP"
+key "SSP03"
 literal "false"
 
 \end_inset
@@ -359,7 +290,7 @@ Rekurrente Neuronale Netze eignen sich besonders gut für bildbasierte Sequenzer
 ennung 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "RNN_SBY"
+key "SBY15"
 literal "false"
 
 \end_inset
@@ -758,7 +689,7 @@ Nach dem Trainieren wird die Perfomance durch einem anderen Satz von Daten
 ngsfähigkeit
 \begin_inset CommandInset citation
 LatexCommand cite
-key "DL_LBH"
+key "LBH15"
 literal "false"
 
 \end_inset
@@ -777,13 +708,87 @@ Der Begriff Deep Learning umsammelt Methoden der künstlichen Intelligenz,
  Deep Learning Methoden werden auf eine Teilmenge von Klassifkatoren aus
  den Bereich des Maschinellen Lernens angewandt, um die Präzision des Modells
  zu verbessern.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "LBH15"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Aktivierungsfunktion
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset citation
-LatexCommand cite
-key "DL_LBH"
-literal "false"
+Der Stand der Technik der Nichtlinearität ist die Verwendung *
+\emph on
+gleichgerichtete Lineareinheiten
+\emph default
+ (engl.
+ abgekürzt ReLu) zum Training eines neuronalen Netzes zu verwenden.
+ ReLu hat gegen über der Sigmoid Funktion den Vorteil durch ihre simplizität
+ perfomant zu sein.
+ Des Weiteren erzielt sie eine bessere Leistung in voreinding tiefschichtigen
+ Architekturen, da die spärliche Darstellung mit wahren Nullen für natürlich
+ spärliche Daten passend erscheint.
+ Das Training verläuft besser wenn künstliche Neuronen null, also ausgeschaltet
+ sind.
+\end_layout
+
+\begin_layout Standard
+Die Rektifizierende Aktivierungsfunktion wird mit der folgenden Funktion
+ beschrieben:
+\begin_inset Formula 
+\[
+f(x)=max(0,x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Wenn der Input eines Neurons, welcher mit 
+\emph on
+x 
+\emph default
+beschrieben ist, größer als null sein, berechnet der Neuron diesen Wert.
+ Wenn der Input gleich oder kleiner null ist, dann wird das Neuron ausgeschaltet
+, sprich auf null gesetzt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/Rectifier_and_softplus_functions.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Chapter 4: ReLu und Softmax Funktionen im Graph (Quelle: https://de.wikipedia.org/
+wiki/Datei:Rectifier_and_softplus_functions.svg)
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 

@@ -13,7 +13,7 @@ api = Blueprint('/classification', __name__)
 
 
 @api.route('/classification', methods=['GET', 'POST'])
-def classifier():
+def classification():
     log.info(msg='/machine-learning/classification - has been entered...')
     if request.method == 'GET':
         log.info('/evaluation - Request-method: "{method}"'.format(method=request.method))

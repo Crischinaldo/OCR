@@ -26,7 +26,7 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    const API = 'http://localhost:8090/classification/evaluation';
+    const API = 'http://localhost:8090/classification';
     this.getResult(API)
   }
 

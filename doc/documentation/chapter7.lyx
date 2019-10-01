@@ -135,221 +135,6 @@ REST-Schnittstelle
 \end_layout
 
 \begin_layout Standard
-Der Begriff REST steht für 
-\emph on
-Representional State Transfer 
-\emph default
-und ist von Roy Fielding in seiner Dissertation 
-\emph on
-Architectural Styles and the Design of Network-based Software Architectures
- 
-\emph default
-geprägt wurden
-\begin_inset CommandInset citation
-LatexCommand cite
-key "REST_RF"
-literal "false"
-
-\end_inset
-
-.
- Die REST-Schnittstelle ist ein weitverbreiteteter Architekturansatz, der
- dazu verwendet wird um eine Infrastruktur zwischen Client und Server zu
- etablieren.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Die REST-Architektur ermöglicht, dass Ressourcen jeweils über 
-\emph on
-Webservices
-\emph default
- mit 
-\emph on
-Anfragen
-\emph default
- (requests) gefordert werden können.
- Jeder Webservice verügt über eine
-\emph on
- Uniform Ressource Identifier
-\emph default
- (URI) und lässt sich damit eindeutig identifizieren.
- Der Server schickt daraufhin eine 
-\emph on
-Antwort
-\emph default
- (response), die die geforderten Ressourcen enthält.
- Da eine REST-Schnittstelle zustandslos ist und der Server keine gespeicherten
- Daten zurückgreifen kann, müssen bei einer Anfrage alle nötigen Informationen
- vom Client geliefert werden.
- Die Clientseitige Anfragen basieren auf dem 
-\emph on
-HTTP/s-Protokoll 
-\emph default
-und verwenden die damit zusammenhängenden 
-\emph on
-Anfragemethoden 
-\emph default
-(request methods), die in der Tabelle 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:HTTP/s-Anfragemethoden"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- aufgeführt sind.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float table
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Methode
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Grundsatz
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-GET
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Beschaffung von Informationen über eine Ressource
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-POST
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Erstellen einer Resource
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-PUT
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Aktualisieren einer Resource
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-DELETE
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Löschen einer Resource
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:HTTP/s-Anfragemethoden"
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-HTTP/s-Anfragemethoden
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Die Methoden 
 \emph on
 PUT
@@ -1085,8 +870,846 @@ Zusätzlich sind die Primärschlüssel der Eltern-Entitäten zu den jeweiligen
  Entitäten in die Datenbank abzulegen.
 \end_layout
 
+\begin_layout Subsection
+Validierung
+\end_layout
+
+\begin_layout Standard
+Im Kontext der REST-Schnittstelle werden Anfragen auf benötigte Parameter
+ und deren Zeichenlänge validiert.
+ Durch eine schematische Validierung werden ungültige Anfragen erkannt und
+ abgefangen, was bedeutet dass die Geschäftslogik nicht angesprochen wird.
+ Eine entsprechende Antwort mit dem HTTP-Status-Code 404 - BAD REQUEST wird
+ an den Dienstnutzer, womit ihm kenntlich gemacht wird, dass seine Anfrage
+ nicht validiert werden konnte.
+\end_layout
+
 \begin_layout Section
-Architekturenentwurf des Clients
+Implementierung
+\end_layout
+
+\begin_layout Subsection
+Frameworks
+\end_layout
+
+\begin_layout Standard
+Flask, JSONSchema, SQLalchemy, keras, pybase64, opencv-python, pillow, pdf2image
+\end_layout
+
+\begin_layout Subsection
+Controller
+\end_layout
+
+\begin_layout Standard
+In diesem Unterabschnitt wird die Implementierung der Schnittstelle exemplarisch
+ für einen Anwendungsfall erläutert.
+ Die REST-Schnittstelle, welche im Model-Controller Muster den Controller
+ darstellt, wurde mit dem Webframework Flask realisiert.
+ Flask bietet eine Technik an die Webservices einer Webapplikation in Sektionen
+ aufzuteilen.
+ Diese Sektionen werden im Kontext von Flask als 
+\emph on
+Blueprints
+\emph default
+ definiert.
+ Diese Blueprints müssen bei der Webapplikation registriert werden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+app.register_blueprint(home.api) 
+\end_layout
+
+\begin_layout Plain Layout
+
+app.register_blueprint(classification.api) 
+\end_layout
+
+\begin_layout Plain Layout
+
+app.register_blueprint(extraction.api)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Registrieren der Blueprints
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:blueprints"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Insgesamt gibt es, wie in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:blueprints"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ aufgezeigt, drei Sektionen die registriert werden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Exemplarisch wird der Blueprint für den Klassifikationsservice anhand des
+ Programmcode 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:class_route"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ beschrieben.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+api = Blueprint('/classification', __name__)
+\end_layout
+
+\begin_layout Plain Layout
+
+@api.route('/classification', methods=['GET', 'POST'])
+\end_layout
+
+\begin_layout Plain Layout
+
+def classification():     
+\end_layout
+
+\begin_layout Plain Layout
+
+  if request.method == 'GET':
+\end_layout
+
+\begin_layout Plain Layout
+
+        resp = Evaluation.evaluate()
+\end_layout
+
+\begin_layout Plain Layout
+
+        if not resp:             
+\end_layout
+
+\begin_layout Plain Layout
+
+           return jsonify({'status': 'not found'}), 404
+\end_layout
+
+\begin_layout Plain Layout
+
+        return jsonify(resp)
+\end_layout
+
+\begin_layout Plain Layout
+
+  if request.method == 'POST':
+\end_layout
+
+\begin_layout Plain Layout
+
+        data = request.form.to_dict()
+\end_layout
+
+\begin_layout Plain Layout
+
+        validator = Validator(schema_type='classification')         
+\end_layout
+
+\begin_layout Plain Layout
+
+        validator.validate(data)
+\end_layout
+
+\begin_layout Plain Layout
+
+        if validator.validated:                          
+\end_layout
+
+\begin_layout Plain Layout
+
+            resp = Classification().predict_class(req=data)             
+\end_layout
+
+\begin_layout Plain Layout
+
+            if not resp:                 
+\end_layout
+
+\begin_layout Plain Layout
+
+                return jsonify({'status': 'bad request'}), 400         
+\end_layout
+
+\begin_layout Plain Layout
+
+        else:                        
+\end_layout
+
+\begin_layout Plain Layout
+
+            return jsonify({'status': 'validation failed'}), 422
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\end_layout
+
+\begin_layout Plain Layout
+
+        return jsonify(resp), 202
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Schnittstelle für die Ressource Klassifkation
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:class_route"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Der Blueprint wird für die Adresse 
+\emph on
+/classification 
+\emph default
+und erlaubt die HTTP-Anfragemethoden 
+\emph on
+GET 
+\emph default
+und 
+\emph on
+POST.
+ 
+\emph default
+Beim Aufruf dieser Funktion wird zunächst überprüft um welche Anfragemethode
+ es sich handelt.
+ 
+\emph on
+GET 
+\emph default
+liefert dem Dienstnutzenden alle Ergebnisse über die erstellten Klassifikationen.
+ Sollten keine Ergebnisse existieren wird eine Antwort mit dem Status und
+ dem Status-Code 404 - NOT FOUND zurückgesendet.
+\end_layout
+
+\begin_layout Subsection
+Model
+\end_layout
+
+\begin_layout Standard
+Das Model enthält sowohl die Geschäftslogik als auch das Datenmodell.
+\end_layout
+
+\begin_layout Subsubsection*
+Datenbankmodell
+\end_layout
+
+\begin_layout Standard
+Im Datenbankmodell werden die Objekte definiert, die in die Datenbank abgelegt
+ werden.
+ Darüber hinaus werden hier die Funktionalitäten für die Datenbankabfragen
+ hinterlegt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+class DBClassification(Base):
+\end_layout
+
+\begin_layout Plain Layout
+
+     __tablename__ = 'classification'
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\end_layout
+
+\begin_layout Plain Layout
+
+     classification_id = Column(Integer, primary_key=True, autoincrement=True)
+     
+\end_layout
+
+\begin_layout Plain Layout
+
+     created_at = Column(Date)    
+\end_layout
+
+\begin_layout Plain Layout
+
+     result = relationship("DBResult", uselist=False, back_populates="classifica
+tion")
+\end_layout
+
+\begin_layout Plain Layout
+
+     def __init__(self, created_at, result):         
+\end_layout
+
+\begin_layout Plain Layout
+
+        self.engine = Database().engine                
+\end_layout
+
+\begin_layout Plain Layout
+
+        if not self.engine.dialect.has_table(self.engine, self.__tablename__):
+\end_layout
+
+\begin_layout Plain Layout
+
+            Base.metadata.create_all(self.engine)
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\end_layout
+
+\begin_layout Plain Layout
+
+        self.created_at = created_at         
+\end_layout
+
+\begin_layout Plain Layout
+
+        self.result = result
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Datenbankmodell Klassikation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Der Programmcode 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:accuracities"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ zeigt eine Datenbankabfrage die die Vorhersagewahrscheinlichkeit jeder
+ Klasse ermittelt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+ def calc_accuracies():         
+\end_layout
+
+\begin_layout Plain Layout
+
+	      
+\end_layout
+
+\begin_layout Plain Layout
+
+	accuracies = {}         
+\end_layout
+
+\begin_layout Plain Layout
+
+	sess = Database().session()         
+\end_layout
+
+\begin_layout Plain Layout
+
+	for label in sess.query(DBResult.label):                 
+\end_layout
+
+\begin_layout Plain Layout
+
+		label = list(label)[0]                 
+\end_layout
+
+\begin_layout Plain Layout
+
+		acc_sum = sess.query(func.sum(DBResult.accuracy)                        
+              							).filter(DBResult.label == "{label}"                
+                               									  .format(label=label)).scalar()
+\end_layout
+
+\begin_layout Plain Layout
+
+        accuracies.update({label: round(acc_sum / Evaluation.count_predictions(lab
+el), 2)})
+\end_layout
+
+\begin_layout Plain Layout
+
+    sess.close()
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	return accuracies
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Bestimmen der Vorhersagewahrscheinlichkeiten für jede Klasse
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:accuracities"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Geschäftslogik
+\end_layout
+
+\begin_layout Standard
+In der Geschäftslogi
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+class Classification:
+\end_layout
+
+\begin_layout Plain Layout
+
+    def __init__(self, labels=labels):         
+\end_layout
+
+\begin_layout Plain Layout
+
+		self.model = load_model('../../invoice_classifier.h5')         
+\end_layout
+
+\begin_layout Plain Layout
+
+		self._labels = labels
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\end_layout
+
+\begin_layout Plain Layout
+
+	@property     
+\end_layout
+
+\begin_layout Plain Layout
+
+	def labels(self):         
+\end_layout
+
+\begin_layout Plain Layout
+
+		return self._labels
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\end_layout
+
+\begin_layout Plain Layout
+
+	@labels.setter     
+\end_layout
+
+\begin_layout Plain Layout
+
+	def labels(self, values):         
+\end_layout
+
+\begin_layout Plain Layout
+
+	if type(values) is not list:             
+\end_layout
+
+\begin_layout Plain Layout
+
+		raise TypeError('labels needs to be passed as list!')         
+\end_layout
+
+\begin_layout Plain Layout
+
+	self._labels = values
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\end_layout
+
+\begin_layout Plain Layout
+
+	def classify(self, img):         
+\end_layout
+
+\begin_layout Plain Layout
+
+		y_prob = self.model.predict(img)
+\end_layout
+
+\begin_layout Plain Layout
+
+        y_classes = y_prob.argmax(axis=-1)
+\end_layout
+
+\begin_layout Plain Layout
+
+        max_y_prob = y_prob[0][y_prob.argmax(axis=-1)[0]]               
+ 		
+\end_layout
+
+\begin_layout Plain Layout
+
+		max_percentage = round(float(max_y_prob) * 100, 2) 
+\end_layout
+
+\begin_layout Plain Layout
+
+		K.clear_session()   
+\end_layout
+
+\begin_layout Plain Layout
+
+      
+\end_layout
+
+\begin_layout Plain Layout
+
+		return max_percentage, y_classes
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\end_layout
+
+\begin_layout Plain Layout
+
+	def predict_class(self, req):
+\end_layout
+
+\begin_layout Plain Layout
+
+        decoded_img = decode_b64_to_img(req.get('file'), file_type=req.get('type')
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+        if decoded_img is None:
+\end_layout
+
+\begin_layout Plain Layout
+
+            return         
+\end_layout
+
+\begin_layout Plain Layout
+
+		scaled_img = cv2.resize(decoded_img, (32, 32))
+\end_layout
+
+\begin_layout Plain Layout
+
+        rgb_img = cv2.cvtColor(scaled_img, cv2.COLOR_RGB2BGR)
+\end_layout
+
+\begin_layout Plain Layout
+
+        image_4d = rgb_img[np.newaxis, ...]
+\end_layout
+
+\begin_layout Plain Layout
+
+   
+\end_layout
+
+\begin_layout Plain Layout
+
+        max_y_prob, pred = self.classify(image_4d)         		self.db_entry(result=
+DBResult(label=self.labels[pred[0]],                                    
+   														accuracy=max_y_prob,                                  
+     													    img=DBImages(
+\end_layout
+
+\begin_layout Plain Layout
+
+															b64string=b64encode(scaled_img),                        
+                            						         name=req.get('name'),        
+                                            								   )))
+\end_layout
+
+\begin_layout Plain Layout
+
+		payload = {             
+\end_layout
+
+\begin_layout Plain Layout
+
+			'result':                 
+\end_layout
+
+\begin_layout Plain Layout
+
+				{                     
+\end_layout
+
+\begin_layout Plain Layout
+
+					'name': req.get('name'),                     
+\end_layout
+
+\begin_layout Plain Layout
+
+					'pred_class': self.labels[pred[0]],                     
+\end_layout
+
+\begin_layout Plain Layout
+
+					'accuracy': max_y_prob,
+\end_layout
+
+\begin_layout Plain Layout
+
+                }
+\end_layout
+
+\begin_layout Plain Layout
+
+		}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        return payload
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    	@staticmethod
+\end_layout
+
+\begin_layout Plain Layout
+
+		def db_entry(result):         
+\end_layout
+
+\begin_layout Plain Layout
+
+			DBClassification(result=result,                          
+\end_layout
+
+\begin_layout Plain Layout
+
+							 created_at=time_()).create_classification()
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Bestimmen der Vorhersagewahrscheinlichkeiten für jedes label
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

@@ -1,0 +1,325 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\options bibliography=totoc,listof=totoc,BCOR=5mm,DIV=12
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding iso8859-1
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref section
+\pdf_pdfusetitle false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine biblatex
+\cite_engine_type authoryear
+\biblio_style plainnat
+\biblio_options backend=biber
+\biblatex_bibstyle alphabetic
+\biblatex_citestyle alphabetic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+chapter{Entwicklung des Klassifikators}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "chap_architecture_classificator"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dieses Kapitel befasst sich mit der Entwicklung des Klassifikators und ist
+ in den zwei Kapiteln Architektur und Implementierung gegliedert.
+\end_layout
+
+\begin_layout Section
+Technologien
+\end_layout
+
+\begin_layout Standard
+Jupyter Notebook, Pandas, Keras, Tensorflow...
+\end_layout
+
+\begin_layout Subsection
+Jupyter Notebook
+\end_layout
+
+\begin_layout Standard
+Jupyter Notebook bietet die Möglichkeit in einer interaktiven Umgebung Programmc
+ode parallel durchlaufen zu können.
+ Es können Ergebisse als Live-Berechnung oder im festen Format an die Zellen
+ weitergereicht werden.
+ Dieser Vorteil bietet eine Abschnittsähnliche Ausführung von Code in den
+ jeweiligen Zellen.
+ Notebooks-Dateien enthalten komplette Aufzeichnungen aller Berechnungen
+ und können anderen Jupiter-Nutzern zur Verfügung gestellt werden.
+ Jupiter eignet sich sehr gut für das Visualisieren von Berechnungen im
+ Data Science Bereich.
+\end_layout
+
+\begin_layout Subsection
+Pandas
+\end_layout
+
+\begin_layout Standard
+Das Dataframe von Pandas ist eine Datenstruktur welche auf dem Schlüssel-Wert-Mu
+ster aufgebaut ist.
+ Sie tabellarisiert Schlüssel und die jeweiligen Werte in einem Dataframe,
+ welches sich gut zum präsentierten von den beinhalteten Daten eignet.
+\end_layout
+
+\begin_layout Subsection
+Tensorflow
+\end_layout
+
+\begin_layout Standard
+Tensorflow ist eine plattformunabhängige Bibliothek, die sich für Aufgaben
+ rund um maschinellen lernes einsetzen lässt.
+\end_layout
+
+\begin_layout Subsection
+Keras
+\end_layout
+
+\begin_layout Standard
+Keras ist eine Bibliothek die eine Abstraktionsebene auf Tensorflow darbietet.
+\end_layout
+
+\begin_layout Section
+Architekturentwurf
+\end_layout
+
+\begin_layout Standard
+In diesem Unterkapitel wird die Architektur des Klassifikators behandelt.
+\end_layout
+
+\begin_layout Section
+Trainingsdaten
+\end_layout
+
+\begin_layout Standard
+Die Bilder, mit dem das Faltende neuronale Netz trainiert werden soll, befinden
+ sich auf einem Unternehmensinternen Server.
+ Durch einen SSH-Tunnel wurden die nach Hochladedatum sortierten Bilder
+ im PDF-Format auf den den lokalen Rechner innerhalb des Unternehmens runtergela
+den.
+ Durch ein Skriptkommando, welches rekursiv durch die Verzeichnisse läuft,
+ wurden die Bilder in JPG-Format konvertiert und in einem Ordner lokalisiert.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Da die Daten weder gelabelt noch für das Training sinngemäß sortiert sind,
+ wurden einige Bilder händisch selektiert und kategorisch nach zwei Charakterist
+iken - Schadensfoto oder Rechnungsbeleg - sortiert.
+ Diese Daten werden jeweils in Trainings-und Testdaten unterteilt, wobei
+ das Verhältnis 80 Prozent zu 20 Prozent gilt.
+\end_layout
+
+\begin_layout Section
+Trainingsphase
+\end_layout
+
+\begin_layout Standard
+Trainings-und Testdaten wurden über Jupyter in einer Pandas-Dataframe-Datenstruk
+tur gemappt.
+ Der Schlüssel 
+\emph on
+id 
+\emph default
+sammelt die Dateipfade der jeweiligen Daten während der Schlüssel 
+\emph on
+label 
+\emph default
+die Klassen der jeweiligen Daten enthält.
+ Ähnlich wie in einer CSV-Datei sind die Werte Zeilenweise gruppiert, sodass
+ eine id dem jeweiligen label zugeordnet ist.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+datagen=ImageDataGenerator(rescale=1./255)
+\end_layout
+
+\begin_layout Plain Layout
+
+train_generator=datagen.flow_from_dataframe(dataframe=train, x_col='id',
+ y_col='label', class_mode='categorical', target_size=(32,32), batch_size=32)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+datagen=ImageDataGenerator(rescale=1./255)
+\end_layout
+
+\begin_layout Standard
+train_generator=datagen.flow_from_dataframe(dataframe=train, x_col='id',
+ y_col='label', class_mode='categorical', target_size=(32,32), batch_size=32)
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Keras bietet mit der Methode 
+\emph on
+flow_from_dataframe() 
+\emph default
+eine Generatorinstanz zu erzeugen.
+ Für die Übergabe der Trainingsdaten wird die Instanz an die Methode fit_generat
+or() der Modelinstanz übergeben.
+\end_layout
+
+\begin_layout Section
+Speichern und Laden des trainierten Models
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+endinput
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "./bib/thesis"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

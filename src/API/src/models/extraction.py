@@ -25,7 +25,7 @@ class TextExtractor:
     def extract(self, req):
         extraction = {}
         decoded_img = decode_b64_to_img(req.get('file'), req.get('type'))
-        if not decoded_img:
+        if decoded_img is None:
             return
         grayscaled_img = convert_grayscale(decoded_img)
 
@@ -33,11 +33,12 @@ class TextExtractor:
         text = extracted_text.replace('\n', ' ')
 
         iban, bic, x = self.apply_patterns(text)
-
+        balance_due = 0
         floated_currencies = [float(locale.atof(i)) for i in x]
-        max_floated_currency = max(floated_currencies)
+        if floated_currencies:
+            max_floated_currency = max(floated_currencies)
+            balance_due = locale.currency(max_floated_currency)
 
-        balance_due = locale.currency(max_floated_currency)
         extraction.update({k: v for k, v in zip(self.patterns.keys(), [balance_due, iban, bic])})
 
         return {'result': extraction}
