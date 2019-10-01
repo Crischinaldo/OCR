@@ -1422,7 +1422,9 @@ Geschäftslogik
 \end_layout
 
 \begin_layout Standard
-In der Geschäftslogi
+In der Geschäftslogik werden die Anfragen entgegengenommen und nötige Funktional
+itäten zur Bearbeitung der Anfragen angewandt.
+ Außerdem werden die Datenbankabfragen über die Datenmodelle vorgenommen
 \end_layout
 
 \begin_layout Standard

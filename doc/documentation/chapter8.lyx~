@@ -604,10 +604,12 @@ Rendering
 \begin_layout Standard
 Damit die Daten in eine repräsentativ veranschaulicht im Webbrowser angezeigt
  werden, müssen die Zustandsattribute an Graph-Komponenten übergeben werden.
- Graph Komponenten werden über die Bibliothek react-chartjs-2 zur Verfügung
- gestellt und erwarten eine JSON für die Instanziierung der Komponenten.
- Reactstrap ist eine Bibliothek die responsive Komponenten im Stil von Bootstrap
- zur Verfügung stellt.
+ Graph Komponenten werden über die react-chartjs-2 zur Verfügung gestellt
+ und erwarten eine JSON für die Instanziierung der Komponenten.
+\end_layout
+
+\begin_layout Standard
+reactstrap
 \end_layout
 
 \begin_layout Standard

@@ -1608,9 +1608,9 @@ DBResult(label=self.labels[pred[0]],
 
 \begin_layout Plain Layout
 
-															b64string=base64.b64decode(scaled_img),                  
-                                  						  name=req.get('name'),         
-                                           										  )))
+															b64string=b64encode(scaled_img),                        
+                            						         name=req.get('name'),        
+                                            								   )))
 \end_layout
 
 \begin_layout Plain Layout

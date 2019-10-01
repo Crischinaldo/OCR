@@ -4,3 +4,6 @@
 10-02 00:58 service.logging_ INFO     /machine-learning/classification - has been entered...
 10-02 00:58 service.logging_ INFO     /evaluation - Request-method: "GET"
 10-02 00:58 werkzeug     INFO     127.0.0.1 - - [02/Oct/2019 00:58:28] "[37mGET /classification HTTP/1.1[0m" 200 -
+10-02 01:12 service.logging_ INFO     /machine-learning/classification - has been entered...
+10-02 01:12 service.logging_ INFO     /evaluation - Request-method: "GET"
+10-02 01:12 werkzeug     INFO     127.0.0.1 - - [02/Oct/2019 01:12:48] "[37mGET /classification HTTP/1.1[0m" 200 -

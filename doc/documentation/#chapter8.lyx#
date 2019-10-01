@@ -602,15 +602,6 @@ Rendering
 \end_layout
 
 \begin_layout Standard
-Damit die Daten in eine repräsentativ veranschaulicht im Webbrowser angezeigt
- werden, müssen die Zustandsattribute an Graph-Komponenten übergeben werden.
- Graph Komponenten werden über die Bibliothek react-chartjs-2 zur Verfügung
- gestellt und erwarten eine JSON für die Instanziierung der Komponenten.
- Reactstrap ist eine Bibliothek die responsive Komponenten im Stil von Bootstrap
- zur Verfügung stellt.
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float algorithm
 wide false
 sideways false
@@ -795,27 +786,12 @@ lues(this.state.accuracies))}
 
 \begin_layout Plain Layout
 
-		</Row>           
+			</Row>           
 \end_layout
 
 \begin_layout Plain Layout
 
-		: null         
-\end_layout
-
-\begin_layout Plain Layout
-
-		}       
-\end_layout
-
-\begin_layout Plain Layout
-
-	</div>     
-\end_layout
-
-\begin_layout Plain Layout
-
-);}
+			: null         }       </div>     );   }
 \end_layout
 
 \end_inset
