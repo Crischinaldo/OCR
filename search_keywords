@@ -1,0 +1,64 @@
+def search_keywords(keywords, img):
+
+    extracted_text = pytesseract.image_to_string(img)
+    found_keywords = []
+    
+    for label, keywords in keywords.items():
+   
+        for keyword in keywords:
+            
+            if keyword in extracted_text:
+                print("Found " + str(label) + ", saving!")  
+                return label
+            
+    return found_keywords
+
+
+
+
+def iterate_images(img_dir, keywords):
+    img_list = glob.glob('{dir}/*'.format(dir=img_dir))
+    for image, idx in zip(img_list, range(len(img_list))):
+        print("Status: " + str(((idx+1) / len(img_list)) * 100) + "%")
+        label = search_keywords(keywords, image)
+        
+
+        if label == 'delivery':
+            try:
+                shutil.move(image, '/Users/ct/local/Lieferung')
+            except Exception:
+                pass
+        
+        elif label == 'regress':
+            try:
+                shutil.move(image, '/Users/ct/local/Regress')
+            except Exception:
+                pass
+        
+        elif label == 'confirmation':
+            try:
+                shutil.move(image, '/Users/ct/local/Sendung')
+            except Exception:
+                pass
+        
+        if label == 'invoice':
+            try:
+                shutil.move(image, '/Users/ct/local/Rechnungsbeleg')
+            except Exception:
+                pass
+            
+        else:
+            try:
+                shutil.move(image, '/Users/ct/local/crap')
+            except Exception:
+                pass
+        
+
+keywords = {
+    'invoice': ['RECHNUNG', 'Rechnung', 'Rechnungsnummer', 'Rechnungs', 'Rechnungsdatum', 'R E C H N U N G', 'Rechnungsbetrag', 'Endbetrag', 'Rechnungen'],
+    'delivery': ['Lieferschein', 'Lieferung', 'L I E F E R S C H E I N'],
+    'regress': ['Regressforderung'],
+    'confirmation': ['Auftragsbestätigung'],
+}
+
+iterate_images(img_dir='/Users/ct/local/collective', keywords=keywords)
