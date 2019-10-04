@@ -122,7 +122,7 @@ Dieses Kapitel befasst sich mit der Entwicklung des Klassifikators und ist
 \end_layout
 
 \begin_layout Section
-Technologien
+Technologien und Frameworks
 \end_layout
 
 \begin_layout Standard
@@ -147,6 +147,18 @@ ode parallel durchlaufen zu können.
 \end_layout
 
 \begin_layout Subsection
+Formatieren der Daten
+\end_layout
+
+\begin_layout Subsection
+Preprocessing
+\end_layout
+
+\begin_layout Standard
+stopwords, tokenizing, lower case, stemming
+\end_layout
+
+\begin_layout Subsection
 Pandas
 \end_layout
 
@@ -158,597 +170,66 @@ ster aufgebaut ist.
 \end_layout
 
 \begin_layout Subsection
-Tensorflow
+nltk
 \end_layout
 
-\begin_layout Standard
-Tensorflow ist eine plattformunabhängige Bibliothek, die sich für Aufgaben
- rund um maschinellen lernes einsetzen lässt und auf die Optimierung und
- das Training neuronaler Netze ausgelegt.
- Sie verwendet Datenflussdiagramme um Berechnungen zu visualisieren
-\begin_inset CommandInset citation
-LatexCommand cite
-key "A16"
-literal "false"
+\begin_layout Section
+Formatieren der Daten
+\end_layout
 
-\end_inset
-
-.
- Es werden Knoten eines Datenflussdiagrammes auf mehreren Computern zu einem
- Cluster zusammengefasst.
- Auf einem Computer werden sie über mehrere Computergeräten einschließlich
- Multicore-CPU's (Computional Processing Units), GPU's (Graphical processing
- Units) als TPU's (Tensor Processing Units) zusammengefasst.
- Der Vorteil dieser Architektur bietet eine performanzbringende Einflußnahme
- aller TPU's auf die prozesslastigen Lernalgorithmen, die für das Trainieren
- eines neuronalen Netzwerkes angewant werden.
+\begin_layout Section
+Preprocessing
 \end_layout
 
 \begin_layout Subsection
-Keras
-\end_layout
-
-\begin_layout Standard
-Keras ist eine Bibliothek die eine Abstraktionsebene auf Tensorflow darbietet.
+normalisierung der Daten
 \end_layout
 
 \begin_layout Section
-Architekturentwurf des Netzes
+Wahl des Models
+\end_layout
+
+\begin_layout Subsection
+countvektorizer
+\end_layout
+
+\begin_layout Subsection
+frequency times inverse document-frequency
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float algorithm
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
-model = Sequential() 
-\end_layout
-
-\begin_layout Plain Layout
-
-model.add(Conv2D(32, (3, 3), padding='same', input_shape=(32,32,3))) 
-\end_layout
-
-\begin_layout Plain Layout
-
-model.add(Activation('relu')) model.add(Conv2D(32, (3, 3))) 
-\end_layout
-
-\begin_layout Plain Layout
-
-model.add(Activation('relu')) model.add(MaxPooling2D(pool_size=(2, 2))) 
-\end_layout
-
-\begin_layout Plain Layout
-
-model.add(Dropout(0.25))
-\end_layout
-
-\begin_layout Plain Layout
-
-model.add(Conv2D(64, (3, 3), padding='same')) model.add(Activation('relu'))
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-model.add(Conv2D(64, (3, 3))) model.add(Activation('relu')) 
-\end_layout
-
-\begin_layout Plain Layout
-
-model.add(MaxPooling2D(pool_size=(2, 2))) model.add(Dropout(0.25))
-\end_layout
-
-\begin_layout Plain Layout
-
-model.add(Flatten()) model.add(Dense(512)) model.add(Activation('relu')) 
-\end_layout
-
-\begin_layout Plain Layout
-
-model.add(Dropout(0.5)) model.add(Dense(12, activation='softmax'))
-\end_layout
-
-\begin_layout Plain Layout
-
-model.compile(optimizers.rmsprop(lr=0.0001) , loss="categorical_crossentropy",
- metrics=["accuracy"])                
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-STEP_SIZE_TRAIN = train_generator.n
-\end_layout
-
-\begin_layout Plain Layout
-
-STEP_SIZE_VALID = valid_generator.n
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-valid_generator.batch_size model.fit_generator(generator=train_generator,
-\end_layout
-
-\begin_layout Plain Layout
-
-                                               steps_per_epoch=STEP_SIZE_TRAIN,
-                            
-\end_layout
-
-\begin_layout Plain Layout
-
-                                               validation_data=valid_generator,
-                                   
-\end_layout
-
-\begin_layout Plain Layout
-
-                                               validation_steps=STEP_SIZE_VALID,
-                          
-\end_layout
-
-\begin_layout Plain Layout
-
-                                               epochs=40)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Erstellung des Models
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
+TF: Term Frequency, which measures how frequently a term occurs in a document.
+ Since every document is different in length, it is possible that a term
+ would appear much more times in long documents than shorter ones.
+ Thus, the term frequency is often divided by the document length (aka.
+ the total number of terms in the document) as a way of normalization:
 \end_layout
 
 \begin_layout Standard
-In diesem Unterkapitel wird die Architektur des Klassifikators behandelt.
-\end_layout
-
-\begin_layout Section
-Trainingsdaten
+TF(t) = (Number of times term t appears in a document) / (Total number of
+ terms in the document).
 \end_layout
 
 \begin_layout Standard
-Die Bilder, mit dem das Faltende neuronale Netz trainiert werden soll, befinden
- sich auf einem Unternehmensinternen Server.
- Durch einen SSH-Tunnel wurden die nach Hochladedatum sortierten Bilder
- im PDF-Format auf den den lokalen Rechner innerhalb des Unternehmens runtergela
-den.
- Durch ein Skriptkommando, welches rekursiv durch die Verzeichnisse läuft,
- wurden die Bilder in JPG-Format konvertiert und in einem Ordner lokalisiert.
+IDF: Inverse Document Frequency, which measures how important a term is.
+ While computing TF, all terms are considered equally important.
+ However it is known that certain terms, such as "is", "of", and "that",
+ may appear a lot of times but have little importance.
+ Thus we need to weigh down the frequent terms while scale up the rare ones,
+ by computing the following:
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
+IDF(t) = log_e(Total number of documents / Number of documents with term
+ t in it).
 \end_layout
 
 \begin_layout Standard
-Da die Daten weder gelabelt noch für das Training sinngemäß sortiert sind,
- wurden einige Bilder händisch selektiert und kategorisch nach zwei Charakterist
-iken - Schadensfoto oder Rechnungsbeleg - sortiert.
- Diese Daten werden jeweils in Trainings-und Testdaten unterteilt, wobei
- das Verhältnis 80 Prozent zu 20 Prozent gilt.
-\end_layout
-
-\begin_layout Section
-Trainingsphase
+bayes
 \end_layout
 
 \begin_layout Standard
-Trainings-und Testdaten wurden über Jupyter in einer Pandas-Dataframe-Datenstruk
-tur gemappt.
- Der Schlüssel 
-\emph on
-id 
-\emph default
-sammelt die Dateipfade der jeweiligen Daten während der Schlüssel 
-\emph on
-label 
-\emph default
-die Klassen der jeweiligen Daten enthält.
- Ähnlich wie in einer CSV-Datei sind die Werte Zeilenweise gruppiert, sodass
- eine id dem jeweiligen label zugeordnet ist.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float algorithm
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
-def data_to_dict(img_dir, ext):
-\end_layout
-
-\begin_layout Plain Layout
-
-         img_dict = defaultdict(list)
-\end_layout
-
-\begin_layout Plain Layout
-
-         labels = []
-\end_layout
-
-\begin_layout Plain Layout
-
-         id_ = 0     
-\end_layout
-
-\begin_layout Plain Layout
-
-         columns = ['id', 'label']     
-\end_layout
-
-\begin_layout Plain Layout
-
-         ext = ext     
-\end_layout
-
-\begin_layout Plain Layout
-
-         for label in glob.glob('{dir}/*'.format(dir=img_dir)):
-\end_layout
-
-\begin_layout Plain Layout
-
-             label = Path(label).name
-\end_layout
-
-\begin_layout Plain Layout
-
-             labels.append(label)
-\end_layout
-
-\begin_layout Plain Layout
-
-             for label, idx in zip(labels, range(0, len(labels))):
-\end_layout
-
-\begin_layout Plain Layout
-
-                 for filename in glob.glob('{path}/{label}/*.png'.format(path=img_d
-ir,
-\end_layout
-
-\begin_layout Plain Layout
-
-                                                                       
-  label=label)):       
-\end_layout
-
-\begin_layout Plain Layout
-
-                                                                       
-                                             
-\end_layout
-
-\begin_layout Plain Layout
-
-                    im = cv.imread(filename)                            
-                    
-\end_layout
-
-\begin_layout Plain Layout
-
-                    img_dict[columns[0]].append(filename)            
-\end_layout
-
-\begin_layout Plain Layout
-
-                    img_dict[columns[1]].append(label)                  
-      
-\end_layout
-
-\begin_layout Plain Layout
-
-                    img_dict[columns[2]].append(np_im)                  
-              
-\end_layout
-
-\begin_layout Plain Layout
-
-               print("finished writing {percentage} percent...".format(
-\end_layout
-
-\begin_layout Plain Layout
-
-                                                 percentage=math.ceil((100/len(la
-bels))*(idx+1))))          
-\end_layout
-
-\begin_layout Plain Layout
-
-         return img_dict
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Funktion Mapping in Dictionary
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float algorithm
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
-df = pd.DataFrame.from_dict(df_dict)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Konvertieren in ein Pandas-Dataframe
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Keras bietet mit der Methode 
-\emph on
-flow_from_dataframe() 
-\emph default
-eine Generatorinstanz zu erzeugen.
- Für die Übergabe der Trainingsdaten wird die Instanz an die Methode fit_generat
-or() der Modelinstanz übergeben.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float algorithm
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
-datagen=ImageDataGenerator(rescale=1./255)
-\end_layout
-
-\begin_layout Plain Layout
-
-train_generator=datagen.flow_from_dataframe(dataframe=train,
-\end_layout
-
-\begin_layout Plain Layout
-
-                                          x_col='id',
-\end_layout
-
-\begin_layout Plain Layout
-
-                                          y_col='label',
-\end_layout
-
-\begin_layout Plain Layout
-
-                                          class_mode='categorical',
-\end_layout
-
-\begin_layout Plain Layout
-
-                                          target_size=(32,32),
-\end_layout
-
-\begin_layout Plain Layout
-
-                                          batch_size=32)   
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-valid_generator=datagen.flow_from_dataframe(dataframe=test,
-\end_layout
-
-\begin_layout Plain Layout
-
-                                            x_col='id',
-\end_layout
-
-\begin_layout Plain Layout
-
-                                            y_col='label',
-\end_layout
-
-\begin_layout Plain Layout
-
-                                            class_mode='categorical',
-\end_layout
-
-\begin_layout Plain Layout
-
-                                            target_size=(32,32),
-\end_layout
-
-\begin_layout Plain Layout
-
-                                            batch_size=32)
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Initialisierung der Generatoren
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Speichern und Laden des trainierten Models
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float algorithm
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
-model.save('invoice_classifier.h5')
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Speichern des Models
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
+term-frequency times inverse document-frequency
 \end_layout
 
 \begin_layout Standard

@@ -4,6 +4,8 @@ from service.preprocessing import convert_grayscale, binarize_img
 import re
 import cv2
 import locale
+from tesserocr import PyTessBaseAPI, RIL, OEM
+
 
 locale.setlocale(locale.LC_ALL, 'german')
 
@@ -16,7 +18,8 @@ class TextExtractor:
         self.patterns = {
             'balance_due': '\d{1,3}(?:[.]\d{3})*(?:[,]\d{2})',
             'iban': '[A-Z]{2}(?:[ ]?)[0-9]{2}(?:[ ]?[0-9]{4}){4}(?!(?:[ ]?[0-9]){3})(?:[ ]?[0-9]{1,2})?',
-            'bic': '/[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?/i'
+            'bic': '/[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?/i',
+            'town':  '\d{3,}[ \-\/]+[a-zA-Z ]{3,}'
         }
 
     def __repr__(self):
@@ -50,3 +53,6 @@ class TextExtractor:
         x = re.findall(self.patterns['balance_due'], text)
 
         return iban, bic, x
+
+    def draw_bounding_box(self):
+        pass

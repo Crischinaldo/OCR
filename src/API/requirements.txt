@@ -12,3 +12,4 @@ pytesseract
 numpy
 pdf2image
 jsonschema
+tesserocr

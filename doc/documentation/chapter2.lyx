@@ -334,6 +334,130 @@ name "flowchart_ocr"
 
 \end_layout
 
+\begin_layout Section
+Tesseract
+\end_layout
+
+\begin_layout Standard
+Die Tesseract-Engine ist eine Texterkennungssoftware und wurde im Jahre
+ 2007 in der Ninth International Conference on Document Analysis and Recognition
+ (ICDAR 2007) von Ray Smith veröffentlicht
+\begin_inset CommandInset citation
+LatexCommand cite
+key "R07"
+literal "false"
+
+\end_inset
+
+.
+ Sie ist zwischen 1984 und 1994 von dem Unternehmen 
+\emph on
+Hewlett-Packard
+\emph default
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://www8.hp.com
+\end_layout
+
+\end_inset
+
+ entwickelt wurden.
+ HP hatte den Fokus auf OCR und erzielten mit Tesseract sehr gute Zielgenauigkei
+ten bezüglich von textbasierten Erkennungmustern, obwohl sie Tesseract nicht
+ als Produkt vermaktet haben.
+ 1995 erzielte Tesseract mit seinem Ergebnissen den dritten Platz auf der
+ UNLV - Einem jährlichen Test zur Messung von Genauigkeiten im Bereich von
+ OCR
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RJN95"
+literal "false"
+
+\end_inset
+
+ und seitdem nicht mehr weiterentwickelt wurden.
+ Ray Smith, der bei HP an Tesseract mitentwickelte, arbeitete mittlerweile
+ bei Google und brachte 2005 Tesseract, wessen Quelltext im selbigen Jahr
+ öffentlich gemacht wurden ist, auf den neusten Stand der Technik.
+\end_layout
+
+\begin_layout Standard
+Page segmentation modi:
+\end_layout
+
+\begin_layout Standard
+0 Orientation and script detection (OSD) only.
+ 1 Automatic page segmentation with OSD.
+ 2 Automatic page segmentation, but no OSD, or OCR.
+ 3 Fully automatic page segmentation, but no OSD.
+ (Default) 4 Assume a single column of text of variable sizes.
+ 5 Assume a single uniform block of vertically aligned text.
+ 6 Assume a single uniform block of text.
+ 7 Treat the image as a single text line.
+ 8 Treat the image as a single word.
+ 9 Treat the image as a single word in a circle.
+ 10 Treat the image as a single character.
+ 11 Sparse text.
+ Find as much text as possible in no particular order.
+ 12 Sparse text with OSD.
+ 13 Raw line.
+ Treat the image as a single text line, bypassing hacks that are Tesseract-speci
+fic.
+\end_layout
+
+\begin_layout Section
+matching
+\end_layout
+
+\begin_layout Standard
+leventhstein, fuzzy, https://github.com/kavgan/nlp-in-practice/blob/master/tf-idf
+/Keyword%20Extraction%20with%20TF-IDF%20and%20SKlearn.ipynb
+\end_layout
+
+\begin_layout Section
+Natural Language Processing
+\end_layout
+
+\begin_layout Standard
+Die Motivation der Technologie Natural Language Processing (NLP) ist eine
+ direkte Kommunkation zwischen Mensch und Maschine auf Basis der natürlichen
+ Sprache herzustellen.
+ NLP deckt ein weites Spektrum von Techniken ab Software zu entwickeln,
+ die dazu dient die menschliche Sprache zu verstehen.
+ Die Wahl der Technik ist auf den Anwendungsfall abgezielt, so werden in
+ einigen Fällen beispielsweise Wortfrequenzen gezählt, um verschiedene Schreibst
+ile zu vergleichen wobei in einem anderem Kontext muss der vermeintliche
+ Inhalt einer menschlichen Äußerung verstanden werden
+\begin_inset CommandInset citation
+LatexCommand cite
+key "BKL09"
+literal "false"
+
+\end_inset
+
+.
+ Die Technologie wird sowohl im Bereich der Texterkennung als auch in der
+ Spracherkennung verwendet.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Paraphrase Identification
+\end_layout
+
+\begin_layout Standard
+Cosine similarity
+\end_layout
+
 \begin_layout Standard
 \begin_inset ERT
 status collapsed
