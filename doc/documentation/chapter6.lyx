@@ -98,7 +98,7 @@ status open
 
 
 \backslash
-chapter{Entwicklung des Klassifikators}
+chapter{Entwicklung des Textklassifikators}
 \end_layout
 
 \end_inset
@@ -162,11 +162,469 @@ nltk
 \end_layout
 
 \begin_layout Section
-Formatieren der Daten
+Organisation der Daten
+\end_layout
+
+\begin_layout Standard
+Unter der Organisation der Daten ist sowohl die Formatierung als auch die
+ Strukturierung von den zur Verfügung stehenden Datensätzen gemeint.
+ Um das Model mit Überwachtem Lernen zu trainieren müssen die Daten so strukturi
+ert sein, dass das 
+\emph on
+Labels
+\emph default
+ (Ergebnisse) von jeden Datenpunkt bekannt ist.
+ Ursprünglich sind die Bilder im PDF-Format in einer Ordnerstruktur gegliedert
+ gewesen, die abhängig vom Hochladedatum nach Jahr, Monat und Tag sortiert
+ wurden sind.
+ Die Zeitangabe für die Textextraktion ist als unrelevant zu werten, da
+ hier nur auf der inhaltliche Aspekt eine Rolle spielt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Kollektion
+\end_layout
+
+\begin_layout Standard
+Mit dem Programmcode 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:collect"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+sind alle Dateien kollektiert, indem rekursiv über jeden Ordner in einem
+ bestimmten Ordner
+\emph on
+ input_dir 
+\emph default
+alle PDF-Dateien erfasst wurden und in den Ordner 
+\emph on
+output_dir 
+\emph default
+verlagert wurden sind.
+ Die Merkmalsgenerierung verläuft über das Extrahieren der Texte aus Bilddateien
+, weswegen jedes Bild mit der Funktion 
+\emph on
+convert_from_path()
+\emph default
+ der externen Bibliothek 
+\emph on
+pdf2image
+\emph default
+ zum JPG-Format konvertiert wurden ist.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+def collect_data(input_dir, output_dir):
+\end_layout
+
+\begin_layout Plain Layout
+
+    ext = 'jpg'
+\end_layout
+
+\begin_layout Plain Layout
+
+    for pdf in glob.glob('{inp}/*/**/*.pdf'.format(inp=input_dir), recursive=True):
+       
+\end_layout
+
+\begin_layout Plain Layout
+
+        try:             
+\end_layout
+
+\begin_layout Plain Layout
+
+        	pages = convert_from_path(pdf)         
+\end_layout
+
+\begin_layout Plain Layout
+
+		except (ValueError, Exception):             
+\end_layout
+
+\begin_layout Plain Layout
+
+    		pass      
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\end_layout
+
+\begin_layout Plain Layout
+
+    for page in pages:             
+\end_layout
+
+\begin_layout Plain Layout
+
+   	 page.save('./{output}/{name}.{ext}'.format(
+\end_layout
+
+\begin_layout Plain Layout
+
+             output=output_dir, name=str(uuid.uuid4())),  ext=ext)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Kollektieren der Daten
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:collect"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die rekursive Suche verlief über glob (
+\emph on
+Unix style pathname pattern expansion
+\emph default
+), einer Bibliothek die alle Pfadnamen nach einem spezifischen Muster nach
+ Unix-Regeln durchsucht.
+ Die Funktion 
+\emph on
+convert_from_path() 
+\emph default
+gibt eine Liste von Seiten als Bild-Objekte zurück, da PDF-Dokumente logischerwe
+ise eine Mehrzahl an Seiten aufweisen können.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Beim Analysieren der Bilder stellte sich heraus, dass es folgende grundlegende
+ Typen gibt:
+\end_layout
+
+\begin_layout Itemize
+Schadenfotos
+\end_layout
+
+\begin_layout Itemize
+Dokumente
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Rechnungsbelege
+\end_layout
+
+\begin_layout Itemize
+Briefe
+\end_layout
+
+\begin_layout Itemize
+Lieferscheine
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Sortierung
+\end_layout
+
+\begin_layout Standard
+Eine interessante Möglichkeit die Bilder zu Sortieren ist nach Schlüsselwörtern
+ in den Texten der Dokumente zu suchen und sie abhängig davon in bestimmte
+ Ordner zu sortieren.
+ Durch eine Textextrahierung jedes Bildes gelang es die extrahierten Texte
+ nach bestimmten Schlüsselwörtern zu durchsuchen und sie dadurch zu sortieren.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
-Preprocessing
+Formatierung der Daten
+\end_layout
+
+\begin_layout Standard
+Um Die Daten für die Klassifizierung vorzubereiten mussten die Daten in
+ einem bestimmtes Format gebracht werden.
+ Im Programmcode 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:formatting"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ wird vom Ordner, der durch den Parameter 
+\emph on
+input_dir 
+\emph default
+projeziert ist, von der Funktion 
+\emph on
+extract_text() 
+\emph default
+der Text extrahiert.
+ Vor dem Extrahierungsprozess wird das Bild mit der Funktion 
+\emph on
+preprocess() 
+\emph default
+binarisiert, um die Präzision der Texterkennung zu erhöhen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+def preprocess(im):     
+\end_layout
+
+\begin_layout Plain Layout
+
+	_ ,im = cv2.threshold(np.array(im),127,255,cv2.THRESH_BINARY)     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	return Image.fromarray(im)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+def extract_text(im):     
+\end_layout
+
+\begin_layout Plain Layout
+
+	im = Image.open(im)     
+\end_layout
+
+\begin_layout Plain Layout
+
+	im = preprocess(im)          
+\end_layout
+
+\begin_layout Plain Layout
+
+	extracted = pytesseract.image_to_string(im, output_type=Output.DICT, lang='deu')
+     
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\end_layout
+
+\begin_layout Plain Layout
+
+	return extracted
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+def texts_to_list(input_dir, label):
+\end_layout
+
+\begin_layout Plain Layout
+
+	res = []     
+\end_layout
+
+\begin_layout Plain Layout
+
+	ext = "jpg"     
+\end_layout
+
+\begin_layout Plain Layout
+
+	images = len(glob.glob('{dir}/*.{ext}'.format(dir=input_dir, ext=ext))   
+\end_layout
+
+\begin_layout Plain Layout
+
+	for im, i in zip(images, range(len(images))):
+\end_layout
+
+\begin_layout Plain Layout
+
+    	extracted_text = extract_text(im)         
+\end_layout
+
+\begin_layout Plain Layout
+
+		extracted_text['id'] = i +1         
+\end_layout
+
+\begin_layout Plain Layout
+
+		extracted_text['label'] = label         
+\end_layout
+
+\begin_layout Plain Layout
+
+		res.append(extracted_text)         
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	return res
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Formatierung zu JSON
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:formatting"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Methode 
+\emph on
+texts_to_list
+\series bold
+\emph default
+ 
+\series default
+fügt dem Dictionary, welches durch 
+\emph on
+image_to_string()
+\emph default
+ zurückgegeben wurden ist, eine ID und das übergebene Label hinzu und returned
+ eine Liste von Dictionaries.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Mit dem Aufruf 
+\emph on
+json.dump() 
+\emph default
+wurden die Listen in ein Json-Array überführt und in einer Json-Datei abgelegt
+ und auf der Festplatte gespeichert.
+ Mit Pandas wurden die Json-Dateien wiederrum in einen Pandas-Dataframe
+ überführt.
+ Hierzu reichte der Aufruf mit
+\emph on
+ pd.read_json().
+ 
+\emph default
+Die Dataframes die korrespondieren zu den Labels stehen werden konkateniert,
+ was dazu führt, dass sich alle Texte mit dem im Bezug stehenden Label in
+ einer Schlüssel-Wert-Struktur in Form eines Dataframes befinden.
+ Die Einträge werden zudem randomisiert.
+\end_layout
+
+\begin_layout Section
+Aufbereitung der Daten
 \end_layout
 
 \begin_layout Standard
@@ -175,6 +633,252 @@ stopwords, tokenizing, lower case, stemming
 
 \begin_layout Subsection
 normalisierung der Daten
+\end_layout
+
+\begin_layout Standard
+Zum Normalisieren wurden einige Verfahren angewandt, um die Genauigkeit
+ des Klassifikators zu erhöhen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+stemmer = LancasterStemmer() 
+\end_layout
+
+\begin_layout Plain Layout
+
+lemmatizer = WordNetLemmatizer() 
+\end_layout
+
+\begin_layout Plain Layout
+
+p = inflect.engine()
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# remove special characters 
+\end_layout
+
+\begin_layout Plain Layout
+
+df['text'] = df['text'].apply(lambda x: re.sub("(
+\backslash
+
+\backslash
+W)+"," ",x))
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# remove punctuation 
+\end_layout
+
+\begin_layout Plain Layout
+
+df['text'].apply(lambda x: re.sub(r'[^
+\backslash
+w
+\backslash
+s]', '', x))   
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\end_layout
+
+\begin_layout Plain Layout
+
+# tokenize  
+\end_layout
+
+\begin_layout Plain Layout
+
+df['text'] = df['text'].apply(lambda x:nltk.word_tokenize(x))
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# to lower case 
+\end_layout
+
+\begin_layout Plain Layout
+
+df['text'].apply(lambda x: [word.lower() for word in x])   
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# filter special characters 
+\end_layout
+
+\begin_layout Plain Layout
+
+df['text'].apply(lambda x: [word.lower() for word in x])    
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# filter stopwords 
+\end_layout
+
+\begin_layout Plain Layout
+
+df['text'].apply(lambda x: [item for item in x if item not in stopwords.words('ger
+man')])
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# remove punctuation 
+\end_layout
+
+\begin_layout Plain Layout
+
+df['text'].apply(lambda x: [re.sub(r'[^
+\backslash
+w
+\backslash
+s]', '', word) for word in x if word != '']) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Remove non-ASCII characters from list of tokenized words 
+\end_layout
+
+\begin_layout Plain Layout
+
+df['text'].apply(lambda x: [unicodedata.normalize('NFKD', word).encode('ascii',
+    
+\end_layout
+
+\begin_layout Plain Layout
+
+                            'ignore').decode('utf-8', 'ignore') for word
+ in x]) 
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\end_layout
+
+\begin_layout Plain Layout
+
+# Replace all interger occurrences in list of tokenized words with textual
+ representation df['text'].apply(lambda x: [p.number_to_words(word) for word
+ in x if word.isdigit()]) 
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\end_layout
+
+\begin_layout Plain Layout
+
+# stemming 
+\end_layout
+
+\begin_layout Plain Layout
+
+df['text'].apply(lambda x: [stemmer.stem(word) for word in x])  
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# lemmatizing 
+\end_layout
+
+\begin_layout Plain Layout
+
+df['text'].apply(lambda x: [lemmatizer.lemmatize(word, pos='v') for word in
+ x])    
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Normalisierung
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Trainings- und Testdaten
+\end_layout
+
+\begin_layout Standard
+Die Gesamten Daten müssen unter Trainings- und Testdaten unterteilt werden.
+ Die Daten werden mit den Mengenverhältnis 80:20 aufgeteilt, da es sich
+ im Bereich des Machine Learning als am effektivsten erwiesen hat.
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Section
