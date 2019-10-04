@@ -9,7 +9,9 @@ from tesserocr import PyTessBaseAPI, RIL, OEM
 
 locale.setlocale(locale.LC_ALL, 'german')
 
+
 class TextExtractor:
+
     tesseract_path = 'C:/Program Files/Tesseract-OCR/tesseract'
 
     def __init__(self):
@@ -24,6 +26,56 @@ class TextExtractor:
 
     def __repr__(self):
         return self.extractor.get_tesseract_version
+
+    @staticmethod
+    def preprocess_img(im):
+        """
+        binarize image to improve accuracy
+            """
+        _, im = cv2.threshold(np.array(im), 127, 255, cv2.THRESH_BINARY)
+        return Image.fromarray(im)
+
+    def preprocess_text(self):
+        # normalization
+
+        stemmer = LancasterStemmer()
+        lemmatizer = WordNetLemmatizer()
+        p = inflect.engine()
+
+        # remove special characters
+        self.df['text'].apply(lambda x: re.sub("(\\W)+", " ", x))
+
+        # remove punctuation
+        self.df['text'].apply(lambda x: re.sub(r'[^\w\s]', '', x))
+
+        # tokenize
+        self.df['text'].apply(lambda x: nltk.word_tokenize(x))
+
+        # to lower case
+        self.df['text'].apply(lambda x: [word.lower() for word in x])
+
+        # filter special characters
+        self.df['text'].apply(lambda x: [word.lower() for word in x])
+
+        # filter stopwords
+        self.df['text'].apply(lambda x: [item for item in x if item not in stopwords.words('german')])
+
+        # remove punctuation
+        self.df['text'].apply(lambda x: [re.sub(r'[^\w\s]', '', word) for word in x if word != ''])
+
+        # Remove non-ASCII characters from list of tokenized words
+        self.df['text'].apply(lambda x: [
+            unicodedata.normalize('NFKD', word).encode('ascii', 'ignore').decode('utf-8', 'ignore')
+            for word in x])
+
+        # Replace all interger occurrences in list of tokenized words with textual representation
+        self.df['text'].apply(lambda x: [p.number_to_words(word) for word in x if word.isdigit()])
+
+        # stemming
+        self.df['text'].apply(lambda x: [stemmer.stem(word) for word in x])
+
+        # lemmatizing
+        self.df['text'].apply(lambda x: [lemmatizer.lemmatize(word, pos='v') for word in x])
 
     def extract(self, req):
         extraction = {}

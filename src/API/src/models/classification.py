@@ -7,6 +7,8 @@ import numpy as np
 from models.db.classifications import DBClassification, DBImages, DBResult
 from service.util import time_
 from base64 import b64encode
+from models.extraction import TextExtractor
+
 
 
 class ClassificationException(Exception):
@@ -16,6 +18,8 @@ class ClassificationException(Exception):
 class Classification:
 
     def __init__(self, labels=labels):
+
+        self.extractor = TextExtractor
         self.model = load_model('../../invoice_classifier.h5')
         self._labels = labels
 

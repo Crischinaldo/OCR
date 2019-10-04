@@ -17,6 +17,17 @@ def binarize_img(img):
     return cv2.adaptiveThreshold(img, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 11, 2)
 
 
+class Preprocessor:
+
+    @staticmethod
+    def preprocess_img(im):
+        """
+        binarize image to improve accuracy
+        """
+        _, im = cv2.threshold(np.array(im), 127, 255, cv2.THRESH_BINARY)
+        return Image.fromarray(im)
+
+
 def convert_grayscale(img):
     """
     converts image it to grayscale.
