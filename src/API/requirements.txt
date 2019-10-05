@@ -1,6 +1,4 @@
 flask
-tensorflow
-keras
 requests
 sqlalchemy
 psycopg2-binary
@@ -12,4 +10,9 @@ pytesseract
 numpy
 pdf2image
 jsonschema
-tesserocr
+nltk
+inflect
+pandas
+bs4
+joblib
+sklearn

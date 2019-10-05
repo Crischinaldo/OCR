@@ -13,5 +13,8 @@ app.register_blueprint(home.api)
 app.register_blueprint(classification.api)
 app.register_blueprint(extraction.api)
 
+
+
+
 if __name__ == '__main__':
     app.run(host="127.0.0.1", port=8090, debug=True)

@@ -7,6 +7,7 @@ from models.classification import Classification
 from service.logging_ import Log
 from service.validation import Validator
 from models.evaluation import Evaluation
+import joblib
 
 log = Log()
 api = Blueprint('/classification', __name__)

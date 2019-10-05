@@ -1,5 +1,4 @@
-from keras.models import load_model
-from keras import backend as K
+
 from service._globals import labels
 from service.helpers import decode_b64_to_img
 import cv2
@@ -8,20 +7,31 @@ from models.db.classifications import DBClassification, DBImages, DBResult
 from service.util import time_
 from base64 import b64encode
 from models.extraction import TextExtractor
+import joblib
+from service.preprocessing import Preprocessor
+import pandas as pd
+import sys
+from service.helpers import dummy
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.pipeline import Pipeline
+from sklearn.feature_extraction.text import CountVectorizer
 
-
+global dummy
 
 class ClassificationException(Exception):
     """General Exception handling for Classification"""
 
 
 class Classification:
+    text_clf = '../text_clf.sav'
 
     def __init__(self, labels=labels):
-
+        global dummy
         self.extractor = TextExtractor
-        self.model = load_model('../../invoice_classifier.h5')
+        self.model = joblib.load(Classification.text_clf)
         self._labels = labels
+        self.df = None
+
 
     @property
     def labels(self):
@@ -33,15 +43,17 @@ class Classification:
             raise TypeError('labels needs to be passed as list!')
         self._labels = values
 
-    def classify(self, img):
+    def classify(self, im):
 
-        y_prob = self.model.predict(img)
-        y_classes = y_prob.argmax(axis=-1)
-        max_y_prob = y_prob[0][y_prob.argmax(axis=-1)[0]]
-        max_percentage = round(float(max_y_prob) * 100, 2)
-        K.clear_session()
+        Preprocessor.load()
 
-        return max_percentage, y_classes
+        df = TextExtractor().image_to_df(im=im)
+        y = self.model.predict(df)
+        y_proba = self.model.predict_proba(df)
+        max_y_proba = y_proba[0][y_proba.argmax(axis=-1)[0]]
+        max_percentage = round(float(max_y_proba) * 100, 2)
+
+        return max_percentage, y[0]
 
     def predict_class(self, req):
 
@@ -50,17 +62,9 @@ class Classification:
         if decoded_img is None:
             return
         scaled_img = cv2.resize(decoded_img, (32, 32))
-        rgb_img = cv2.cvtColor(scaled_img, cv2.COLOR_RGB2BGR)
-        image_4d = rgb_img[np.newaxis, ...]
 
-    # im = Image.open(file_like)
-    # im = im.resize((32, 32), Image.ANTIALIAS)
-    # im.save("img1.png", "PNG")
-    # im.show()
-    #  im = cv2.imread(im)
-
-        max_y_prob, pred = self.classify(image_4d)
-        self.db_entry(result=DBResult(label=self.labels[pred[0]],
+        max_y_prob, pred = self.classify(decoded_img)
+        self.db_entry(result=DBResult(label=pred,
                                       accuracy=max_y_prob,
                                       img=DBImages(b64string=b64encode(scaled_img),
                                                    name=req.get('name'),
@@ -70,7 +74,7 @@ class Classification:
             'result':
                 {
                     'name': req.get('name'),
-                    'pred_class': self.labels[pred[0]],
+                    'pred_class': pred,
                     'accuracy': max_y_prob,
                 }
         }

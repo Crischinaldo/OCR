@@ -21,3 +21,6 @@ def decode_b64_to_img(b64, file_type):
         return decoded_img
 
     return None
+
+def dummy(doc):
+    return doc
