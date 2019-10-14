@@ -5,6 +5,8 @@ from collections import Counter
 from functools import reduce
 from sqlalchemy.exc import ProgrammingError
 from models.db.classifications import DBClassification
+import json
+import numpy as np
 
 
 class Evaluation:
@@ -26,8 +28,18 @@ class Evaluation:
 
         evaluation.update({k: v for k, v in zip(keys, [total_amount, total_amount_split, accuracies])})
 
+        analytics = Evaluation.durations()
+        evaluation.update(analytics)
+
         return {'result': evaluation}
 
+    @staticmethod
+    def durations():
 
+        analytic = {}
+        with open('../data/evaluation.json', 'r') as json_file:
+            evaluation = json.load(json_file)
 
+        analytic.update(evaluation)
 
+        return evaluation

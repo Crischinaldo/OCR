@@ -6,17 +6,12 @@ import numpy as np
 from models.db.classifications import DBClassification, DBImages, DBResult
 from service.util import time_
 from base64 import b64encode
-from models.extraction import TextExtractor
+from models.extraction.extraction import TextExtractor
 import joblib
 from service.preprocessing import Preprocessor
-import pandas as pd
-import sys
-from service.helpers import dummy
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.pipeline import Pipeline
 from sklearn.feature_extraction.text import CountVectorizer
-
-global dummy
 
 class ClassificationException(Exception):
     """General Exception handling for Classification"""
@@ -26,7 +21,6 @@ class Classification:
     text_clf = '../text_clf.sav'
 
     def __init__(self, labels=labels):
-        global dummy
         self.extractor = TextExtractor
         self.model = joblib.load(Classification.text_clf)
         self._labels = labels

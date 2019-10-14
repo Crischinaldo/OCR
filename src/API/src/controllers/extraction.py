@@ -3,7 +3,7 @@ extraction route
 """
 
 from flask import Blueprint, request, jsonify
-from models.extraction import TextExtractor
+from models.extraction.extraction import TextExtractor
 from service.logging_ import Log
 from service.validation import Validator
 

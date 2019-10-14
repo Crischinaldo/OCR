@@ -8,7 +8,7 @@
 \options bibliography=totoc,listof=totoc,BCOR=5mm,DIV=12
 \use_default_options false
 \maintain_unincluded_children false
-\language english
+\language ngerman
 \language_package default
 \inputencoding iso8859-1
 \fontencoding default
@@ -29,6 +29,7 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement h
 \paperfontsize default
 \spacing single
 \use_hyperref true
@@ -76,7 +77,7 @@
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style english
+\quotes_style german
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -98,7 +99,7 @@ status open
 
 
 \backslash
-chapter{Konzept der Software}
+chapter{Evaluation}
 \end_layout
 
 \end_inset
@@ -109,7 +110,7 @@ chapter{Konzept der Software}
 \begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "chap_concept"
+name "chap_eval"
 
 \end_inset
 
@@ -117,75 +118,970 @@ name "chap_concept"
 \end_layout
 
 \begin_layout Standard
-Dieses Kapitel erklärt das Konzept des Systems.
- Zunächst werden im Unterkapitel 
+In diesen Abschnitt ist wird die Evaluierung der Prozessautomatisierung
+ erläutert.
+ Hierzu wurden Testdurchläufe durchgeführt um Erkenntnisse bezüglich der
+ durchschnittlichen Zeitersparnis zu generieren.
+\end_layout
+
+\begin_layout Section
+Testdaten
+\end_layout
+
+\begin_layout Standard
+Zur Errechnung der durchschnittlichen Zeitersparnis wurden mit verschiedenen
+ Testpersonen Szenarien durchlaufen, die sich an die Schadensprotokollierung
+ mit und ohne Textextraktion orientieren, um Richtwerte zu generieren.
+\end_layout
+
+\begin_layout Subsection
+Testplanung
+\end_layout
+
+\begin_layout Standard
+Die Testplanung definiert Vorbedingungen und Aspekte bezüglich der Durchführung
+ des Testes.
+ Die Tests werden unternehmensintern auf der graphischen Benutzeroberfläche
+ des Produktes durchgeführt.
+ Es wird der Zeit gemessen, die die Testpersonen benötigt, um ein Formular
+ für die Schadensprotokollierung mit den Daten eines gegebenen Rechnungsbeleg
+ abzuschicken, wobei eine mögliche Vorbedingung getroffen wurden ist:
+\end_layout
+
+\begin_layout Subsubsection
+Leeres Formular
+\end_layout
+
+\begin_layout Standard
+Um den momentane Durchlaufzeit der gegenwärtigen Prozesslaufzeit zu evaluieren,
+ wurden die Formularfelder leer gelassen.
+\end_layout
+
+\begin_layout Subsubsection
+gefülltes Formular
+\end_layout
+
+\begin_layout Standard
+Diese Vorbereitung soll ebenfalls für die Textextraktion sein, wobei eine
+ variable Anzahl von Formularfelder falsch ausgefüllt wurden sind, um Fehler
+ vorzutäuschen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Die Testperson ist bei einem gefüllten Formular in Unkenntnis gelassen,
+ dass einige Felder fehlerhafte Werte enthalten.
+ Sie hat aus diesem Grund die Aufgabe die Werte gründlich zu überprüfen
+ und gegebenenfalls zu korrigieren, bevor das Formular abgeschickt wird.
+\end_layout
+
+\begin_layout Subsection
+Testdurchführung
+\end_layout
+
+\begin_layout Standard
+Eine von der jeweiligen Vorbedingung abhängig präparierte Benutzeroberfläche
+ wird der Testperson zur Verfügung.
+ Die Daten werden quantitativ erhoben, da eine Messung anhand numerischer
+ Zahlen für diesen Zweck sinnvoll erscheint.
+ Die Tests sind unter einer Zeitmessung durchgeführt und wurden kategorisch
+ in einer CSV-Tabelle persistiert, womit automatische und manuelle Ausfüllprozes
+se getrennt betrachtet werden können.
+ Die beständigen Fehler wurden gezählt, somit kann die Fehleranzahl mit
+ der gebrauchten Zeit korreliert werden.
+\end_layout
+
+\begin_layout Subsection
+Testergebnisse
+\end_layout
+
+\begin_layout Standard
+In einem Jupyter Notebook ist die CSV-Tabelle ausgelesen und in einem Dataframe
+ Datenstruktur überführt wurden.
+ Insgesamt wurden 40 Testergebnisse aufgezeichnet.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/durations.PNG
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Testergebnisse mit Extraktion
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:test_res"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+In der Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Anwendungsfälle"
+reference "fig:test_res"
 plural "false"
 caps "false"
 noprefix "false"
 
 \end_inset
 
- Anforderungen anhand eines Use-Case-Diagrams definiert, die das Vorgehen
- in der Entwicklung erkennbar macht um eine abschließenden Lösungansatz
- zu konzepieren.
-\end_layout
-
-\begin_layout Section
-Anwendungsfälle
+ befindet sich ein Ausschnitt von dem Resultat.
+ Jedes Datenelement verfügt über die entstandenen Fehler, welche über die
+ Felder verteilt sind, und die Dauer für die Schadensprotokollierung 
+\emph on
+time, 
+\emph default
+welche in Sekunden wiedergegeben wird.
+ Für die Felder existieren Indikatoren, ob die jeweiligen Informationen
+ richtig extrahiert wurden, dabei wird 1 als richtig (
+\emph on
+true
+\emph default
+) und 0 als falsch (
+\emph on
+false
+\emph default
+) gewertet.
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Anwendungsfälle"
+\begin_inset VSpace bigskip
+\end_inset
+
+Wird die Fehler und die Zeit betrachtet, so werden Korrelationen zwischen
+ den verschiedenen Feld-variablen und der Zeit erkannt, da eine erhöhte
+ Fehleranzahl zu einer erhöhten Zeitspanne führt.
+\end_layout
+
+\begin_layout Section
+Auswertung
+\end_layout
+
+\begin_layout Standard
+In diesen Unterabschnitt werden die Testdaten ausgewertet und untersucht.
+\end_layout
+
+\begin_layout Subsection
+Fehlerraten
+\end_layout
+
+\begin_layout Standard
+Es wurden insgesamt 122 Fehler bei den 40 Tests registriert, wobei 9 Felder
+ vorhanden sind.
+ Auf einen Test gerechnet ergibt das 3.05 Fehler pro Testdurchlauf, was einer
+ durchschnittlichen Fehlerquote von 3.77% entspricht.
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
 
 \end_inset
 
 
+\begin_inset Tabular
+<lyxtabular version="3" rows="12" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Bezeichnung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Anzahl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Fehleranzahl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Absoluter Anteil
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Relativer Anteil
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+name
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+40
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+11
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3,06%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+13,42%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+street
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+40
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3,33%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+14,64%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+city
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+40
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+11
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.06%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+13,42%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bank
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+40
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+16
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4,44%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+19,52%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+account number
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+40
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+14
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3,89%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+17,08%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+iban
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+40
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+14
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3,89%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+17,08%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bic
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+40
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4,17%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+18,3%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+invoice number
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+40
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4,17%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+18,3%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+fee
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+40
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+14
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3,89%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+17,08%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Durchschnitt
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+40
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+13.56
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3,77%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+16,54%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Gesamt
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+360
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+122
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+33.89%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Durchschnittliche Fehlerraten
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Mit jeweils 4,44% Fehlern bei 
+\emph on
+bank
+\emph default
+ wurden die höchsten Fehlerquoten festgestellt, wobei
+\emph on
+ name
+\emph default
+ und
+\emph on
+ city
+\emph default
+ mit 3,06% die geringste Fehlerquote aufweisen.
+ Auf die Gesamtfehlerquote relativiert besteht ein prozentualer Unterschied
+ von 6,1%.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+Werden die Fehlerraten, wie in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:err_rates"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ aufgezeigt, mit dem durchschnittlichen Fehlerquotienten verglichen, so
+ wird deutlich, dass 
+\emph on
+name
+\emph default
+,
+\emph on
+ street
+\emph default
+ und 
+\emph on
+city
+\emph default
+ mit relativ hohen Abstand am wenigsten Fehler aufweisen.
+ Die Werte 
+\emph on
+bank
+\emph default
+, 
+\emph on
+bic 
+\emph default
+und 
+\emph on
+invoice number 
+\emph default
+weisen die häufigsten Fehler auf, wobei die restlichen Werte geringfügig
+ über den Durchschnitt liegen.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/error_rates.PNG
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Absolute prozentuale Fehlerraten
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:err_rates"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Subsubsection
+Korrelationen
 \end_layout
 
 \begin_layout Standard
 In der Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:use_case"
+reference "fig:heatmap"
 plural "false"
 caps "false"
 noprefix "false"
 
 \end_inset
 
- wird das Use-Case-Diagram veranschaulicht, aus welchem die funktionalen
- Anforderungen abgeleitet werden sollen.
- Der Webclient wird dazu verwendet über die UI eine Datei hochzuladen.
- Sollte diese Datei das Bild oder PDF-Format haben, wird das Bild von einem
- Klassifizierungs-Service als entweder Schadensfoto oder Rechnungsbeleg
- klassifiziert.
- Nachdem festgestellt wurden ist, ob es sich bei der hochgeladenen Datei
- ein Rechnungsbeleg handelt, extrahiert ein Extraction-Service Informationen
- aus dem Bild.
-\end_layout
-
-\begin_layout Standard
+ wird die Korrelationsmatrix als Heatmap abgebildet, die im wesentlichen
+ die Korrelationskoeffizienten und ihre Korrelationen untereinander erfasst.
+ Die Gewichtungen werden anhand der Farbpalette repräsentativ dargestellt,
+ wobei negative Korrelationen einen dunkleren Farbton haben und positive
+ Korrelationen einen helleren Farbton.
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename images/use_case.png
-	scale 80
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:use_case"
+\begin_inset Graphics
+	filename images/heatmap.PNG
+	scale 50
 
 \end_inset
 
@@ -196,8 +1092,15 @@ name "fig:use_case"
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Use-Case-Diagram
+Korrelationsmatrix als Heatmap
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:heatmap"
 
 \end_inset
 
@@ -207,185 +1110,101 @@ Use-Case-Diagram
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-Anwendungsfälle bezüglich der Verwaltung und Authentifizierung von Nutzern
- werden im weiteren Verlauf über den Unternehmenseigenen IAM-Server abgewickelt
- und werden in diesem Kontext nicht berücksichtigt.
-\end_layout
-
-\begin_layout Section
-Spezifikation der Anforderungen
-\end_layout
-
-\begin_layout Standard
-In diesen Unterabschnitt werden die funktionalen und nicht funktionalen
- Anforderungen spezifiert.
-\end_layout
-
-\begin_layout Subsection
-Funktionale Anforderungen
-\end_layout
-
-\begin_layout Standard
-Die Funktionalen Anforderungen sind untergliedert in drei Anwendungsszenarien.
- Die funktionalen Anforderungen sind abhängig vom Szenario gegliedert und
- tabellarisch aufgeführt.
-\end_layout
-
-\begin_layout Paragraph*
-1.
- Rechnungsbeleg erkennen
 \end_layout
 
 \begin_layout Standard
 \begin_inset VSpace smallskip
 \end_inset
 
-
+Beim näheren Betrachten der Korrelationsmatrix wird festgestellt, dass sich
+ Gruppierungen in den positiven Korrelationen bilden.
+ Die Felder 
+\emph on
+name
+\emph default
+, 
+\emph on
+city 
+\emph default
+und 
+\emph on
+bank 
+\emph default
+haben starke positive Korrelationen untereinander, wodurch die Interpretation
+ herausgezogen wird, dass die Felder gruppierend Auftreten und häufig entweder
+ richtig oder falsch sind.
+ Der gleiche Fall tritt bei den Werten der Bankdaten 
+\emph on
+bank
+\emph default
+, 
+\emph on
+accoun
+\emph default
+t 
+\emph on
+number
+\emph default
+, 
+\emph on
+iban
+\emph default
+ und 
+\emph on
+bic 
+\emph default
+auf.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float table
+\begin_inset VSpace smallskip
+\end_inset
+
+Das Gruppen-ähnliche Verhalten der Koeffizienten macht Sinn, da die Textextrakti
+on auf der Basis von Blockkoordinaten basiert und eine spezifische Koordinatenko
+mposition falsche oder richtige Daten verursacht.
+\end_layout
+
+\begin_layout Subsection
+Zeitersparnis
+\end_layout
+
+\begin_layout Standard
+Die Zeitersparnis fordert Zeitmessungen anhand Testdurchläufe ohne Extraktion
+ der Information.
+ Damit die durchschnittliche Zeitersparnis errechnet werden kann, wurden
+ Testdurchläufe durchgeführt, um die gebrauchte Zeit zu messen
+\begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
-ID
+
+
+\backslash
+centering
 \end_layout
 
 \end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
 
-\begin_layout Plain Layout
-Beschreibung
+
+\begin_inset Graphics
+	filename images/spared_time.PNG
+
+\end_inset
+
+
 \end_layout
 
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
 \begin_layout Plain Layout
-F-10010
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-UI gibt Benutzer Auskunft über mögliche Dateitypen und Klassifikationsprozess
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-F-10020
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Benutzer kann über UI eine Datei ausgewählen
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-F-10030
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Benutzer kann interaktiv Datei als Anfrage an Klassifikations-Service senden
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-F-10040
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Klassifikations-Service liefert eine Antwort
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-F-10050
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-UI präsentiert dem Benutzer die Daten in der Antwort
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:szen_1"
+name "fig:time"
 
 \end_inset
 
@@ -393,7 +1212,7 @@ name "tab:szen_1"
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Dateien klassifizieren
+Zeitverbrauch
 \end_layout
 
 \end_inset
@@ -401,548 +1220,26 @@ Dateien klassifizieren
 
 \end_layout
 
-\end_inset
-
-Ein Webclient soll in der Lage sein dem Benutzer zu ermöglichen Dateien
- hochzuladen und an einem Klassifikations-Webservice zu senden.
- Er präsentiert dem Benutzer die erhaltende Antwort.
- Die Antwort beinhaltet unter anderem die Information, ob die Datei sich
- als Rechnungsbeleg identifizieren lies.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace smallskip
-\end_inset
-
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Standard
-Wenn ein Rechnungsbeleg erkannt wurde, wird dem Nutzer eine Extrahierung
- der Informationen angeboten.
- Die funktionalen Anforderungen zum Anwendungsszenario werden in Tabelle
- 
+\end_inset
+
+Der durchschnittliche Zeitverbrauch ist, wie in In Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:szen_2"
+reference "fig:time"
 plural "false"
 caps "false"
 noprefix "false"
 
 \end_inset
 
- aufgelistet und beschrieben..
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace smallskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Paragraph*
-2.
- Informationen extrahieren
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace smallskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float table
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Tabular
-<lyxtabular version="3" rows="7" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ID
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Beschreibung
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-F-20010
-\end_layout
-
-\end_inset
-</cell>
-<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Sollte Datei als Rechnungsbeleg klassifiziert wurden sein, kann über die
- UI interaktiv ein Extractionsprozess vom zuvor hochgeladenen Bild ausgeführt
- werden
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-F-20020
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Benutzer kann über UI Extractionsprozess starten
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-F-20030
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-UI gibt Benutzer visuell Kenntniss über den Stand des Extractionsprozesses
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-F-20040
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-UI stellt Benutzer die Extrahierten Informationen deklarativ dar
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-F-20050
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Benutzer kann Korrekturen in den Informationen vornehmen
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-F-20060
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Benutzer kann interaktiv ein Formular mit den Informationen ausfüllen
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:szen_2"
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Informationen aus Rechnungsbeleg extrahieren
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace smallskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Der Webclient sendet das zuvor hochgeladene Bild an einem Extraktions-Webservice.
- Der Client erhält eine Antwort die die extrahierten Daten enthält und sie
- deklarativ dem Benutzer präsentiert.
- Der Benutzer kann über die Oberfläche Korrekturen vornehmen und mit einer
- einzelnen Interaktion die Informationen in die Formularfelder füllen.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace smallskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Die ersten beiden Szenarien treten in diesem Kontext zusammenhängend auf,
- da eine Extrahierung lediglich für Rechnungsbelege gedacht ist.
- Aufgrund von universeller Einsetzbarkeit und Modularität werden sie als
- zwei Webservices implementiert.
- Mit der Servicearchitektur können die beiden Komponenten serverseitig komplett
- voneinander gekapselt werden.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace smallskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Paragraph*
-3.
- Evaluationsergebnisse präsentieren
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace smallskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float table
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ID
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Beschreibung
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-F-30010
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Beim Aufruf des Clients werden Evaluationsdaten vom Server geholt
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-F-30020
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Der Client präsentiert visuell und informativ die Evaluationsdaten
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:szen_3"
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Evaluationsergebnisse präsentieren
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Die Ergebnisse der Klassifikationen werden im Client evaluiert.
- Die Daten werden vom Service über den Klassifikations-Service abgerufen.
-\end_layout
-
-\begin_layout Subsection
-Nichtfunktionale Anforderungen
-\end_layout
-
-\begin_layout Standard
-In diesem Unterkapitel werden die nichtfunktionalen Anforderungen beschrieben.
-\end_layout
-
-\begin_layout Paragraph*
-Performance
-\end_layout
-
-\begin_layout Standard
-NF-10010: Die Zeit die der Aufruf des Klassifikations-Webservices benötigt
- muss unter drei Sekunden sein.
-\end_layout
-
-\begin_layout Standard
-NF-10020: Die Zeit die der Aufruf des Extraktions-Webservices benötigt muss
- unter drei Sekunden sein.
-\end_layout
-
-\begin_layout Paragraph*
-Usability
-\end_layout
-
-\begin_layout Standard
-NF-20010: Die UI muss gegenüber allen Devices responsive sein.
-\end_layout
-
-\begin_layout Standard
-NF-20020: Die UI muss ein zeitgemäßes Design haben.
-\end_layout
-
-\begin_layout Standard
-NF-10020: Die Zeit die der Aufruf des Extraktions-Webservices benötigt muss
- unter drei Sekunden sein.
-\end_layout
-
-\begin_layout Standard
-....
-\end_layout
-
-\begin_layout Subsection
-Aktivitätsdiagramme
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename images/activity_classify.png
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Aktivitätsdiagramm Klassifikation
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename images/activity_eval.png
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Aktivitätsdiagramm Extraktion
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename images/activity_eval.png
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Aktivitätsdiagramm Evaluation
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
+ veranschaulicht, bei manuellen Eingaben ist 77,71 Sekunden, wobei der durchschn
+ittliche Zeitverbrauch bei automatisierten Eingaben 31,16 Sekunden beträgt.
+ Die Differenz der Zeitangabe beträgt 46,55 Sekunden, was einer prozentualen
+ Zeitersparnis von 59.9% entspricht
 \end_layout
 
 \begin_layout Standard

@@ -1,0 +1,431 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\options bibliography=totoc,listof=totoc,BCOR=5mm,DIV=12
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding iso8859-1
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref section
+\pdf_pdfusetitle false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine biblatex
+\cite_engine_type authoryear
+\biblio_style plainnat
+\biblio_options backend=biber
+\biblatex_bibstyle alphabetic
+\biblatex_citestyle alphabetic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+chapter{Einleitung}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "chap_introduction"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Motivation
+\end_layout
+
+\begin_layout Standard
+Bei firmeninternen Schadensabwicklungen werden für die Schadensprotokollierung
+ eine Vielzahl von Dokumenten hochgeladen, die auf einem Server gespeichert
+ werden.
+ Die hochgeladenen Belegarten umfassen Rechnungsbelege, aus denen Informationen
+ extrahiert werden können um die Daten für einen automasi
+\end_layout
+
+\begin_layout Standard
+Darüber hinaus werden Formulare ausgefüllt, um Schäden zu protokollieren.
+ Da die in die Formularfelder eingetragenen Informationen aber in Textform
+ auf den Rechnungsbelegen vorliegen, besteht die Motivation daraus das Ausfüllen
+ des Formulars zu automatisieren.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Machine Learning ist in vielen Gebieten nicht mehr wegzudenken und gewinnt
+ immer mehr an Bedeutung.
+ Aus Sicht des Kunden ist die Automatisierung der Schadensprotokollierung
+ mit einem ökomischen Gewinn verbunden.
+\end_layout
+
+\begin_layout Standard
+Das Ausfüllen von Formularen ist mit einem großen Ressourcenverbrauch der
+ Kunden unserer Plattforum verbunden.
+ Eine automatisierte Belegerkennung mit anschließender Textextrahierung
+ führt zu einer Vergrößerung der Personalkapazitäten externer Unternhmen.
+ Der heutige Stand der Technik ermöglicht es anhand großer Datenmengen eine
+ Lösung für das Problem realisieren.
+ Das Anwenden von Machine Learning leistet einen beachtlichen Beitrag zur
+ Ressourceneinsparung und Unternehmensstrategien, weshalb das Ziel der Unternehm
+ung Gewinne zu maximieren effektiver verfolgt werden kann.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Durch einen großen Datenbestand kann Machine Learning realisiert werden
+ und dafür eingesetzt werden eigenständig Lösungen für Probleme zu finden.
+ Die Nutzung der Technologie ist ein wichtiger Schritt sich gegen konkurriende
+ Unternehmen durchzusetzen und die Kunden an das Unternehmen zu binden.
+ Die Adaption des Unternehmens hinsichtlich auf Machine Learning schafft
+ gegenüber nicht adaptierenden Unternehmen einen großen Wettbewerbsvorteil.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Die vorhandenen Datenbestände ist mit Kapital zu vergleichen, womit momentan
+ kein Gebrauch gemacht wird.
+ Im Rahmen dieser Arbeit soll dem Unternehmen der Eindruck vermittelt werden,
+ dass Datenbestände einen hohen Wert haben und effektiv genutzt werden sollten.
+\end_layout
+
+\begin_layout Section
+Problemstellung
+\end_layout
+
+\begin_layout Standard
+Um die Datenbestände zu nutzen sind einige Vorbereitungen zu treffen um
+ sie in eine geeignete Struktur zu bringen.
+ Des Weiteren muss die richtige Wahl des Klassifikators abhängig von den
+ potentiellen Erkennungsmerkmalen getroffen werden.
+ Sobald der Klassifikator in der Lage ist Rechnungsbelege von anderen Belegen
+ zu unterscheiden, ist eine Textextrahierung abhängig von festgelegten Koordinat
+en durchzuführen.
+\end_layout
+
+\begin_layout Standard
+Da die Koordinaten jedoch sich Unternehmensabhängig unterscheiden, müssen
+ Rechnungsbelege auch untereinander klassifiziert werden.
+\end_layout
+
+\begin_layout Standard
+Die Ergebnisse der Klassifikation und Textextrahierung sollen mit quantitativen
+ Gebrauch evaluiert werden um eine zielgenaue Bewertung zu berechnen.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Auf der sicht des Komplexitätsniveaus sollten universell einsetzbare Funktionali
+täten gekapselt werden und Unternehmensübergreifend eingesetzt werden können.
+ Es muss eine klare Infrastruktur geschafft werden, die Entwickler nutzen
+ können um die entsprechende Funktionalität nutzen zu können.
+\end_layout
+
+\begin_layout Section
+Zielsetzung
+\end_layout
+
+\begin_layout Standard
+Durch das Sortierten der Daten wird der Grundbaustein zum Erstellen eines
+ Klassifkators geschaffen.
+ Da die Daten höchst vertraulich sind werden sie mit höchster Sensibilität
+ behandelt.
+ Der Klassifikator wird unternehmensintern mit einer kleinen Teilmenge trainiert
+ und wird einen prototypähnlichen Zustand haben.
+ Er soll in der Lage sein zwei Belegarten voneinander trennen zu können.
+ Die Klassifikation finden anhand des Textes statt und muss daher von den
+ Bildern extrahiert werden, bevor die Textklassifikation erfolgt.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Koordinaten der zu extrahierenen Informationen werden für ein bestimmes
+ Muster für Rechnungsbelege errechnet.
+ Auf Basis der Koordinaten werden bestimmte Regionen aus den Bild rausgelesen
+ und in ein strukturiertes Format gebracht.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Durch eine Kapselung von Klassifkator und Extrahierung können beide jeweile
+ Funktionalitäten eindeutig über eine Schnittstelle angesprochen werden.
+ Zudem sollen die Schnittstellen Ergebnisse liefern, die beispielsweise
+ über das Dashboard aufrufbar sind.
+ Das Dashboard wird sowohl als Schauplatz für den Klassifikations- und Extrahier
+ungsprozess als auch für die visuelle Darstellung von Ergebnissen fungieren.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Die Arbeit soll dem Unternehmen die Welt des Machine Learnings näher bringen
+ und aufrufen das Potential der Daten zu nutzen.
+ Durch eine moderne Architektur können gekapselte und intelligente Komponenten
+ nicht nur Unternehmensintern genutzt werden, sondern geschickt vermarktet
+ werden.
+\end_layout
+
+\begin_layout Section
+Grundaufbau der Arbeit
+\end_layout
+
+\begin_layout Standard
+In diesem Unterkapitel wird die grundlegende Struktur der Arbeit kurz zusammenge
+fasst und erläutert, um den Leser einen Überblick über die Inhalte dieser
+ Arbeit zu geben
+\end_layout
+
+\begin_layout Subsubsection
+Kapitel 1 - Grundlagen
+\end_layout
+
+\begin_layout Standard
+Die Grundlagen sollen dem Leser die Kenntnisse vermittelt werden, die es
+ braucht, um die Arbeit grundlegend zu verstehen.
+ Durch das Kapitel wird Basiswissen über Machine Learning, OCR und über
+ die serviceorientierten Architektur vermittelt.
+\end_layout
+
+\begin_layout Subsubsection
+Kapitel 2 - Anforderungen
+\end_layout
+
+\begin_layout Standard
+Die Anforderungen beinhalten die Spezifikationen von sowohl funktionalen
+ als auch technischen Produktanforderungen.
+ Es werden die Anwendungsfälle definiert und anhand von Diagramen illustriert.
+\end_layout
+
+\begin_layout Subsubsection
+Kapitel 3 - Entwicklung des Textklassifikators
+\end_layout
+
+\begin_layout Standard
+Dieser Kapitel befasst sich mit dem gesamten Entwicklungsprozess des Klassifkato
+rs einschließlich der Aufbereitung der Daten.
+ Zudem wird die Wahl und Funktionsweise und die Implementierung des Klassifikato
+rs erläutert.
+\end_layout
+
+\begin_layout Subsubsection
+Kapitel 4 - Entwicklung der Textextrahierung
+\end_layout
+
+\begin_layout Standard
+Kapitel 5 soll einen Eindruck geben wie die Koordinaten für die Extrahierung
+ errechnet werden und wie daraus erfasste Informationen extrahiert und strukturi
+ert werden.
+ Es wird ein Überblick über die Vorangehensweise der Koordinatenbestimmung
+ der interessanten Regionen und dessen Implementierung verschafft.
+\end_layout
+
+\begin_layout Subsubsection
+Kapitel 5 - Entwicklung des Servers
+\end_layout
+
+\begin_layout Standard
+Die Entwicklung des Servers beschreibt die Architektur und Implementierung
+ der serverseitigen Logik.
+ Das Kapitel behandelt die Kommunikationsschnittstelle zur Textklassifizierung
+ und der Textextrahierung sowie deren Integration.
+\end_layout
+
+\begin_layout Subsubsection
+Kapitel 6 - Entwicklung des Dashboards
+\end_layout
+
+\begin_layout Standard
+In diesem Kapitel wird die Entwicklung des Dashboards dokumentiert.
+ Die Implementierung und die Architektur der clientseitigen Logik werden
+ in diesem Abschnitt erläutert.
+\end_layout
+
+\begin_layout Subsubsection
+Kapitel 7 - Evaluation
+\end_layout
+
+\begin_layout Standard
+Dieser Abschnitt durchläuft die Ergebnissbestimmung der Textklassifikation
+ sowie die durchschnittlichen Zeitersparniss durch die Prozessautomatisierung
+\end_layout
+
+\begin_layout Subsubsection
+Kapitel 8 - Zusammenfassung
+\end_layout
+
+\begin_layout Standard
+In der Zusammenfassung wird dem Leser einen Rückblick der Arbeit verschafft
+ und zukünftige Erweiterungen aufgelistet.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+endinput
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "bib/thesis"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

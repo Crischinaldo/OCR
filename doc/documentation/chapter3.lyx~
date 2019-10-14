@@ -8,7 +8,7 @@
 \options bibliography=totoc,listof=totoc,BCOR=5mm,DIV=12
 \use_default_options false
 \maintain_unincluded_children false
-\language english
+\language ngerman
 \language_package default
 \inputencoding iso8859-1
 \fontencoding default
@@ -76,7 +76,7 @@
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style english
+\quotes_style german
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -98,18 +98,18 @@ status open
 
 
 \backslash
-chapter{Grundlagen}
+chapter{Entwicklung des Textklassifikatoren}
 \end_layout
 
 \end_inset
 
- 
+
 \end_layout
 
 \begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "chap_basics"
+name "chap_architecture_classificator"
 
 \end_inset
 
@@ -117,23 +117,668 @@ name "chap_basics"
 \end_layout
 
 \begin_layout Standard
-In Diesem Kapitel werden die benötigten Grundlagen soweit erklärt, dass
- Basiskenntisse zum Verstehen dieser Arbeit gegeben sind.
+Dieses Kapitel befasst sich mit der Entwicklung des Klassifikators und dessen
+ Zwischenschritte.
+ Es wird die Herangehensweise an die Datenvorbereitung erläutert, um den
+ Datensatz für das Trainieren eines Models vorzubereiten.
+ Schrittweise wird die Erstellung von Merkmalen, welche anhand einer semantische
+n Analyse einhergeht, für das Training erklärt.
+ Anhand einer anschließenden Analyse wird die Zielsicherheit des Klassifikators
+ evaluiert.
 \end_layout
 
 \begin_layout Section
-Systembeschreibung
+Datenanalyse
 \end_layout
 
 \begin_layout Standard
-Grundlegend stellt das System eine Schnittstelle zwischen Versicherungsunternehm
-en und Logististikunternehmen dar.
- Es existiert als Webanwendung unter einer Domäne und setzt eine Registration
- des Benutzers vorraus, um es zu gebrauchen.
- Benutzer verfügen im Kontext der Webanwendung über bestimmte administrative
- Rechte, die mittels einer Rollenvergabe organisiert werden.
- Auch die Unterscheidung zwischen Versicherer oder Spediteur findet über
- die Rollenidentifikation statt.
+Unter der Organisation der Daten ist sowohl die Formatierung als auch die
+ Strukturierung von den zur Verfügung stehenden Datensätzen gemeint.
+ Um das Model mit Überwachtem Lernen zu trainieren müssen die Daten so strukturi
+ert sein, dass die Kategorie von jeden Datenpunkt bekannt ist.
+ Ursprünglich sind die Bilder im PDF-Format in einer Ordnerstruktur gegliedert
+ gewesen, die abhängig vom Hochladedatum nach Jahr, Monat und Tag sortiert
+ wurden sind.
+ Die Zeitangabe für die Textextraktion ist als nicht relevant zu werten,
+ da hier nur auf der inhaltliche Aspekt eine Rolle spielt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Kollektion
+\end_layout
+
+\begin_layout Standard
+Mit dem Programmcode sind alle Dateien kollektiviert, indem rekursiv über
+ jeden Ordner in einem bestimmten Ordner
+\emph on
+ input_dir 
+\emph default
+alle PDF-Dateien erfasst wurden und in den Ordner 
+\emph on
+output_dir 
+\emph default
+verlagert wurden sind.
+ Die Generierung der Merkmale verläuft über das Extrahieren der Texte aus
+ Bilddateien, weswegen jedes Bild mit der Funktion 
+\emph on
+convert_from_path()
+\emph default
+ der externen Bibliothek 
+\emph on
+pdf2image
+\emph default
+ zum JPG-Format konvertiert wurden ist.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "caption={Sammeln der Daten},captionpos=b"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+def collect_data(input_dir, output_dir):
+\end_layout
+
+\begin_layout Plain Layout
+
+    ext = 'jpg'
+\end_layout
+
+\begin_layout Plain Layout
+
+    for pdf in glob.glob('{inp}/*/**/*.pdf'.format(inp=input_dir), recursive=True):
+       
+\end_layout
+
+\begin_layout Plain Layout
+
+        try:             
+\end_layout
+
+\begin_layout Plain Layout
+
+        	pages = convert_from_path(pdf)         
+\end_layout
+
+\begin_layout Plain Layout
+
+		except (ValueError, Exception):             
+\end_layout
+
+\begin_layout Plain Layout
+
+    		pass      
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\end_layout
+
+\begin_layout Plain Layout
+
+    for page in pages:             
+\end_layout
+
+\begin_layout Plain Layout
+
+   	 page.save('./{output}/{name}.{ext}'.format(
+\end_layout
+
+\begin_layout Plain Layout
+
+             output=output_dir, name=str(uuid.uuid4())),  ext=ext)
+\end_layout
+
+\end_inset
+
+Die rekursive Suche verlief über glob (
+\emph on
+Unix style pathname pattern expansion
+\emph default
+), einer Bibliothek die alle Pfadnamen nach einem spezifischen Muster nach
+ Unix-Regeln durchsucht.
+ Die Funktion 
+\emph on
+convert_from_path() 
+\emph default
+gibt eine Liste Bild-Objekte zurück, da PDF-Dokumente eine Mehrzahl an Seiten
+ aufweisen können.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Die Betrachtung der Bilder zeigt, dass es sowohl digitalisierte Aufnahmen
+ von Sowohl Schadensfotos als auch Belegen aller Art gibt.
+ Es wurden zwei Belegarten selektiert, die es zu klassifizieren gilt:
+\end_layout
+
+\begin_layout Itemize
+Rechnungen
+\end_layout
+
+\begin_layout Itemize
+Regressforderungen
+\end_layout
+
+\begin_layout Standard
+Aus Zeitgründen werden hier lediglich zwei Kategorien betrachtet, wobei
+ die eigentliche Menge an Daten dafür ausreicht eine Vielzahl von Belegarten
+ zu kategorisieren.
+\end_layout
+
+\begin_layout Subsubsection
+Sortierung
+\end_layout
+
+\begin_layout Standard
+Eine interessante Möglichkeit die Bilder zu Sortieren ist nach Schlüsselwörtern
+ in den Texten der Dokumente zu suchen und sie abhängig davon in bestimmte
+ Ordner zu sortieren.
+ Durch eine Textextraktion von jedem Bildes gelang es die Texte nach bestimmten
+ Schlüsselwörtern zu durchsuchen und sie danach zu sortieren.
+ Da eine große Variation an Daten vorhanden ist, sind mitunter auch Ausreißer
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Fehlerhafter Datenwert
+\end_layout
+
+\end_inset
+
+ unter den sortierten Daten dabei.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Ausreißer üben eine negative Korrelation auf die Zielsicherheit des Klassifikato
+r aus.
+ Durch stichprobenartiges herüberschauen ist aufgefallen, dass die Menge
+ an Ausreißern überschaubar ist.
+ Die Sortierung hat dazu geführt, dass insgesamt 700 Rechnungsbelege und
+ 700 Regressforderungen identifiziert und kategorisiert wurden.
+\end_layout
+
+\begin_layout Section
+Formatierung der Daten
+\end_layout
+
+\begin_layout Standard
+Um Die Daten für die Klassifizierung vorzubereiten mussten die Daten in
+ einem bestimmtes Format gebracht werden.
+ Im Programmcode wird vom Ordner, der durch den Parameter 
+\emph on
+input_dir 
+\emph default
+projiziert ist, von der Funktion 
+\emph on
+extract_text() 
+\emph default
+der Text extrahiert.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "caption={Formatieren der Daten},captionpos=b"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+def extract_text(im):     
+\end_layout
+
+\begin_layout Plain Layout
+
+	im = Image.open(im)           
+\end_layout
+
+\begin_layout Plain Layout
+
+	extracted = pytesseract.image_to_string(im, output_type=Output.DICT, lang='deu')
+     
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\end_layout
+
+\begin_layout Plain Layout
+
+	return extracted
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+def doc_to_list(input_dir, label):
+\end_layout
+
+\begin_layout Plain Layout
+
+	res = []     
+\end_layout
+
+\begin_layout Plain Layout
+
+	ext = "jpg"     
+\end_layout
+
+\begin_layout Plain Layout
+
+	images = len(glob.glob('{dir}/*.{ext}'.format(dir=input_dir, ext=ext))   
+\end_layout
+
+\begin_layout Plain Layout
+
+	for im, i in zip(images, range(len(images))):
+\end_layout
+
+\begin_layout Plain Layout
+
+    	extracted_text = extract_text(im)         
+\end_layout
+
+\begin_layout Plain Layout
+
+		extracted_text['id'] = i + 1         
+\end_layout
+
+\begin_layout Plain Layout
+
+		extracted_text['label'] = label         
+\end_layout
+
+\begin_layout Plain Layout
+
+		res.append(extracted_text)         
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	return res
+\end_layout
+
+\end_inset
+
+Die Methode 
+\emph on
+doc_to_list
+\series bold
+\emph default
+ 
+\series default
+fügt dem Dictionary, welches durch 
+\emph on
+image_to_string()
+\emph default
+ zurückgegeben wurden ist, eine ID und die Kategorie hinzu und gibt eine
+ Liste von Dictionaries zurück.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Mit dem Aufruf 
+\emph on
+json.dump() 
+\emph default
+wurden die Listen in ein Json-Array überführt und in einer Json-Datei zwischenge
+speichert um sie zu persistieren.
+ Mit 
+\emph on
+Pandas
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\emph on
+https://pandas.pydata.org/
+\end_layout
+
+\end_inset
+
+
+\emph default
+ wurden die Json-Dateien wiederrum in einem Dataframe
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html
+\end_layout
+
+\end_inset
+
+ überführt.
+ Ein Dataframe ist eine einer Zweidimensionale tabellarischen Datenstruktur,
+ die sich gut visualieren lässt und sich somit gut für Datenanalysen eignet.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "caption={Persistieren der Daten},captionpos=b"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+with open('./data/rechnungsbeleg/invoice_data.json', 'w') as json_file:  
+   	
+\end_layout
+
+\begin_layout Plain Layout
+
+	json.dump(list_rb, json_file) 
+\end_layout
+
+\begin_layout Plain Layout
+
+with open('./data/regress/regress_data.json', 'w') as json_file:     	
+\end_layout
+
+\begin_layout Plain Layout
+
+	json.dump(list_rg, json_file)
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+Die jeweiligen Dataframes werden konkateniert, was dazu führt, dass sich
+ alle Texte mit ihrer zugehörigen Kategorie in einem Dataframe befinden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "caption={Lesen der Json-Dateien},captionpos=b"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+df_inv = pd.read_json("./data/rechnungsbeleg/invoice_data.json") 
+\end_layout
+
+\begin_layout Plain Layout
+
+df_re = pd.read_json("./data/regress/regress_data.json") 
+\end_layout
+
+\begin_layout Plain Layout
+
+df = pd.concat([df_inv, df_re]) 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Die Daten wurden mit diesem Vorgang in das Programm geladen und stehen für
+ weitere Prozeduren zur Verfügung.
+ Die Texte wurden durch die Vorbereitung in eine übersichtliche Struktur
+ verlagert, die es erlaubt die Texte im Programm kontrolliert aufzubereiten.
+\end_layout
+
+\begin_layout Section
+Vorverarbeitung der Daten
+\end_layout
+
+\begin_layout Standard
+Die Texte befinden sich momentan noch im Rohzustand, was bedeutet, dass
+ sie für das Training ungeeignet sind.
+ Im jetzigen Zustand der Daten befinden sich Unregelmäßigkeiten in den Daten,
+ was zu einem deutlich Qualitätsverlust führt.
+ Beispielsweise beinhalten die Texte willkürliche Zahlen, Zeilenumbrüche
+ und unbrauchbare Werte wie Maßeinheiten.
+ Die Unregelmäßigkeiten beschränken sich nicht auf diesen Anwendungsfall
+ und treten in verschiedenster Form auf.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Der Bereinigungsprozess wird gut vom Team
+\emph on
+ Azure
+\emph default
+ von Microsoft
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://docs.microsoft.com/de-de/azure/machine-learning/team-data-science-process/
+prepare-data
+\end_layout
+
+\end_inset
+
+ dokumentiert.
+ In der Dokumentation wird beschrieben, dass es drei Kriterien von minderwertige
+n Daten gibt: Die Daten können unvollständig durch fehlende Attribute und
+ Werte, überflüssig durch fehlerhafte Datensätze und Ausreißer und inkonsistent
+ durch widersprüchliche Datensätze sein.
+ Für die Bereinigung von Texten trifft folgendes Zitat zu:
+\end_layout
+
+\begin_layout Standard
+[...]
+\emph on
+ Entfernen eingebetteter Zeichen, die zu einer falschen Datenausrichtung
+ führen können, z.
+ B.
+ eingebetteter Tabstopps in tabstoppgetrennten Dateien oder eingebetteter
+ Zeilenumbrüche, die Datensätze unterbrechen könnten 
+\emph default
+[...]
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://docs.microsoft.com/de-de/azure/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Bereinigung der Daten
+\end_layout
+
+\begin_layout Standard
+Zum Bereinigen der Daten werden auf Text ausgerichtete Verfahren
+\begin_inset CommandInset citation
+LatexCommand cite
+key "A10"
+literal "false"
+
+\end_inset
+
+ angewandt:
+\end_layout
+
+\begin_layout Subsubsection*
+Stopwörter
+\end_layout
+
+\begin_layout Standard
+Stopwörter sind Wörter die in einer Kollektion von Dokumenten so häufig
+ vorkommen, dass es kein Sinn macht sie in das Training mit einzubinden,
+ da sie keine Relevanz auf Dokumentinhalte enthalten.
+ Typische Wörter sind Artikel, Konjunktionen und Präpositionen.
+ Abhängig von den Inhalten der Dokumente können spezifische Stopwörter hinzugefü
+gt werden.
+\end_layout
+
+\begin_layout Subsubsection
+Lemmatisierung
+\end_layout
+
+\begin_layout Standard
+Es wird eine Reduktion der Wortformen auf ihre Grundform vorgenommen.
+ Dieser Vorgang wird mithilfe eines digitalen Lexikons realisiert.
+\end_layout
+
+\begin_layout Subsubsection*
+Stemming
+\end_layout
+
+\begin_layout Standard
+Stemming ist ein Verfahren womit Suffixe von dem jeweiligen Wort zu entfernen.
+ Suffixe sind generell auf die Englische Sprache reduziert, weshalb diese
+ Algorithmen nur für englischsprachige Dokumente eingesetzt werden kann.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+Daneben können verschiedene Algorithmen angewandt werden, wie das ersetzen
+ der Großbuchstab durch Kleinbuchstaben oder das Entfernen von Sonderzeichen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Die Funktion 
+\emph on
+normalize() 
+\emph default
+im Programmcode wendet verschiedene Algorithmen auf die Wörter des Textes
+ an, um die Daten zu normalisieren.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "caption={Bereinigung der Daten},captionpos=b"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+def normalize(df):
+\end_layout
+
+\begin_layout Plain Layout
+
+	# remove special characters
+\end_layout
+
+\begin_layout Plain Layout
+
+	df['text'].apply(lambda x: re.sub("(
+\backslash
+
+\backslash
+W)+"," ",x))     
+\end_layout
+
+\begin_layout Plain Layout
+
+	# remove punctuation     
+\end_layout
+
+\begin_layout Plain Layout
+
+	df['text'].apply(lambda x: re.sub(r'[^
+\backslash
+w
+\backslash
+s]', '', x))      
+\end_layout
+
+\begin_layout Plain Layout
+
+	# tokenize      
+\end_layout
+
+\begin_layout Plain Layout
+
+	df['text'].apply(lambda x: nltk.word_tokenize(x))     
+\end_layout
+
+\begin_layout Plain Layout
+
+	# to lower case
+\end_layout
+
+\begin_layout Plain Layout
+
+	df['text'].apply(lambda x: [word.lower() for word in x])         
+\end_layout
+
+\end_inset
+
+Mit zwei Regulären Ausdrücken wird der Text auf Sonderzeichen und Zeichensetzung
+ gefiltert.
+ Mit der Bibliothek 
+\emph on
+nltk
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\emph on
+https://www.nltk.org/
+\end_layout
+
+\end_inset
+
+
+\emph default
+, die Funktionalitäten für 
+\emph on
+Natural Language Processing
+\emph default
+ zur Verfügung stellt, wird der Text in eine Liste von Tokens konvertiert.
+ Dadurch kann jedes Wort iteriert werden um Großbuchstaben in Kleinbuchstaben
+ umzuwandeln.
+ Lemmatisierung wird nicht eingesetzt, da es die Genauigkeit verringert.
 \end_layout
 
 \begin_layout Standard
@@ -143,482 +788,518 @@ en und Logististikunternehmen dar.
 
 \end_layout
 
-\begin_layout Standard
-Bei Erfassen eines Schadens seitens des Spediteurs wird für ihm eine Schadensakt
-e angelegt.
- Eine Funktion in der Schadensakte beinhaltet das Hochladen von Nachweisen
- für die Schadensdokumentation, darunter Rechnungsbelege, die es zu erkennen
- gilt.
- Anhand erkannter Rechnungsbelege ist eine Extraktion der Rechnungsinformationen
- durchzuführen.
-\end_layout
-
-\begin_layout Section
-Machine Learning
+\begin_layout Subsection
+Trainings- und Testdaten
 \end_layout
 
 \begin_layout Standard
-Machine Learning beruht auf den Gebiet der Mustererkennung, die sich mit
- der automatischen Erkennung von Regelmäßigkeiten in Daten unter Verwendung
- von Algorithmen befasst.
- Durch das Erkennen von Regelmäßigkeiten werden Maßnahmen zur Klassifierung
- der Daten in verschiedene Kategorien ergriffen.
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "B06"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Machine Learning ist die Wissenschaft Computer so zu programmieren, sodass
- sie in der Lage sind von Daten zu lernen und ist bereits eine weiterforschte
- Technologie, die Verwendung in hochtechnologischen Produkten findet.
- Sie ist veranwortlich für die Realiserung von unter anderem die Spracherkennung
- in Smartphones, das Empfehlen von Videos auf Videoportale und das Ranking
- von Suchergebnissen im Internet-Suchmaschinen.
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "G17"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Eine der ersten populärsten Anwendungsfälle von Machine Learning ist der
-  Filter um Spam-Mails zu erkennen.
-  Der Spamfilter ist dazu in der Lage seriösen Mails von Spam-Mails zu untersche
-i den und als solche zu kennzeichnen.
-  Eine dementsprechende Intelligenz setzt voraus, dass der Software beigebracht
-  werden muss wie es eine Spam-Mail als solche erkennt.
- 
-\begin_inset VSpace bigskip
-\end_inset
-
-Spam-Mails weisen Regelmäßigkeiten auf, die sie von seriösen Mails unterscheiden.
-  Ein sehr prägnantes Merkmale einer Spammail ist der Inhalt der Nachricht.
-  Wörter wie 
+Die Daten werden mit der Funktion
 \emph on
-kostenlos, schnelles Geld, reich werden, risikofrei
+ train_test_split() 
 \emph default
- und 
+der Bibliothek 
 \emph on
-hier klicken 
+sklearn
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\emph on
+https://scikit-learn.org/stable/
+\end_layout
+
+\end_inset
+
+, 
 \emph default
-sind eine typische Charakteristik einer Spam-Mail
+die allgemein Funktionen für den Bereich des Data Science zur Verfügung
+ stellt, in Trainings- und Testmengen unterteilt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "caption={Unterteilung der Daten},captionpos=b"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+X_train, X_test, y_train, y_test = train_test_split(df['text'], df['label'],
+ test_size=0.2)
+\end_layout
+
+\end_inset
+
+Als Parameter nimmt die Funktion die Beispieltexte und die Kategorien als
+ Listen, somit kann die Funktion die Texte zu ihrer jeweiligen Kategorie
+ zuordnen.
+ Über den Parameter 
 \emph on
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "S03"
-literal "false"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Damit ein intelligenter Filter in der Lage ist Spam-Mails zu erkennen, muss
-  er die korrespondierenden Regelmäßigkeiten kennen.
-  Das notwendige Wissen eignet sich die Software über ein Verfahren im Maschinel
-l en Lernen an: Es wird eine Vielzahl von Daten benötigt, die zum Trainieren
-  der Software dient, damit sie Charakteristiken von Spam-Mails erkennen
-  kann.
-  Dieser Datensatz nennt sich Trainingssatz und wird zum Einstellen von
- Parametern eines adaptiven Modells benötigt.
-  Im Fall des Spamfilters gibt es zwei Zielmerkmale:
-\end_layout
-
-\begin_layout Itemize
-True: Es handelt sich um eine Spam-Mail
-\end_layout
-
-\begin_layout Itemize
-False: Es handelt sich um keine Spam-Mai
-\end_layout
-
-\begin_layout Standard
-Das Modell adaptiert Erkennungsmuster anhand von den Trainingssatz und kann
-  bei neuen Daten anhand der Charakteristiken das Zielmerkmal prognostizieren.
-  Um Trainingsdaten zu generieren wurden Spam-Mails von Benutzern gekennzeichnet
-,  gesammelt und als Trainingsdaten verwendet.
+test_size 
+\emph default
+wird das Verhältnis von den Teilmengen der Trainings- und Testdaten festgelegt.
+ Die Beispieltexte werden gemäß dem Faktor 0.2 in 20 Prozent Testdaten und
+ 80 Prozent Trainingsdaten unterteilt.
 \end_layout
 
 \begin_layout Section
-OCR
-\end_layout
-
-\begin_layout Standard
-
-\end_layout
-
-\begin_layout Section
-Datensatz
-\end_layout
-
-\begin_layout Standard
-Daten existieren als Pixelmatritzen in Form von Bildern.
- Beim Füttern des Neuronales Netzes wird die Matrix in einen Vektor umgewandelnd
-, also von einem 2d-array zu einem 1d-array.
- Jedes Pixel wird jeweils ein Neuron in der Eingabeschicht zugewiesen.
- bei einem 28x28 Bild müssten dafür 784 Neuronen in der Eingabeschicht exisitier
-en.
-\end_layout
-
-\begin_layout Standard
-Ein Neuron repräsentiert den Graustufenwert vom Entsprechenden Pixel eines
- Bildes.
- 0 = dunkel, 1 = hell.
-\end_layout
-
-\begin_layout Standard
-Es existieren soviele Neuronen in der Ausgabeschicht, wie es zuweisbare
- Klassen gibt.
- Die Aktivierung in den Neuronen in der Ausgabeschicht sagt aus, wie hoch
- das Eingabebild mit der korrespondierenden Klasse übereintrifft.
-\end_layout
-
-\begin_layout Standard
-Spärliche Daten: Die Daten enthalten viele Nullen in den Daten.
-\end_layout
-
-\begin_layout Section
-Serviceorientierte Architekturen
-\end_layout
-
-\begin_layout Standard
-Serviceorientierte Architekturen oder abgekürzt SOA bezeichnet eine moderne
- Architektur, dessen Kerngedanke darin besteht komplexe Strukturen in Softwares
- aufzulösen.
- SOA ermöglicht eine Modernisierung der IT-Struktur des Unternehmens, da
- Funktionalitäten in geschäftsorientierte Serviceblöcke gekapselt werden
-\begin_inset CommandInset citation
-LatexCommand cite
-key "FZ09"
-literal "false"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Das Kernkonzept besteht aus dem Anbieten, Suchen und Nutzen von Diensten
- über ein Netzwerk.
- Diese Dienste werden plattformübergreifend von Applikationen genutzt und
- sind unabhängig von der jeweiligen Software
-\begin_inset CommandInset citation
-LatexCommand cite
-key "M10"
-literal "false"
-
-\end_inset
-
-.
- Die Serviceorientierte Architektur bietet daher universell anwendene Dienste,
- die bei Bedarf von jeder Applikation angesprochen werden kann.
- Die Geschäftslogik der Dienste können zweckbedingt mit der Programmiersprache
- geschrieben werden, die eine optimale Lösung bietet.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Eine Anfrage auf die Kommunikationsschnittstelle des Dienstes wird von der
- Geschäftslogik verarbeitet und wieder als Antwort über die Schnittstelle
- zurückgegeben.
- Der Vorteil gegenüber dem Konzept ist eine Betrachungsweise auf den Dienst,
- der nicht nur auf Entwickler begrenzt ist.
- Die Simplizität die durch das Konzept der serviceorientierten Architektur
- ermöglicht wird erbringt eine Zusammenarbeit von Entwickeln und dem Management
- des Unternehmens hinsichtlich der Organisation von Diensten.
+Erstellung des Klassifikationsmodells
 \end_layout
 
 \begin_layout Subsection
-Webservices
+Vokabular definieren
 \end_layout
 
 \begin_layout Standard
-Werbservices stellen die modularen, gekapselten Komponenten der SOA dar.
- Jede Webservice-Komponente beinhaltet nur die für ihren Zweck bestimmte
- Geschäftslogik und eine kontextbasierte Schnittstelle, die es bei Bedarf
- anzusprechen gilt.
- Im Verbund mit anderen Webservice-Komponenten werden im Kontext einer Applikati
-on Funktionalitäten bereit gestellt.
+Der
+\emph on
+ CountVektorizer
+\emph default
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.Co
+untVectorizer.html
 \end_layout
 
-\begin_layout Standard
-\begin_inset VSpace bigskip
 \end_inset
 
-
+ von
+\emph on
+ sklearn
+\emph default
+ bietet eine einfache Möglichkeit Texte in Token zu formatieren und dadurch
+ ein Vokabular bekannter Wörter zu erstellen.
+ Durch Übergabe der Trainingsdaten werden die Aufkommen jedes Wortes gezählt.
+ Zusätzlich können Stopwörter und Token Muster übergeben werden, um die
+ Zählprozedur zu beeinflussen.
 \end_layout
 
 \begin_layout Standard
-Das Abstrahierungskonzept von SOA sieht vor, dass Die Schnittstelle der
- Webdienste wird von außen hin betrachtet wird.
- Es sind daher nur spezifierte Dienstanbieter für Wartung, Betrieb und Infrastru
-ktur des jeweiligen Dienst veranwortlich, weswegen eine Kapselung der Gesamtkomp
-lexität unter den einzelnen Dienstanbietern möglich ist.
- Des Weiteren sind Dienstanbieter für die Authentisierung und Authentifizierung
- und der Aufrechtshaltung zuständig.
- Dienstnutzende müssen sich als solche identifizieren bevor sie aus den
- Webservice zugreifen können.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
+\begin_inset VSpace smallskip
 \end_inset
 
-
+Die Bibliothek
+\emph on
+ nltk 
+\emph default
+bietet die Möglichkeit sprachabhängig definierte Stopwörter als Liste im
+ Programm zu nutzen.
+ Diese werden durch benutzerdefinierte Stopwörter ergänzt.Die Konstante 
+\emph on
+token_pattern 
+\emph default
+definiert einen Regulären Ausdruck mit dem Zweck, dass numerische Token
+ nicht mit in die Zählung einfließen.
 \end_layout
 
 \begin_layout Standard
-In einer Schnittstellenbeschreibung werden Servicebeschreibungen veröffentlicht,
- die im des Servicekontext die Kommunikationsmöglichkeit der Schnittstelle
- beschreibt.
- Konkret müssen dem Service nötige Informationen geliefert werden um die
- Anfrage in der Geschäftslogik zu bearbeiten.
- Die Schnittstellenbeschreibung listet die möglichen Antwortmöglichkeiten
- für eine an die Service gerichtete Anfrage auf.
- Der Dienstnutzende hat somit den Vorteil zu wissen wie der Webservice sich
- verhält.
+\begin_inset listings
+lstparams "caption={Initialisierung und Anpassung des Zählvektors},captionpos=b"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+nltk.download('stopwords')
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+stop_words = set(stopwords.words("german"))
+\end_layout
+
+\begin_layout Plain Layout
+
+new_stopwords_list = stop_words.union(additional_stopwords) 
+\end_layout
+
+\begin_layout Plain Layout
+
+token_pattern = r'
+\backslash
+b[^
+\backslash
+d
+\backslash
+W]+
+\backslash
+b'
+\end_layout
+
+\begin_layout Plain Layout
+
+count_vect = CountVectorizer(stop_words = new_stopwords_list, 
+\end_layout
+
+\begin_layout Plain Layout
+
+                             token_pattern=token_pattern, 
+\end_layout
+
+\begin_layout Plain Layout
+
+                             analyzer='word', 
+\end_layout
+
+\begin_layout Plain Layout
+
+                             max_features=30)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+docs = count_vect.fit_transform(X_train) 
+\end_layout
+
+\end_inset
+
+Die Instanz des Objekts
+\emph on
+ CountVektorizer
+\emph default
+ wird mit den vordefinierten Stopwörtern, den vordefinierten regulären Ausdruck
+ für die Tokens, einem Indikator für die Erstellung von Charakteristiken
+ aus Wörtern und das Limit an Vokabular initialisiert.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+Die Instanz erhält die Trainingsdaten zum Erlernen eines Vokabulars und
+ gibt eine Matrix mit 1120 Zeilen und 30 Spalten zurück, welche die Texte
+ aus dem Trainingsdaten (Anzahl X_train) mit dem jeweilig gezählten Vokabular
+ repräsentieren.
 \end_layout
 
 \begin_layout Subsection
-REST
+Termfrequenz und inverse Dokumentenhäufigkeit
 \end_layout
 
 \begin_layout Standard
-Der Begriff REST steht für 
+Das Verfahren zur Berechnung des Tf-idf-Maßes fügt sich dem Bereich der
+ Informationsbeschaffung (
 \emph on
-Representional State Transfer 
+Information Retrieval
 \emph default
-und ist von Roy Fielding in seiner Dissertation 
+).
+ Die Termfrequenz Tf (
 \emph on
-Architectural Styles and the Design of Network-based Software Architectures
- 
+term frequency
 \emph default
-geprägt wurden
+) gibt an wie häufig ein Term in einem Dokument vorkommt wobei die inverse
+ Dokumentenhäufigkeit 
+\emph on
+idf
+\emph default
+ (
+\emph on
+inverse document frequency
+\emph default
+) dessen Relevanz im Dokumentkorpus bestimmt.
+ Jeder Term hat seine eigene TF- und IDF-Bewertung, die als Gewichtungen
+ für das Produkt zur Berechnung des Tf-idf-Maßes verwendet werden 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "F00"
+key "R03"
 literal "false"
 
 \end_inset
 
 .
- Die REST-Schnittstelle ist ein weitverbreiteteter Architekturansatz, der
- dazu verwendet wird um eine Infrastruktur zwischen Client und Server zu
- etablieren.
 \end_layout
 
 \begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
-
+Das Tf-idf-Maß eines Terms ist ein Indikator für dessen seltenes Aufkommen
+ eines Dokuments einer Dokumentenkollektion.
+ Ein Term welches in wenigen Dokumenten oft vorkommt hat ein höheres Maß
+ als ein Term, das entweder in fast jeden Dokument oder sehr geringfügig
+ auftaucht.
 \end_layout
 
 \begin_layout Standard
-Die REST-Architektur ermöglicht, dass Ressourcen jeweils über 
+\begin_inset VSpace bigskip
+\end_inset
+
+Die Instanz vom Obekt 
 \emph on
-Webservices
-\emph default
- mit 
+TfidfTransformer()
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
 \emph on
-Anfragen
-\emph default
- (requests) gefordert werden können.
- Jeder Webservice verügt über eine
-\emph on
- Uniform Ressourcer Locator 
-\emph default
-(URL) und lässt sich damit eindeutig identifizieren.
- Der Server schickt daraufhin eine 
-\emph on
-Antwort
-\emph default
- (response), die die geforderten Ressourcen enthält.
- Da eine REST-Schnittstelle zustandslos ist und der Server keine gespeicherten
- Daten zurückgreifen kann, müssen bei einer Anfrage alle nötigen Informationen
- vom Client geliefert werden.
- Die Clientseitige Anfragen basieren auf dem 
-\emph on
-HTTP/s-Protokoll 
-\emph default
-und verwenden die damit zusammenhängenden 
-\emph on
-Anfragemethoden 
-\emph default
-(request methods), die in der Tabelle 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:HTTP/s-Anfragemethoden"
-plural "false"
-caps "false"
-noprefix "false"
+https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.Tf
+idfTransformer.html
+\end_layout
 
 \end_inset
 
- aufgeführt sind.
+, 
+\emph default
+welches von der Bibliothek 
+\emph on
+sklearn
+\emph default
+ zur Verfügung gestellt wird, berechnet das Tf-idf-Maß anhand dem zuvor
+ berechneten Matrix mit dem Vokabular für jeden Text im Dokumentenkorpus
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Sammlung schriftlicher texte
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float table
+\begin_inset listings
+lstparams "caption={Initalisierung und Anpassung des Tf-idf-Transformierers},captionpos=b"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+tfidf_transformer = TfidfTransformer() 
+\end_layout
+
+\begin_layout Plain Layout
+
+X_train_tfidf = tfidf_transformer.fit_transform(docs)
+\end_layout
+
+\end_inset
+
+Anhand des Vokabulars 
+\emph on
+docs 
+\emph default
+wird für jedes Wort im Dokumentenkorpus das Tf-idf-Maß berechnet.
+\end_layout
+
+\begin_layout Subsection
+Naive Bayes Multinomialverteilung
+\end_layout
+
+\begin_layout Standard
+Naive Bayes Multinominalverteilung ein auf der bayesschen Regeln basierender
+ Klassifikator, der als schnell und einfach zu implementieren gilt und speziell
+ in der Textklassifikation Verwendung findet.
+ Der Klassifikator modelliert die Verteilung von Wörter in einem Dokument
+ als Multinomial
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RS03"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Der Klassifikator schätzt die bedingte Wahrscheinlich eines bestimmten Terms
+ 
+\emph on
+t
+\emph default
+ bei einer gegebener Kategorie 
+\emph on
+c
+\emph default
+ als relative Häufigkeit des Terms in den Dokumenten der gegebenen Kategorie
+\emph on
+ c
+\emph default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "M08"
+literal "false"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+P(t|c)=\frac{T_{ct}}{\sum_{t'\epsilon v}T_{ct'}}
+\]
+
+\end_inset
+
+Die Motivation des Algorithmus ist die Berücksichtigung der Variationen
+ von der Summe der Vorkommen des Terms t in den Dokumenten der Kategorie
+ 
+\emph on
+c
+\emph default
+.
+ Um Diesen Algorithmus auf die Trainingsdaten anzupassen, wird das 
+\emph on
+MultinomialNB()
+\emph default
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.MultinomialNB.
+html
+\end_layout
+
+\end_inset
+
+ Objekt verwendet, welches die Tf-idf-Maße des Vokabulars und die dazugehörigen
+ Kategorien entgegennimmt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "caption={Initialisierung und Anpassen des Naive Bayes Multinomialverteiler},captionpos=b"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+text_clf = MultinomialNB()
+\end_layout
+
+\begin_layout Plain Layout
+
+text_clf.fit(X_train_tfidf, y_train)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Um die Präzision des Modells zu testen wird eine Validierung des Modells
+ vorgenommen, welche anhand der Testdaten durchgeführt wird.
+ Das Modell wird durch die Testdaten nicht weiter trainiert werden, da für
+ diesen Zweck ausschließlich die Trainingsdaten benutzt werden und bereits
+ vollständig trainiert wurden ist.
+\end_layout
+
+\begin_layout Subsection
+Validierung
+\end_layout
+
+\begin_layout Standard
+Der Validierungsprozess ist mit der Evaluation des Modells gleichzusetzen
+ und dient als Bewertungsmaßstab für die Präzision des Klassifikators.
+ Wie bei dem Trainingsdatensatz sind die Testdaten ebenfalls kategorisiert,
+ was bedeutet, dass die Kategorie der Dokumententexte bekannt ist.
+ Resultierend kann der Klassifikator die Testdaten ohne Einbeziehung der
+ Kategorie klassifizieren und anschließend und mit der richtigen Kategorie
+ der Testdatenbeispiele abgeglichen werden, um so die Präzision des Models
+ zu testen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Durch die Funktion
+\emph on
+ predict() 
+\emph default
+werden die Testdaten an den Klassifikator übergeben, wodurch anschließend
+ einen Report erstellt werden kann.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "caption={Evaluation des Textklassifkators},captionpos=b"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+y_pred = text_clf.predict(X_test)
+\end_layout
+
+\begin_layout Plain Layout
+
+classification_report(y_test, y_pred)
+\end_layout
+
+\end_inset
+
+Der Report wird mit der Funktion 
+\emph on
+classification_report()
+\emph default
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_re
+port.html
+\end_layout
+
+\end_inset
+
+ generiert und liefert eine Auswertung in der Form, die in Abbildung gezeigt
+ wird.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
-Methode
+
+
+\backslash
+centering
 \end_layout
 
 \end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
 
-\begin_layout Plain Layout
-Grundsatz
-\end_layout
 
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-GET
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Beschaffung von Informationen über eine Ressource
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-POST
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Erstellen einer Resource
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-PUT
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Aktualisieren einer Resource
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-DELETE
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Löschen einer Resource
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
+\begin_inset Graphics
+	filename images/report.PNG
 
 \end_inset
 
 
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:HTTP/s-Anfragemethoden"
+name "fig:report"
 
 \end_inset
 
@@ -626,7 +1307,7 @@ name "tab:HTTP/s-Anfragemethoden"
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-HTTP/s-Anfragemethoden
+Auswertungsreport
 \end_layout
 
 \end_inset
@@ -636,43 +1317,177 @@ HTTP/s-Anfragemethoden
 
 \end_inset
 
+Der Report zeigt verschiedene Ergebnisse, die aus der Evaluation des Models
+ hervorgegangen sind.
+ Die Bedeutung dieser Werte können anhand der Dokumentation
+\begin_inset Foot
+status open
 
+\begin_layout Plain Layout
+https://www.scikit-yb.org/en/latest/api/classifier/classification_report.html
+\end_layout
+
+\end_inset
+
+ von sklearn abgeleitet und zusammengefasst werden.
 \end_layout
 
 \begin_layout Standard
-Um beispielsweise eine 
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \emph on
-Resource 
+precision 
 \emph default
-User zu erstellen muss eine Anfrage an einen Endpunkt gerichtet werden,
- der die Funktionalität für die 
+ist das Maß eines Klassifikators wie gut er negative Ergebnisse von positiven
+ Ergebnisse unterscheiden kann.
+ 
 \emph on
-POST-Anfrage 
+recall 
 \emph default
-zur Verfügung stellt.
- Der Endpunkt würde über die URL 
+ist die Fähigkeit eines Klassifikators korrekte Annahmen in den positiven
+ Ergebnissen zu treffen.
+ Der
 \emph on
-.../users
+ f1-score
 \emph default
- erreichbar sein.
- Die REST-Schnittstelle würde die Anfrage entgegennehmen und an die zuständige
- Geschäftslogik weiterreichen.
- Die entsprechende Schnittstellenarchitektur wird im REST-Schnittstelle
- im Kapitel 
+ ist ein Bewertungsmaß, welches aus der Präzision und dem Rückruf gewichtet
+ wurden ist.
+
+\emph on
+ support 
+\emph default
+gibt die jeweilige Anzahl der tatsächlichen Vorkommen der Klassen im Datensatz
+ zurück.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Die Verwirrung Matrix bildet die Positiven und negativen Ergebnisse und
+ stellt sie als Heatmap
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Diagramm mit Farbcodierung
+\end_layout
+
+\end_inset
+
+ dar.
+ Sie visualisiert die Bewertung der Qualität der Ausgabe des Klassifikators,
+ wie in der Dokumentation
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://scikit-learn.org/stable/auto_examples/model_selection/plot_confusion_matr
+ix.html
+\end_layout
+
+\end_inset
+
+ von sklearn beschrieben.
+ Bestenfalls verläuft bei der Verwirrung-Matrix eine 
+\begin_inset Quotes gld
+\end_inset
+
+helle
+\begin_inset Quotes grd
+\end_inset
+
+ Diagonale von links oben nach rechts unten, da die Werte auf der Diagonalen
+ die korrekten Vorhersagen repräsentieren.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/confusion_matrix.PNG
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:conf_ma"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Verwirrung-Matrix
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Interpretation
+\end_layout
+
+\begin_layout Standard
+Insgesamt werden die Rechnungsbelege und Regressbelege sicher (96%) als
+ positiv erkannt.
+ Des Weiteren werden die Belege, die als positiv gewertet sind, richtig
+ (96%) prognostiziert.
+ Die tatsächlichen Vorkommen der Belege ist im geringen Maße unausgeglichen
+ und sollte komplett balanciert sein um strukturelle Schwächen zu vermeiden.
+ Da der Unterschied jedoch sehr gering ist, sollte das keine großen Auswirkungen
+ die Evaluation haben.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+In der abgebildeten Verwirrung Matrix 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "chap_development_server"
+reference "fig:conf_ma"
 plural "false"
 caps "false"
 noprefix "false"
 
 \end_inset
 
- erläutert.
-\end_layout
-
-\begin_layout Section
-Client
+ zeigt die Ergebnisse zur Erkennung zweier Klassen Rechnungsbeleg und Regressbel
+eg auf.
+ Mit einer Gesamtanzahl von 280 Vorhersagen wurden insgesamt 122 Stichproben
+ als Rechnungsbeleg und 158 Stichproben als Regressbeleg identifiziert.
+ In der Realität gibt es 142 Regressbelege und 138 Rechnungsbelege, was
+ bedeutet dass 18 Regressbelege fälschlicherweise als Rechnungsbeleg und
+ 2 Rechnungsbelege als Regressbelege identifiziert wurden sind.
 \end_layout
 
 \begin_layout Standard
@@ -695,7 +1510,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "bib/thesis"
+bibfiles "./bib/thesis"
 
 \end_inset
 

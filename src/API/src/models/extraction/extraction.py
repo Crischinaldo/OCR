@@ -6,7 +6,8 @@ import cv2
 import locale
 import pandas as pd
 from pytesseract import Output
-
+from models.extraction.roi.coordinates import Coordinates
+from models.extraction.roi.invoice import RegionOfInterest
 locale.setlocale(locale.LC_ALL, 'german')
 
 
@@ -19,9 +20,6 @@ class TextExtractor:
         self.extractor = pytesseract
         self.patterns = {
             'balance_due': '\d{1,3}(?:[.]\d{3})*(?:[,]\d{2})',
-            'iban': '[A-Z]{2}(?:[ ]?)[0-9]{2}(?:[ ]?[0-9]{4}){4}(?!(?:[ ]?[0-9]){3})(?:[ ]?[0-9]{1,2})?',
-            'bic': '/[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?/i',
-            'town':  '\d{3,}[ \-\/]+[a-zA-Z ]{3,}'
         }
 
     def __repr__(self):
@@ -40,27 +38,62 @@ class TextExtractor:
             return
         grayscaled_img = convert_grayscale(decoded_img)
 
-        extracted_text = self.extractor.image_to_string(grayscaled_img)
-        text = extracted_text.replace('\n', ' ')
+        regions_of_interest = []
 
-        iban, bic, x = self.apply_patterns(text)
-        balance_due = 0
-        floated_currencies = [float(locale.atof(i)) for i in x]
+        for label, coords in Coordinates.DEMO.items():
+
+            regions_of_interest.append(RegionOfInterest(*coords, label=label))
+
+        for roi in regions_of_interest:
+            cropped, label = roi.crop(grayscaled_img)
+
+            if label == 'calculation':
+                calc_text = self.extractor.image_to_string(cropped).replace('\n', ' ')
+                balance_due = self.find_balance_due(calc_text)
+                if balance_due:
+                    extraction.update({label: balance_due})
+
+            if label == 'recipient':
+                rec_text = self.extractor.image_to_string(cropped)
+                recipient = self.split_data(rec_text)
+                keys = ['name', 'street', 'city']
+
+                if recipient:
+                    extraction.update({label: dict(zip(keys, recipient))})
+
+            if label == 'bank_details':
+                rec_text = self.extractor.image_to_string(cropped)
+                bank_details = self.split_data(rec_text, labelled=True)
+                if bank_details:
+                    extraction.update({label: bank_details})
+
+            if label == 'invoice_details':
+                rec_text = self.extractor.image_to_string(cropped)
+                invoice_details = self.split_data(rec_text, labelled=True)
+                if invoice_details:
+                    extraction.update({label: invoice_details})
+
+
+        return {'result': extraction}
+
+    def find_balance_due(self, text):
+        currencies = re.findall(self.patterns['balance_due'], text)
+        floated_currencies = [float(locale.atof(i)) for i in currencies]
         if floated_currencies:
             max_floated_currency = max(floated_currencies)
             balance_due = locale.currency(max_floated_currency)
 
-        extraction.update({k: v for k, v in zip(self.patterns.keys(), [balance_due, iban, bic])})
+        return balance_due
 
-        return {'result': extraction}
+    def split_data(self, text, labelled=False):
+        if labelled:
+            x = [item for item in text.split('\n') if len(item) != 0]
+            splitted = {}
+            for item in x:
+                y = item.split(':')
+                splitted.update({y[0].strip(): y[1].strip()})
 
-    def apply_patterns(self, text):
+        else:
+            splitted = [item for item in text.split('\n') if len(item) != 0]
+        return splitted
 
-        iban = re.findall(self.patterns['iban'], text)
-        bic = re.findall(self.patterns['bic'], text)
-        x = re.findall(self.patterns['balance_due'], text)
-
-        return iban, bic, x
-
-    def draw_bounding_box(self):
-        pass

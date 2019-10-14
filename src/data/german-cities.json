@@ -319,6 +319,10 @@
     {
       "name":"Würzburg",
       "state":"Bayern"
+    },
+	{
+      "name":"Lübeck",
+      "state":"Schleswig-Holstein"
     }
   ]
 }

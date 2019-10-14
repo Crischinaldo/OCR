@@ -8,7 +8,7 @@
 \options bibliography=totoc,listof=totoc,BCOR=5mm,DIV=12
 \use_default_options false
 \maintain_unincluded_children false
-\language english
+\language ngerman
 \language_package default
 \inputencoding iso8859-1
 \fontencoding default
@@ -76,7 +76,7 @@
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style english
+\quotes_style german
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -115,7 +115,7 @@ thispagestyle{empty}
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -162,7 +162,7 @@ Erklärung zur Bachelorarbeit
 
 \begin_layout Standard
 \noindent
-Ich versichere, dass ich die Arbeit selbst¨andig, ohne fremde Hilfe verfasst
+Ich versichere, dass ich die Arbeit selbständig, ohne fremde Hilfe verfasst
  habe.
 \begin_inset VSpace 1cm*
 \end_inset
@@ -172,8 +172,8 @@ Ich versichere, dass ich die Arbeit selbst¨andig, ohne fremde Hilfe verfasst
 
 \begin_layout Standard
 \noindent
-Bei der Abfassung der Arbeit sind nur die angegebenen Quellen benutzt worden.W¨or
-tlich oder dem Sinne nach entnommene Stellen sind als solche gekennzeichnet.
+Bei der Abfassung der Arbeit sind nur die angegebenen Quellen benutzt worden.Wört
+liche oder dem Sinne nach entnommene Stellen sind als solche gekennzeichnet.
 \begin_inset VSpace 1cm*
 \end_inset
 
@@ -182,10 +182,10 @@ tlich oder dem Sinne nach entnommene Stellen sind als solche gekennzeichnet.
 
 \begin_layout Standard
 \noindent
-Ich bin damit einverstanden, dass meine Arbeit ver¨o↵entlicht wird, insbesondere
+Ich bin damit einverstanden, dass meine Arbeit veröffentlicht wird, insbesondere
  dass die Arbeit Dritten zur Einsichtnahme vorgelegt oder Kopien der Arbeit
- zurWeitergabe an Dritte angefertigt werden.
-\begin_inset VSpace 2cm
+ zur Weitergabe an Dritte angefertigt werden.
+\begin_inset VSpace 1cm
 \end_inset
 
 
@@ -210,7 +210,7 @@ today
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace 3cm
+\begin_inset VSpace 2cm
 \end_inset
 
 

@@ -8,7 +8,7 @@
 \options bibliography=totoc,listof=totoc,BCOR=5mm,DIV=12
 \use_default_options false
 \maintain_unincluded_children false
-\language english
+\language ngerman
 \language_package default
 \inputencoding iso8859-1
 \fontencoding default
@@ -76,7 +76,7 @@
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style english
+\quotes_style german
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -98,7 +98,7 @@ status open
 
 
 \backslash
-chapter{Entwicklung des Textklassifikators}
+chapter{Entwicklung des Servers}
 \end_layout
 
 \end_inset
@@ -109,7 +109,7 @@ chapter{Entwicklung des Textklassifikators}
 \begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "chap_architecture_classificator"
+name "chap_development_server"
 
 \end_inset
 
@@ -117,68 +117,73 @@ name "chap_architecture_classificator"
 \end_layout
 
 \begin_layout Standard
-Dieses Kapitel befasst sich mit der Entwicklung des Klassifikators und ist
- in den zwei Kapiteln Architektur und Implementierung gegliedert.
+Dieses Kapitel befasst sich mit der Entwicklung des Servers und ist in den
+ zwei Kapiteln Architektur und Implementierung gegliedert.
 \end_layout
 
 \begin_layout Section
-Technologien und Frameworks
+Architekturentwurf
 \end_layout
 
 \begin_layout Standard
-Jupyter Notebook, Pandas, Keras, Tensorflow...
+In Diesen Unterkapitel wird die Architektur des Servers beschrieben und
+ visualisiert.
 \end_layout
 
 \begin_layout Subsection
-Jupyter Notebook
+REST-Schnittstelle
 \end_layout
 
 \begin_layout Standard
-Jupyter Notebook bietet die Möglichkeit in einer interaktiven Umgebung Programmc
-ode parallel durchlaufen zu können.
- Es können Ergebisse als Live-Berechnung oder im festen Format an die Zellen
- weitergereicht werden.
- Dieser Vorteil bietet eine Abschnittsähnliche Ausführung von Code in den
- jeweiligen Zellen.
- Notebooks-Dateien enthalten komplette Aufzeichnungen aller Berechnungen
- und können anderen Jupiter-Nutzern zur Verfügung gestellt werden.
- Jupiter eignet sich sehr gut für das Visualisieren von Berechnungen im
- Data Science Bereich.
-\end_layout
-
-\begin_layout Subsection
-Pandas
-\end_layout
-
-\begin_layout Standard
-Das Dataframe von Pandas ist eine Datenstruktur welche auf dem Schlüssel-Wert-Mu
-ster aufgebaut ist.
- Sie tabellarisiert Schlüssel und die jeweiligen Werte in einem Dataframe,
- welches sich gut zum präsentierten von den beinhalteten Daten eignet.
-\end_layout
-
-\begin_layout Subsection
-nltk
-\end_layout
-
-\begin_layout Section
-Organisation der Daten
-\end_layout
-
-\begin_layout Standard
-Unter der Organisation der Daten ist sowohl die Formatierung als auch die
- Strukturierung von den zur Verfügung stehenden Datensätzen gemeint.
- Um das Model mit Überwachtem Lernen zu trainieren müssen die Daten so strukturi
-ert sein, dass das 
+Die Methoden 
 \emph on
-Labels
+PUT
 \emph default
- (Ergebnisse) von jeden Datenpunkt bekannt ist.
- Ursprünglich sind die Bilder im PDF-Format in einer Ordnerstruktur gegliedert
- gewesen, die abhängig vom Hochladedatum nach Jahr, Monat und Tag sortiert
- wurden sind.
- Die Zeitangabe für die Textextraktion ist als unrelevant zu werten, da
- hier nur auf der inhaltliche Aspekt eine Rolle spielt.
+ und 
+\emph on
+DELETE
+\emph default
+ werden aus Sicherheitsgründen kaum implementiert und werden in diesen Kontext
+ nicht weiter diskutiert.
+ Um eine REST-konforme Schnittstelle zu programmieren, werden die Grundsätze
+ in der Regel eingehalten.
+ Bedingt können Webservices REST-konformalitäten abweichen.
+ Ein Webservice, über dessen Endpunkt ein Token angefordert werden kann,
+ wird als Anfragemethode ausschließlich 
+\emph on
+POST 
+\emph default
+verwenden, obwohl kein schreibender Zugriff erforderlich ist.
+ Anders wie bei der 
+\emph on
+GET-methode 
+\emph default
+kann das Benutzerpasswort verschlüsselt an den Server übermittelt werden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+In Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:REST-Architektur"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ ist dargestellt, wie die Kommunikation zwischen Client und Server verläuft
+ und wie intern der Server die Anfragen behandelt.
+ Zudem ist zu erkennen, dass die REST-Schnittstelle und die Geschäftslogik
+ auf Modullevel voneinander getrennt sind.
+ Eine Anfrage wird im Server von der REST-Schnittstelle entgegengenommen
+ und an die zuständige Geschäftslogik weitergeleitet.
+ Die Geschäftslogik wickelt den HTTP-Anfragen entsprechend die Datenbankabfragen
+ ab und übermittelt über die REST-Schnittstelle eine Response mit den erwarteten
+ Ressourcen an den Client.
 \end_layout
 
 \begin_layout Standard
@@ -186,111 +191,35 @@ Labels
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsubsection
-Kollektion
-\end_layout
-
-\begin_layout Standard
-Mit dem Programmcode 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "alg:collect"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-sind alle Dateien kollektiert, indem rekursiv über jeden Ordner in einem
- bestimmten Ordner
-\emph on
- input_dir 
-\emph default
-alle PDF-Dateien erfasst wurden und in den Ordner 
-\emph on
-output_dir 
-\emph default
-verlagert wurden sind.
- Die Merkmalsgenerierung verläuft über das Extrahieren der Texte aus Bilddateien
-, weswegen jedes Bild mit der Funktion 
-\emph on
-convert_from_path()
-\emph default
- der externen Bibliothek 
-\emph on
-pdf2image
-\emph default
- zum JPG-Format konvertiert wurden ist.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float algorithm
+\begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset listings
-inline false
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-def collect_data(input_dir, output_dir):
+
+\backslash
+centering
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
 
-    ext = 'jpg'
-\end_layout
 
-\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/REST.png
+	scale 70
 
-    for pdf in glob.glob('{inp}/*/**/*.pdf'.format(inp=input_dir), recursive=True):
-       
-\end_layout
+\end_inset
 
-\begin_layout Plain Layout
 
-        try:             
-\end_layout
-
-\begin_layout Plain Layout
-
-        	pages = convert_from_path(pdf)         
-\end_layout
-
-\begin_layout Plain Layout
-
-		except (ValueError, Exception):             
-\end_layout
-
-\begin_layout Plain Layout
-
-    		pass      
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\end_layout
-
-\begin_layout Plain Layout
-
-    for page in pages:             
-\end_layout
-
-\begin_layout Plain Layout
-
-   	 page.save('./{output}/{name}.{ext}'.format(
-\end_layout
-
-\begin_layout Plain Layout
-
-             output=output_dir, name=str(uuid.uuid4())),  ext=ext)
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:REST-Architektur"
 
 \end_inset
 
@@ -301,19 +230,7 @@ def collect_data(input_dir, output_dir):
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Kollektieren der Daten
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "alg:collect"
-
-\end_inset
-
-
+REST-Architektur
 \end_layout
 
 \end_inset
@@ -321,231 +238,200 @@ name "alg:collect"
 
 \end_layout
 
-\begin_layout Standard
-Die rekursive Suche verlief über glob (
-\emph on
-Unix style pathname pattern expansion
-\emph default
-), einer Bibliothek die alle Pfadnamen nach einem spezifischen Muster nach
- Unix-Regeln durchsucht.
- Die Funktion 
-\emph on
-convert_from_path() 
-\emph default
-gibt eine Liste von Seiten als Bild-Objekte zurück, da PDF-Dokumente logischerwe
-ise eine Mehrzahl an Seiten aufweisen können.
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+Die Architektur verwendet das bewährte MVC-Muster (Modell-View-Controller)
+ zur Unterteilung des Systems.
+ Im Kontext stellt das Model die Geschäftslogik und der die Schnittstelle
+ der Controller dar.
+ Beide Komponenten befinden sich in der übergeordneten Server-Komponente.
+ Der in der Client-Komponente befindliche Webbrowser fungiert als Benutzeroberfl
+äche und ist die View des Systems.
+ Gemäß des MVC-Musters kommunizieren View (Webbrowser) und Model (Business
+ Logic) über den Controller (REST-API).
 \end_layout
 
 \begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
+Durch die Zustandslosigkeit können Webservices einfach skaliert werden,
+ da eine Vielzahl von Requests problemlos auf verschiedene Serverinstanzen
+ verteilt werden können.
+ Durch die Kapselung von Client-und Serverseitigen Logik sind die Systeme
+ als einzelne funktionsfähig.
+ Durch geschicktes mocken
+\begin_inset Foot
+status open
 
+\begin_layout Plain Layout
+Erzeugen von Platzhalter
+\end_layout
+
+\end_inset
+
+ der Anfragen und Antworten können Server und Client vollständig unabhängig
+ voneinander entwickelt werden, sodass keine Rücksicht bei der Entwicklung
+ auf die Gegenseite genommen werden muss.
 \end_layout
 
 \begin_layout Standard
-Beim Analysieren der Bilder stellte sich heraus, dass es folgende grundlegende
- Typen gibt:
+\begin_inset VSpace bigskip
+\end_inset
+
+Die Daten in sowohl den Anfragen und auch Antworten werden in einem spezifiziert
+en Datenformat übermittelt.
+ Hier bietet es sich an die Daten in einem JSON-format (
+\emph on
+JavaScript Object Notation
+\emph default
+) zu transferieren.
+ Das JSON-Format wurde von Douglas Crockford im Jahr 1999 auf der ECMA-262
+ spezifiziert
+\begin_inset CommandInset citation
+LatexCommand cite
+key "C99"
+literal "false"
+
+\end_inset
+
+.
+ im Gegensatz zu XML (
+\emph on
+Extensible Markup Language
+\emph default
+) dynamisch ist und keine Spezifizierung notwendig ist.
+ Zudem ist das ein umgängliches und sprachunabhängiges Datenformat, da es
+ nach einer bekannten Datenstruktur aufgebaut ist - Der Schlüssel/Wert-Paare.
+ Diese universelle Datenstruktur wird in jeder modernen Programmiersprache
+ genutzt und ist deswegen einfach zu verarbeiten.
 \end_layout
 
-\begin_layout Itemize
-Schadenfotos
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Für die Implementierung der REST-Schnittstelle wird die Programmiersprache
+ Python
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://www.python.org/
 \end_layout
 
-\begin_layout Itemize
-Dokumente
+\end_inset
+
+ an.
+ Python wird unternehmensintern verwendet, sodass im weiteren Verlauf die
+ Schnittstelle von anderen Entwicklern mit weitergeführt werden können.
+ Das Webframework 
+\emph on
+Flask
+\emph default
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://www.flask.palletsprojects.com
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-Rechnungsbelege
+\end_inset
+
+ liefert hilfreiche Module zur Entwicklung einer REST-Schnittstelle und
+ wird verwendet um die zukünftige Architektur des Unternehmens technisch
+ umzusetzen.
 \end_layout
 
-\begin_layout Itemize
-Briefe
-\end_layout
-
-\begin_layout Itemize
-Lieferscheine
-\end_layout
-
-\end_deeper
 \begin_layout Subsubsection
-Sortierung
+Schnittstellenspezifikation
 \end_layout
 
 \begin_layout Standard
-Eine interessante Möglichkeit die Bilder zu Sortieren ist nach Schlüsselwörtern
- in den Texten der Dokumente zu suchen und sie abhängig davon in bestimmte
- Ordner zu sortieren.
- Durch eine Textextrahierung jedes Bildes gelang es die extrahierten Texte
- nach bestimmten Schlüsselwörtern zu durchsuchen und sie dadurch zu sortieren.
+Die Schnittstellenspezifikation ist an das Beschreibungsformat
+\emph on
+ OpenAPI
+\emph default
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://www.openapis.org
 \end_layout
 
-\begin_layout Standard
-\begin_inset VSpace bigskip
 \end_inset
 
+ angelehnt.
+ Sie wird mit 
+\emph on
+Swagger
+\emph default
 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://www.swagger.io
 \end_layout
 
-\begin_layout Section
-Formatierung der Daten
-\end_layout
+\end_inset
 
-\begin_layout Standard
-Um Die Daten für die Klassifizierung vorzubereiten mussten die Daten in
- einem bestimmtes Format gebracht werden.
- Im Programmcode 
+, einer Beschreibungssprache für REST-Schnittstellen, in die unternehmensinterne
+n Schnittstellenbeschreibung überführt.
+ In Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "alg:formatting"
+reference "fig:Service_routes"
 plural "false"
 caps "false"
 noprefix "false"
 
 \end_inset
 
- wird vom Ordner, der durch den Parameter 
-\emph on
-input_dir 
-\emph default
-projeziert ist, von der Funktion 
-\emph on
-extract_text() 
-\emph default
-der Text extrahiert.
- Vor dem Extrahierungsprozess wird das Bild mit der Funktion 
-\emph on
-preprocess() 
-\emph default
-binarisiert, um die Präzision der Texterkennung zu erhöhen.
+ befinden sich die ansprechbaren Endpunkte für die zur Verfügung gestellten
+ Ressourcen.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float algorithm
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset listings
-inline false
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-def preprocess(im):     
+
+\backslash
+centering
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
 
-	_ ,im = cv2.threshold(np.array(im),127,255,cv2.THRESH_BINARY)     
-\end_layout
 
-\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/services.PNG
+	scale 50
 
-	
-\end_layout
+\end_inset
 
-\begin_layout Plain Layout
 
-	return Image.fromarray(im)
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-def extract_text(im):     
-\end_layout
-
-\begin_layout Plain Layout
-
-	im = Image.open(im)     
-\end_layout
-
-\begin_layout Plain Layout
-
-	im = preprocess(im)          
-\end_layout
-
-\begin_layout Plain Layout
-
-	extracted = pytesseract.image_to_string(im, output_type=Output.DICT, lang='deu')
-     
-\end_layout
-
-\begin_layout Plain Layout
-
-		
-\end_layout
-
-\begin_layout Plain Layout
-
-	return extracted
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-def texts_to_list(input_dir, label):
-\end_layout
-
-\begin_layout Plain Layout
-
-	res = []     
-\end_layout
-
-\begin_layout Plain Layout
-
-	ext = "jpg"     
-\end_layout
-
-\begin_layout Plain Layout
-
-	images = len(glob.glob('{dir}/*.{ext}'.format(dir=input_dir, ext=ext))   
-\end_layout
-
-\begin_layout Plain Layout
-
-	for im, i in zip(images, range(len(images))):
-\end_layout
-
-\begin_layout Plain Layout
-
-    	extracted_text = extract_text(im)         
-\end_layout
-
-\begin_layout Plain Layout
-
-		extracted_text['id'] = i +1         
-\end_layout
-
-\begin_layout Plain Layout
-
-		extracted_text['label'] = label         
-\end_layout
-
-\begin_layout Plain Layout
-
-		res.append(extracted_text)         
-\end_layout
-
-\begin_layout Plain Layout
-
-	
-\end_layout
-
-\begin_layout Plain Layout
-
-	return res
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Service_routes"
 
 \end_inset
 
@@ -556,7 +442,166 @@ def texts_to_list(input_dir, label):
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Formatierung zu JSON
+REST-Services
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Benutzer, welche die Routen ansprechen wollen, haben durch die Spezifikation
+ eine klare Übersicht.
+ Es wird veranschaulicht welche URI's Ressourcen zur Verfügung stellen und
+ welche Anfragemethode benutzt werden muss.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Jeder Webservice hat eine Definition für die Parameter, die bei der Anfrage
+ transferiert werden müssen, die möglichen Status-Codes einer Antwort und
+ ein Beispiel für eine gelieferten Ressource bei einem reibungslosen Aufruf
+ des Services.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Ein Nutzer mit der Intention 
+\emph on
+extraction 
+\emph default
+aufzurufen, muss die nötigen Parameter 
+\emph on
+file 
+\emph default
+und 
+\emph on
+file_type 
+\emph default
+als Nutzdaten (
+\emph on
+Payload
+\emph default
+) im JSON-Datenformat an die korrespondierende URI schicken.
+ Beide Parameter sind erforderlich, da der Server die Informationen benötigt
+ um die Anfrage zu bearbeiten und eine Antwort zu schicken.
+ Der Beschreibung von 
+\emph on
+file
+\emph default
+ zufolge muss die Datei in der Hexadezimalnotation vorliegen.
+ Der Typ der Datei kann entweder im PDF-Format oder in Bild-Format vorliegen.
+ Der Client muss also technisch in der Lage sein eine Datei in die entsprechende
+ Hexadezimalnotation zu kodieren und den Dateitypen zu kennen, damit eine
+ für den Server passende Anfrage konstruiert werden kann.
+ Der Server antwortet mit dem Statuscode 
+\emph on
+400 - BAD REQUEST 
+\emph default
+wenn die nötigen Informationen nicht vorhanden sind oder die falsche Anfragemeth
+ode gewählt wurden ist.
+\end_layout
+
+\begin_layout Subsection
+Authentifizierung
+\end_layout
+
+\begin_layout Standard
+Die Authentisierung wird über einen IAM-Server (
+\emph on
+Identity and Access Management
+\emph default
+) abgewickelt.
+ Das Akronym IAM bezeichnet das Identity and Access Management, welches
+ die Aufgabe der Zugriffssteuerung auf Ressourcen übernimmt.
+ Um auf die Services zuzugreifen müssen sich Nutzer gegen den jeweiligen
+ Service authentifizieren.
+ Über Services, die der IAM-Server zur Verfügung stellt, können Nutzer erstellt,
+ verwaltet und wieder gelöscht werden.
+\end_layout
+
+\begin_layout Subsection
+Persistierung
+\end_layout
+
+\begin_layout Standard
+Für die Persistierung der Daten wird eine PostgreSQL
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://www.postgresql.org
+\end_layout
+
+\end_inset
+
+-Datenbank verwendet.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Aus dem Anwendungsszenario lassen sich folgende Datenbankmodelle ableiten:
+ Klassifikation, Evaluation und Bild.
+ Aus den Entitäten ergibt sich das Entity-Relation-Ship, das in Abbildung
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ERM"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ dargestellt ist.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/ERM.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Entity-Relationship-Modell
 \end_layout
 
 \end_inset
@@ -564,171 +609,288 @@ Formatierung zu JSON
 
 \begin_inset CommandInset label
 LatexCommand label
-name "alg:formatting"
+name "fig:ERM"
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
+Eine Klassifikation wird durch ein Ergebnis evaluiert.
+ Ein Bild stellt eine Erweiterung eines Ergebnisses dar und ist damit einem
+ Ergebnis zugeordnet.
+\end_layout
 
+\begin_layout Subsubsection*
+Objektrelationale Abbildungen
 \end_layout
 
 \begin_layout Standard
-Die Methode 
+Das Akronym ORM bezeichnet das 
 \emph on
-texts_to_list
-\series bold
+Object Relational Mapping
 \emph default
- 
-\series default
-fügt dem Dictionary, welches durch 
-\emph on
-image_to_string()
-\emph default
- zurückgegeben wurden ist, eine ID und das übergebene Label hinzu und returned
- eine Liste von Dictionaries.
+, welches eine Technik beschreibt Objekte in eine relationale Datenbank
+ abzulegen.
+ Basierend auf dem ER-Modell werden in der Implementierung Objekt-relationale
+ Abbildungen erzeugt.
+ Mithilfe vom ORM-Framework SQLAlchemy
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://www.sqlalchemy.org/
+\end_layout
+
+\end_inset
+
+ werden benutzerdefinierte Python-Klassen erzeugt, die in einer relationalen
+ Datenbank als Zeilen in den korrespondierenden Tabellen abgebildet werden.
+ Die Kardinalitäten werden als Attribute in den Klassenobjekten.
+ ORM synchronisiert die Zustände zwischen den Objekten und den zugehörigen
+ Tabellen.
+ Es werden Datenbankabfragen in Bezug auf die erzeugten Python-Klassen und
+ deren Beziehung untereinander programmatisch ausgedrückt.
+ Die zuständige Programmierung befindet sich in der Geschäftslogik.
 \end_layout
 
 \begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
-
+Die oben dargestellten Entitäten und deren Beziehungen untereinander werden
+ in abstrahierter Form mit Python-Objekten deren Attribute definiert.
+ Abhängig von Definition der Objekte und deren Beziehungen zueinander, können
+ Datenbankabfragen mit der SQLAlchemy-Ausdruckssprache geschrieben werden.
+ Sollte ein Zugriff auf die Datenbank erfolgen verändert der Ausdruck den
+ Zustand der Datenbank korrespondierend zu dem benutzerdefinierten Statement.
 \end_layout
 
 \begin_layout Standard
-Mit dem Aufruf 
-\emph on
-json.dump() 
-\emph default
-wurden die Listen in ein Json-Array überführt und in einer Json-Datei abgelegt
- und auf der Festplatte gespeichert.
- Mit Pandas wurden die Json-Dateien wiederrum in einen Pandas-Dataframe
- überführt.
- Hierzu reichte der Aufruf mit
-\emph on
- pd.read_json().
- 
-\emph default
-Die Dataframes die korrespondieren zu den Labels stehen werden konkateniert,
- was dazu führt, dass sich alle Texte mit dem im Bezug stehenden Label in
- einer Schlüssel-Wert-Struktur in Form eines Dataframes befinden.
- Die Einträge werden zudem randomisiert.
-\end_layout
+\begin_inset VSpace bigskip
+\end_inset
 
-\begin_layout Section
-Aufbereitung der Daten
+Das Klassenmodell, welches in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:class_dia"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ veranschaulicht ist, wird aus dem Entity-Relationship-Modell abgeleitet
+ und ist im Stil vom Objektorientierten Programmierparadigma in Python zu
+ überführen.
 \end_layout
 
 \begin_layout Standard
-stopwords, tokenizing, lower case, stemming
-\end_layout
-
-\begin_layout Subsection
-normalisierung der Daten
-\end_layout
-
-\begin_layout Standard
-Zum Normalisieren wurden einige Verfahren angewandt, um die Genauigkeit
- des Klassifikators zu erhöhen
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float algorithm
+\begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/class_diagram.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Klassendiagramm
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:class_dia"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+Zusätzlich sind die Primärschlüssel der Eltern-Entitäten zu den jeweiligen
+ Kind-Entitäten als Fremdschlüssel hinzugefügt.
+ Das Objekt 
+\emph on
+DBClassification
+\emph default
+ enthält zudem eine Methode, welche die Logik enthält eine Klassifizierung
+ zu erzeugen und diese zusammen mit den abhängigen Entitäten in die Datenbank
+ abzulegen.
+\end_layout
+
+\begin_layout Subsection
+Validierung
+\end_layout
+
+\begin_layout Standard
+Im Kontext der REST-Schnittstelle werden Anfragen auf benötigte Parameter
+ und deren Zeichenlänge validiert.
+ Durch eine schematische Validierung werden ungültige Anfragen erkannt und
+ abgefangen, was bedeutet dass die Geschäftslogik nicht angesprochen wird.
+ Eine entsprechende Antwort mit dem HTTP-Status-Code 404 - BAD REQUEST wird
+ an den Dienstnutzer, womit ihm kenntlich gemacht wird, dass seine Anfrage
+ nicht validiert werden konnte.
+\end_layout
+
+\begin_layout Section
+Implementierung
+\end_layout
+
+\begin_layout Standard
+In diesem Abschnitt wird die serverseitige Implementierung erklärt und exemplari
+sch Anwendungskomponenten und deren Funktionalitäten aufgezeigt.
+\end_layout
+
+\begin_layout Subsection
+Controller
+\end_layout
+
+\begin_layout Standard
+In diesem Unterabschnitt wird die Implementierung der Schnittstelle exemplarisch
+ für einen Anwendungsfall erläutert.
+ Die REST-Schnittstelle, welche im Model-Controller Muster den Controller
+ darstellt, wurde mit dem Webframework 
+\emph on
+Flask
+\emph default
+ realisiert.
+ 
+\emph on
+Flask
+\emph default
+ bietet eine Technik an die Webservices einer Webapplikation in Anwendungskompon
+enten aufzuteilen.
+ Diese Komponenten werden im Kontext von
+\emph on
+ Flask
+\emph default
+ als 
+\emph on
+Blueprints
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\emph on
+Anwendungskomponenten
+\end_layout
+
+\end_inset
+
+
+\emph default
+ definiert.
+ Die
+\emph on
+ Komponenten
+\emph default
+ müssen bei der Webapplikation registriert werden.
+\end_layout
+
+\begin_layout Standard
 \begin_inset listings
+lstparams "caption={Anwendungskomponenten},captionpos=b"
 inline false
 status open
 
 \begin_layout Plain Layout
 
-stemmer = LancasterStemmer() 
+app.register_blueprint(home.api) 
 \end_layout
 
 \begin_layout Plain Layout
 
-lemmatizer = WordNetLemmatizer() 
+app.register_blueprint(classification.api) 
 \end_layout
 
 \begin_layout Plain Layout
 
-p = inflect.engine()
+app.register_blueprint(extraction.api)
 \end_layout
+
+\end_inset
+
+Insgesamt gibt es drei Komponenten, die jeweils über eine eindeutige URL
+ ansprechbar sind, bei der Applikation als modulare Komponente registriert
+ werden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Exemplarisch wird die Anwendungskomponente für den Klassifikations-Service
+ anhand des Programmcode beschrieben.
+ Die URL wird in der Instanziierung der Anwendungskomponente definiert.
+ Die Komponente wird für die Adresse 
+\emph on
+/classification 
+\emph default
+und erlaubt die HTTP-Anfragemethoden 
+\emph on
+GET 
+\emph default
+und 
+\emph on
+POST.
+ 
+\emph default
+Beim Aufruf dieser Funktion wird zunächst überprüft um welche Anfragemethode
+ es sich handelt.
+ 
+\emph on
+GET 
+\emph default
+liefert dem Dienstnutzenden alle Ergebnisse über die erstellten Klassifikationen.
+ Wenn eine POST-Anfrage an den Endpunkt gesendet wird, muss die Anfrage
+ zunächst validiert werden, bevor die Nutzdaten an die Geschäftslogik weitergere
+icht wird.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "caption={Anwendungskomponente für Klassifikation},captionpos=b"
+inline false
+status open
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-# remove special characters 
-\end_layout
-
-\begin_layout Plain Layout
-
-df['text'] = df['text'].apply(lambda x: re.sub("(
-\backslash
-
-\backslash
-W)+"," ",x))
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-# remove punctuation 
-\end_layout
-
-\begin_layout Plain Layout
-
-df['text'].apply(lambda x: re.sub(r'[^
-\backslash
-w
-\backslash
-s]', '', x))   
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\end_layout
-
-\begin_layout Plain Layout
-
-# tokenize  
-\end_layout
-
-\begin_layout Plain Layout
-
-df['text'] = df['text'].apply(lambda x:nltk.word_tokenize(x))
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-# to lower case 
-\end_layout
-
-\begin_layout Plain Layout
-
-df['text'].apply(lambda x: [word.lower() for word in x])   
+api = Blueprint('/classification', __name__)
 \end_layout
 
 \begin_layout Plain Layout
@@ -737,108 +899,177 @@ df['text'].apply(lambda x: [word.lower() for word in x])
 
 \begin_layout Plain Layout
 
-# filter special characters 
+@api.route('/classification', methods=['GET', 'POST'])
 \end_layout
 
 \begin_layout Plain Layout
 
-df['text'].apply(lambda x: [word.lower() for word in x])    
+def classification():     
 \end_layout
 
 \begin_layout Plain Layout
 
+  if request.method == 'POST':
 \end_layout
 
 \begin_layout Plain Layout
 
-# filter stopwords 
+        data = request.form.to_dict()
 \end_layout
 
 \begin_layout Plain Layout
 
-df['text'].apply(lambda x: [item for item in x if item not in stopwords.words('ger
-man')])
+        validator = Validator(schema_type='classification')         
 \end_layout
 
 \begin_layout Plain Layout
 
+        validator.validate(data)
 \end_layout
 
 \begin_layout Plain Layout
 
-# remove punctuation 
+        if validator.validated:                          
 \end_layout
 
 \begin_layout Plain Layout
 
-df['text'].apply(lambda x: [re.sub(r'[^
-\backslash
-w
-\backslash
-s]', '', word) for word in x if word != '']) 
+            resp = Classification().predict_class(req=data)             
 \end_layout
 
 \begin_layout Plain Layout
 
+            if not resp:                 
 \end_layout
 
 \begin_layout Plain Layout
 
-# Remove non-ASCII characters from list of tokenized words 
+                return jsonify({'status': 'bad request'}), 400         
 \end_layout
 
 \begin_layout Plain Layout
 
-df['text'].apply(lambda x: [unicodedata.normalize('NFKD', word).encode('ascii',
+        else:                        
+\end_layout
+
+\begin_layout Plain Layout
+
+            return jsonify({'status': 'validation failed'}), 422
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\end_layout
+
+\begin_layout Plain Layout
+
+        return jsonify(resp), 202
+\end_layout
+
+\end_inset
+
+Wenn die Nutzdaten fehlerhafte oder invalide Werte oder aufweist, wird eine
+ entsprechende Antwort mit dem beigefügtem Status Code zurückgesendet.
+\end_layout
+
+\begin_layout Subsection
+Model
+\end_layout
+
+\begin_layout Standard
+Das Model enthält sowohl die Geschäftslogik als auch das Datenmodell.
+\end_layout
+
+\begin_layout Subsubsection*
+Datenbankmodell
+\end_layout
+
+\begin_layout Standard
+Im Datenbankmodell werden die Objekte definiert, die in die Datenbank abgelegt
+ werden.
+ Darüber hinaus werden hier die Funktionalitäten für die Datenbankabfragen
+ hinterlegt.
+ Der Programmcode zeigt das Datenbankmodell für die Klassifikation, wobei
+ die Kardinalität mit dem Datenbankmodell 
+\emph on
+DBResult 
+\emph default
+definiert wird.
+ Es werden zudem Attribute und der Name der Tabelle initialisiert.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "caption={Datenbankmodell für Klassifikation},captionpos=b"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+class DBClassification(Base):
+\end_layout
+
+\begin_layout Plain Layout
+
+     __tablename__ = 'classification'
+\end_layout
+
+\begin_layout Plain Layout
+
     
 \end_layout
 
 \begin_layout Plain Layout
 
-                            'ignore').decode('utf-8', 'ignore') for word
- in x]) 
+     classification_id = Column(Integer, primary_key=True, autoincrement=True)
+     
 \end_layout
 
 \begin_layout Plain Layout
 
-  
+     created_at = Column(Date)    
 \end_layout
 
 \begin_layout Plain Layout
 
-# Replace all interger occurrences in list of tokenized words with textual
- representation df['text'].apply(lambda x: [p.number_to_words(word) for word
- in x if word.isdigit()]) 
+     result = relationship("DBResult", uselist=False, back_populates="classifica
+tion")
 \end_layout
 
 \begin_layout Plain Layout
 
-  
+     def __init__(self, created_at, result):         
 \end_layout
 
 \begin_layout Plain Layout
 
-# stemming 
+        self.engine = Database().engine                
 \end_layout
 
 \begin_layout Plain Layout
 
-df['text'].apply(lambda x: [stemmer.stem(word) for word in x])  
+        if not self.engine.dialect.has_table(self.engine, self.__tablename__):
 \end_layout
 
 \begin_layout Plain Layout
 
+            Base.metadata.create_all(self.engine)
 \end_layout
 
 \begin_layout Plain Layout
 
-# lemmatizing 
+        
 \end_layout
 
 \begin_layout Plain Layout
 
-df['text'].apply(lambda x: [lemmatizer.lemmatize(word, pos='v') for word in
- x])    
+        self.created_at = created_at         
+\end_layout
+
+\begin_layout Plain Layout
+
+        self.result = result
 \end_layout
 
 \end_inset
@@ -846,11 +1077,95 @@ df['text'].apply(lambda x: [lemmatizer.lemmatize(word, pos='v') for word in
 
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Im unteren Programmcode wird exemplarisch ein lesender Zugriff mit der Ausdrucks
+sprache von
+\emph on
+ SQLAlchemy
+\emph default
+ auf die Tabelle des Datenbankmodells 
+\emph on
+DBResult 
+\emph default
+durch die Funktion 
+\emph on
+calc_accuracies()
+\emph default
+ aufgezeigt.
+ Um auf die Datenbank zuzugreifen, muss eine Session erstellt werden.
+ Auf die Instanz werden über die vorhandenen Kategorien iteriert und die
+ Genauigkeiten der jeweiligen Kategorie summiert.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "caption={Errechnung der Genauigkeiten},captionpos=b"
+inline false
+status open
 
 \begin_layout Plain Layout
-Normalisierung
+
+ def calc_accuracies():         
+\end_layout
+
+\begin_layout Plain Layout
+
+	      
+\end_layout
+
+\begin_layout Plain Layout
+
+	accuracies = {}         
+\end_layout
+
+\begin_layout Plain Layout
+
+	sess = Database().session()         
+\end_layout
+
+\begin_layout Plain Layout
+
+	for label in sess.query(DBResult.label):                 
+\end_layout
+
+\begin_layout Plain Layout
+
+		label = list(label)[0]                 
+\end_layout
+
+\begin_layout Plain Layout
+
+		acc_sum = sess.query(func.sum(DBResult.accuracy)                        
+              							).filter(DBResult.label == "{label}"                
+                               									 .format(label=label)).scalar()
+\end_layout
+
+\begin_layout Plain Layout
+
+        accuracies.update({label: round(acc_sum / Evaluation.count_predictions(lab
+el), 2)})
+\end_layout
+
+\begin_layout Plain Layout
+
+    sess.close()
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	return accuracies
 \end_layout
 
 \end_inset
@@ -858,8 +1173,68 @@ Normalisierung
 
 \end_layout
 
+\begin_layout Standard
+Von den Genauigkeiten wird der Durchschnitt gebildet und zusammen mit der
+ Kategorie einem Dictionary hinzugefügt.
+ Durch diesen Programmcode wird die durchschnittliche Genauigkeit für jede
+ Kategorie ermittelt.
+\end_layout
+
+\begin_layout Subsubsection*
+Geschäftslogik
+\end_layout
+
+\begin_layout Standard
+In der Geschäftslogik werden die Anfragen entgegengenommen und nötige Funktional
+itäten zur Bearbeitung der Anfragen angewandt.
+ Außerdem werden die Datenbankabfragen über die Datenmodelle vorgenommen.
+ Der Programmcode zeigt den Konstruktor der Klasse 
+\emph on
+Classification, 
+\emph default
+welche die Aufgabe hat auf übergebenen Bildern eine Textextraktion durchzuführen
+ und ihn an den Textklassifikator zu übergeben.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "caption={Konstruktor des Klassifikators},captionpos=b"
+inline false
+status open
+
 \begin_layout Plain Layout
 
+class Classification:     
+\end_layout
+
+\begin_layout Plain Layout
+
+	text_clf = '../text_clf.sav'
+\end_layout
+
+\begin_layout Plain Layout
+
+    def __init__(self, labels=labels):         
+\end_layout
+
+\begin_layout Plain Layout
+
+		self.extractor = TextExtractor         
+\end_layout
+
+\begin_layout Plain Layout
+
+		self.model = joblib.load(Classification.text_clf)         
+\end_layout
+
+\begin_layout Plain Layout
+
+		self._labels = labels         
+\end_layout
+
+\begin_layout Plain Layout
+
+		self.df = None
 \end_layout
 
 \end_inset
@@ -867,65 +1242,86 @@ Normalisierung
 
 \end_layout
 
-\begin_layout Subsection
-Trainings- und Testdaten
+\begin_layout Standard
+Weiterhin werden die Resultate errechnet, um die Daten für eine fortlaufende
+ Evaluation zu verwenden.
 \end_layout
 
 \begin_layout Standard
-Die Gesamten Daten müssen unter Trainings- und Testdaten unterteilt werden.
- Die Daten werden mit den Mengenverhältnis 80:20 aufgeteilt, da es sich
- im Bereich des Machine Learning als am effektivsten erwiesen hat.
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-
-\end_layout
-
-\begin_layout Section
-Wahl des Models
-\end_layout
-
-\begin_layout Subsection
-countvektorizer
-\end_layout
-
-\begin_layout Subsection
-frequency times inverse document-frequency
-\end_layout
-
-\begin_layout Standard
-TF: Term Frequency, which measures how frequently a term occurs in a document.
- Since every document is different in length, it is possible that a term
- would appear much more times in long documents than shorter ones.
- Thus, the term frequency is often divided by the document length (aka.
- the total number of terms in the document) as a way of normalization:
+Dieser Programmcode zeigt die Methode 
+\emph on
+classify() 
+\emph default
+der Klasse 
+\emph on
+Classification 
+\emph default
+die die Funktionalitäten für die Klassifikation und dessen Resultate beinhaltet.
+ Durch das konvertieren des Bildes in eine Dataframe-Datenstruktur kann
+ das Model den Text entgegennehmen.
 \end_layout
 
 \begin_layout Standard
-TF(t) = (Number of times term t appears in a document) / (Total number of
- terms in the document).
+\begin_inset listings
+lstparams "caption={Funktionalität zur Klassifierung},captionpos=b"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+def classify(self, im):
+\end_layout
+
+\begin_layout Plain Layout
+
+    df = self.extractor.image_to_df(im=im)         
+\end_layout
+
+\begin_layout Plain Layout
+
+	y = self.model.predict(df)         
+\end_layout
+
+\begin_layout Plain Layout
+
+	y_proba = self.model.predict_proba(df)         
+\end_layout
+
+\begin_layout Plain Layout
+
+	max_y_proba = y_proba[0][y_proba.argmax(axis=-1)[0]]         
+\end_layout
+
+\begin_layout Plain Layout
+
+	max_percentage = round(float(max_y_proba) * 100, 2)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    return max_percentage, y[0]
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-IDF: Inverse Document Frequency, which measures how important a term is.
- While computing TF, all terms are considered equally important.
- However it is known that certain terms, such as "is", "of", and "that",
- may appear a lot of times but have little importance.
- Thus we need to weigh down the frequent terms while scale up the rare ones,
- by computing the following:
-\end_layout
-
-\begin_layout Standard
-IDF(t) = log_e(Total number of documents / Number of documents with term
- t in it).
-\end_layout
-
-\begin_layout Standard
-bayes
-\end_layout
-
-\begin_layout Standard
-term-frequency times inverse document-frequency
+Es wird die vorhergesagte Kategorie und die Wahrscheinlichkeit mit welcher
+ die Kategorie vorhergesagt wurden ist, an die Rest-Schnittstelle zurückgegeben
+ und als Antwort an den Client gesendet.
 \end_layout
 
 \begin_layout Standard

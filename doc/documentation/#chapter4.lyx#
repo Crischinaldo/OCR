@@ -1,0 +1,700 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\options bibliography=totoc,listof=totoc,BCOR=5mm,DIV=12
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding iso8859-1
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref section
+\pdf_pdfusetitle false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine biblatex
+\cite_engine_type authoryear
+\biblio_style plainnat
+\biblio_options backend=biber
+\biblatex_bibstyle alphabetic
+\biblatex_citestyle alphabetic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+chapter{Entwicklung der Textextraktion}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "chap_text_extraction"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Analyse des Dokumentenlayouts
+\end_layout
+
+\begin_layout Standard
+Die Texterkennungssoftware Tesseract kann dafür eingesetzt werden die Koordinate
+n von verschiedenen Bereichstypen durch eine Übergabe des Bildes zu lesen.
+ Python-tesseract
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://pypi.org/project/pytesseract/
+\end_layout
+
+\end_inset
+
+ stellt einen Adapter für Tesseract zu Verfügung, der Funktionalitäten rund
+ um die Texterkennungssoftware bereitstellt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Um bestimmte Bereiche zu Extrahieren wurde ein Dokument erstellt mit einem
+ Format welches für einen Rechnungsbeleg typisch ist.
+\end_layout
+
+\begin_layout Standard
+Im unten dargestellten Programmcode 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:mark_rol"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ wird der Rechnungsbeleg der Texterkennungssoftware übergeben.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+# create dataframe from extracted data
+\end_layout
+
+\begin_layout Plain Layout
+
+extracted_data = pytesseract.image_to_data(im, output_type=Output.DICT, lang='deu'
+) 
+\end_layout
+
+\begin_layout Plain Layout
+
+df = pd.DataFrame.from_dict(extracted_data)
+\end_layout
+
+\begin_layout Plain Layout
+
+amount_boxes = len(df['level'])
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# draw bounding boxes around all boxes 
+\end_layout
+
+\begin_layout Plain Layout
+
+for i in range(n_boxes):
+\end_layout
+
+\begin_layout Plain Layout
+
+    if df['level'][i] == Level.BLOCK:       
+\end_layout
+
+\begin_layout Plain Layout
+
+		(x, y, w, h) = (df['left'][i], df['top'][i], df['width'][i], df['height'][i])
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+         cv2.rectangle(cv_img, (x, y), (x + w, y + h), (0, 255, 0), 2)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Markieren der Regionen von Interesse
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:mark_rol"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Rückgabe erzeugt eine Datenstruktur welche die Koordinaten von Regionen
+ enthält, wobei die Regionen in modular unterteilt sind.
+ Die Stufen sind so angeordnet, dass die Stufenzahl repräsentatibel für
+ die Regionstypen sind, wobei Stufe 1 das gesamte Dokument als Region ansieht
+ und Stufe 5 einzelne Wörter als Region definiert.
+\end_layout
+
+\begin_layout Standard
+Innerhalb einer Schleife wird der Schlüssel Level iteriert und mit dem Wert
+ BLOCK (2) verglichen.
+ Sollte die Bedingung eintreffen so wird der Block-Bereich anhand der Koordinate
+n markiert.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Der Rechnungsbeleg, auf welchem die Blöcke gekennzeichnet wurden, wird in
+ der Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:rol"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ gezeigt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/boxes.jpg
+	scale 15
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:rol"
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Bereiche von Interesse
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die gekennzeichneten blockartigen Regionen enthalten zum größten Teil Informatio
+nen, die in einem Kontext gesehen werden können, wobei noch nicht klar ist
+ welche Box welche Art von Informationen enthält.
+ Dieses Problem ist durch das Zuweisen der Texte anhand der Stufenstruktur
+ lösbar, da die Texte, welche sich auf Stufe 5 befinden, sich den markierten
+ Blöcken zuweisen lassen können, da die Regionen nach dem Stufenmuster gemäß
+ der Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:df_regions"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ angeordnet sind.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/df_regions.PNG
+	scale 80
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:df_regions"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Anordnung der Daten
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Zunächst wird eine Funktion definiert, die die Indizes für alle Stufe 2
+ Einträge filtert, wobei zwei Einträge als ein Paar gespeichert werden,
+ da die Indizepaare die Reichweite für einen bestimmten Block darstellen.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+def box_ranges(df):     
+\end_layout
+
+\begin_layout Plain Layout
+
+	level_two = df['level'] == 2     
+\end_layout
+
+\begin_layout Plain Layout
+
+	df_two = df[level_two]     
+\end_layout
+
+\begin_layout Plain Layout
+
+	box_ranges = []    
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	for i, (a, b) in enumerate(zip(df_two.iterrows(), df_two.iloc[1:].iterrows())):
+         		box_ranges.append((a[0], b[0]))         
+\end_layout
+
+\begin_layout Plain Layout
+
+			if i == len(df_two) - 1:             
+\end_layout
+
+\begin_layout Plain Layout
+
+				box_ranges.append((b[0], df.index[-1]))
+\end_layout
+
+\begin_layout Plain Layout
+
+         
+\end_layout
+
+\begin_layout Plain Layout
+
+	return  box_ranges 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Anhand der 
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+def get_boxes(df, ranges):
+\end_layout
+
+\begin_layout Plain Layout
+
+    boxes = []     
+\end_layout
+
+\begin_layout Plain Layout
+
+    joined = ' '          
+\end_layout
+
+\begin_layout Plain Layout
+
+	for current, (start, end) in zip(df_two.iterrows(), ranges):
+\end_layout
+
+\begin_layout Plain Layout
+
+        coords = current[1]['left'], current[1]['top'], current[1]['width'],
+ current[1]['height']         		curr_subdf = df.iloc[start:end+1]       
+  
+\end_layout
+
+\begin_layout Plain Layout
+
+		joined = ' '         
+\end_layout
+
+\begin_layout Plain Layout
+
+		text_list = []         
+\end_layout
+
+\begin_layout Plain Layout
+
+		for current_sub in curr_subdf.iterrows():
+\end_layout
+
+\begin_layout Plain Layout
+
+            if current_sub[1]['level'] == 5:                 
+\end_layout
+
+\begin_layout Plain Layout
+
+				text_list.append(current_sub[1]['text'])                         
+\end_layout
+
+\begin_layout Plain Layout
+
+					boxes.append(Box(*coords, text=joined.join(text_list)))    
+\end_layout
+
+\begin_layout Plain Layout
+
+       
+\end_layout
+
+\begin_layout Plain Layout
+
+		return boxes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+for box in boxes:     
+\end_layout
+
+\begin_layout Plain Layout
+
+	if balance_due in box.text:                
+\end_layout
+
+\begin_layout Plain Layout
+
+		box.draw_bounding_box(cv_img, COLORS[0], box.x, box.y, box.w, box.h)
+\end_layout
+
+\begin_layout Plain Layout
+
+        box.draw_label(cv_img, COLORS[0], LABELS[0], box.x, box.y, box.w, box.h)
+\end_layout
+
+\begin_layout Plain Layout
+
+       	 regions_of_interest.append(RegionOfInterest(box.y, box.y + box.h, box.x,
+ box.x + box.w, LABELS[0]))
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/RegionsOfInterest.jpg
+	scale 15
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Ausgezeichnete Regionen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+for rol in regions_of_interest:     
+\end_layout
+
+\begin_layout Plain Layout
+
+	cropped_img = cv_img[rol.y:rol.y2, rol.x:rol.x2]     
+\end_layout
+
+\begin_layout Plain Layout
+
+	cv2.imwrite('./data/img/RegionsOfInterest/{name}.jpg'.format(name=rol.label),
+ crop_img) 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Textextraktion auf Basis des Dokumentenlayouts
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+endinput
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "./bib/thesis"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

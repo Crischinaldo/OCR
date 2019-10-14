@@ -8,7 +8,7 @@
 \options bibliography=totoc,listof=totoc,BCOR=5mm,DIV=12
 \use_default_options false
 \maintain_unincluded_children false
-\language english
+\language ngerman
 \language_package default
 \inputencoding iso8859-1
 \fontencoding default
@@ -76,7 +76,7 @@
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style english
+\quotes_style german
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -98,18 +98,18 @@ status open
 
 
 \backslash
-chapter{OCR}
+chapter{Konzept der Software}
 \end_layout
 
 \end_inset
 
- 
+
 \end_layout
 
 \begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "chap_technical_requirements"
+name "chap_concept"
 
 \end_inset
 
@@ -117,190 +117,97 @@ name "chap_technical_requirements"
 \end_layout
 
 \begin_layout Standard
-Dieser Chapter fügt sich in den Bereich der Document Image Analysis (DIA).
-\end_layout
-
-\begin_layout Section
-Forschungsstand
-\end_layout
-
-\begin_layout Standard
-\noindent
-DIA bezeichnet allgemein eine große Gruppe von Techniken, die visuelle Informati
-onen charakterisieren können.
- Dia gehört zu den ältesten Bereichen der Informatik.
- 1913 Erfand Edmund Fournier das Optophon, mit dem dunkle Schriftzeichen
- auf einem Stück Papier erkannt werden können und als Töne interpretiert
- wurden.
-\end_layout
-
-\begin_layout Standard
-\noindent
-Heutzutage durchlaufen moderne DIA-Algorithmen Rasterbilder, die mit Scannern,
- Kameras oder anderen Digitalisierungsgeräten erzeugt wurden.
-\end_layout
-
-\begin_layout Section
-Probleme
-\end_layout
-
-\begin_layout Standard
-Durch die stetige Weiterentwicklung von DIA ist die Vielfalt der Probleme
- gewachsen 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "DIA_CAT"
-literal "false"
-
-\end_inset
-
-:
-\end_layout
-
-\begin_layout Itemize
-Binarisierung - Klassifizieren welche Pixel im Vordergrund un welche im
- Hintergrund ist
-\end_layout
-
-\begin_layout Itemize
-Korrektur - Korrigieren der perspektivischen Verzerrung.
- Dies passiert wenn die Kamera nicht orthogonal zum Physikalischen Dokument
- positioniert ist
-\end_layout
-
-\begin_layout Itemize
-Seitensegmentierung - Unterteilen einer Seite in homogene Komponenten wie
- Text, Bilder und Grafiken
-\end_layout
-
-\begin_layout Itemize
-Textsegmentierung - Unterteilen eines Textabschnitts in Zeilen
-\end_layout
-
-\begin_layout Itemize
-Dokumentklassifizierung - Klassifizierung des Dokumenttyps
-\end_layout
-
-\begin_layout Itemize
-Schrift und - Spracherkennung - Klassifizieren mit welcher Schrift geschrieben
- wurde und welche Sprache benutzt wird
-\end_layout
-
-\begin_layout Itemize
-Zeichensegmentierung - Segmentiert ein Wortbild in individuelle Charaktere
-\end_layout
-
-\begin_layout Itemize
-Grafische Erkennung - Erkennung von graphischen Komponenten
-\end_layout
-
-\begin_layout Itemize
-Tabellenlayout-Struktur Erkennung - Wiederherstellen der Zeilen und- Spaltenstru
-ktur von einem Bild einer Tabelle
-\end_layout
-
-\begin_layout Itemize
-Öffentlich genutzte Text und Grafiken erkennen - In der Öffentlichkeit genutzen
- Text und Grapfiken klassifizieren, wie beispielsweise Nummerschilder und
- Straßenzeichen
-\end_layout
-
-\begin_layout Itemize
-Identifikation des Verfassers - Das bestimmen von indivuellen Charakteristiken
- des Verfassers des Textes, wie beispielsweise Geschlecht oder Alter
-\end_layout
-
-\begin_layout Itemize
-Messung der Dokumentenqualität
-\end_layout
-
-\begin_layout Itemize
-Handgeschriebenen Text erkennen - Texterkennung bei handgeschrieben Text
- von individuellen Verfassern
-\end_layout
-
-\begin_layout Section
-Vorgehensweise in DIA
-\end_layout
-
-\begin_layout Standard
-Die typische Bildverarbeitungspipeline für Dokumente besteht aus drei allgemeine
-n Schritten.
-\end_layout
-
-\begin_layout Enumerate
-Vorverarbeitung - Das preprocessing der Dokumente beinhaltet das Entfernen
- von Rauschen und Unschärfe, Korrektur, Entzerrung und Binarisierung.
-\end_layout
-
-\begin_layout Enumerate
-Layout-Analyse - Verstehen der Dokumentstruktur um Regionen die im Interesse
- (Regions of Interest) liegen zu identifizieren.
-\end_layout
-
-\begin_layout Enumerate
-Erkennung - Extrahieren von den Informationen aus jeder Rol.
-\end_layout
-
-\begin_layout Section
-Optical Charakter Recognition (OCR)
-\end_layout
-
-\begin_layout Standard
-\noindent
-Eine Technik von DIA ist die optische Zeichenerkennung (OCR), die auf das
- Erkennen gedruckter Zeichen ausgelegt ist.
- Die Technologie findet derzeit bei der automatisierten Weiterleitung von
- E-Mails statt, indem Postleitzahlen von Briefumschlägen geparst werden.
-\end_layout
-
-\begin_layout Standard
-\noindent
-Generell kann OCR als möglicherweise gelöstest Problem für maschinell gedruckte
- und gescannte Bürodokumente in Englischer Schrift betrachtet werden.
- Es werden Genauigkeiten von mehr als 99% erzielt.
- Jedoch gibt es über 3000 geschriebene Sprachen und bei der optischen Zeichenerk
-ennung ist bei der Mehrheit der Sprachen ein ungelöstes Problem, welches
- sich in laufender Forschung befindet.
-\end_layout
-
-\begin_layout Section
-Funktionsweise von OCR
-\end_layout
-
-\begin_layout Standard
-In 
+Dieses Kapitel erklärt das Konzept des Systems.
+ Zunächst werden im Unterkapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:doc_rec_use_case"
+reference "sec:Anwendungsfälle"
 plural "false"
 caps "false"
 noprefix "false"
 
 \end_inset
 
- ist die seqentuelle Workflow von einem Texterkennungsprozesses abgebildet.
- Das Bild wird als Dokument hochgeladen und mit preprocessing wird das Bild
- fur den Klassierungsprozess aufbereitet.
- Abhangig von den bestimmten Schwellwert wird das Bild binarisiert.
- Texte werden als weie Pixel dargestellt, wahrend alle darumliegende Pixel
- zu schwarz konvertiert werden.
- Somit hebt sich der Text komplett vom Hintergrund ab.
- Nun konnen Zeilenweise die Worter segmentiert werden, um diese wiederum
- in Charakter zu segmentieren.
- Die Charaktere werden als einzelnde als Merkmale extrahiert und klassiziert.
+ Anforderungen anhand eines Use-Case-Diagrams definiert, die das Vorgehen
+ in der Entwicklung erkennbar macht um einen abschließenden Lösungsansatz
+ zu konzipieren.
+ Anschließend werden die Funktionalitäten in Sequenzdiagrammen durchlaufen,
+ um eine sequentielle Abfolge der Anwendungsschritte zu konzipieren.
+\end_layout
+
+\begin_layout Section
+Anwendungsfälle
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Anwendungsfälle"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In der Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:use_case"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ wird das Use-Case-Diagram veranschaulicht, aus welchem die funktionalen
+ Anforderungen abgeleitet werden sollen.
+ Der Webclient wird dazu verwendet über das UI
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+User Interface (Benutzeroberfläche)
+\end_layout
+
+\end_inset
+
+ eine Datei hochzuladen.
+ Sollte diese Datei das Bild oder PDF-Format haben, wird das Bild von einem
+ Service, der Funktionalität zum Erkennen eines Belegtyps kapselt, als entweder
+ Schadensfoto oder Rechnungsbeleg klassifiziert.
+ Nachdem festgestellt wurden ist, ob es sich bei der hoch geladenen Datei
+ ein Rechnungsbeleg handelt, extrahiert ein Service, der darauf ausgelegt
+ ist bestimmte Regionen auszulesen, Informationen aus dem Bild.
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
 \begin_inset Graphics
-	filename images/flowchart_ocr.png
-	scale 70
+	filename images/use_case.png
+	scale 50
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:use_case"
 
 \end_inset
 
@@ -311,8 +218,531 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Chapter 2 - Wasserfalldiagramm OCR 
+Use-Case-Diagram
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Anwendungsfälle bezüglich der Verwaltung und Authentifizierung von Nutzern
+ werden im weiteren Verlauf über den Unternehmenseigenen IAM-Server abgewickelt
+ und werden in diesem Kontext nicht berücksichtigt.
+\end_layout
+
+\begin_layout Section
+Funktionale Anforderungen
+\end_layout
+
+\begin_layout Standard
+In diesen Unterabschnitt werden die funktionalen Anforderungen aus dem Anwendung
+sszenario geschlussfolgert und sind etappenweise in drei Bereiche gekapselt,
+ um sie weiterhin zu modularisieren.
+ Die funktionalen Anforderungen sind abhängig vom Szenario gegliedert und
+ tabellarisch aufgeführt.
+ Die Anforderungen werden aus der Sicht des Webclients definiert, um die
+ Sicht des Benutzers zu veranschaulichen.
+\end_layout
+
+\begin_layout Paragraph*
+Rechnungsbeleg erkennen
+\end_layout
+
+\begin_layout Standard
+Ein Webclient soll in der Lage sein Dateien hochzuladen und sie an den Server
+ zu senden, um die gewählte Datei zu klassifizieren.
+ Der Webclient erhält daraufhin eine entsprechende Antwort vom Server.
+ Der Webclient reagiert auf die Antwort und stellt sie repräsentativ dar.
+ Die Antwort beinhaltet vor allem das Klassifkationsergebnis.
+ Die Tabelle 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:szen_1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ zeigt insgesamt 4 technische Anforderungen an den Klienten.
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="10" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="7cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ID
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Beschreibung
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F-10010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die UI kann eine Bilddatei auswählen
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F-10020
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die UI kann die Bilddatei über POST-Anfrage senden
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F-10030
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Der Server kann Anfrage entgegennehmen
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F-10040
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Der Server kann Anfrage validieren
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F-10050
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Der Server kann Bild dekodieren
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F-10060
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Der Server kann Bild klassifizeren
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F-10070
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Der Server kann entsprechende Antwort schicken
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F-10080
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die UI kann eine Antwort empfangen
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F-10090
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die UI kann die Antwort präsentieren
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:szen_1"
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Klassifikation von Dokumenten
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Wenn ein Rechnungsbeleg erkannt wurde, wird dem Nutzer eine Extraktion der
+ Informationen angeboten.
+ Die funktionalen Anforderungen zum Anwendungsszenario werden in Tabelle
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:szen_2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ aufgelistet und beschrieben..
+\end_layout
+
+\begin_layout Paragraph*
+Informationen extrahieren
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="9" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ID
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Beschreibung
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F-20010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die UI kann Beleg über POST-Anfrage senden
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F-20020
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Der Server kann Anfrage entgegennehmen
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F-20030
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Der Server kann Anfrage validieren
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F-20040
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Der Server kann Bild dekodieren
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F-20050
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Der Server kann Informationen extrahieren
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F-20060
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Der Server kann entsprechende Antwort schicken
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F-20070
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die UI kann eine Antwort empfangen
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F-20080
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die UI kann die Antwort tabellarisch präsentieren
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
 
 \end_inset
 
@@ -322,140 +752,480 @@ Chapter 2 - Wasserfalldiagramm OCR
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "flowchart_ocr"
+name "tab:szen_2"
 
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Tesseract
-\end_layout
-
-\begin_layout Standard
-Die Tesseract-Engine ist eine Texterkennungssoftware und wurde im Jahre
- 2007 in der Ninth International Conference on Document Analysis and Recognition
- (ICDAR 2007) von Ray Smith veröffentlicht
-\begin_inset CommandInset citation
-LatexCommand cite
-key "R07"
-literal "false"
-
-\end_inset
-
-.
- Sie ist zwischen 1984 und 1994 von dem Unternehmen 
-\emph on
-Hewlett-Packard
-\emph default
-
-\begin_inset Foot
-status open
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
-https://www8.hp.com
+Informationen aus Rechnungsbeleg extrahieren
 \end_layout
 
 \end_inset
 
- entwickelt wurden.
- HP hatte den Fokus auf OCR und erzielten mit Tesseract sehr gute Zielgenauigkei
-ten bezüglich von textbasierten Erkennungmustern, obwohl sie Tesseract nicht
- als Produkt vermaktet haben.
- 1995 erzielte Tesseract mit seinem Ergebnissen den dritten Platz auf der
- UNLV - Einem jährlichen Test zur Messung von Genauigkeiten im Bereich von
- OCR
-\begin_inset CommandInset citation
-LatexCommand cite
-key "RJN95"
-literal "false"
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \end_inset
 
- und seitdem nicht mehr weiterentwickelt wurden.
- Ray Smith, der bei HP an Tesseract mitentwickelte, arbeitete mittlerweile
- bei Google und brachte 2005 Tesseract, wessen Quelltext im selbigen Jahr
- öffentlich gemacht wurden ist, auf den neusten Stand der Technik.
-\end_layout
-
-\begin_layout Standard
-Page segmentation modi:
-\end_layout
-
-\begin_layout Section
-matching
-\end_layout
-
-\begin_layout Standard
-leventhstein, fuzzy, https://github.com/kavgan/nlp-in-practice/blob/master/tf-idf
-/Keyword%20Extraction%20with%20TF-IDF%20and%20SKlearn.ipynb
-\end_layout
-
-\begin_layout Section
-Natural Language Processing
-\end_layout
-
-\begin_layout Standard
-Die Motivation der Technologie Natural Language Processing (NLP) ist eine
- direkte Kommunkation zwischen Mensch und Maschine auf Basis der natürlichen
- Sprache herzustellen.
- NLP deckt ein weites Spektrum von Techniken ab Software zu entwickeln,
- die dazu dient die menschliche Sprache zu verstehen.
- Die Wahl der Technik ist auf den Anwendungsfall abgezielt, so werden in
- einigen Fällen beispielsweise Wortfrequenzen gezählt, um verschiedene Schreibst
-ile zu vergleichen wobei in einem anderem Kontext muss der vermeintliche
- Inhalt einer menschlichen Äußerung verstanden werden
-\begin_inset CommandInset citation
-LatexCommand cite
-key "BKL09"
-literal "false"
-
-\end_inset
-
-.
- Die Technologie wird sowohl im Bereich der Texterkennung als auch in der
- Spracherkennung verwendet.
+Der Webclient sendet das zuvor hochbeladene Bild, vorausgesetzt es ist ein
+ Rechnungsbeleg, an den Server.
+ Der Client erhält eine Antwort die die extrahierten Daten enthält und sie
+ deklarativ dem Benutzer präsentiert.
 \end_layout
 
 \begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
+Die ersten beiden Szenarien treten in diesem Kontext zusammenhängend auf,
+ da eine Extraktion lediglich für Rechnungsbelege gedacht ist.
+ Aufgrund von universeller Einsetzbarkeit und Modularität werden sie als
+ zwei Webservices implementiert.
+ Mit der Servicearchitektur können die beiden Komponenten serverseitig komplett
+ voneinander gekapselt werden.
+\end_layout
 
+\begin_layout Paragraph*
+Evaluationsergebnisse im Dashboard präsentieren
 \end_layout
 
 \begin_layout Standard
-0 Orientation and script detection (OSD) only.
- 1 Automatic page segmentation with OSD.
- 2 Automatic page segmentation, but no OSD, or OCR.
- 3 Fully automatic page segmentation, but no OSD.
- (Default) 4 Assume a single column of text of variable sizes.
- 5 Assume a single uniform block of vertically aligned text.
- 6 Assume a single uniform block of text.
- 7 Treat the image as a single text line.
- 8 Treat the image as a single word.
- 9 Treat the image as a single word in a circle.
- 10 Treat the image as a single character.
- 11 Sparse text.
- Find as much text as possible in no particular order.
- 12 Sparse text with OSD.
- 13 Raw line.
- Treat the image as a single text line, bypassing hacks that are Tesseract-speci
-fic.
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ID
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Beschreibung
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F-30010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die UI kann eine GET-Anfrage senden
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F-30020
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die UI kann eine Antwort empfangen
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F-30030
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die UI kann eine Antwort über Diagramme darstellen
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:szen_3"
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Evaluationsergebnisse präsentieren
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Beim Aufruf des Dashboards wird eine GET-Anfrage an eine URL gesendet, um
+ die Evaluationsergebnisse abzufragen.
+ Das Dashboard bekommt die Antwort als Datenformat und präsentiert sie auf
+ der UI mittels Statistischen Modellen.
+\end_layout
+
+\begin_layout Subsection
+Aktivitätsdiagramme
 \end_layout
 
 \begin_layout Standard
-Paraphrase Identification
+In diesen Unterabschnitt befinden sich die einzelnen Aktivitätsdiagramme.
+ Die Aktivitätsdiagramme zeigen die aufgelisteten funktionalen Anforderungen
+ in Ablaufsequenzen, wo Client und Server als Hauptakteure miteinander interagie
+ren, wobei im Server untergeordnet die Kommunikationsschnittstelle mit dem
+ Model interagiert.
 \end_layout
 
 \begin_layout Standard
-Cosine similarity
+\begin_inset VSpace bigskip
+\end_inset
+
+Das System ist nach dem 
+\emph on
+MVC-Ansatz
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\emph on
+Model-View-Controller
+\end_layout
+
+\end_inset
+
+
+\emph default
+ aufgebaut
+\begin_inset CommandInset citation
+LatexCommand cite
+key "LR09"
+literal "false"
+
+\end_inset
+
+.
+ Die View ist der Client und ist zuständig für die Darstellung des Modells.
+ Der Controller ist die REST-Schnittstelle, da sie die Interaktionen vom
+ Benutzer über die View entgegennimmt und weiterleitet.
+ Das Model enthält die Geschäftslogik, die die Funktionalitäten für die
+ Bearbeitung der Interaktionen zuständig ist.
+\end_layout
+
+\begin_layout Subsubsection
+Klassifikation
+\end_layout
+
+\begin_layout Standard
+Das Aktivitätsdiagramm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:act_clf"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ zeigt die funktionalen Anforderungen 
+\emph on
+F-10010 
+\emph default
+bis F-10090 in einer Ablaufsequenz.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/activity_classify.png
+	scale 40
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:act_clf"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Aktivitätsdiagramm Klassifikation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Die Funktionalitäten für die Erstellung der Ressource ist über die URL
+\emph on
+ /classifications 
+\emph default
+anzusprechen.
+ Der Service akzeptiert hierfür eine POST-Anfrage.
+ Sind die Daten nicht valide oder das Bild kann nicht dekodiert werden,
+ so wird eine entsprechende Antwort zurückgesendet.
+\end_layout
+
+\begin_layout Subsubsection
+Extraktion
+\end_layout
+
+\begin_layout Standard
+Das Aktivitätsdiagramm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:act_ext"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ zeigt die funktionalen Anforderungen 
+\emph on
+F-20010 
+\emph default
+bis F-20080 in einer Ablaufsequenz.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/activity_extract.png
+	scale 40
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:act_ext"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Aktivitätsdiagramm Extraktion
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+Die Funktionalitäten für die Erstellung der Ressource ist über die URL
+\emph on
+ /extraction 
+\emph default
+anzusprechen.
+ Die Ressource nimmt eine POST-Anfrage entgegen.
+ Sind die Daten nicht valide oder das Bild kann nicht dekodiert werden,
+ so wird eine entsprechende Antwort zurückgesendet.
+\end_layout
+
+\begin_layout Subsubsection
+Evaluation
+\end_layout
+
+\begin_layout Standard
+Das Aktivitätsdiagramm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:act_clf"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ zeigt die funktionalen Anforderungen 
+\emph on
+F-30010 
+\emph default
+bis F-30030 in einer Ablaufsequenz.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/activity_eval.png
+	scale 40
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:act_eva"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Aktivitätsdiagramm Evaluation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+Die Funktionalitäten für das lesen der Ressource ist über die URL
+\emph on
+ /classification 
+\emph default
+anzusprechen.
+ Hierzu wird eine GET-Anfrage an die URL geschickt.
+ Wenn keine Daten auf dem Server gefunden werden, wird eine entsprechende
+ Antwort mit dem Status Code 404 zurückgesendet.
 \end_layout
 
 \begin_layout Standard

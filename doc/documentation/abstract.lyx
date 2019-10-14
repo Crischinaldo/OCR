@@ -105,74 +105,41 @@ Arbeitsauftrag
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace 1cm*
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-In der heutigen Software ist Machine Learning zu einem nicht mehr wegzudenkenden
- Teilgebiet geworden.
- Durch die Verwendung intelligenter Systeme können Ressourcen wie Zeit und
- Aufwand gespart werden.
- Unternehmen, die mit dieser Technologie arbeiten, haben einen ökonimischen
- Vorteilen gegenüber der Konkurrenz und heben sich von Diesen ab.
-\end_layout
-
-\begin_layout Standard
+Um die Automatisierung firmeninterner Geschäftsprozesse zu ermöglichen,
+ soll anhand von Machine Learning eine Klassifikation von Rechnungsbelegen
+ stattfinden.
+ Eine zuverlässige Dokumentenerkennung soll letztendlich einem Sachbearbeiter
+ das Ausfüllen eines Formulars abnehmen.
+ Im Laufe dieser Arbeit sollen Probleme analysiert und geeignete Muster
+ zur Problemlösung gefunden werden.
+ Anhand von Trainingsdaten wird ein für dieses Problem geeigneter Klassifikator
+ trainiert, wissenschaftlich evaluiert und für die Verwendung im Betrieb
+ vorbereitet.
+ Der Erkennungsprozess wird in drei Phasen untergliedert:
 \begin_inset VSpace 0.5cm*
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-Die Automatisierung soll anhand einer künstlichen Intelligenz erfolgen.
-\end_layout
-
-\begin_layout Standard
-\noindent
 Der Erkennungsprozess wird in drei Phasen untergliedert:
 \end_layout
 
-\begin_layout Enumerate
-Mustererkennung
+\begin_layout Itemize
+Mustererkennung: Ein Klassifikator ist in der Lage Datenmuster in den Rechnungsb
+elegen zu erkennen und einem Belegtyp zuzuordnen.
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
-Ein Klassifikator ist in der Lage Datenmuster in den Rechnungsbelegen zu
- erkennen und einem Belegtyp zuzuordnen.
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-Belegextraktion
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Auf Basis der Mustererkennung kann eine Extraktion der Informationen durchgeführ
-t werden.
+\begin_layout Itemize
+Belegextraktion: Auf Basis der Mustererkennung kann eine Extraktion der
+ Informationen vom Beleg durchgeführt werden.
  Die Positionen der Daten werden durch die Musterkennung ermittelt.
 \end_layout
 
-\end_deeper
-\begin_layout Enumerate
-Evaluation
+\begin_layout Itemize
+Evaluation: Der Automatisierungprozess wird evaluiert.
+ Durch Quantifizierung werden fehlerhafte Erkennungen und die durchschnittliche
+ Zeitersparnis ermittelt.
+ Die Ergebnisse sollen visuell dargestellt werden.
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
-Eine Quantifizierung evaluiert die nachträglich ausgefüllten Felder, fehlerhafte
- Erkennungen und die durchschnittliche Zeitersparnis.
- Ergebnisse sollen visuell dargestellt werden.
-\end_layout
-
-\end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset

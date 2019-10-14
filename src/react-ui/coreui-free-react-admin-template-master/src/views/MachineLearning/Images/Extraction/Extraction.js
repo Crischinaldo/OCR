@@ -48,9 +48,10 @@ class Extraction extends Component {
          .then((response) => {
            if (response.data.result) {
              this.setState({
-               iban: response.data.result.iban,
-               bic: response.data.result.bic,
-               balance_due: response.data.result.balance_due,
+               bankDetails: response.data.result.bank_details,
+               invoiceDetails: response.data.result.invoice_details,
+               recipient: response.data.result.recipient,
+               calculation: response.data.result.calculation,
                loading: false,
              });
            }
@@ -66,44 +67,85 @@ class Extraction extends Component {
 
    render() {
 
-     const { extractedText, loading } = this.state;
     return (
       <div className='animated fadeIn'>
         {
-          loading
+          this.state.loading
             ? <Spinner color="primary" />
             :
             <div className='animated fadeIn'>
             <Card>
               <CardHeader> <h1>Extracted Information</h1> </CardHeader>
               <CardBody>
-                <Table responsive>
-                  <thead>
-                  <tr>
-                    {this.state.amount
-                      ? <th>balance due</th>
-                      : null
-                    }
-                    {this.state.iban
-                      ? <th>iban</th>
-                      : null
-                    }
-                    {this.state.bic
-                      ? <th>bic</th>
-                      : null
-                    }
-                  </tr>
-                  </thead>
-                  <tbody>
-
-                  <tr>
-                      <td>{this.state.amount}</td>
-                      <td>{this.state.iban}</td>
-                      <td>{this.state.bic}</td>
-                  </tr>
-
-                  </tbody>
-                </Table>
+                {this.state.recipient ?
+                  <Table responsive>
+                    <thead>
+                    <tr>
+                      {Object.keys(this.state.recipient).map((key, index) => (
+                        <th key={index}>{key}</th>
+                      ))
+                      }
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      {Object.values(this.state.recipient).map((value, index) => (
+                        <td key={index}>{value}</td>
+                      ))
+                      }
+                    </tr>
+                    </tbody>
+                  </Table>
+                  : null
+                }
+                {this.state.bankDetails ?
+                  <Table responsive>
+                    <thead>
+                    <tr>
+                      {Object.keys(this.state.bankDetails).map((key, index) => (
+                        <th key={index}>{key}</th>
+                      ))
+                      }
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      {Object.values(this.state.bankDetails).map((value, index) => (
+                        <td key={index}>{value}</td>
+                      ))
+                      }
+                    </tr>
+                    </tbody>
+                  </Table>
+                  : null
+                }
+                {this.state.invoiceDetails ?
+                  <Table responsive>
+                    <thead>
+                    <tr>
+                      {Object.keys(this.state.invoiceDetails).map((key, index) => (
+                        <th key={index}>{key}</th>
+                      ))
+                      }
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      {Object.values(this.state.invoiceDetails).map((value, index) => (
+                        <td key={index}>{value}</td>
+                      ))
+                      }
+                    </tr>
+                    </tbody>
+                  </Table>
+                  : null
+                }
+                {
+                  this.state.calculation ?
+                    <h1>Balance Fee: {this.state.calculation}</h1>
+                    :
+                    null
+                }
               </CardBody>
             </Card>
             </div>

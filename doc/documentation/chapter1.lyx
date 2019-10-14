@@ -8,7 +8,7 @@
 \options bibliography=totoc,listof=totoc,BCOR=5mm,DIV=12
 \use_default_options false
 \maintain_unincluded_children false
-\language english
+\language ngerman
 \language_package default
 \inputencoding iso8859-1
 \fontencoding default
@@ -76,7 +76,7 @@
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style english
+\quotes_style german
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -98,25 +98,18 @@ status open
 
 
 \backslash
-chapter{Anforderungsanalyse}
+chapter{Grundlagen}
 \end_layout
 
 \end_inset
 
  
-\begin_inset CommandInset label
-LatexCommand label
-name "chap_chapter1"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "chap_process"
+name "chap_basics"
 
 \end_inset
 
@@ -124,66 +117,470 @@ name "chap_process"
 \end_layout
 
 \begin_layout Standard
-Im Laufe dieser Arbeit soll eine Softwarelösung mithilfe von Machine Learning
- entwickelt werden, die in der Lage ist Belege zu erkennen und Informationen
- zu extrahieren.
- Die Daten sollen automatisch in Formularfelder eingetragen werden, wobei
- der Benutzer die Möglichkeit hat Korrekturen vorzunehmen.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace smallskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Die Präzisionsrate Der Belegextrahierung und die durchschnittliche Zeitersparnis
- beim Ausfüllen des Formulars sollen quantitativ evaluiert und schließlich
- visualisiert werden.
+In Diesem Kapitel werden die benötigten Grundlagen soweit erklärt, dass
+ Basiskenntnisse zum Verstehen dieser Arbeit gegeben sind.
 \end_layout
 
 \begin_layout Section
-Anwendungsfall
+System
 \end_layout
 
 \begin_layout Standard
-Im 
+Grundlegend stellt das System eine Schnittstelle zwischen Versicherungsunternehm
+en und Logistikunternehmen dar.
+ Es existiert als Webanwendung und setzt eine Registrierung des Benutzers
+ voraus, um es zu gebrauchen.
+ Benutzer verfügen im Kontext der Webanwendung über bestimmte administrative
+ Rechte, die mittels einer Rollenvergabe organisiert werden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Bei Erfassen eines Schadens seitens des Spediteurs wird für ihm eine Schadensakt
+e angelegt.
+ Eine Funktion in der Schadensakte beinhaltet das Hochladen von Nachweisen
+ für die Schadensprotokollierung, darunter Rechnungsbelege, die es zu erkennen
+ gilt.
+\end_layout
+
+\begin_layout Section
+Maschinelles Lernen
+\end_layout
+
+\begin_layout Standard
+Maschinelles Lernen beruht auf den Gebiet der Mustererkennung, die sich
+ mit der automatischen Erkennung von Regelmäßigkeiten in Daten unter Verwendung
+ von Algorithmen befasst.
+ Durch das Erkennen von Regelmäßigkeiten werden Maßnahmen zur Klassifizierung
+ der Daten in verschiedene Kategorien ergriffen
+\begin_inset CommandInset citation
+LatexCommand cite
+key "B06"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Maschinelles Lernen ist die Wissenschaft Computer so zu programmieren, sodass
+ sie in der Lage sind von Daten zu lernen und ist bereits eine weiterforschte
+ Technologie, die Verwendung in hochtechnologischen Produkten findet.
+ Sie ist verantwortlich für die Realisierung von unter anderem die Spracherkennu
+ng in Smartphones, das Empfehlen von Videos auf Videoportale und das Ranking
+ von Suchergebnissen im Internet-Suchmaschinen
+\begin_inset CommandInset citation
+LatexCommand cite
+key "G17"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Eine der ersten populärsten Anwendungsfälle von Maschinelles Lernen ist
+ der  Filter um Spam-Mails zu erkennen.
+  Der Spamfilter ist dazu in der Lage seriösen Mails von Spam-Mails zu untersche
+iden und als solche zu kennzeichnen.
+  Eine dementsprechende Intelligenz setzt voraus, dass der Software beigebracht
+  werden muss wie es eine Spam-Mail als solche erkennt.
+\end_layout
+
+\begin_layout Subsection
+Überwachtes Lernen
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Damit ein intelligenter Filter in der Lage ist Spam-Mails zu erkennen, muss
+  er die korrespondierenden Regelmäßigkeiten kennen.
+  Das notwendige Wissen eignet sich die Software über ein Verfahren im Maschinel
+len Lernen an: Es wird eine Vielzahl von Daten benötigt, die zum Trainieren
+  der Software dient, damit sie Charakteristiken von Spam-Mails erkennen
+ kann.
+  Dieser Datensatz nennt sich Trainingssatz und wird zum Einstellen von
+ Parametern eines adaptiven Modells benötigt.
+  Im Fall des Spamfilters gibt es zwei Zielmerkmale:
+\end_layout
+
+\begin_layout Itemize
+Es handelt sich um eine Spam-Mail
+\end_layout
+
+\begin_layout Itemize
+Es handelt sich um keine Spam-Mail
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Spam-Mails weisen Regelmäßigkeiten auf, die sie von seriösen Mails unterscheiden.
+  Ein sehr prägnantes Merkmale einer Spammail ist der Inhalt der Nachricht.
+ Wörter wie 
+\emph on
+kostenlos, schnelles Geld, reich werden, risikofrei
+\emph default
+ und 
+\emph on
+hier klicken 
+\emph default
+sind eine typische Charakteristiken einer Spam-Mail
+\emph on
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "S03"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Das Modell adaptiert Erkennungsmuster anhand von den Trainingssatz und kann
+  bei neuen Daten anhand der Charakteristiken das Zielmerkmal prognostizieren.
+\end_layout
+
+\begin_layout Section
+Natural Language Processing
+\end_layout
+
+\begin_layout Standard
+Das Initialwort NLP beschreibt die Maschinelle Verarbeitung natürlicher
+ Sprache und ist eine Technologie die einen Bereich des Maschinellen Lernens
+ darstellt.
+ Die Motivation hinter dieser intelligenten Technologie ist die Interaktion
+ zwischen Mensch und Computer unter Verwendung der natürlichen Sprache in
+ sowohl schriftlicher als auch mündlicher Form.
+ Die Kategorisierung von Text findet auf erlernbare syntaktische und semantische
+ Erkennungsmuster statt 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "CW11"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Die Wahl der Technik ist auf den Anwendungsfall abgezielt, so werden in
+ einigen Fällen beispielsweise Wortfrequenzen gezählt, um verschiedene Schreibst
+ile zu vergleichen wobei in einem anderem Kontext muss der vermeintliche
+ Inhalt einer menschlichen Äußerung verstanden werden
+\begin_inset CommandInset citation
+LatexCommand cite
+key "BKL09"
+literal "false"
+
+\end_inset
+
+.
+ Die Technologie wird sowohl im Bereich der Texterkennung als auch in der
+ Spracherkennung verwendet.
+ Die Entwicklung der Merkmale (
+\emph on
+feature engineering
+\emph default
+) findet kontextabhängig auf Syntax und Semantik der Sprache statt.
+ NLP wird heute in in vielen Bereichen eingesetzt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+Die inhaltliche Deutung von NLP findet ihre Grenze bei Informationen die
+ ein höheres Abstraktionsniveau haben, so kann beispielsweise sarkastischer
+ Inhalt nicht richtig gedeutet werden.
+\end_layout
+
+\begin_layout Subsubsection
+Syntaktische Analyse
+\end_layout
+
+\begin_layout Standard
+Die Syntax ist die Anordnung der Wörter, so dass sie grammatikalisch einen
+ Sinn ergeben.
+ Im Bereich des NLP kann eine syntaktische Analyse durchgeführt werden,
+ die überprüft wie die natürliche Sprache mit den grammatikalischen Regeln
+ überstimmt.
+ Auf diese Weise kann festgestellt werden ob der eingegebene Text ein Satz
+ in der natürlichen Sprache ist
+\begin_inset CommandInset citation
+LatexCommand cite
+key "NL01"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Semantische Analyse
+\end_layout
+
+\begin_layout Standard
+Die Semantik bezieht sich auf die Bedeutung von Texten.
+ Mit einem Algorithmus werden grammatikalische Regeln auf einen großen Textkorpu
+s
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Sammlung von Texten
+\end_layout
+
+\end_inset
+
+ angewendet um daraus eine kontextbezogene Bedeutung von Wörtern abzuleiten.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Die Kernidee ist, dass bei der Betrachtung aller Wortkontexte nach dem Vorkommen
+ oder Fehlen eines bestimmtes Wortes gesucht wird, um die Ähnlichkeit der
+ Bedeutung von Wortgruppierungen untereinander zu bestimmen
+\begin_inset CommandInset citation
+LatexCommand cite
+key "LF98"
+literal "false"
+
+\end_inset
+
+.
+ Bestimmte Wörter treten mit anderen bestimmten Wörtern in einem Kontext
+ auf, womit ein inhaltlicher Sinn hergeleitet werden kann.
+\end_layout
+
+\begin_layout Section
+Dokumentenanalyse
+\end_layout
+
+\begin_layout Standard
+Der Bereich der Forschung, der sich mit der Erkennung von Text- und Grafikkompon
+enten in Bildern von Dokumenten beschäftigt, heißt 
+\emph on
+Document Image Analyse
+\emph default
+ (DIA).
+ DIA bezeichnet eine große Gruppe von Techniken, die visuelle Informationen
+ charakterisieren können und gehört zu den ältesten Bereichen der Informatik.
+ Die Motivation in diesem Forschungsgebiet ist die automatische Extraktion
+ von Informationen auf die Art und Weise wie ein Mensch die abgebildeten
+ Informationen aufnehmen würde
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KGG02"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Es gibt zwei Kategorien mit je zwei Komponenten im Gebiet der Dokumentenanalyse:
+\end_layout
+
+\begin_layout Enumerate
+Texterkennung
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Seitenlayoutanalyse - Erkennen von Spalten, Paragraphen, Textlinien und
+ Wörter
+\end_layout
+
+\begin_layout Enumerate
+Optische Zeichenerkennung - Erkennung von Zeichencharakteren
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Grafikerkennung
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Linienverarbeitung - Erkennen von Polygonen wie Linien, Ecken und Kurven
+\end_layout
+
+\begin_layout Enumerate
+Region- und Symbolverarbeitung Erkennung von gefüllten Regionen
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Im Rahmen dieser Arbeit ist die Motivation eine Texterkennung durchzuführen,
+ weshalb sich ausschließlich auf diesen Zweig eingegangen wird.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Seitenlayoutanalyse
+\end_layout
+
+\begin_layout Standard
+Die Analyse des Seitenlayouts ist der erste Schritt der Dokumentenerfassung,
+ um 
+\emph on
+Regions Of Interests
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Bereiche die Informationen beinhalten
+\end_layout
+
+\end_inset
+
+ 
+\emph default
+ausfindig zu machen.
+ Dabei werden im Dokument bestimmte Bereiche erkannt und beschriftet, um
+ eine kontrollierte Extraktion der darin enthaltenen Informationen durchzuführen.
+ Die Bereiche variieren nach dem Aufbau des Dokumentenlayouts, weswegen
+ die Unterteilung in Blöcke, Illustrationen, Symbole oder Tabellen durchgeführt
+ wird
+\begin_inset CommandInset citation
+LatexCommand cite
+key "B03"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+OCR
+\end_layout
+
+\begin_layout Standard
+OCR (Optical Character Recognition) ist eine Technologie zur Erkennung von
+ gedruckten oder handgeschriebenen Textzeichen in digitalen Bilder von physische
+n Dokument.
+ Die Motivation von OCR ist die Identifizierung von spezielle Anordnungen
+ von Pixeln als Buchstaben in einer Rastergrafik.
+ Mittels dieser Technologie können von beispielsweise gescannten Dokumenten
+ die Textzeichen mit Rücksicht auf die Kompositionen der Zeichen ausgelesen
+ werden.
+ Der Kernprozess ist die Umwandlung von erkannten Textzeichen in eine digitalisi
+erte Rekonstruierung des Textes.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Durch eine Infrastruktur zwischen Hardware, wie beispielsweise einem Scanner
+ und einer Texterkennungssoftware können Informationen digital verarbeitet
+ werden.
+ Eine populärer Anwendungsfall ist die Digitalisierung von historischen
+ Dokumenten in physischer Form, da der abgebildete Text lesbar rekonstruiert
+ werden kann und im Internet zur Verfügung gestellt wird.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Texterkennung ist eine Technologie die auf Maschinelles Lernen und Mustererkennu
+ng basiert.
+ Einer OCR-Software werden mit Textbeispielen in verschiedenen Schriftarten
+ und Formaten trainiert, so dass die Software in der Lage ist durch Merkmale,
+ wie die Anzahl und Anordnungen der Linien und Kurven, Zeichen zu erkennen.
+\end_layout
+
+\begin_layout Subsubsection
+System von OCR
+\end_layout
+
+\begin_layout Standard
+Das gescannte Dokument muss zunächst Vorverarbeitet werden, indem ein Schwellwer
+t gesetzt wird, um bestmöglich die dunkleren Pixel von den helleren zu trennen.
+ Das Binarisieren ist notwendig, da somit der Text sich klar abhebt und
+ damit ein besserer Erkennungsprozess ermöglicht wird.
+ Eine Texterkennungssoftware ist in der Lage Textzeichen zu erkennen und
+ sie zu segmentieren, damit sie als Einzelne untersucht werden können.
+ Eine Textzeile beinhaltet Buchstaben, die als Bilder extrahiert und klassifizie
+rt werden.
+ Dieser Fluss ist in Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:doc_rec_use_case"
+reference "fig:ocr_flow"
 plural "false"
 caps "false"
 noprefix "false"
 
 \end_inset
 
- wird der automatisierte Prozess veranschaulicht.
- Beim Hochladen eines Nachweises in Bildform prognostiziert ein Klassifikator,
- der darauf trainiert ist Belege zu erkennen, ob es sich um einen Rechnungsbeleg
- handelt.
- Sollte die Prognose eintreffen, werden Informationen von einem Klassifikationsm
-odell extrahiert, das auf Texterkennung trainiert ist.
- Das System soll mit den extrahierten Informationen das Formular ausfüllen
- und bei Falschinformationen den Benutzer Korrekturen vornehmen lassen.
-\end_layout
-
-\begin_layout Standard
-Für die Schadensfallabwicklung ist das Hochladen von Nachweisen optional.
- Der Benutzer ist weiterhin in der Lage die Formularfelder manuell auszufüllen.
-\end_layout
-
-\begin_layout Standard
+ veranschaulicht und zeigt insgesamt 8 Schritte im Stil eines Flussdiagramms.
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
 \begin_inset Graphics
-	filename images/doc_rec_usecase_v2.png
-	scale 40
+	filename images/Flow-diagram-of-traditional-OCR-system.png
+	scale 80
 
 \end_inset
 
@@ -194,7 +591,15 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Chapter 1 - Anwendungsfalldiagramm
+System von OCR (Quelle: 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "S10"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -205,7 +610,7 @@ Chapter 1 - Anwendungsfalldiagramm
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:doc_rec_use_case"
+name "fig:ocr_flow"
 
 \end_inset
 
@@ -214,41 +619,350 @@ name "fig:doc_rec_use_case"
 
 \end_inset
 
-Aus den Kontext des Anwendungsfall ergeben sich mehrere funktionale Anforderunge
-n die an die Klassifikatoren und an das System gestellt werden.
+
 \end_layout
 
-\begin_layout Section
-Funktionale Anforderungen
+\begin_layout Subsection
+Tesseract
 \end_layout
 
 \begin_layout Standard
-Das Anwendungsszenario leitet funktionelle Anforderungen, die in der Tabelle
+Tesseract ist eine Texterkennungssoftware und wurde im Jahre 2007 in der
  
+\emph on
+Ninth International Conference on Document Analysis and Recognition (ICDAR
+ 2007)
+\emph default
+ von Ray Smith veröffentlicht
+\begin_inset CommandInset citation
+LatexCommand cite
+key "IEEE97"
+literal "false"
+
+\end_inset
+
+.
+ Sie ist zwischen 1984 und 1994 von dem Unternehmen 
+\emph on
+Hewlett-Packard
+\emph default
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://www8.hp.com
+\end_layout
+
+\end_inset
+
+ entwickelt wurden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+HP hatte den Fokus auf OCR und erzielten mit Tesseract sehr gute Zielgenauigkeit
+en bezüglich von textbasierten Erkennungsmustern, obwohl sie Tesseract nicht
+ als Produkt vermarktet haben.
+ 1995 erzielte Tesseract mit seinem Ergebnissen den dritten Platz auf der
+ UNLV - Einem jährlichen Test zur Messung von Genauigkeiten im Bereich von
+ OCR und seitdem nicht mehr weiterentwickelt wurden.
+ Ray Smith, der bei HP an Tesseract mitentwickelte, arbeitete mittlerweile
+ bei Google und brachte 2005 Tesseract, wessen Quelltext im selbigen Jahr
+ öffentlich gemacht wurden ist, auf den neusten Stand der Technik
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RJN95"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Tesseract wird im Rahmen dieser Arbeit als Texterkennungssoftware benutzt,
+ um Texte zu erkennen.
+ Die neuste Version von Tesseract
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://github.com/tesseract-ocr/tesseract/wiki/4.0-with-LSTM
+\end_layout
+
+\end_inset
+
+ arbeitet mit einem rekurrenten Neuronalen Netz zur Klassifizierung von
+ Charakteren.
+\end_layout
+
+\begin_layout Subsection
+Rekurrente Neuronale Netze
+\end_layout
+
+\begin_layout Standard
+Rekurrente Neuronale Netze eignen sich besonders gut als Lösung für Probleme
+ in der Sequenzerkennung.
+ Anders wie bei normalen neuronalen Netzen, die nützlich bei der Erkennung
+ von einzelnen Objekten, die sich nicht korrelativ zueinander verhalten,
+ sind rekurrente neuronale Netze auf das Erkennen von sequenzähnlichen Objekten
+ ausgelegt.
+ Das rekurrente neuronale Netzwerk ist ein weiterer wichtiger Zweig der
+ Familie von tiefen neuronalen Netzwerken und sind hauptsächlich für die
+ Klassifizierung von Sequenzen konzipiert 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "SSB14"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Das Klassifizieren von einer Reihe aus Objekten ist ein Problem, welches
+ darauf basiert Bildsequenzen zu erkennen.
+ Bei dem Erkennungsprozess können die Objekte von der Länge stark variieren.
+ Im Bereich von Texterkennung gibt es Wörter die wie 
+\begin_inset Quotes eld
+\end_inset
+
+Ja
+\begin_inset Quotes erd
+\end_inset
+
+, die lediglich 2 Zeichen aufweisen, während 
+\begin_inset Quotes eld
+\end_inset
+
+Allgemeinmedizin
+\begin_inset Quotes erd
+\end_inset
+
+ 16 Zeichen aufweist.
+\begin_inset VSpace bigskip
+\end_inset
+
+Die Anzahl der Kombinationen aus Zeichen zu Sequenzen von beispielsweise
+ chinesischen Zeichen, Musiknoten und Wörter kann größer als 1 Million sein,
+ weshalb ein normales neuronales Netz durch die hohe Anzahl der Klassen
+ unbrauchbar wäre.
+\end_layout
+
+\begin_layout Section
+Serviceorientierte Architekturen
+\end_layout
+
+\begin_layout Standard
+Serviceorientierte Architekturen oder abgekürzt 
+\emph on
+SOA
+\emph default
+ bezeichnet eine moderne Architektur, dessen Kerngedanke darin besteht komplexe
+ Strukturen aufzulösen.
+ 
+\emph on
+SOA
+\emph default
+ ermöglichen eine Modernisierung der IT-Struktur des Unternehmens, da Funktional
+itäten in Serviceblöcke gekapselt werden
+\begin_inset CommandInset citation
+LatexCommand cite
+key "FZ09"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Das Kernkonzept besteht aus dem Anbieten, Suchen und Nutzen von Diensten
+ über ein Netzwerk.
+ Diese Dienste werden plattformübergreifend von Applikationen genutzt und
+ sind unabhängig von der jeweiligen Software
+\begin_inset CommandInset citation
+LatexCommand cite
+key "M10"
+literal "false"
+
+\end_inset
+
+.
+ Die Serviceorientierte Architektur bietet daher universell anwendbare Dienste,
+ die bei Bedarf von jeder Applikation angesprochen werden kann.
+ Die Geschäftslogik der Dienste können zweckbedingt mit der Programmiersprache
+ geschrieben werden, die eine optimale Lösung bietet.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Eine Anfrage auf die Kommunikationsschnittstelle des Dienstes wird von der
+ Geschäftslogik verarbeitet und wieder als Antwort über die Schnittstelle
+ zurückgegeben.
+ Der Vorteil gegenüber dem Konzept ist eine Betrachtungsweise auf den Dienst,
+ der nicht nur auf Entwickler begrenzt ist.
+ Die Simplizität die durch das Konzept der serviceorientierten Architektur
+ ermöglicht wird erbringt eine Zusammenarbeit von Entwickeln und dem Management
+ des Unternehmens hinsichtlich der Organisation von Diensten.
+\end_layout
+
+\begin_layout Subsection
+Webservices
+\end_layout
+
+\begin_layout Standard
+Werbservices stellen die modularen, gekapselten Komponenten von 
+\emph on
+SOA
+\emph default
+ dar.
+ Jede Webservice-Komponente beinhaltet nur die für ihren Zweck bestimmte
+ Geschäftslogik und eine kontextorientierte Schnittstelle, die es bei Bedarf
+ anzusprechen gilt.
+ Im Verbund mit anderen Webservice-Komponenten werden im Kontext einer Applikati
+on Funktionalitäten bereit gestellt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Das Abstrahierungskonzept von SOA sieht vor, dass Die Schnittstelle der
+ Webdienste wird von außen hin betrachtet wird.
+ Es sind daher nur spezifizierte Dienstanbieter für Wartung, Betrieb und
+ Infrastruktur des jeweiligen Dienst verantwortlich, weswegen eine Kapselung
+ der Gesamtkomplexität unter den einzelnen Dienstanbietern möglich ist.
+ Des Weiteren sind Dienstanbieter für die Authentisierung und Authentifizierung
+ und der Aufrechterhaltung zuständig.
+ Dienstnutzende müssen sich als solche identifizieren bevor sie aus den
+ Webservice zugreifen können.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+In einer Schnittstellenbeschreibung werden Servicebeschreibungen veröffentlicht,
+ die im des Servicekontext die Kommunikationsmöglichkeit der Schnittstelle
+ beschreibt.
+ Konkret müssen dem Service nötige Informationen geliefert werden um die
+ Anfrage in der Geschäftslogik zu bearbeiten.
+ Die Schnittstellenbeschreibung listet die möglichen Antwortmöglichkeiten
+ für eine an die Service gerichtete Anfrage auf.
+ Der Dienstnutzende hat somit den Vorteil zu wissen wie der Webservice sich
+ verhält.
+\end_layout
+
+\begin_layout Subsection
+REST
+\end_layout
+
+\begin_layout Standard
+Der Begriff REST steht für 
+\emph on
+Representional State Transfer 
+\emph default
+und ist von Roy Fielding in seiner Dissertation 
+\emph on
+Architectural Styles and the Design of Network-based Software Architectures
+ 
+\emph default
+geprägt wurden
+\begin_inset CommandInset citation
+LatexCommand cite
+key "F00"
+literal "false"
+
+\end_inset
+
+.
+ Die REST-Schnittstelle ist ein weitverbreiteter Architekturansatz, der
+ dazu verwendet wird um eine Infrastruktur zwischen Client und Server zu
+ etablieren.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Die REST-Architektur ermöglicht, dass Ressourcen jeweils über 
+\emph on
+Webservices
+\emph default
+ mit 
+\emph on
+Anfragen
+\emph default
+ (requests) gefordert werden können.
+ Jeder Webservice verfügt über eine
+\emph on
+ Uniform Ressourcer Locator 
+\emph default
+(URL) und lässt sich damit eindeutig identifizieren.
+ Der Server schickt daraufhin eine 
+\emph on
+Antwort
+\emph default
+ (response), die die geforderten Ressourcen enthält.
+ Da eine REST-Schnittstelle zustandslos ist und der Server keine gespeicherten
+ Daten zurückgreifen kann, müssen bei einer Anfrage alle nötigen Informationen
+ vom Client geliefert werden.
+ Die Clientseitige Anfragen basieren auf dem 
+\emph on
+HTTP/s-Protokoll 
+\emph default
+und verwenden die damit zusammenhängenden 
+\emph on
+Anfragemethoden 
+\emph default
+(request methods), die in der Tabelle 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:teq_req_sys"
+reference "tab:HTTP/s-Anfragemethoden"
 plural "false"
 caps "false"
 noprefix "false"
 
 \end_inset
 
- aufgelistet sind, für eine Softwarelösung ab, um eine Prozessautomatisierung
- zu realisieren.
- Im Automatiserungskontext werden sowohl Anforderungen an das System als
- auch an die Klassifikatoren gestellt um die Problemstellung zu lösen.
-\end_layout
-
-\begin_layout Standard
+ aufgeführt sind.
 \begin_inset Float table
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
 \begin_inset Tabular
-<lyxtabular version="3" rows="13" columns="2">
+<lyxtabular version="3" rows="5" columns="2">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -257,7 +971,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-ID
+Methode
 \end_layout
 
 \end_inset
@@ -266,7 +980,7 @@ ID
 \begin_inset Text
 
 \begin_layout Plain Layout
-Beschreibung
+Grundsatz
 \end_layout
 
 \end_inset
@@ -277,7 +991,7 @@ Beschreibung
 \begin_inset Text
 
 \begin_layout Plain Layout
-TR010
+GET
 \end_layout
 
 \end_inset
@@ -286,7 +1000,7 @@ TR010
 \begin_inset Text
 
 \begin_layout Plain Layout
-Weitergabe der hochgeladenen Nachweisen an Belegerkennung
+Beschaffung von Informationen über eine Ressource
 \end_layout
 
 \end_inset
@@ -297,7 +1011,7 @@ Weitergabe der hochgeladenen Nachweisen an Belegerkennung
 \begin_inset Text
 
 \begin_layout Plain Layout
-TR020
+POST
 \end_layout
 
 \end_inset
@@ -306,7 +1020,7 @@ TR020
 \begin_inset Text
 
 \begin_layout Plain Layout
-Entgegennahme der übermittelten Nachweise
+Erstellen einer Resource
 \end_layout
 
 \end_inset
@@ -317,7 +1031,7 @@ Entgegennahme der übermittelten Nachweise
 \begin_inset Text
 
 \begin_layout Plain Layout
-TR030
+PUT
 \end_layout
 
 \end_inset
@@ -326,167 +1040,7 @@ TR030
 \begin_inset Text
 
 \begin_layout Plain Layout
-Erkennung der Belege ( Wahrscheinlichkeit Prognose > 90% ) 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-TR040
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Interpretation des prognostizierten Merkmals
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-TR050
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Erfassen der extrahierten Informationen
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-TR060
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Gliedern der Informationen in Sinnabschnitte
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-TR070
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Validation der erfassten Daten
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-TR080
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Entgegennahme der übermittelten Belege
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-TR090
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Extrahieren der auf Beleg abgebildeten Informationen
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-TR100
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Sinnvolles Ausfüllen der Formularfelder
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-TR110
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Messung der für die Schadensabwicklung aufgewendete Zeit 
+Aktualisieren einer Resource
 \end_layout
 
 \end_inset
@@ -497,7 +1051,7 @@ Messung der für die Schadensabwicklung aufgewendete Zeit
 \begin_inset Text
 
 \begin_layout Plain Layout
-TR120
+DELETE
 \end_layout
 
 \end_inset
@@ -506,7 +1060,7 @@ TR120
 \begin_inset Text
 
 \begin_layout Plain Layout
-Bewertung des Korrekturverhalten des Nutzers 
+Löschen einer Resource
 \end_layout
 
 \end_inset
@@ -517,33 +1071,98 @@ Bewertung des Korrekturverhalten des Nutzers
 \end_inset
 
 
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:HTTP/s-Anfragemethoden"
 
-\begin_layout Plain Layout
+\end_inset
+
+
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Funktionale Anforderungen
+HTTP/s-Anfragemethoden
 \end_layout
 
 \end_inset
 
 
 \end_layout
+
+\end_inset
+
+Um beispielsweise eine 
+\emph on
+Ressource User
+\emph default
+ zu erstellen muss eine Anfrage an einen Endpunkt gerichtet werden, der
+ die Funktionalität für die 
+\emph on
+POST-Anfrage 
+\emph default
+zur Verfügung stellt.
+ Der Endpunkt würde über die URL 
+\emph on
+.../users
+\emph default
+ erreichbar sein.
+ Die REST-Schnittstelle würde die Anfrage entgegennehmen und an die zuständige
+ Geschäftslogik weiterreichen.
+ Die entsprechende Schnittstellenarchitektur wird im REST-Schnittstelle
+ im Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap_development_server"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ erläutert.
+\end_layout
+
+\begin_layout Section
+Entwicklungsumgebung
+\end_layout
+
+\begin_layout Subsection
+Jupyter Notebook
+\end_layout
+
+\begin_layout Standard
+Jupyter
+\begin_inset Foot
+status open
 
 \begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:teq_req_sys"
-
-\end_inset
-
-
+https://jupyter.org/
 \end_layout
 
 \end_inset
 
+ Notebook bietet die Möglichkeit in einer interaktiven Umgebung Programmcode
+ parallel durchlaufen zu können.
+ Es können Ergebnisse als Live-Berechnung oder im festen Format an die Zellen
+ gespeichert und weitergereicht werden.
+ Dieser Vorteil bietet eine gekapselte Ausführung von Code in den jeweiligen
+ Zellen.
+ Jupyter eignet sich gut Für Projekte in den Bereichen 
+\emph on
+Data Science
+\begin_inset Foot
+status open
 
+\begin_layout Plain Layout
+Bereich der Datenwissenschaft
+\end_layout
+
+\end_inset
+
+ 
+\emph default
+und Maschinellem Lernen, da Ergebnisse durch die Zellenweise Ausführung
+ gut nachverfolgen und visualisieren lassen.
 \end_layout
 
 \begin_layout Standard
@@ -566,7 +1185,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "./bib/thesis"
+bibfiles "bib/thesis"
 
 \end_inset
 

@@ -16,15 +16,6 @@ const navigation = {
         },
         ]
     },
-    {
-      name: 'Documentation',
-      title: true,
-    },
-    {
-      name: 'Services',
-      url: '/docs/rest-api',
-      icon: 'icon-layers',
-    },
   ],
 };
 

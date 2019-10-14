@@ -34,6 +34,32 @@
   textheight=225mm,
   heightrounded,
 ]{geometry}
+
+%Farben fuer Programmlisting
+\usepackage{listings,xcolor}
+\definecolor{pl_background}{rgb}{0.95,0.95,0.95}
+\definecolor{pl_comment}{rgb}{0.12, 0.38, 0.18 }
+\definecolor{pl_ifelse}{rgb}{0.74,0.74,.29}
+\definecolor{pl_keyword}{rgb}{0.37, 0.08, 0.25}
+\definecolor{pl_string}{rgb}{0.06, 0.10, 0.98}
+% Vordefiniertes Programmlisting
+\lstset{
+language = python,
+basicstyle = \small\sffamily,
+backgroundcolor = \color{pl_background},
+stringstyle = \color{pl_string},
+keywordstyle = \color{pl_keyword}\bfseries,
+commentstyle = \color{pl_comment}\itshape,
+frame = lrbt,
+numbers = left,
+showstringspaces = false,
+breaklines = true,
+xleftmargin = 15pt,
+emph = [1]{php},
+emphstyle = [1]\color{black},
+emph = [2]{if,and,or,else},
+emphstyle = [2]\color{pl_ifelse}}
+
 \definecolor{lightestyellow}{rgb}{1,1,0.9}
 % takes care of links in pdf documents
 % \usepackage{glossaries} glossary can be generated this way, not recommended for bachelor or master theses
@@ -91,7 +117,8 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
-\paperfontsize default
+\float_placement h
+\paperfontsize 12
 \spacing single
 \use_hyperref true
 \pdf_bookmarks false
@@ -611,6 +638,19 @@ status collapsed
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset CommandInset toc
+LatexCommand lstlistoflistings
+
+\end_inset
+
+
+\lang ngerman
 
 \begin_inset FloatList table
 

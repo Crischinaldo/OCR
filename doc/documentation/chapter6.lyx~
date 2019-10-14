@@ -8,7 +8,7 @@
 \options bibliography=totoc,listof=totoc,BCOR=5mm,DIV=12
 \use_default_options false
 \maintain_unincluded_children false
-\language english
+\language ngerman
 \language_package default
 \inputencoding iso8859-1
 \fontencoding default
@@ -29,7 +29,7 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
-\paperfontsize default
+\paperfontsize 11
 \spacing single
 \use_hyperref true
 \pdf_bookmarks false
@@ -76,7 +76,7 @@
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style english
+\quotes_style german
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -98,7 +98,7 @@ status open
 
 
 \backslash
-chapter{Entwicklung des Textklassifikators}
+chapter{Entwicklung des Clients}
 \end_layout
 
 \end_inset
@@ -109,7 +109,7 @@ chapter{Entwicklung des Textklassifikators}
 \begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "chap_architecture_classificator"
+name "chap_development_client"
 
 \end_inset
 
@@ -117,330 +117,270 @@ name "chap_architecture_classificator"
 \end_layout
 
 \begin_layout Standard
-Dieses Kapitel befasst sich mit der Entwicklung des Klassifikators und ist
- in den zwei Kapiteln Architektur und Implementierung gegliedert.
+Dieses Kapitel befasst sich mit der Entwicklung des Clients und ist in den
+ zwei Kapiteln Architektur und Implementierung gegliedert.
 \end_layout
 
 \begin_layout Section
-Technologien und Frameworks
+Architekturentwurf
 \end_layout
 
 \begin_layout Standard
-Jupyter Notebook, Pandas, Keras, Tensorflow...
+In Diesen Unterkapitel wird die Architektur des Clients beschrieben und
+ visualisiert.
+ Das Dashboard wird als Webapplikation auf Basis von HTML5, CSS und JavaScript
+ entwickelt.
+ Das Dashboard präsentiert Daten die vom Server über HTTP-Requests geholt
+ werden.
 \end_layout
 
 \begin_layout Subsection
-Jupyter Notebook
+Komponentenorientierte Programmierung
 \end_layout
 
 \begin_layout Standard
-Jupyter Notebook bietet die Möglichkeit in einer interaktiven Umgebung Programmc
-ode parallel durchlaufen zu können.
- Es können Ergebisse als Live-Berechnung oder im festen Format an die Zellen
- weitergereicht werden.
- Dieser Vorteil bietet eine Abschnittsähnliche Ausführung von Code in den
- jeweiligen Zellen.
- Notebooks-Dateien enthalten komplette Aufzeichnungen aller Berechnungen
- und können anderen Jupiter-Nutzern zur Verfügung gestellt werden.
- Jupiter eignet sich sehr gut für das Visualisieren von Berechnungen im
- Data Science Bereich.
-\end_layout
+Komponentenorientierte Programmierung, welche der objektorientierten Programmier
+ung ähnelt, zeichnet sich dadurch aus, dass die Architektur sich aus vielen
+ miteinander agierenden Komponenten zusammensetzt.
+ Komponenten kapseln bestimmte Funktionen und werden durch eine Schnittstelle
+ angesprochen.
+ Komponenten können wiederverwendet werden und können unabhängig funktionieren.
+ Die Motivation hinter dieser Architektur ist eine Ansammlung generativer
+ Komponenten, die zur Steigerung der Produktivität und Qualität führen 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "P"
+literal "false"
 
-\begin_layout Subsection
-Pandas
-\end_layout
-
-\begin_layout Standard
-Das Dataframe von Pandas ist eine Datenstruktur welche auf dem Schlüssel-Wert-Mu
-ster aufgebaut ist.
- Sie tabellarisiert Schlüssel und die jeweiligen Werte in einem Dataframe,
- welches sich gut zum präsentierten von den beinhalteten Daten eignet.
-\end_layout
-
-\begin_layout Subsection
-nltk
-\end_layout
-
-\begin_layout Section
-Organisation der Daten
-\end_layout
-
-\begin_layout Standard
-Unter der Organisation der Daten ist sowohl die Formatierung als auch die
- Strukturierung von den zur Verfügung stehenden Datensätzen gemeint.
- Um das Model mit Überwachtem Lernen zu trainieren müssen die Daten so strukturi
-ert sein, dass das 
-\emph on
-Labels
-\emph default
- (Ergebnisse) von jeden Datenpunkt bekannt ist.
- Ursprünglich sind die Bilder im PDF-Format in einer Ordnerstruktur gegliedert
- gewesen, die abhängig vom Hochladedatum nach Jahr, Monat und Tag sortiert
- wurden sind.
- Die Zeitangabe für die Textextraktion ist als unrelevant zu werten, da
- hier nur auf der inhaltliche Aspekt eine Rolle spielt.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Subsubsection
-Kollektion
+React
 \end_layout
 
 \begin_layout Standard
-Mit dem Programmcode 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "alg:collect"
-plural "false"
-caps "false"
-noprefix "false"
+Es wird die auf Babel basierende Bibliothek 
+\emph on
+React
+\emph default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+https://reactjs.org/
+\end_layout
 
 \end_inset
 
-sind alle Dateien kollektiert, indem rekursiv über jeden Ordner in einem
- bestimmten Ordner
+ genutzt.
+ Durch 
 \emph on
- input_dir 
+React
 \emph default
-alle PDF-Dateien erfasst wurden und in den Ordner 
+ lässt sich das UI (
 \emph on
-output_dir 
+User Interface
 \emph default
-verlagert wurden sind.
- Die Merkmalsgenerierung verläuft über das Extrahieren der Texte aus Bilddateien
-, weswegen jedes Bild mit der Funktion 
-\emph on
-convert_from_path()
-\emph default
- der externen Bibliothek 
-\emph on
-pdf2image
-\emph default
- zum JPG-Format konvertiert wurden ist.
+) in wiederverwendbare und unabhängige Komponenten isolieren.
+ Komponenten stellen mit ihren Funktionen und Attributen eine Abstraktion
+ von JavaScript-Objekten dar.
+ Jede Komponenteninstanz hat ihren Einfluss auf sowohl ihren DOM-Knoten
+ als auch auf die Instanzen der Kindeskomponenten.
+\end_layout
+
+\begin_layout Section
+Implementierung
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float algorithm
-wide false
-sideways false
+Dieser Abschnitt erläutert die Implementierung des Dashboards.
+\end_layout
+
+\begin_layout Subsection
+Dashboard
+\end_layout
+
+\begin_layout Standard
+In diesem Programmcode wird das Dashboard-Komponente erstellt.
+ Sie bindet eine Methode 
+\emph on
+getResult(), 
+\emph default
+die eine GET-Anfrage an den URL 
+\emph on
+/classification 
+\emph default
+senden soll.
+ Anhand dieser Anfrage sollen die Resultate der Klassifikationen vom Server
+ geholt werden, um die zu präsentieren.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "caption={Erstellung der Dashboard-Komponente},captionpos=b"
+inline false
 status open
 
 \begin_layout Plain Layout
+
+class Dashboard extends Component {   
+\end_layout
+
+\begin_layout Plain Layout
+
+	constructor(props) {     
+\end_layout
+
+\begin_layout Plain Layout
+
+		super(props);     
+\end_layout
+
+\begin_layout Plain Layout
+
+		this.getResult = this.getResult.bind(this);     
+\end_layout
+
+\begin_layout Plain Layout
+
+		this.state = {       
+\end_layout
+
+\begin_layout Plain Layout
+
+			loading: false,     
+\end_layout
+
+\begin_layout Plain Layout
+
+		};   
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Anfragen
+\end_layout
+
+\begin_layout Standard
+Der Zeitpunkt der Inanspruchnahme des Dienstes soll in der Regel dem Benutzer
+ gegenüber kontrolliert sein.
+ Bei einigen Situationen, wie beispielsweise der Aufruf des Dashboards,
+ kann die Anfrage direkt beim Aufruf erfolgen.
+
+\emph on
+ React
+\emph default
+ bietet eine Funktion die es einer Komponente erlaubt Funktionalitäten beim
+ Eintritt in den DOM auszuführen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "caption={Aufruf beim DOM-Eintritt},captionpos=b"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+componentDidMount() {
+\end_layout
+
+\begin_layout Plain Layout
+
+    const API = 'http://localhost:8090/classification';     
+\end_layout
+
+\begin_layout Plain Layout
+
+    this.getResult(API)   
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Im Programmcode wird eine Methode aufgerufen, die eine Anfrage mit der Anfrageme
+thode 
+\emph on
+GET 
+\emph default
+an den Endpunkt 
+\emph on
+/classification 
+\emph default
+sendet.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Methode
+\emph on
+ getResult(), 
+\emph default
+die im Programmcode aufgezeigt wird, fragt über den Webservice 
+\emph on
+/classification 
+\emph default
+nach Daten.
+ Im sonst asynchronen Programmablauf sind promises die einzige Möglichkeit
+ einen synchronen Ablauf von Code durchzuführen.
+ Während der Anfrage werden Zustandsattribute der Komponente mit der Methode
+ 
+\emph on
+setState()
+\emph default
+ gesetzt.
+\end_layout
+
+\begin_layout Standard
 \begin_inset listings
 inline false
 status open
 
 \begin_layout Plain Layout
 
-def collect_data(input_dir, output_dir):
+getResult = (API) => {
 \end_layout
 
 \begin_layout Plain Layout
 
-    ext = 'jpg'
+    this.setState({
 \end_layout
 
 \begin_layout Plain Layout
 
-    for pdf in glob.glob('{inp}/*/**/*.pdf'.format(inp=input_dir), recursive=True):
-       
+    	loading: true,
 \end_layout
 
 \begin_layout Plain Layout
 
-        try:             
-\end_layout
-
-\begin_layout Plain Layout
-
-        	pages = convert_from_path(pdf)         
-\end_layout
-
-\begin_layout Plain Layout
-
-		except (ValueError, Exception):             
-\end_layout
-
-\begin_layout Plain Layout
-
-    		pass      
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\end_layout
-
-\begin_layout Plain Layout
-
-    for page in pages:             
-\end_layout
-
-\begin_layout Plain Layout
-
-   	 page.save('./{output}/{name}.{ext}'.format(
-\end_layout
-
-\begin_layout Plain Layout
-
-             output=output_dir, name=str(uuid.uuid4())),  ext=ext)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Kollektieren der Daten
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "alg:collect"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Die rekursive Suche verlief über glob (
-\emph on
-Unix style pathname pattern expansion
-\emph default
-), einer Bibliothek die alle Pfadnamen nach einem spezifischen Muster nach
- Unix-Regeln durchsucht.
- Die Funktion 
-\emph on
-convert_from_path() 
-\emph default
-gibt eine Liste von Seiten als Bild-Objekte zurück, da PDF-Dokumente logischerwe
-ise eine Mehrzahl an Seiten aufweisen können.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Beim Analysieren der Bilder stellte sich heraus, dass es folgende grundlegende
- Typen gibt:
-\end_layout
-
-\begin_layout Itemize
-Schadenfotos
-\end_layout
-
-\begin_layout Itemize
-Dokumente
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Rechnungsbelege
-\end_layout
-
-\begin_layout Itemize
-Briefe
-\end_layout
-
-\begin_layout Itemize
-Lieferscheine
-\end_layout
-
-\end_deeper
-\begin_layout Subsubsection
-Sortierung
-\end_layout
-
-\begin_layout Standard
-Eine interessante Möglichkeit die Bilder zu Sortieren ist nach Schlüsselwörtern
- in den Texten der Dokumente zu suchen und sie abhängig davon in bestimmte
- Ordner zu sortieren.
- Durch eine Textextrahierung jedes Bildes gelang es die extrahierten Texte
- nach bestimmten Schlüsselwörtern zu durchsuchen und sie dadurch zu sortieren.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Formatierung der Daten
-\end_layout
-
-\begin_layout Standard
-Um Die Daten für die Klassifizierung vorzubereiten mussten die Daten in
- einem bestimmtes Format gebracht werden.
- Im Programmcode 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "alg:formatting"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- wird vom Ordner, der durch den Parameter 
-\emph on
-input_dir 
-\emph default
-projeziert ist, von der Funktion 
-\emph on
-extract_text() 
-\emph default
-der Text extrahiert.
- Vor dem Extrahierungsprozess wird das Bild mit der Funktion 
-\emph on
-preprocess() 
-\emph default
-binarisiert, um die Präzision der Texterkennung zu erhöhen.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float algorithm
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
-def preprocess(im):     
-\end_layout
-
-\begin_layout Plain Layout
-
-	_ ,im = cv2.threshold(np.array(im),127,255,cv2.THRESH_BINARY)     
+    });     
 \end_layout
 
 \begin_layout Plain Layout
@@ -450,129 +390,169 @@ def preprocess(im):
 
 \begin_layout Plain Layout
 
-	return Image.fromarray(im)
+	axios({       
 \end_layout
 
 \begin_layout Plain Layout
 
+		method: 'get',       
 \end_layout
 
 \begin_layout Plain Layout
 
-def extract_text(im):     
+		url: API,       
 \end_layout
 
 \begin_layout Plain Layout
 
-	im = Image.open(im)     
+		config: {         
 \end_layout
 
 \begin_layout Plain Layout
 
-	im = preprocess(im)          
+			headers: {           
 \end_layout
 
 \begin_layout Plain Layout
 
-	extracted = pytesseract.image_to_string(im, output_type=Output.DICT, lang='deu')
+				'Access-Control-Allow-Origin': '*',
+\end_layout
+
+\begin_layout Plain Layout
+
+	            'Content-Type': 'multipart/form-data'
+\end_layout
+
+\begin_layout Plain Layout
+
+	        	}       
+\end_layout
+
+\begin_layout Plain Layout
+
+			}     
+\end_layout
+
+\begin_layout Plain Layout
+
+		})
+\end_layout
+
+\begin_layout Plain Layout
+
+        .then((response) => {
+\end_layout
+
+\begin_layout Plain Layout
+
+			if (response.data.result) {           
+\end_layout
+
+\begin_layout Plain Layout
+
+				this.setState({             
+\end_layout
+
+\begin_layout Plain Layout
+
+					accuracies: response.data.result.accuracies,             
+\end_layout
+
+\begin_layout Plain Layout
+
+					amount: response.data.result.amount,             
+\end_layout
+
+\begin_layout Plain Layout
+
+					predictions: response.data.result.predictions,             
+\end_layout
+
+\begin_layout Plain Layout
+
+					correlation: response.data.result.coefs,             
+\end_layout
+
+\begin_layout Plain Layout
+
+					errorMean: response.data.result.err_mean_amount,             
+\end_layout
+
+\begin_layout Plain Layout
+
+					errorMeanPercentage: response.data.result.err_mean_perc,             
+\end_layout
+
+\begin_layout Plain Layout
+
+					errors: response.data.result.sum_errors,             
+\end_layout
+
+\begin_layout Plain Layout
+
+					errorsPercentage: response.data.result.error_percentages,            
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+					avgSavedTime: response.data.result.saved_time_amount,             
+\end_layout
+
+\begin_layout Plain Layout
+
+					avgSavedTimePercentage: response.data.result.saved_time_perc,        
      
 \end_layout
 
 \begin_layout Plain Layout
 
-		
+					loading: false           
 \end_layout
 
 \begin_layout Plain Layout
 
-	return extracted
+				});      
 \end_layout
 
 \begin_layout Plain Layout
 
+			}         
 \end_layout
 
 \begin_layout Plain Layout
 
-def texts_to_list(input_dir, label):
+			console.log(response);
 \end_layout
 
 \begin_layout Plain Layout
 
-	res = []     
+        })       
 \end_layout
 
 \begin_layout Plain Layout
 
-	ext = "jpg"     
+		.catch(function (response) {
 \end_layout
 
 \begin_layout Plain Layout
 
-	images = len(glob.glob('{dir}/*.{ext}'.format(dir=input_dir, ext=ext))   
+        	console.log(response);
 \end_layout
 
 \begin_layout Plain Layout
 
-	for im, i in zip(images, range(len(images))):
+	        console.log('error');
 \end_layout
 
 \begin_layout Plain Layout
 
-    	extracted_text = extract_text(im)         
+        });   
 \end_layout
 
 \begin_layout Plain Layout
 
-		extracted_text['id'] = i +1         
-\end_layout
-
-\begin_layout Plain Layout
-
-		extracted_text['label'] = label         
-\end_layout
-
-\begin_layout Plain Layout
-
-		res.append(extracted_text)         
-\end_layout
-
-\begin_layout Plain Layout
-
-	
-\end_layout
-
-\begin_layout Plain Layout
-
-	return res
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Formatierung zu JSON
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "alg:formatting"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
+};
 \end_layout
 
 \end_inset
@@ -581,264 +561,117 @@ name "alg:formatting"
 \end_layout
 
 \begin_layout Standard
-Die Methode 
+Im Konstruktor der JavaScript-Objekt 
 \emph on
-texts_to_list
-\series bold
+Axios
 \emph default
- 
-\series default
-fügt dem Dictionary, welches durch 
-\emph on
-image_to_string()
-\emph default
- zurückgegeben wurden ist, eine ID und das übergebene Label hinzu und returned
- eine Liste von Dictionaries.
-\end_layout
 
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Mit dem Aufruf 
-\emph on
-json.dump() 
-\emph default
-wurden die Listen in ein Json-Array überführt und in einer Json-Datei abgelegt
- und auf der Festplatte gespeichert.
- Mit Pandas wurden die Json-Dateien wiederrum in einen Pandas-Dataframe
- überführt.
- Hierzu reichte der Aufruf mit
-\emph on
- pd.read_json().
- 
-\emph default
-Die Dataframes die korrespondieren zu den Labels stehen werden konkateniert,
- was dazu führt, dass sich alle Texte mit dem im Bezug stehenden Label in
- einer Schlüssel-Wert-Struktur in Form eines Dataframes befinden.
- Die Einträge werden zudem randomisiert.
-\end_layout
-
-\begin_layout Section
-Aufbereitung der Daten
-\end_layout
-
-\begin_layout Standard
-stopwords, tokenizing, lower case, stemming
-\end_layout
-
-\begin_layout Subsection
-normalisierung der Daten
-\end_layout
-
-\begin_layout Standard
-Zum Normalisieren wurden einige Verfahren angewandt, um die Genauigkeit
- des Klassifikators zu erhöhen
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float algorithm
-wide false
-sideways false
+\begin_inset Foot
 status open
 
 \begin_layout Plain Layout
+https://github.com/axios/axios
+\end_layout
+
+\end_inset
+
+, wird die Anfragemethode, die anzusprechende URL und der Header über ein
+ JSON definiert.
+ Wenn die Anfrage erfolgt ist und der Status Code im Rahmen von 200-399
+ ist, wird im Versprechen 
+\emph on
+.then()
+\emph default
+ mit der Antwort die Zustandsattribute der Komponente gesetzt.
+ Das 
+\emph on
+.catch()
+\emph default
+ Versprechen fängt einen Fehlerfall, der sich über ein Status Code der höher
+ als 399 ist, definiert und loggt die Antwort in die Browserkonsole, wenn
+ die Anfrage nicht erfolgreich war.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Davon ausgehend, dass die anfrage erfolgreich ist, sind die Daten vom Server,
+ die präsentiert werden sollen, in der Komponente gespeichert.
+ Unter diesen Daten befindet sich unter anderem Auflistungen bezüglich der
+ Fehleranzahl, die durchschnittliche Zeitersparnis, die Anzahl an Klassifikation
+en und die Zielsicherheit für jede Kategorie.
+\end_layout
+
+\begin_layout Subsection
+Rendern
+\end_layout
+
+\begin_layout Standard
+Damit die Daten in eine repräsentativ veranschaulicht im Webbrowser angezeigt
+ werden, müssen die Zustandsattribute an inkludierte Graph-Komponenten übergeben
+ werden.
+ Graphen-Komponenten werden über das Framework 
+\emph on
+react-chartjs-2
+\emph default
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://github.com/jerairrest/react-chartjs-2
+\end_layout
+
+\end_inset
+
+ zur Verfügung gestellt und erwarten eine JSON für die Instanziierung der
+ Komponenten.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Anhand des Programmcodes wird eine 
+\emph on
+Doughnut 
+\emph default
+Komponente anhand von zwei Listen, die zuvor durch die Anfrage als Zustandsattri
+bute gesetzt wurden, instanziiert.
+\end_layout
+
+\begin_layout Standard
 \begin_inset listings
 inline false
 status open
 
 \begin_layout Plain Layout
 
-stemmer = LancasterStemmer() 
+<Doughnut                 
 \end_layout
 
 \begin_layout Plain Layout
 
-lemmatizer = WordNetLemmatizer() 
+data={DoughnutData(Object.keys(this.state.predictions),
 \end_layout
 
 \begin_layout Plain Layout
 
-p = inflect.engine()
+                   Object.values(this.state.predictions))}               
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-# remove special characters 
-\end_layout
-
-\begin_layout Plain Layout
-
-df['text'] = df['text'].apply(lambda x: re.sub("(
-\backslash
-
-\backslash
-W)+"," ",x))
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-# remove punctuation 
-\end_layout
-
-\begin_layout Plain Layout
-
-df['text'].apply(lambda x: re.sub(r'[^
-\backslash
-w
-\backslash
-s]', '', x))   
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\end_layout
-
-\begin_layout Plain Layout
-
-# tokenize  
-\end_layout
-
-\begin_layout Plain Layout
-
-df['text'] = df['text'].apply(lambda x:nltk.word_tokenize(x))
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-# to lower case 
-\end_layout
-
-\begin_layout Plain Layout
-
-df['text'].apply(lambda x: [word.lower() for word in x])   
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-# filter special characters 
-\end_layout
-
-\begin_layout Plain Layout
-
-df['text'].apply(lambda x: [word.lower() for word in x])    
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-# filter stopwords 
-\end_layout
-
-\begin_layout Plain Layout
-
-df['text'].apply(lambda x: [item for item in x if item not in stopwords.words('ger
-man')])
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-# remove punctuation 
-\end_layout
-
-\begin_layout Plain Layout
-
-df['text'].apply(lambda x: [re.sub(r'[^
-\backslash
-w
-\backslash
-s]', '', word) for word in x if word != '']) 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-# Remove non-ASCII characters from list of tokenized words 
-\end_layout
-
-\begin_layout Plain Layout
-
-df['text'].apply(lambda x: [unicodedata.normalize('NFKD', word).encode('ascii',
-    
-\end_layout
-
-\begin_layout Plain Layout
-
-                            'ignore').decode('utf-8', 'ignore') for word
- in x]) 
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\end_layout
-
-\begin_layout Plain Layout
-
-# Replace all interger occurrences in list of tokenized words with textual
- representation df['text'].apply(lambda x: [p.number_to_words(word) for word
- in x if word.isdigit()]) 
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\end_layout
-
-\begin_layout Plain Layout
-
-# stemming 
-\end_layout
-
-\begin_layout Plain Layout
-
-df['text'].apply(lambda x: [stemmer.stem(word) for word in x])  
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-# lemmatizing 
-\end_layout
-
-\begin_layout Plain Layout
-
-df['text'].apply(lambda x: [lemmatizer.lemmatize(word, pos='v') for word in
- x])    
+/>
 \end_layout
 
 \end_inset
@@ -846,82 +679,8 @@ df['text'].apply(lambda x: [lemmatizer.lemmatize(word, pos='v') for word in
 
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Normalisierung
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Trainings- und Testdaten
-\end_layout
-
 \begin_layout Standard
-Die Gesamten Daten müssen unter Trainings- und Testdaten unterteilt werden.
- Die Daten werden mit den Mengenverhältnis 80:20 aufgeteilt, da es sich
- im Bereich des Machine Learning als am effektivsten erwiesen hat.
-\end_layout
 
-\begin_layout Section
-Wahl des Models
-\end_layout
-
-\begin_layout Subsection
-countvektorizer
-\end_layout
-
-\begin_layout Subsection
-frequency times inverse document-frequency
-\end_layout
-
-\begin_layout Standard
-TF: Term Frequency, which measures how frequently a term occurs in a document.
- Since every document is different in length, it is possible that a term
- would appear much more times in long documents than shorter ones.
- Thus, the term frequency is often divided by the document length (aka.
- the total number of terms in the document) as a way of normalization:
-\end_layout
-
-\begin_layout Standard
-TF(t) = (Number of times term t appears in a document) / (Total number of
- terms in the document).
-\end_layout
-
-\begin_layout Standard
-IDF: Inverse Document Frequency, which measures how important a term is.
- While computing TF, all terms are considered equally important.
- However it is known that certain terms, such as "is", "of", and "that",
- may appear a lot of times but have little importance.
- Thus we need to weigh down the frequent terms while scale up the rare ones,
- by computing the following:
-\end_layout
-
-\begin_layout Standard
-IDF(t) = log_e(Total number of documents / Number of documents with term
- t in it).
-\end_layout
-
-\begin_layout Standard
-bayes
-\end_layout
-
-\begin_layout Standard
-term-frequency times inverse document-frequency
 \end_layout
 
 \begin_layout Standard

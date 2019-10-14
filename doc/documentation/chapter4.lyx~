@@ -8,7 +8,7 @@
 \options bibliography=totoc,listof=totoc,BCOR=5mm,DIV=12
 \use_default_options false
 \maintain_unincluded_children false
-\language english
+\language ngerman
 \language_package default
 \inputencoding iso8859-1
 \fontencoding default
@@ -76,7 +76,7 @@
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style english
+\quotes_style german
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -98,701 +98,551 @@ status open
 
 
 \backslash
-chapter{Prinzip eines Neuronalen Netzwerkes}
+chapter{Entwicklung der Textextraktion}
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Dieser Abschnitt erläutert die Entwicklung der Komponente für die Textextraktion
+ sowie die Zwischenschritte.
+ Durch eine Analyse des Layout eines Beleges werden die Blockkoordinaten
+ ermittelt, markiert und anschließend ausgeschnitten.
+ Aus den ausgeschnittenen Regionen wird der Text extrahiert.
 \end_layout
 
 \begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "chap_principle"
+name "chap_text_extraction"
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Subsection
-Mehrschichtige Netzwerke
+\begin_layout Section
+Analyse des Dokumentenlayouts
 \end_layout
 
 \begin_layout Standard
-Mehrschichtige Netzwerke kennzeichnet sich durch zusätzliche eingebettete
- verborgenen Schichten, wobei die Anzahl sehr variiert.
+Die Texterkennungssoftware Tesseract wird dafür eingesetzt werden die Koordinate
+n von verschiedenen Bereichstypen durch eine Übergabe des Bildes zu lesen.
+ Python-tesseract
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://pypi.org/project/pytesseract/
+\end_layout
+
+\end_inset
+
+ stellt einen Adapter für Tesseract zu Verfügung, der Funktionalitäten rund
+ um die Texterkennungssoftware bereitstellt.
+ Um bestimmte Bereiche zu Extrahieren wurde ein Dokument erstellt mit einem
+ Format welches für einen Rechnungsbeleg typisch ist.
+ Im Programmcode wird der Rechnungsbeleg der Texterkennungssoftware übergeben.
 \end_layout
 
 \begin_layout Standard
-Das Erlernen von Charakteristiken tiefer neuronaler Netze arbeiten ähnlich
- wie das visuelle System von Primaten.
- Die Wahrnehmung von Objekten verläuft anhand einer Abfolge von Verarbeitungsstu
-fen: Das Erkennen von einzelnen Kanten bis hin zu komplexeren Polygonen
+\begin_inset listings
+lstparams "caption={Extraktion der Regionen},captionpos=b"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+# create dataframe from extracted data
+\end_layout
+
+\begin_layout Plain Layout
+
+extracted_data = pytesseract.image_to_data(im, output_type=Output.DICT, lang='deu'
+) 
+\end_layout
+
+\begin_layout Plain Layout
+
+df = pd.DataFrame.from_dict(extracted_data)
+\end_layout
+
+\begin_layout Plain Layout
+
+amount_boxes = len(df['level'])
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# draw bounding boxes around all boxes 
+\end_layout
+
+\begin_layout Plain Layout
+
+for i in range(n_boxes):
+\end_layout
+
+\begin_layout Plain Layout
+
+    if df['level'][i] == Level.BLOCK:       
+\end_layout
+
+\begin_layout Plain Layout
+
+		(x, y, w, h) = (df['left'][i], df['top'][i], df['width'][i], df['height'][i])
  
-\begin_inset CommandInset citation
-LatexCommand cite
-key "GBB11"
-literal "false"
+\end_layout
+
+\begin_layout Plain Layout
+
+         cv2.rectangle(cv_img, (x, y), (x + w, y + h), (0, 255, 0), 2)
+\end_layout
 
 \end_inset
 
-.
- Diese Eigenschaft werden durch verborgene Schichten realisiert.
+Die Rückgabe erzeugt eine Datenstruktur welche die Koordinaten von Regionen
+ enthält, wobei die Regionen modular unterteilt sind.
+ Die Stufen sind so angeordnet, dass die Stufenzahl repräsentativ für die
+ Regionsgrenzen sind, wobei Stufe 1 das gesamte Dokument als Region ansieht
+ und Stufe 5 einzelne Wörter als Region definiert.
+ Innerhalb einer Schleife wird der Schlüssel Level iteriert und mit dem
+ Wert 
+\emph on
+BLOCK
+\emph default
+ (2) verglichen.
+ Sollte die Bedingung eintreffen so wird der Block-Bereich anhand der Koordinate
+n markiert.
+ Der Rechnungsbeleg, auf welchem die Blöcke gekennzeichnet sind, wird in
+ der Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:rol"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ gezeigt, wobei die grün umrandeten Regionen die Blöcke hervorheben.
 \end_layout
 
 \begin_layout Standard
-<bild gemäß https://www.youtube.com/watch?v=aircAruvnKk>
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
 \end_layout
 
-\begin_layout Standard
-In höheren Schichten werden zunehmend faktorenunabhängig gegenüber Variation
- wie Kamerabewegungen und sind dadurch flexibler.
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/boxes.jpg
+	scale 15
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:rol"
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Markierte Regionen
 \end_layout
 
-\begin_layout Standard
-Sobald einem Neuronalen Netz mindestens eine Verborgene Schicht hinzugeügt
- wurden ist, werden sie als Mehrschichtige Netzwerke bezeichnet.
- Sie kategorisieren sich inherhalb von Deep learning.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace smallskip
 \end_inset
 
 
 \end_layout
 
-\begin_layout Subsubsection
-Aktivierungsfunktion
+\end_inset
+
+Die gekennzeichneten blockartigen Regionen enthalten zum größten Teil Informatio
+nen, die in einem Kontext gesehen werden können, wobei noch nicht klar ist
+ welche Box welche Art von Informationen enthält.
+ Dieses Problem ist durch das Zuweisen der Texte anhand der Stufenstruktur
+ lösbar, da die Texte, welche sich auf Stufe 5 befinden, sich den markierten
+ Blöcken zuweisen lassen können, da die Regionen nach dem Stufenmuster gemäß
+ der Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:df_regions"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ angeordnet sind.
 \end_layout
 
 \begin_layout Standard
-Die Aktivierungsfunktion definiert den Aktivierungszustand eines Neurons,
- abhängig von den Eingaben aller anderen verbundenen Neuronen.
- Ein Neuron kann abhänging von der Aktivierungsfunktion in einem aktiven
- oder inaktiven Zustand versetzt werden.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/df_regions.PNG
+	scale 80
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:df_regions"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Regionale Gliederung
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Mit der Aktivierungsfunktion wird die Aktivierungsstufe eines Neuronen in
- ein Ausgangssignal umgewandelt.
- Es gibt eine Vielzahl von Aktivierungsfunktionen die bei künstlichen neuronalen
- Netzen angewandt werden.
- Generell finden Aktivierungsfunktionen viel Anwendung in künstlichen neuronalen
- Netzen und gelten als populär, da sie als Transferfunktionen verwendet
+\begin_inset VSpace bigskip
+\end_inset
+
+Zunächst wird eine Funktion definiert, die die Indizes für alle Stufe 2
+ Einträge filtert, wobei zwei Einträge als ein Paar gespeichert werden,
+ da die Indizepaare die Reichweite für einen bestimmten Block darstellen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Anhand der Reichweiten können Iterationen über die Zeilen dazwischen gemacht
+ werden, sodass Zeilen, die Text enthalten, ausfindig gemacht werden.
+ Der enthaltende Text wird in eine Liste hinzugefügt, die letztendlich zu
+ einem langen String konvertiert wird, um Leerzeichen in der Analyse miteinzubez
+iehen.
+ Die Formatierung ist notwendig, um beispielsweise die Internationale Bankkonton
+ummer zu identifizieren, da sie Leerzeichen enthält, die in einem regulären
+ Ausdruck mitberücksichtigt werden müssen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "caption={Kollektieren der regionalen Texte},captionpos=b"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+def get_boxes(df, ranges):
+\end_layout
+
+\begin_layout Plain Layout
+
+    boxes = []     
+\end_layout
+
+\begin_layout Plain Layout
+
+    joined = ' '          
+\end_layout
+
+\begin_layout Plain Layout
+
+	for current, (start, end) in zip(df_two.iterrows(), ranges):
+\end_layout
+
+\begin_layout Plain Layout
+
+        coords = current[1]['left'], current[1]['top'], current[1]['width'],
+ current[1]['height']         		
+\end_layout
+
+\begin_layout Plain Layout
+
+		curr_subdf = df.iloc[start:end+1]         
+\end_layout
+
+\begin_layout Plain Layout
+
+		joined = ' '         
+\end_layout
+
+\begin_layout Plain Layout
+
+		text_list = []         
+\end_layout
+
+\begin_layout Plain Layout
+
+		for current_sub in curr_subdf.iterrows():
+\end_layout
+
+\begin_layout Plain Layout
+
+            if current_sub[1]['level'] == 5:                 
+\end_layout
+
+\begin_layout Plain Layout
+
+				text_list.append(current_sub[1]['text'])                         
+\end_layout
+
+\begin_layout Plain Layout
+
+					boxes.append(Box(*coords, text=joined.join(text_list)))    
+\end_layout
+
+\begin_layout Plain Layout
+
+       
+\end_layout
+
+\begin_layout Plain Layout
+
+		return boxes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Anhand von zwei Methoden werden die Texte der Boxen nach speziellen Schlüsselwör
+tern durchsucht:
+\end_layout
+
+\begin_layout Subsubsection*
+Reguläre Ausdrücke
+\end_layout
+
+\begin_layout Standard
+Die Verwendung Regulärer Ausdrücke wird beim finden der Währungen, der IBAN,
+ der BIC sowie die Postleitzahl Verwendung.
+\end_layout
+
+\begin_layout Subsubsection*
+Namenslisten
+\end_layout
+
+\begin_layout Standard
+Die vorhandenen Städte werden mit einer Liste von allen Städten Deutschlands
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Quelle: https://simplemaps.com/data/de-cities
+\end_layout
+
+\end_inset
+
+ ausfindig gemacht.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "caption={Kategorisierung der Regionen},captionpos=b"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+for box in boxes:     
+\end_layout
+
+\begin_layout Plain Layout
+
+	if balance_due in box.text:                
+\end_layout
+
+\begin_layout Plain Layout
+
+		box.draw_bounding_box(cv_img, COLORS[0], box.x, box.y, box.w, box.h)
+\end_layout
+
+\begin_layout Plain Layout
+
+        box.draw_label(cv_img, COLORS[0], LABELS[0], box.x, box.y, box.w, box.h)
+\end_layout
+
+\begin_layout Plain Layout
+
+       	 regions_of_interest.append(RegionOfInterest(box.y, box.y + box.h, box.x,
+ box.x + box.w, LABELS[0]))
+\end_layout
+
+\end_inset
+
+Wenn ein Schlüsselwort im Text einer Box gefunden wurden ist, werden mit
+ den regionalen Koordinaten und die Kategorie der Box ein Objekt 
+\emph on
+RegionOfInterest
+\emph default
+ in eine Liste hinzugefügt, wie im obigen Programmcode aufgezeigt.
+ Des Weiteren wird die Region markiert und mit der korrespondieren Kategorie
+ auszeichnet, wessen Resultat in der Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:rols"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ demonstriert wurden ist.
+ Somit sind die Boxen, die keine interessanten Informationen enthalten gefiltert
+ wurden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/RegionsOfInterest.jpg
+	scale 15
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Ausgezeichnete Regionen
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:rols"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Auf der Basis der Koordinaten und der Label der interessanten Regionen können
+ die vom Originalbild ausgeschnitten und für den weiteren Prozess persistiert
  werden.
- Vorteile bieten Aktivierungsfunktionen durch ihre schnelle Berechenbarkeit
- der Funktion und ihrer Ableitung.
-\begin_inset CommandInset citation
-LatexCommand cite
-key "B06"
-literal "false"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace smallskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
+\begin_inset listings
+lstparams "caption={Ausschneiden der Regionen},captionpos=b"
+inline false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename images/neuronal_network.png
 
-\end_inset
-
-
+for rol in regions_of_interest:     
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
 
-\begin_layout Plain Layout
-Chapter 3 - Beispiel eines tiefen Neuronalen Netzes (Quelle: in Anlehnung
- an
-\begin_inset CommandInset citation
-LatexCommand cite
-key "VWA17"
-literal "false"
-
-\end_inset
-
-)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Jeder Eingabe x i ist ein Gewicht w i zugeordnet.
- Die Summe aller gewichteten Eingaben x i w i wird dann durch eine nichtlineare
- Aktivierungsfunktion f geleitet, um den Voraktivierungspegel des Neurons
- in eine Ausgabe y j umzuwandeln.
- Der Einfachheit halber wurden die Verzerrungsterme weggelassen.
- Die Ausgabe y j dient als Eingabe für einen Knoten in der nächsten Schicht.
- Es stehen verschiedene Aktivierungsfunktionen zur Verfügung, die sich darin
- unterscheiden, wie sie eine Voraktiverungsstufe einem Ausgabewert zuordnen.
- Die meistgenutzeste Aktivierungsfunktion ist die Gleichrichterfunktion
- (ReLu), bei denen Neuronen als gleichgerichtete Lineareinheit bezeichnet
- wird.
- In der Ausgabefunktion wird am häufigsten die Softmaxfunktion verwendet,
- da hiermit die Wahrscheinlichkeit von Beschriftungen mit mehreren Klassen
- berechnet werden kann.
-\end_layout
-
-\begin_layout Subsection
-Faltende Neuronale Netze
-\end_layout
-
-\begin_layout Standard
-Eine der meistgenutzesten und akkuratesten Methode für Bilderkennungsprobleme
- ist die Anwendung eines faltenden neuronalen netzes.
- Sie eignen sich besser als vollständtig verbundene Neuronale Netze bei
- der Dokumentenerkennung.
- Neuronale Faltungsnetze können die modernste Perfomance und erfordert keine
- komplexen Methoden
-\begin_inset CommandInset citation
-LatexCommand cite
-key "SSP03"
-literal "false"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Subsection
-Rekurrente Neuronale Netze
-\end_layout
-
-\begin_layout Standard
-Rekurrente Neuronale Netze eignen sich besonders gut für bildbasierte Sequenzerk
-ennung 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "SBY15"
-literal "false"
-
-\end_inset
-
-.
- Es wird eine Architektur neuronale Netzwerkes benötigt, die Sequenzmodellierung
-, Merksmalsextraktion und Transkription in ein einheitliches Framework integrier
-t.
-\end_layout
-
-\begin_layout Standard
-Es besitzt vier Eigenschaften:
-\end_layout
-
-\begin_layout Enumerate
-Ende-zu-Ende trainierbar, sprich die Komponenten werden seperat trainiert
- und abgestimmt
-\end_layout
-
-\begin_layout Enumerate
-Es behandelt natürlich Sequenzen in willkürlichen Längen, die keine Zeichen,
- Segementierung oder horizontale Normierung enthalten
-\end_layout
-
-\begin_layout Enumerate
-Nicht beschränkt auf jedes vordefinierte Lexikon.
-\end_layout
-
-\begin_layout Enumerate
-Es generiert ein viel kleineres Modell, das für reale Anwendungszenarien
- praktischer ist.
-\end_layout
-
-\begin_layout Standard
-Anders wie bei Faltendenten Neuronalen Netzen, die nützlich bei der Erkennung
- von einzelnen Objekten, die keine Korrelation zueinander haben, sind Rekurrente
-r neuronale Netze auf das Erkennen von sequenzähnlichen Objekten nützlich.
- Das Klassifizieren von einer Reihe aus Objekten ist ein Problem, welches
- allgemein als Sequenzerkennungsproblem bezeichnet wird.
- Bei dem Erkennungsprozess können die Objekte von der Länge stark varieren.
- Im OCR-Kontext gibt es Wörter die wie 
-\begin_inset Quotes eld
-\end_inset
-
-Ja
-\begin_inset Quotes erd
-\end_inset
-
-, die lediglich 2 Zeichen aufweisen, während 
-\begin_inset Quotes eld
-\end_inset
-
-Allgemeinmedizin
-\begin_inset Quotes erd
-\end_inset
-
- 16 Zeichen aufweist.
- Die Anzahl der Kombinationen aus Zeichen zu Sequenzen von beispielsweise
- chinesischen Zeichen, Musiknoten und Wörter kann größer als 1 Million sein,
- weshalb ein faltendes neuronales Netz durch die hohe Anzahl der Klassen
- unbrauchbar wäre.
- Das rekurrente neuronale Netzwerk ist ein weiterer wichtiger Zweig der
- Familie von tiefen neuronalen Netzwerken und sind hauptsächlich für die
- Klassifizierung von Sequenzen konzipiert.
- Eine Eigenschaft von RNN's ist es, dass es nicht die Position von jedem
- Element in einem Sequenzobjektbild benötigt beim Training und testen.
- 
-\end_layout
-
-\begin_layout Standard
-Gut für Spracherkennung, Texterkennung.
- Long short-term memory network
-\end_layout
-
-\begin_layout Subsubsection*
-Tesseract
-\end_layout
-
-\begin_layout Standard
-Seit Tesseract 4 ist die OCR-Engine auf Basis von neuronalen Netzen mit
- der LSTM-Methodik umgestiegen.
- Sie konzentriert sich auf Linienerkennung
-\end_layout
-
-\begin_layout Section
-Überwachtes Lernen
-\end_layout
-
-\begin_layout Standard
-Überwachtes Lernen ist die häufigste Form des Maschinellen Lernens um ein
- klassifizierbares System aufzubauen.
- Im Gegensatz zum unüberwachten Lernen erfordert Überwachtes Lernen einen
- möglichst großen Datensatz zum Lernen.
-\end_layout
-
-\begin_layout Standard
-Wie lernt ein Neuronales netz? Beim Initliasieren des Netzes ist das Bias
- und die Gewichte zufällig gewählt.
- Es wird eine Kostenfunktion zum Lernen des Netzwerkes benutzt.
- Die Funktion wird benutzt um die Kosten zu berechnen.
- Es wird von den einzelnen Neuronen in der Ausgabeschicht die Differenz
- von den tatsächlichen Ergebnissen der Kostenfunktion gebildet, exponeniert
- und die die Summe gebildet <abbildung>.
- Das wird die Kosten des einzelnen Trainingsbeispiel genannt.
- Die Kosten sind niedrig, wenn das Netzwerk das Bild richtig klassifiziert
- und hoch wenn das Netzwerk das Bild falsch klassifizert.
- Der Durchschnitt aus der Summe aller Kosten ist ein Messwert für die Klassifika
-tionsrate des Netzwerkes.
- Um das Minimum der Kostenfunktion mit allen Gewichten und Biases für das
- Trainingsbeispiel zu finden, wird die Steigung berechnet und abhängig von
- der Lernrate wird der Input abhängig von der Steigung weiter nach rechts
- oder links verlagert wodurch nach mehreren Beispielen das lokale Minimum
- gefunden wird.
- Es wird der Gradient der Kostenfunktion berechnet um den 
-\begin_inset Quotes eld
-\end_inset
-
-steilsten
-\begin_inset Quotes erd
-\end_inset
-
- Weg zum lokalen Minimum zu finden.
- Der Gradient ist ein Indikator für diesen 
-\begin_inset Quotes eld
-\end_inset
-
-steilsten
-\begin_inset Quotes erd
-\end_inset
-
- Weg.
- Die Gewichte werden als Vektor dargestellt.
- Der negative Gradientenvektor wird auf den den Gewichtsvektor, der den
- schnellsten steilsten Abstieg anzeigt.
- so werden die Kosten niedrig.
- der Bias stellt in Form eines Neurons mit der Aktivierung 
-\begin_inset Quotes eld
-\end_inset
-
-1
-\begin_inset Quotes erd
-\end_inset
-
- eine Konstante dar, die Schichten dazu bringt, dass wenn die Funktion durch
- den Ursprung verläuft, mehr Flexibiltät in den Verschiebungsprozess des
- Graphen.
- Der Bias ist besonders nützlich wenn der Eingabevektor nur nullen enthält,
- da keine Allgemeingültigkeit verloren geht.
-\end_layout
-
-\begin_layout Subsection
-Testphase
-\end_layout
-
-\begin_layout Standard
-Die Daten sind mit der korrespondierenden Klasse kategorisiert, so dass
- das Klassifkationsmodell lernt Datenmuster der entsprechenden Klasse zuzuordnen.
- Mithilfe des Datensatzes berechnen wir eine objektive Funktion, die den
- Fehler zwischen den ausgegebenen Bewertungen und dem gewünschten Bewertungsmust
-er misst.
- Das Modell ändert dann ihre internen einstellbaren Parameter, um die Fehler
- zu reduzieren.
- Die Parameter, auch als Gewichte bezeichnet, werden anhand von Zahlen abgebilde
-t, die die Eingabe/Ausgabe-Funktion des Modells definieren.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace smallskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection*
-Gradientenverfahren
-\end_layout
-
-\begin_layout Standard
-Um den Gewichtsvektor richtig einzustellen, berechnen der Lernalgorithmus
- einen Gradientenvektor, der für jedes Gewicht angibt, um welchen Betrag
- der Fehler sich erhöhen oder verringern würde.
- der Gewichtsvektor wird dann in entgesetzter Richtung zum Gradientenvektor
- eingestellt.
- Die über alle iterierte Trainingsbeispiele gemittelte Zielfunktion kann
- als eine Art Hügellandschaft im hochdimensionalen Raum von Gewichtsvektoren
- gesehen werden.
- der negative Gradientenvektor gibt die Richtung des steilsten Abstieg in
- dieser Landschaft an und geht dadurch näher an ein Minimum ran, wo der
- Ausgabefehler im durchschnitt niedrig ist.
-\end_layout
-
-\begin_layout Standard
-In der Praxis wird meistens eine Prozedur angewandt, die sich Gradientenverfahre
-n (engl.
- SGD) nennt.
- Das Verfahren besteht aus den Anzeigen des Eingabevektors für ein paar
- Beispiele aus dem Trainingsdatensatz, berechnen der Ausgaben und der Fehler,
- dem Berechnen der durchschnittlichen Gradienten und dem ensprechenden Anpassen
- der Gewichte.
- Dieser Vorgang wird für viele Beispiele aus dem Trainingsdatensatz wiederholt,
- bis der Durchschnitt von der Zielfunktionen nicht mehr kleiner wird.
- Die Prozedur wird Storchastisch genannt, da jeder Satz von den Trainingsdaten
- eine verrauschte Schätzung des durchschnittlichen Gradienten von jedem
- Beispiel gibt.
- Das Verfahren findet in der Regel relativ zu anderen Methoden überraschen
- schnell einen guten Satz von Gewichten.
-\end_layout
-
-\begin_layout Standard
-Das Gradientenverfahren ist das mit Abstand am häuftigsten verwendete Optimierun
-gsverfahren für die Gewichte-Parametisierung und dient zur Fehlerminimierung
- bei Prognosen.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace smallskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Das Verfahren wird mit der Funktion 
-\begin_inset Formula $\nabla E(h(a))$
-\end_inset
-
- mathematisch dargestellt.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\nabla E(h(a))=\left[\frac{\partial E(h(a))}{\partial a_{1}},...,\frac{\partial E(h(a))}{\partial a_{n}}\right]
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Ziel des Verfahrens ist es Fehler 
-\emph on
-E
-\emph default
- (Error) zu minimieren.
- Es wird mit einer Hypothese 
-\emph on
-h 
-\emph default
-mithilfe von allen Attributen
-\emph on
- a
-\emph default
- eine Annahme getroffen, um welche Klasse es sich handelt.
- Attribute werden aus den Trainingsdaten entnommen.
-\end_layout
-
-\begin_layout Standard
-Beispielsweise ist jeder Pixel eines Bildes Teilmenge der Attributmenge
- 
-\emph on
-
-\begin_inset Formula $a_{1}...a_{n}$
-\end_inset
-
-, 
-\emph default
-welches an Hypothese 
-\emph on
-h
-\emph default
- gegeben wird, um eine Vorhersage zu treffen, ob es sich bei dem Bild um
- eine bestimme Klasse handelt.
- eine Klasse kann ein Smartphone oder ein Laptop sein.
-\end_layout
-
-\begin_layout Standard
-Die Fehlerfunktion E ergibt sich aus einer Funktionsmenge abhängig von der
- Attributmenge.
- Die Funktionen repräsentieren die Ableitungen der Attributmenge 
-\emph on
-
-\begin_inset Formula $a_{1}...a_{n}$
-\end_inset
-
- 
-\emph default
-als Vektor.
-\end_layout
-
-\begin_layout Standard
-Mit dem Wissen, was die Daten 
-\emph on
-a
-\emph default
- tatsächlich sind, berechnet Fehlerfunktion 
-\emph on
-E 
-\emph default
-wie falsch die Hypothese ist.
- Aus der Fehlerfunktion wird der Gradient gebildet, indem die Fehlerfunktion
- abgeleitet wird.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace smallskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\nabla a=-\mu*E(h(a))
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Durch den berechneten Gradienten und der Lernrate
-\emph on
- mu
-\emph default
- können die Gewichte entsprechend jedes Attribut der Attributmenge 
-\emph on
-
-\begin_inset Formula $a_{1}...a_{n}$
-\end_inset
-
- 
-\emph default
-jeweils so angepasst werden, dass die Fehlerrate reduziert wird.
-\begin_inset VSpace smallskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-a=a+\nabla a
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace smallskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Der Vorgang wird so oft wiederholt, bis die Fehlerrate konvergiert.
- Lernrate 
-\emph on
-mu 
-\emph default
-sollte so gesetzt sein, dass die Sprünge weder zu groß noch zu klein sind.
- Das lokale Mimimum könnte bei einer zu großen Lernrate übersprungen werden,
- sodass der Fehler niemals minimal wird.
-\end_layout
-
-\begin_layout Subsubsection*
-Fehlerrückführung
-\end_layout
-
-\begin_layout Standard
-Das eigentliche Training mehrschichtiger Architekturen finden anhand storchastis
-cher fallenden Gradienten, die durch das Gradientenverfahren ermittelt wurden
- sind, statt.
- Das Fehlerrückführungsverfahren berechnet die Gradienten einer Zielfunktion
- mit der miteinbeziehung der Gewichte eines mehrschichtigen Modulstapels
- anhand der Kettenregel für Gradienten.
- Es kann der Gradient
-\end_layout
-
-\begin_layout Subsection
-Testphase
-\end_layout
-
-\begin_layout Standard
-Nach dem Trainieren wird die Perfomance durch einem anderen Satz von Daten
- gemessen, welche Testdatensatz genannt wird.
- Dies dient zum Testen der Fähigkeit sinnvolle Anworten auf neue Daten Eingaben,
- die das Modell während des Trainings noch nie gesehen hat - die Verallgemeineru
-ngsfähigkeit
-\begin_inset CommandInset citation
-LatexCommand cite
-key "LBH15"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Deep Learning
-\end_layout
-
-\begin_layout Standard
-Der Begriff Deep Learning umsammelt Methoden der künstlichen Intelligenz,
- die die Funktionsweise des Menschlichen Gehirns bei der Verarbeitung von
- Daten und der Erstellung von Mustern zu der Entscheidungsfindung imitiert.
- Deep Learning Methoden werden auf eine Teilmenge von Klassifkatoren aus
- den Bereich des Maschinellen Lernens angewandt, um die Präzision des Modells
- zu verbessern.
-\begin_inset CommandInset citation
-LatexCommand cite
-key "LBH15"
-literal "false"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Section
-Aktivierungsfunktion
-\end_layout
-
-\begin_layout Standard
-Der Stand der Technik der Nichtlinearität ist die Verwendung *
-\emph on
-gleichgerichtete Lineareinheiten
-\emph default
- (engl.
- abgekürzt ReLu) zum Training eines neuronalen Netzes zu verwenden.
- ReLu hat gegen über der Sigmoid Funktion den Vorteil durch ihre simplizität
- perfomant zu sein.
- Des Weiteren erzielt sie eine bessere Leistung in voreinding tiefschichtigen
- Architekturen, da die spärliche Darstellung mit wahren Nullen für natürlich
- spärliche Daten passend erscheint.
- Das Training verläuft besser wenn künstliche Neuronen null, also ausgeschaltet
- sind.
-\end_layout
-
-\begin_layout Standard
-Die Rektifizierende Aktivierungsfunktion wird mit der folgenden Funktion
- beschrieben:
-\begin_inset Formula 
-\[
-f(x)=max(0,x)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Wenn der Input eines Neurons, welcher mit 
-\emph on
-x 
-\emph default
-beschrieben ist, größer als null sein, berechnet der Neuron diesen Wert.
- Wenn der Input gleich oder kleiner null ist, dann wird das Neuron ausgeschaltet
-, sprich auf null gesetzt.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename images/Rectifier_and_softplus_functions.png
-	scale 40
-
-\end_inset
-
-
+	cropped_img = cv_img[rol.y:rol.y2, rol.x:rol.x2]     
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
 
-\begin_layout Plain Layout
-Chapter 4: ReLu und Softmax Funktionen im Graph (Quelle: https://de.wikipedia.org/
-wiki/Datei:Rectifier_and_softplus_functions.svg)
+	cv2.imwrite('./data/img/RegionsOfInterest/{name}.jpg'.format(name=rol.label),
+ crop_img) 
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\end_inset
-
-
+Der Programmcode zeigt auf wie die Regionen anhand der Koordinaten ausgeschnitte
+n werden und mit den Namen der Kategorie als Bildnamen im Dateisystem gespeicher
+t werden.
 \end_layout
 
 \begin_layout Standard

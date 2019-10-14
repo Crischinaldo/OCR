@@ -8,7 +8,7 @@
 \options bibliography=totoc,listof=totoc,BCOR=5mm,DIV=12
 \use_default_options false
 \maintain_unincluded_children false
-\language english
+\language ngerman
 \language_package default
 \inputencoding iso8859-1
 \fontencoding default
@@ -29,7 +29,8 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
-\paperfontsize default
+\float_placement h
+\paperfontsize 11
 \spacing single
 \use_hyperref true
 \pdf_bookmarks false
@@ -76,7 +77,7 @@
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style english
+\quotes_style german
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -98,7 +99,7 @@ status open
 
 
 \backslash
-chapter{Entwicklung des Servers}
+chapter{Entwicklung des Clients}
 \end_layout
 
 \end_inset
@@ -109,7 +110,7 @@ chapter{Entwicklung des Servers}
 \begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "chap_development_server"
+name "chap_development_client"
 
 \end_inset
 
@@ -117,7 +118,7 @@ name "chap_development_server"
 \end_layout
 
 \begin_layout Standard
-Dieses Kapitel befasst sich mit der Entwicklung des Servers und ist in den
+Dieses Kapitel befasst sich mit der Entwicklung des Clients und ist in den
  zwei Kapiteln Architektur und Implementierung gegliedert.
 \end_layout
 
@@ -126,1256 +127,261 @@ Architekturentwurf
 \end_layout
 
 \begin_layout Standard
-In Diesen Unterkapitel wird die Architektur des Servers beschrieben und
+In Diesen Unterkapitel wird die Architektur des Clients beschrieben und
  visualisiert.
+ Das Dashboard wird als Webapplikation auf Basis von HTML5, CSS und JavaScript
+ entwickelt.
+ Das Dashboard präsentiert Daten die vom Server über HTTP-Requests geholt
+ werden.
 \end_layout
 
 \begin_layout Subsection
-REST-Schnittstelle
+Komponentenorientierte Programmierung
 \end_layout
 
 \begin_layout Standard
-Die Methoden 
-\emph on
-PUT
-\emph default
- und 
-\emph on
-DELETE
-\emph default
- werden aus Sicherheitsgründen kaum implementiert und werden in diesen Kontext
- nicht weiter diskutiert.
-\end_layout
-
-\begin_layout Standard
-Um eine RESTkonforme Schnittstelle zu programmieren, werden die Grundsätze
- in der Regel eingehalten.
- Bedingt können Webservices REST-konformalitäten abweichen.
- Ein Webservice, über dessen Endpunkt ein Token angefordert werden kann,
- wird als Anfragemethode ausschließlich 
-\emph on
-POST 
-\emph default
-verwenden, obwohl kein schreibender Zugriff erfordernlich ist.
- Anders wie bei der 
-\emph on
-GET-methode 
-\emph default
-kann das Benutzerpasswort verschlüsselt an den Server übermittelt werden.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-In Abbildung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:REST-Architektur"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- ist dargestellt, wie die Kommunikation zwischen Client und Server verläuft
- und wie intern der Server die Anfragen behandelt.
- Zudem ist zu erkennen, dass die REST-Schnittstelle und die Geschäftslogik
- auf Modullevel voneinander getrennt sind.
-\end_layout
-
-\begin_layout Standard
-Eine Anfrage wird im Server von der REST-Schnittstelle entgegengenommen
- und an die zuständige Geschäftslogik weitergeleitet.
- Die Geschäftslogik wickelt den HTTP-Anfragen entsprechend die Datenbankabfragen
- ab und übermittelt über die REST-Schnittstelle eine Response mit den erwarteten
- Ressourcen an den Client.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename images/REST.png
-	scale 70
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:REST-Architektur"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-REST-Architektur
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Die Architektur verwendet das bewährte MVC-Muster (Modell-View-Controller)
- zur unterteilung des Systems.
- Im Kontext stellt das Model die Geschäftslogik und der die Schnittstelle
- der Controller dar.
- Beide Komponenten befinden sich in der übergeordneten Server-Komponente.
- Der in der Client-Komponente befindliche Webbrowser fungiert als Benutzeroberfl
-äche und ist die View des Systems.
- Gemäß des MVC-Musters kommunizieren View (Webbrowser) und Model (Business
- Logic) über den Controller (REST-API).
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Durch die Zustandslosigkeit können Webservices einfach skaliert werden,
- da eine Vielzahl von Requests problemlos auf verschiedene Serverinstanzen
- verteilt werden können.
- Durch die Kapselung von Client-und Serverseitigen Logik sind die Systeme
- als einzelne funktionsfähig.
- Durch geschicktes mocken der Anfragen und Anworten können Server und Client
- vollständig unabhängig voneinander entwickelt werden, sodass keine Rücksicht
- bei der Enwicklung auf die Gegenseite genommen werden muss.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Die Daten in sowohl den Anfragen und auch Antworten werden in einem spezifiziert
-en Datenformat übermittelt.
- Hier bietet es sich an die Daten in einem JSON-format (
-\emph on
-JavaScript Object Notation
-\emph default
-) zu transferieren.
- Das JSON-Format wurde von Douglas Crockford im Jahr 1999 auf der ECMA-262
- spezifiert
+Komponentenorientierte Programmierung, welche der objektorientierten Programmier
+ung ähnelt, zeichnet sich dadurch aus, dass die Architektur sich aus vielen
+ miteinander agierenden Komponenten zusammensetzt.
+ Komponenten kapseln bestimmte Funktionen und werden durch eine Schnittstelle
+ angesprochen.
+ Komponenten können wiederverwendet werden und können unabhängig funktionieren.
+ Die Motivation hinter dieser Architektur ist eine Ansammlung generativer
+ Komponenten, die zur Steigerung der Produktivität und Qualität führen 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "JSON_DG"
+key "P"
 literal "false"
 
 \end_inset
 
 .
- im Gegensatz zu XML (
-\emph on
-Extensible Markup Language
-\emph default
-) dynamisch ist und keine Spezifizierung notwendig ist.
- Zudem ist das ein umgängliches und Sprachenunabhängiges Datenformat, da
- es nach einer bekannten Datenstruktur aufgebaut ist - Der Schlüssel/Wert-Paare.
- Diese universelle Datenstruktur wird in jeder modernen Programmiersprache
- genutzt und ist deswegen einfach zu verarbeiten.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Für die Implementierung der REST-Schnittstelle wird die Programmiersprache
- Python
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-https://www.python.org/
-\end_layout
-
-\end_inset
-
- an.
- Python wird unternehmensintern verwendet, sodass im weiteren Verlauf die
- Schnittstelle von anderen Entwickern mit weitergeführt werden können.
- Das Pythonbezogene Webframework Flask
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-http://www.flask.palletsprojects.com
-\end_layout
-
-\end_inset
-
- liefert hilfreiche Module zur Entwicklung einer REST-Schnittstelle und
- wird verwendet um die zukünftige Architektur des Unternehmens technisch
- umzusetzen.
 \end_layout
 
 \begin_layout Subsubsection
-Schnittstellenspezifikation
+React
 \end_layout
 
 \begin_layout Standard
-Die Schnittstellenspezifikation ist an das Beschreibungsformat
+Es wird die auf Babel basierende Bibliothek 
 \emph on
- OpenAPI
+React
 \emph default
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
-https://www.openapis.org
+https://reactjs.org/
 \end_layout
 
 \end_inset
 
- angelehnt.
- Sie befindet sich clientseitig auf dem Dashboard und wird später mit 
+ genutzt.
+ Durch 
 \emph on
-Swagger
+React
 \emph default
-
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-https://www.swagger.io
-\end_layout
-
-\end_inset
-
-, einer Beschreibungssprache für REST-Schnittstellen, in die unternehmensinterne
-n Schnittstellenbeschreibung überführt.
- In Abbildung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Service_routes"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- befinden sich die ansprechbaren Endpunkte für die zur Verfügung gestellten
- Ressourcen.
-\end_layout
-
-\begin_layout Standard
-Für eine Einheit der Ressource 
+ lässt sich das UI (
 \emph on
-evaluation 
+User Interface
 \emph default
-wird die entsprechende Adresse nach dem folgenden Muster angesprochen:
-\emph on
- .../classification/evaluation/{id}.
- id 
-\emph default
-wird mit der Identifikationsnummer der Evaluation ersetzt, sodass ein Zugriff
- auf genau die bestimmte Ressource erfolgt.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename images/services.PNG
-	scale 50
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Service_routes"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-REST-Services
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-Benutzer, welche die Routen ansprechen wollen, haben durch die Spezifikation
- eine klare Übersicht.
- Es wird veranschaulicht welche URI's Ressourcen zur Verfügung stellen und
- welche Anfragemethode benutzt werden muss.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Jeder Webservice hat eine Definition für die Parameter, die bei der Anfrage
- tranferiert werden müssen, die möglichen Status-Codes einer Antwort und
- ein Beispiel für eine gelieferten Ressource bei einem reibungslosen Aufruf
- des Services.
-\end_layout
-
-\begin_layout Standard
-Die Beschreibung der einzelnen Webservices können clientseitig, wie auf
- Abbildung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig: Extractions-Service"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- aufgezeigt, eingesehen werden.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Ein Nutzer mit der Intention 
-\emph on
-extraction 
-\emph default
-aufzurufen, muss die nötigen Parameter 
-\emph on
-file 
-\emph default
-und 
-\emph on
-file_type 
-\emph default
-als Nutzdaten (
-\emph on
-Payload
-\emph default
-) im JSON-Datenformat an die korrespondierende URI schicken.
- Beide Parameter sind erforderlich, da der Server die Informationen benötigt
- um die Anfrage zu bearbeiten und eine Antwort zu schicken.
- Der Beschreibung von 
-\emph on
-file
-\emph default
- zufolge muss die Datei in der Hexadezimalnotation vorliegen.
- Der Typ der Datei kann entweder im PDF-Format oder in Bild-Format vorliegen.
- Der Client muss also technisch in der Lage sein eine Datei in die entsprechende
- Hexadezimalnotation zu kodieren und den Dateitypen zu kennen, damit eine
- für den Server passende Anfrage konstruiert werden kann.
- Der Server antwortet mit dem Statuscode 
-\emph on
-400 - BAD REQUEST 
-\emph default
-wenn die nötigen Informationen nicht vorhanden sind oder die falsche Anfragemeth
-ode gewählt wurden ist.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename images/service_extraction.PNG
-	scale 60
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: Extractions-Service"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Beschreibung des Extractions-Services
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Der Client bekommt
-\end_layout
-
-\begin_layout Subsection
-Authentifizierung
-\end_layout
-
-\begin_layout Standard
-Die Authentifierungprozedur wird über einen IAM-Server (
-\emph on
-Identity and Access Management
-\emph default
-) abgewickelt.
- Das Akronym IAM bezeichnet das Identity and Access Management, welches
- die Aufgabe der Zugriffssteuerung auf Ressourcen übernimmt.
-\end_layout
-
-\begin_layout Standard
-Um auf die Services zuzugreifen müssen sich Nutzer gegen den jeweiligen
- Service authentifizieren.
- Über Services, die der IAM-Server zur Verfügung stellt, können Nutzer erstellt,
- verwaltet und wieder gelöscht werden.
- 
-\end_layout
-
-\begin_layout Standard
-Es wird durch den unternehmensinternen IAM-Server ein Anmeldungsservice
- angesprochen, bei dem für Benutzername und Passwort ein Token angefordert
- werden kann.
- Das Dashboard wird als ein geschützter Bereich (
-\emph on
-Realm
-\emph default
-) betrachtet.
- Der Realm hat zugewiesene Benutzer, sessions dies das
-\end_layout
-
-\begin_layout Standard
-Um die zuvor genannten Services anzusprechen muss der Anfrage ein valider
- Token in den Header hinzugefügt werden.
- Der Token hat nur eine bestimmte Gültigkeitsspanne und muss nach Ablauf
- der Gültigkeit erneut beim IAM-Anmeldungsservice beantragt werden.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Aus Komplexitätsgründen ist die Authentifizierung in der jetzigen Implementierun
-g noch nicht berücksichtigt.
-\end_layout
-
-\begin_layout Subsection
-Persistierung
-\end_layout
-
-\begin_layout Standard
-Für die Persistierung der Daten wird eine PostgreSQL
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-https://www.postgresql.org
-\end_layout
-
-\end_inset
-
--Datenbank verwendet.
- PostgresSQL ist perfomant, hat eine fortgeschrittene Datenbanksprache und
- ist zudem sehr kompatibel mit Python.
- Python bietet den Datenbank-Driver psycopg2 für PostgreSQL.
- Psycopg2 hat den Ruf schnell und stabil zu sein.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Aus dem Anwendungsszenario lassen sich folgende Datenbankmodelle ableiten:
- Klassifikation, Evaluation und Bild.
- Aus den Entitäten ergibt sich das Entity-Relation-Ship, das in Abbildung
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:ERM"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- dargestellt ist.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename images/ERM.png
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Entity-Relationship-Modell
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:ERM"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Eine Klassifikation wird durch ein Ergebniss evaluiert.
- Ein Bild stellt eine Erweiterung eines Ergebnisses dar und ist damit einem
- Ergebniss zugeordnet.
-\end_layout
-
-\begin_layout Subsubsection*
-Objektrelationale Abbildungen
-\end_layout
-
-\begin_layout Standard
-Das Akronym ORM bezeichnet das Object-Relational Mapping, welches eine Technik
- beschreibt Objekte in eine relationale Datenbank abzulegen.
-\end_layout
-
-\begin_layout Standard
-Basierend auf dem ER-Modell werden in der Implementierung Objektrelationale
- Abbildungen erzeugt.
- Mithilfe vom ORM-Framework SQLAlchemy
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-https://www.sqlalchemy.org/
-\end_layout
-
-\end_inset
-
- werden benutzerdefinierte Python-Klassen erzeugt, die in einer relationalen
- Datenbank als Zeilen in den korrespondierenden Tabellen abgebildet werden.
- Die Kardinalitäten werden als Attribute in den Klassenobjekten.
- ORM synchronisiert die Zustände zwischen den Objekten und den zugehörigen
- Tabellen.
- Es werden Datenbankabfragen in Bezug auf die erzeugten Python-Klassen und
- deren Beziehung untereinander programmatisch ausgedrückt.
- Die zuständige Programmierung befindet sich in der Geschäftslogik.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Die oben dargestellten Entitäten und deren Beziehungen untereinander werden
- in abstrahierter Form mit Python-Objekten deren Attribute definiert.
- Abhängig von Definition der Objekte und deren Beziehungen zueinander, können
- Datenbankabfragen mit der SQLAlchemy-Ausdruckssprache geschrieben werden.
- Sollte ein Zugriff auf die Datenbank erfolgen verändert der Ausdruck den
- Zustand der Datenbank korrespondierend zu dem benutzerdefinierten Statement.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Das Klassenmodell, welches in Abbildung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:class_dia"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- veranschaulicht ist, wird aus dem Entity-Relationship-Modell abgeleitet
- und ist im Stil vom Objektorientierten Programmierparadigma in Python zu
- überführen.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename images/class_diagram.png
-	scale 60
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Klassendiagramm
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:class_dia"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Zusätzlich sind die Primärschlüssel der Eltern-Entitäten zu den jeweiligen
- Kind-Entitäten als Fremdschlüssel hinzugefügt.
- Das Objekt DBClassification enthält zudem eine Methode, welche die Logik
- enthält eine Klassifizierung zu erzeugen und diese zusammen mit den abhängigen
- Entitäten in die Datenbank abzulegen.
-\end_layout
-
-\begin_layout Subsection
-Validierung
-\end_layout
-
-\begin_layout Standard
-Im Kontext der REST-Schnittstelle werden Anfragen auf benötigte Parameter
- und deren Zeichenlänge validiert.
- Durch eine schematische Validierung werden ungültige Anfragen erkannt und
- abgefangen, was bedeutet dass die Geschäftslogik nicht angesprochen wird.
- Eine entsprechende Antwort mit dem HTTP-Status-Code 404 - BAD REQUEST wird
- an den Dienstnutzer, womit ihm kenntlich gemacht wird, dass seine Anfrage
- nicht validiert werden konnte.
+) in wiederverwendbare und unabhängige Komponenten isolieren.
+ Komponenten stellen mit ihren Funktionen und Attributen eine Abstraktion
+ von JavaScript-Objekten dar.
+ Jede Komponenteninstanz hat ihren Einfluss auf sowohl ihren DOM-Knoten
+ als auch auf die Instanzen der Kindeskomponenten.
 \end_layout
 
 \begin_layout Section
 Implementierung
 \end_layout
 
-\begin_layout Subsection
-Frameworks
-\end_layout
-
 \begin_layout Standard
-Flask, JSONSchema, SQLalchemy, keras, pybase64, opencv-python, pillow, pdf2image
+Dieser Abschnitt erläutert die Implementierung des Dashboards.
 \end_layout
 
 \begin_layout Subsection
-Controller
+Dashboard
 \end_layout
 
 \begin_layout Standard
-In diesem Unterabschnitt wird die Implementierung der Schnittstelle exemplarisch
- für einen Anwendungsfall erläutert.
- Die REST-Schnittstelle, welche im Model-Controller Muster den Controller
- darstellt, wurde mit dem Webframework Flask realisiert.
- Flask bietet eine Technik an die Webservices einer Webapplikation in Sektionen
- aufzuteilen.
- Diese Sektionen werden im Kontext von Flask als 
+In diesem Programmcode wird das Dashboard-Komponente erstellt.
+ Sie bindet eine Methode 
 \emph on
-Blueprints
+getResult(), 
 \emph default
- definiert.
- Diese Blueprints müssen bei der Webapplikation registriert werden.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float algorithm
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
-app.register_blueprint(home.api) 
-\end_layout
-
-\begin_layout Plain Layout
-
-app.register_blueprint(classification.api) 
-\end_layout
-
-\begin_layout Plain Layout
-
-app.register_blueprint(extraction.api)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Registrieren der Blueprints
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "alg:blueprints"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Insgesamt gibt es, wie in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "alg:blueprints"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- aufgezeigt, drei Sektionen die registriert werden.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Exemplarisch wird der Blueprint für den Klassifikationsservice anhand des
- Programmcode 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "alg:class_route"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- beschrieben.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float algorithm
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
-api = Blueprint('/classification', __name__)
-\end_layout
-
-\begin_layout Plain Layout
-
-@api.route('/classification', methods=['GET', 'POST'])
-\end_layout
-
-\begin_layout Plain Layout
-
-def classification():     
-\end_layout
-
-\begin_layout Plain Layout
-
-  if request.method == 'GET':
-\end_layout
-
-\begin_layout Plain Layout
-
-        resp = Evaluation.evaluate()
-\end_layout
-
-\begin_layout Plain Layout
-
-        if not resp:             
-\end_layout
-
-\begin_layout Plain Layout
-
-           return jsonify({'status': 'not found'}), 404
-\end_layout
-
-\begin_layout Plain Layout
-
-        return jsonify(resp)
-\end_layout
-
-\begin_layout Plain Layout
-
-  if request.method == 'POST':
-\end_layout
-
-\begin_layout Plain Layout
-
-        data = request.form.to_dict()
-\end_layout
-
-\begin_layout Plain Layout
-
-        validator = Validator(schema_type='classification')         
-\end_layout
-
-\begin_layout Plain Layout
-
-        validator.validate(data)
-\end_layout
-
-\begin_layout Plain Layout
-
-        if validator.validated:                          
-\end_layout
-
-\begin_layout Plain Layout
-
-            resp = Classification().predict_class(req=data)             
-\end_layout
-
-\begin_layout Plain Layout
-
-            if not resp:                 
-\end_layout
-
-\begin_layout Plain Layout
-
-                return jsonify({'status': 'bad request'}), 400         
-\end_layout
-
-\begin_layout Plain Layout
-
-        else:                        
-\end_layout
-
-\begin_layout Plain Layout
-
-            return jsonify({'status': 'validation failed'}), 422
-\end_layout
-
-\begin_layout Plain Layout
-
-        
-\end_layout
-
-\begin_layout Plain Layout
-
-        return jsonify(resp), 202
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Schnittstelle für die Ressource Klassifkation
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "alg:class_route"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Der Blueprint wird für die Adresse 
+die eine GET-Anfrage an den URL 
 \emph on
 /classification 
 \emph default
-und erlaubt die HTTP-Anfragemethoden 
-\emph on
-GET 
-\emph default
-und 
-\emph on
-POST.
- 
-\emph default
-Beim Aufruf dieser Funktion wird zunächst überprüft um welche Anfragemethode
- es sich handelt.
- 
-\emph on
-GET 
-\emph default
-liefert dem Dienstnutzenden alle Ergebnisse über die erstellten Klassifikationen.
- Sollten keine Ergebnisse existieren wird eine Antwort mit dem Status und
- dem Status-Code 404 - NOT FOUND zurückgesendet.
+senden soll.
+ Anhand dieser Anfrage sollen die Resultate der Klassifikationen vom Server
+ geholt werden, um die zu präsentieren.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "caption={Erstellung der Dashboard-Komponente},captionpos=b"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+class Dashboard extends Component {   
+\end_layout
+
+\begin_layout Plain Layout
+
+	constructor(props) {     
+\end_layout
+
+\begin_layout Plain Layout
+
+		super(props);     
+\end_layout
+
+\begin_layout Plain Layout
+
+		this.getResult = this.getResult.bind(this);     
+\end_layout
+
+\begin_layout Plain Layout
+
+		this.state = {       
+\end_layout
+
+\begin_layout Plain Layout
+
+			loading: false,     
+\end_layout
+
+\begin_layout Plain Layout
+
+		};   
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
-Model
+Anfragen
 \end_layout
 
 \begin_layout Standard
-Das Model enthält sowohl die Geschäftslogik als auch das Datenmodell.
-\end_layout
+Der Zeitpunkt der Inanspruchnahme des Dienstes soll in der Regel dem Benutzer
+ gegenüber kontrolliert sein.
+ Bei einigen Situationen, wie beispielsweise der Aufruf des Dashboards,
+ kann die Anfrage direkt beim Aufruf erfolgen.
 
-\begin_layout Subsubsection*
-Datenbankmodell
+\emph on
+ React
+\emph default
+ bietet eine Funktion die es einer Komponente erlaubt Funktionalitäten beim
+ Eintritt in den DOM auszuführen.
 \end_layout
 
 \begin_layout Standard
-Im Datenbankmodell werden die Objekte definiert, die in die Datenbank abgelegt
- werden.
- Darüber hinaus werden hier die Funktionalitäten für die Datenbankabfragen
- hinterlegt.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
+\begin_inset listings
+lstparams "caption={Aufruf beim DOM-Eintritt},captionpos=b"
+inline false
 status open
 
 \begin_layout Plain Layout
+
+componentDidMount() {
+\end_layout
+
+\begin_layout Plain Layout
+
+    const API = 'http://localhost:8090/classification';     
+\end_layout
+
+\begin_layout Plain Layout
+
+    this.getResult(API)   
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Im Programmcode wird eine Methode aufgerufen, die eine Anfrage mit der Anfrageme
+thode 
+\emph on
+GET 
+\emph default
+an den Endpunkt 
+\emph on
+/classification 
+\emph default
+sendet.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Methode
+\emph on
+ getResult(), 
+\emph default
+die im Programmcode aufgezeigt wird, fragt über den Webservice 
+\emph on
+/classification 
+\emph default
+nach Daten.
+ Im sonst asynchronen Programmablauf sind Versprechungen die einzige Möglichkeit
+ einen synchronen Ablauf von Code durchzuführen.
+ Während der Anfrage werden Zustandsattribute der Komponente mit der Methode
+ 
+\emph on
+setState()
+\emph default
+ gesetzt.
+\end_layout
+
+\begin_layout Standard
 \begin_inset listings
 inline false
 status open
 
 \begin_layout Plain Layout
 
-class DBClassification(Base):
+getResult = (API) => {
 \end_layout
 
 \begin_layout Plain Layout
 
-     __tablename__ = 'classification'
+    this.setState({
 \end_layout
 
 \begin_layout Plain Layout
 
-    
+    	loading: true,
 \end_layout
 
 \begin_layout Plain Layout
 
-     classification_id = Column(Integer, primary_key=True, autoincrement=True)
-     
-\end_layout
-
-\begin_layout Plain Layout
-
-     created_at = Column(Date)    
-\end_layout
-
-\begin_layout Plain Layout
-
-     result = relationship("DBResult", uselist=False, back_populates="classifica
-tion")
-\end_layout
-
-\begin_layout Plain Layout
-
-     def __init__(self, created_at, result):         
-\end_layout
-
-\begin_layout Plain Layout
-
-        self.engine = Database().engine                
-\end_layout
-
-\begin_layout Plain Layout
-
-        if not self.engine.dialect.has_table(self.engine, self.__tablename__):
-\end_layout
-
-\begin_layout Plain Layout
-
-            Base.metadata.create_all(self.engine)
-\end_layout
-
-\begin_layout Plain Layout
-
-        
-\end_layout
-
-\begin_layout Plain Layout
-
-        self.created_at = created_at         
-\end_layout
-
-\begin_layout Plain Layout
-
-        self.result = result
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Datenbankmodell Klassikation
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Der Programmcode 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "alg:accuracities"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- zeigt eine Datenbankabfrage die die Vorhersagewahrscheinlichkeit jeder
- Klasse ermittelt.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float algorithm
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
- def calc_accuracies():         
-\end_layout
-
-\begin_layout Plain Layout
-
-	      
-\end_layout
-
-\begin_layout Plain Layout
-
-	accuracies = {}         
-\end_layout
-
-\begin_layout Plain Layout
-
-	sess = Database().session()         
-\end_layout
-
-\begin_layout Plain Layout
-
-	for label in sess.query(DBResult.label):                 
-\end_layout
-
-\begin_layout Plain Layout
-
-		label = list(label)[0]                 
-\end_layout
-
-\begin_layout Plain Layout
-
-		acc_sum = sess.query(func.sum(DBResult.accuracy)                        
-              							).filter(DBResult.label == "{label}"                
-                               									  .format(label=label)).scalar()
-\end_layout
-
-\begin_layout Plain Layout
-
-        accuracies.update({label: round(acc_sum / Evaluation.count_predictions(lab
-el), 2)})
-\end_layout
-
-\begin_layout Plain Layout
-
-    sess.close()
+    });     
 \end_layout
 
 \begin_layout Plain Layout
@@ -1385,308 +391,361 @@ el), 2)})
 
 \begin_layout Plain Layout
 
-	return accuracies
-\end_layout
-
-\end_inset
-
-
+	axios({       
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+
+		method: 'get',       
+\end_layout
 
 \begin_layout Plain Layout
-Bestimmen der Vorhersagewahrscheinlichkeiten für jede Klasse
+
+		url: API,       
+\end_layout
+
+\begin_layout Plain Layout
+
+		config: {         
+\end_layout
+
+\begin_layout Plain Layout
+
+			headers: {           
+\end_layout
+
+\begin_layout Plain Layout
+
+				'Access-Control-Allow-Origin': '*',
+\end_layout
+
+\begin_layout Plain Layout
+
+	            'Content-Type': 'multipart/form-data'
+\end_layout
+
+\begin_layout Plain Layout
+
+	        	}       
+\end_layout
+
+\begin_layout Plain Layout
+
+			}     
+\end_layout
+
+\begin_layout Plain Layout
+
+		})
+\end_layout
+
+\begin_layout Plain Layout
+
+        .then((response) => {
+\end_layout
+
+\begin_layout Plain Layout
+
+			if (response.data.result) {           
+\end_layout
+
+\begin_layout Plain Layout
+
+				this.setState({             
+\end_layout
+
+\begin_layout Plain Layout
+
+					accuracies: response.data.result.accuracies,             
+\end_layout
+
+\begin_layout Plain Layout
+
+					amount: response.data.result.amount,             
+\end_layout
+
+\begin_layout Plain Layout
+
+					predictions: response.data.result.predictions,             
+\end_layout
+
+\begin_layout Plain Layout
+
+					correlation: response.data.result.coefs,             
+\end_layout
+
+\begin_layout Plain Layout
+
+					errorMean: response.data.result.err_mean_amount,             
+\end_layout
+
+\begin_layout Plain Layout
+
+					errorMeanPercentage: response.data.result.err_mean_perc,             
+\end_layout
+
+\begin_layout Plain Layout
+
+					errors: response.data.result.sum_errors,             
+\end_layout
+
+\begin_layout Plain Layout
+
+					errorsPercentage: response.data.result.error_percentages,            
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+					avgSavedTime: response.data.result.saved_time_amount,             
+\end_layout
+
+\begin_layout Plain Layout
+
+					avgSavedTimePercentage: response.data.result.saved_time_perc,        
+     
+\end_layout
+
+\begin_layout Plain Layout
+
+					loading: false           
+\end_layout
+
+\begin_layout Plain Layout
+
+				});      
+\end_layout
+
+\begin_layout Plain Layout
+
+			}         
+\end_layout
+
+\begin_layout Plain Layout
+
+			console.log(response);
+\end_layout
+
+\begin_layout Plain Layout
+
+        })       
+\end_layout
+
+\begin_layout Plain Layout
+
+		.catch(function (response) {
+\end_layout
+
+\begin_layout Plain Layout
+
+        	console.log(response);
+\end_layout
+
+\begin_layout Plain Layout
+
+	        console.log('error');
+\end_layout
+
+\begin_layout Plain Layout
+
+        });   
+\end_layout
+
+\begin_layout Plain Layout
+
+};
 \end_layout
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "alg:accuracities"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection*
-Geschäftslogik
 \end_layout
 
 \begin_layout Standard
-In der Geschäftslogik werden die Anfragen entgegengenommen und nötige Funktional
-itäten zur Bearbeitung der Anfragen angewandt.
- Außerdem werden die Datenbankabfragen über die Datenmodelle vorgenommen
-\end_layout
+Im Konstruktor der JavaScript-Objekt 
+\emph on
+Axios
+\emph default
 
-\begin_layout Standard
-\begin_inset Float algorithm
-wide false
-sideways false
+\begin_inset Foot
 status open
 
 \begin_layout Plain Layout
+https://github.com/axios/axios
+\end_layout
+
+\end_inset
+
+, wird die Anfragemethode, die anzusprechende URL und der Header über ein
+ JSON-Objekt definiert.
+ Wenn die Anfrage erfolgt ist und der Status Code im Rahmen von 200-399
+ ist, wird im Versprechen 
+\emph on
+.then()
+\emph default
+ mit der Antwort die Zustandsattribute der Komponente gesetzt.
+ Das 
+\emph on
+.catch()
+\emph default
+ Versprechen fängt einen Fehlerfall, der sich über ein Status Code der höher
+ als 399 ist, definiert und loggt die Antwort in die Browserkonsole, wenn
+ die Anfrage nicht erfolgreich war.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Davon ausgehend, dass die anfrage erfolgreich ist, sind die Daten vom Server,
+ die präsentiert werden sollen, in der Komponente gespeichert.
+ Unter diesen Daten befindet sich unter anderem Auflistungen bezüglich der
+ Fehleranzahl, die durchschnittliche Zeitersparnis, die Anzahl an Klassifikation
+en und die Zielsicherheit für jede Kategorie.
+\end_layout
+
+\begin_layout Subsection
+Rendern
+\end_layout
+
+\begin_layout Standard
+Damit die Daten in eine repräsentativ veranschaulicht im Webbrowser angezeigt
+ werden, müssen die Zustandsattribute an inkludierte Graph-Komponenten übergeben
+ werden.
+ Graphen-Komponenten werden über das Framework 
+\emph on
+react-chartjs-2
+\emph default
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://github.com/jerairrest/react-chartjs-2
+\end_layout
+
+\end_inset
+
+ zur Verfügung gestellt und erwarten eine JSON-Objekt für die Instanziierung
+ der Komponenten.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+Anhand des Programmcodes wird eine 
+\emph on
+Bar 
+\emph default
+Komponente anhand von zwei Listen, die zuvor durch die Anfrage als Zustandsattri
+bute gesetzt wurden, instanziiert.
+ Des Weiteren wird der Name des Graphen übergeben und ein JSON-Objekt für
+ die Optionen, mit welchen unter anderem die Höhe und Breite skaliert werden
+ können.
+\end_layout
+
+\begin_layout Standard
 \begin_inset listings
 inline false
 status open
 
 \begin_layout Plain Layout
 
-class Classification:
+<Bar                 
 \end_layout
 
 \begin_layout Plain Layout
 
-    def __init__(self, labels=labels):         
+	data={ErrorData(Object.keys(this.state.errorsPercentage),
 \end_layout
 
 \begin_layout Plain Layout
 
-		self.model = load_model('../../invoice_classifier.h5')         
+                	Object.values(this.state.errorsPercentage),
 \end_layout
 
 \begin_layout Plain Layout
 
-		self._labels = labels
+                	'Errors'                 
 \end_layout
 
 \begin_layout Plain Layout
 
-    
+	)}                 
 \end_layout
 
 \begin_layout Plain Layout
 
-	@property     
+	options={ErrorOptions}               
 \end_layout
 
 \begin_layout Plain Layout
 
-	def labels(self):         
+/>
 \end_layout
+
+\end_inset
+
+Die Listen sind jeweils die Schlüssel und die Werte von einem JSON-Objekt,
+ welches die Kategorien und Fehlerraten beinhaltet.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Durch das Rendern der Komponenteninstanz wird ein Graph, der in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:bar"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ aufgezeigt ist, in den Browser geladen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
 
-		return self._labels
+
+\backslash
+centering
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
 
-    
-\end_layout
 
-\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/graph.PNG
+	scale 60
 
-	@labels.setter     
-\end_layout
+\end_inset
 
-\begin_layout Plain Layout
 
-	def labels(self, values):         
-\end_layout
-
-\begin_layout Plain Layout
-
-	if type(values) is not list:             
-\end_layout
-
-\begin_layout Plain Layout
-
-		raise TypeError('labels needs to be passed as list!')         
-\end_layout
-
-\begin_layout Plain Layout
-
-	self._labels = values
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\end_layout
-
-\begin_layout Plain Layout
-
-	def classify(self, img):         
-\end_layout
-
-\begin_layout Plain Layout
-
-		y_prob = self.model.predict(img)
-\end_layout
-
-\begin_layout Plain Layout
-
-        y_classes = y_prob.argmax(axis=-1)
-\end_layout
-
-\begin_layout Plain Layout
-
-        max_y_prob = y_prob[0][y_prob.argmax(axis=-1)[0]]               
- 		
-\end_layout
-
-\begin_layout Plain Layout
-
-		max_percentage = round(float(max_y_prob) * 100, 2) 
-\end_layout
-
-\begin_layout Plain Layout
-
-		K.clear_session()   
-\end_layout
-
-\begin_layout Plain Layout
-
-      
-\end_layout
-
-\begin_layout Plain Layout
-
-		return max_percentage, y_classes
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\end_layout
-
-\begin_layout Plain Layout
-
-	def predict_class(self, req):
-\end_layout
-
-\begin_layout Plain Layout
-
-        decoded_img = decode_b64_to_img(req.get('file'), file_type=req.get('type')
-)
-\end_layout
-
-\begin_layout Plain Layout
-
-        if decoded_img is None:
-\end_layout
-
-\begin_layout Plain Layout
-
-            return         
-\end_layout
-
-\begin_layout Plain Layout
-
-		scaled_img = cv2.resize(decoded_img, (32, 32))
-\end_layout
-
-\begin_layout Plain Layout
-
-        rgb_img = cv2.cvtColor(scaled_img, cv2.COLOR_RGB2BGR)
-\end_layout
-
-\begin_layout Plain Layout
-
-        image_4d = rgb_img[np.newaxis, ...]
-\end_layout
-
-\begin_layout Plain Layout
-
-   
-\end_layout
-
-\begin_layout Plain Layout
-
-        max_y_prob, pred = self.classify(image_4d)         		self.db_entry(result=
-DBResult(label=self.labels[pred[0]],                                    
-   														accuracy=max_y_prob,                                  
-     													    img=DBImages(
-\end_layout
-
-\begin_layout Plain Layout
-
-															b64string=b64encode(scaled_img),                        
-                            						         name=req.get('name'),        
-                                            								   )))
-\end_layout
-
-\begin_layout Plain Layout
-
-		payload = {             
-\end_layout
-
-\begin_layout Plain Layout
-
-			'result':                 
-\end_layout
-
-\begin_layout Plain Layout
-
-				{                     
-\end_layout
-
-\begin_layout Plain Layout
-
-					'name': req.get('name'),                     
-\end_layout
-
-\begin_layout Plain Layout
-
-					'pred_class': self.labels[pred[0]],                     
-\end_layout
-
-\begin_layout Plain Layout
-
-					'accuracy': max_y_prob,
-\end_layout
-
-\begin_layout Plain Layout
-
-                }
-\end_layout
-
-\begin_layout Plain Layout
-
-		}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-        return payload
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-    	@staticmethod
-\end_layout
-
-\begin_layout Plain Layout
-
-		def db_entry(result):         
-\end_layout
-
-\begin_layout Plain Layout
-
-			DBClassification(result=result,                          
-\end_layout
-
-\begin_layout Plain Layout
-
-							 created_at=time_()).create_classification()
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:bar"
 
 \end_inset
 
@@ -1697,7 +756,7 @@ DBResult(label=self.labels[pred[0]],
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Bestimmen der Vorhersagewahrscheinlichkeiten für jedes label
+Fehlerquoten als Barchart
 \end_layout
 
 \end_inset
@@ -1711,6 +770,10 @@ Bestimmen der Vorhersagewahrscheinlichkeiten für jedes label
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 
 \end_layout
 

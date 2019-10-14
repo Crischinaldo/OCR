@@ -8,7 +8,7 @@
 \options bibliography=totoc,listof=totoc,BCOR=5mm,DIV=12
 \use_default_options true
 \maintain_unincluded_children false
-\language english
+\language ngerman
 \language_package default
 \inputencoding iso8859-1
 \fontencoding default
@@ -77,7 +77,7 @@
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style english
+\quotes_style german
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 2
@@ -122,18 +122,17 @@ Motivation
 \end_layout
 
 \begin_layout Standard
-Bei firmeninternen Schadensabwicklungen werden täglich eine Vielzahl von
- Bildern von Rechnungsbelegen hochgeladen, die auf einen Archiv-Server gespeiche
-rt werden.
- Darüber hinaus werden Formulare ausgefüllt, um Schäden zu protokollieren.
- Da die in die Formularfelder eingetragenen Informationen aber in Textform
- auf den Rechnungsbelegen vorliegen, besteht die Motivation daraus das Ausfüllen
- des Formulars zu automatisieren.
+Bei unternehmensinternen Schadensabwicklungen werden für die Schadensprotokollie
+rung eine Vielzahl von Dokumenten hochgeladen, die auf einem Server gespeichert
+ werden.
+ Die hoch geladenen Belegarten umfassen Rechnungsbelege, aus denen Informationen
+ extrahiert werden können, damit die Daten für zu automatisierende Prozesse
+ zur Verfügung stehen.
 \end_layout
 
 \begin_layout Standard
 \noindent
-\begin_inset VSpace 0.5cm
+\begin_inset VSpace bigskip
 \end_inset
 
 
@@ -141,22 +140,24 @@ rt werden.
 
 \begin_layout Standard
 \noindent
-Machine Learning gewinnt immer mehr an Bedeutung, was sich an diesem Anwendungsf
-all zeigt.
- Aus Sicht des Kunden ist die Automatisierung der Schadensabwicklung ein
- Ersparniss an Zeit und Aufwand.
- Ökonomisch gesehen erzielt die KI also einen Vorteil für den Kunden.
+Maschinelles Lernen ist in vielen Gebieten nicht mehr wegzudenken und gewinnt
+ immer mehr an Bedeutung.
+ Aus Sicht des Kunden ist die Automatisierung der Schadensprotokollierung
+ mit einem ökonomischen Gewinn verbunden.
+ Das Ausfüllen von Formularen ist mit einem großen Ressourcenverbrauch der
+ Kunden unserer Plattform verbunden.
+ Eine automatisierte Belegerkennung mit anschließender Textextraktion führt
+ zu einer Vergrößerung der Personalkapazitäten externer Unternehmen.
+ Der heutige Stand der Technik ermöglicht es anhand großer Datenmengen eine
+ Lösung für das Problem realisieren.
+ Das Anwenden von Maschinellem Lernen leistet einen beachtlichen Beitrag
+ zur Ressourceneinsparung und Unternehmensstrategien, weshalb das Ziel der
+ Unternehmung Gewinne zu maximieren effektiver verfolgt werden kann.
 \end_layout
 
 \begin_layout Standard
 \noindent
-Eine Automatisierung über Bilderkennung würde den Kunden viel Zeit ersparen
- und somit dem Unternehmen ein enormen Wettbewerbsvorteil verschaffen.
-\end_layout
-
-\begin_layout Standard
-\noindent
-\begin_inset VSpace 0.5cm
+\begin_inset VSpace bigskip
 \end_inset
 
 
@@ -164,22 +165,17 @@ Eine Automatisierung über Bilderkennung würde den Kunden viel Zeit ersparen
 
 \begin_layout Standard
 \noindent
-Durch Datenbestände in kann eine künstliche Intelligenz trainiert werden
- Muster zu erkennen und eigenständig Lösungen für Probleme zu finden.
- Durch das Füttern der Datenbestände an den Klassifikator wird eine Trainingspha
-se durchlaufen.
+Durch einen großen Datenbestand kann Maschinelles Lernen realisiert werden
+ und dafür eingesetzt werden eigenständig Lösungen für Probleme zu finden.
+ Die Nutzung der Technologie ist ein wichtiger Schritt sich gegen konkurrierende
+ Unternehmen durchzusetzen und die Kunden an das Unternehmen zu binden.
+ Die Adaption des Unternehmens hinsichtlich auf Maschinellem Lernen schafft
+ gegenüber nicht adaptierenden Unternehmen einen großen Wettbewerbsvorteil.
 \end_layout
 
 \begin_layout Standard
 \noindent
-Auf dem Archivserver ist eine Vielzahl von Bildern vorhanden, welche als
- Trainingsdaten genutzt werden um den Klassifikator auf zukünftige Prognosen
- vorzubereiten.
-\end_layout
-
-\begin_layout Standard
-\noindent
-\begin_inset VSpace 0.5cm
+\begin_inset VSpace bigskip
 \end_inset
 
 
@@ -187,9 +183,11 @@ Auf dem Archivserver ist eine Vielzahl von Bildern vorhanden, welche als
 
 \begin_layout Standard
 \noindent
-Es gibt eine Vielzahl von Klassifikatoren, die jeweils Anwendungsgebiete
- haben, in denen sie besonders gut Probleme Prognostizieren können.
- Im Bereich der Bild- und Texterkennung sind Neuronale Netze sehr effektiv.
+Die vorhandenen Datenbestände sind heutzutage als Wirtschaftsgut angesehen,
+ die jedoch unternehmensintern nicht kapitalisiert werden.
+ Im Rahmen dieser Arbeit sollen Unternehmen durch einen Anwendungsfall der
+ Eindruck vermittelt werden, dass Datenbestände einen hohen Wert haben und
+ sie genutzt werden sollten.
 \end_layout
 
 \begin_layout Section
@@ -197,24 +195,28 @@ Problemstellung
 \end_layout
 
 \begin_layout Standard
-Beim Ausfüllen des Formulares geht Zeit und Aufwand verloren.
- Durch Machine Learning soll dieser Prozess automatisiert werden.
- Die Adaption bezüglich Machine Learning schafft gegenüber nicht adaptierenden
- Unternehmen einen Wettbewerbsvorteil und sichert dem Unternehmen einen
- hohen Markstellenwert.
+Um die Datenbestände zu nutzen sind einige Vorbereitungen zu treffen um
+ sie in eine geeignete Struktur zu bringen.
+ Des Weiteren muss die richtige Wahl des Klassifikators abhängig von den
+ potentiellen Erkennungsmerkmalen getroffen werden.
+ Sobald der Klassifikator in der Lage ist Rechnungsbelege von anderen Belegen
+ zu unterscheiden, ist eine Textextraktion abhängig von festgelegten Koordinaten
+ durchzuführen.
+ Da die Koordinaten jedoch sich Unternehmens-abhängig unterscheiden, müssen
+ Rechnungsbelege auch untereinander klassifiziert werden.
+ Die Ergebnisse der Klassifikation und Textextraktion sollen mit quantitativen
+ Gebrauch evaluiert werden um eine zielgenaue Bewertung zu berechnen.
 \end_layout
 
 \begin_layout Standard
 \noindent
-Der hochgeladene Beleg soll durch ein Klassifikator kategorisiert und somit
- der Belegtyp festgestellt werden.
-\end_layout
+\begin_inset VSpace bigskip
+\end_inset
 
-\begin_layout Standard
-\noindent
-Der bei der Schadensabwicklung hochgeladene Beleg beinhaltet Daten, die
- in die Formularfelder eingetragen werden müssen.
- Das Ausfüllen wird durch eine künstliche Intelligenz automatisiert.
+Aus der Sicht des Komplexitätsniveaus sollten universell einsetzbare Funktionali
+täten gekapselt werden und Unternehmens-übergreifend eingesetzt werden können.
+ Es muss eine Infrastruktur geschaffen werden, die Entwickler nutzen können
+ um die entsprechende Funktionalität nutzen zu können.
 \end_layout
 
 \begin_layout Section
@@ -222,59 +224,148 @@ Zielsetzung
 \end_layout
 
 \begin_layout Standard
+Durch das Sortierten der Daten wird der Grundbaustein zum Erstellen eines
+ Klassifikatoren geschaffen.
+ Da die Daten höchst vertraulich sind werden sie mit höchster Sensibilität
+ behandelt.
+ Der Klassifikator wird unternehmensintern mit einer kleinen Teilmenge trainiert
+ und wird einen prototypischen Zustand haben.
+ Er soll in der Lage sein zwei Belegarten voneinander trennen zu können.
+ Die Klassifikation finden anhand des Textes statt und muss daher von den
+ Bildern extrahiert werden, bevor die Textklassifikation erfolgt.
+\end_layout
+
+\begin_layout Standard
 \noindent
-Durch eine sinnvolle Implementierung zweier Klassifikatoren soll das Ausfüllen
- eines Schadensabwicklungsformular durch einen Bildupload automatisiert
+\begin_inset VSpace bigskip
+\end_inset
+
+Die Koordinaten der zu extrahierenden Informationen werden für ein bestimmtes
+ Muster für Rechnungsbelege errechnet.
+ Auf Basis der Koordinaten werden bestimmte Regionen aus den Bild extrahiert
+ und in ein strukturiertes Format gebracht.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset VSpace bigskip
+\end_inset
+
+Durch eine Kapselung von Klassifikator und Extraktion können die Funktionalitäte
+n eindeutig über eine Schnittstelle angesprochen werden.
+ Zudem sollen die Schnittstellen Ergebnisse liefern, die beispielsweise
+ über das Dashboard aufrufbar sind.
+ Das Dashboard wird sowohl als Schauplatz für den Klassifikations- und Extraktio
+nsprozess als auch für die visuelle Darstellung von Ergebnissen fungieren.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Die Arbeit soll dem Unternehmen die Welt des Maschinellen Lernens näher
+ bringen und dazu aufrufen das Potential der Daten zu nutzen.
+ Durch eine moderne Architektur können gekapselte und intelligente Komponenten
+ nicht nur Unternehmensintern genutzt werden, sondern geschickt vermarktet
  werden.
- Die Auswahl Der Klassifkationsmodelle sollen für die Aufgaben passend ausgewähl
-t werden.
- Es soll eine möglichst hohe Präzisionsrate für Probleme erzielt werden.
- Weiterhin soll eine Schnittstelle die Ergebnisse der Klassifikation abfangen
- und auf einem Dashboard sammeln um diese dann zu visualisieren.
-\end_layout
-
-\begin_layout Standard
-\noindent
-Es soll eine Stufenweise Klassifikation stattfinden:
-\end_layout
-
-\begin_layout Enumerate
-\noindent
-Klassifikation der Belege
-\end_layout
-
-\begin_layout Enumerate
-\noindent
-Extraktion der Informationen auf Basis der Belegart durch OCR (optical character
- recognition)
-\end_layout
-
-\begin_layout Standard
-\noindent
-Die Trainingsphase soll den Klassifikator effektiv auf bevorstehende Mustererken
-nungen vorbereiten.
- Die vorhandenen Trainingsdaten sollen aufbereitet werden und dem Klassifikation
-smodell übergeben werden.
 \end_layout
 
 \begin_layout Section
-Gliederung der Arbeit
+Grundaufbau der Arbeit
 \end_layout
 
 \begin_layout Standard
-Die Arbeit unterteilt sich in momentan 3 Kernbereiche:
+In diesem Unterkapitel wird die grundlegende Struktur der Arbeit kurz zusammenge
+fasst und erläutert, um den Leser einen Überblick über die Inhalte dieser
+ Arbeit zu geben
 \end_layout
 
-\begin_layout Itemize
-Dokumentenerkennung (Document Image Analysis)
+\begin_layout Subsubsection
+Kapitel 1 - Grundlagen
 \end_layout
 
-\begin_layout Itemize
-Bilderkennung mit einem neuronalen Netz
+\begin_layout Standard
+Die Grundlagen sollen dem Leser die Kenntnisse vermittelt werden, die es
+ braucht, um die Arbeit grundlegend zu verstehen.
+ Durch das Kapitel wird Basiswissen über Maschinelles Lernen, OCR und über
+ die serviceorientierten Architektur vermittelt.
 \end_layout
 
-\begin_layout Itemize
-OCR mit Tesseract
+\begin_layout Subsubsection
+Kapitel 2 - Anforderungen
+\end_layout
+
+\begin_layout Standard
+Die Anforderungen beinhalten die Spezifikationen von sowohl funktionalen
+ als auch technischen Produktanforderungen.
+ Es werden die Anwendungsfälle definiert und anhand von Diagrammen illustriert.
+\end_layout
+
+\begin_layout Subsubsection
+Kapitel 3 - Entwicklung des Textklassifikators
+\end_layout
+
+\begin_layout Standard
+Dieses Kapitel befasst sich mit dem gesamten Entwicklungsprozess des Klassifikat
+ors einschließlich der Aufbereitung der Daten.
+ Zudem wird die Wahl und Funktionsweise und die Implementierung des Klassifikato
+rs erläutert.
+\end_layout
+
+\begin_layout Subsubsection
+Kapitel 4 - Entwicklung der Textextraktion
+\end_layout
+
+\begin_layout Standard
+Kapitel 5 soll einen Eindruck geben wie die Koordinaten für die Extraktion
+ errechnet werden und wie daraus erfasste Informationen extrahiert und strukturi
+ert werden.
+ Es wird ein Überblick über die Herangehensweise der Koordinatenbestimmung
+ der interessanten Regionen und dessen Implementierung verschafft.
+\end_layout
+
+\begin_layout Subsubsection
+Kapitel 5 - Evaluation
+\end_layout
+
+\begin_layout Standard
+Dieser Abschnitt durchläuft die Ergebnisbestimmung der Textklassifikation
+ sowie die durchschnittliche Zeitersparnis durch die Prozessautomatisierung
+\end_layout
+
+\begin_layout Subsubsection
+Kapitel 6 - Entwicklung des Servers
+\end_layout
+
+\begin_layout Standard
+Die Entwicklung des Servers beschreibt die Architektur und Implementierung
+ der serverseitigen Logik.
+ Das Kapitel behandelt die Kommunikationsschnittstelle zur Textklassifizierung
+ und der Textextraktion sowie deren Integration.
+\end_layout
+
+\begin_layout Subsubsection
+Kapitel 7 - Entwicklung des Clients
+\end_layout
+
+\begin_layout Standard
+In diesem Kapitel wird die Entwicklung des Dashboards dokumentiert.
+ Die Implementierung und die Architektur der clientseitigen Logik werden
+ in diesem Abschnitt erläutert.
+\end_layout
+
+\begin_layout Subsubsection
+Kapitel 8 - Struktur und Installation
+\end_layout
+
+\begin_layout Standard
+Es werden dem Leser die Struktur und Installation des Projekts vermittelt.
 \end_layout
 
 \begin_layout Standard

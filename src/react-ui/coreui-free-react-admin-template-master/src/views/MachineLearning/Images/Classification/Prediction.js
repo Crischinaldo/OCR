@@ -52,9 +52,15 @@ class Prediction extends Component {
               </Col>
             </Row>
           <hr className="my-2" />
-          <p>Do you want to do a text extraction on the document?</p>
 
-          <Button color="info" onClick={() => this.onClickExtract()}>Yes, Extract!</Button>
+            {this.props.predictedClass === "invoice"
+              ? <div className="animated fadeIn">
+              <p>Do you want to do a text extraction on the document?</p>
+              <Button color="info" onClick={() => this.onClickExtract()}>Yes, Extract!</Button>
+              </div>
+              : null
+            }
+
           </CardBody>
         </Card>
         {

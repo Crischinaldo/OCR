@@ -1,6 +1,12 @@
-10-04 23:45 werkzeug     WARNING   * Debugger is active!
-10-04 23:45 werkzeug     INFO      * Debugger PIN: 223-082-306
-10-04 23:45 werkzeug     INFO      * Running on http://127.0.0.1:8090/ (Press CTRL+C to quit)
-10-04 23:45 service.logging_ INFO     /machine-learning/classification - has been entered...
-10-04 23:45 service.logging_ INFO     /evaluation - Request-method: "GET"
-10-04 23:45 werkzeug     INFO     127.0.0.1 - - [04/Oct/2019 23:45:16] "[37mGET /classification HTTP/1.1[0m" 200 -
+10-14 05:05 werkzeug     WARNING   * Debugger is active!
+10-14 05:05 werkzeug     INFO      * Debugger PIN: 223-082-306
+10-14 05:05 werkzeug     INFO      * Running on http://127.0.0.1:8090/ (Press CTRL+C to quit)
+10-14 05:07 service.logging_ INFO     /machine-learning/classification - has been entered...
+10-14 05:07 service.logging_ INFO     /evaluation - Request-method: "GET"
+10-14 05:07 werkzeug     INFO     127.0.0.1 - - [14/Oct/2019 05:07:53] "[37mGET /classification HTTP/1.1[0m" 200 -
+10-14 05:08 service.logging_ INFO     /machine-learning/classification - has been entered...
+10-14 05:08 service.logging_ INFO     /evaluation - Request-method: "GET"
+10-14 05:08 werkzeug     INFO     127.0.0.1 - - [14/Oct/2019 05:08:04] "[37mGET /classification HTTP/1.1[0m" 200 -
+10-14 05:42 service.logging_ INFO     /machine-learning/classification - has been entered...
+10-14 05:42 service.logging_ INFO     /evaluation - Request-method: "GET"
+10-14 05:42 werkzeug     INFO     127.0.0.1 - - [14/Oct/2019 05:42:02] "[37mGET /classification HTTP/1.1[0m" 200 -
