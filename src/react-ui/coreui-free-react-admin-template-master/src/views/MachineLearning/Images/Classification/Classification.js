@@ -31,7 +31,7 @@ class Classification extends Component {
 
    onDrop  = async (files) => {
     console.log(files[0]);
-    const API = "http://127.0.0.1:8090/classification";
+    const API = "http://127.0.0.1:5001/classification";
     let formData = new FormData();
     try {
         for (const file of files) {

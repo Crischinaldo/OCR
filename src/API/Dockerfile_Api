@@ -1,5 +1,22 @@
 FROM python:3
 
+RUN apt-get -qq update && \
+    apt-get -q -y upgrade && \
+    apt-get install -y sudo curl wget locales
+
+RUN apt-get install tesseract-ocr-deu -y
+   # apt-get install libtesseract-dev -y
+
+
+RUN sed -i -e 's/# de_DE.UTF-8 UTF-8/de_DE.UTF-8 UTF-8/' /etc/locale.gen && \
+    locale-gen
+ENV LANG de_DE.UTF-8 
+ENV LANGUAGE de_DE:de  
+ENV LC_ALL de_DE.UTF-8  
+
+
+
+#RUN dpkg-reconfigure locales
 WORKDIR /usr/src/app
 
 COPY ./requirements.txt ./
@@ -7,4 +24,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY ./src .
 
-CMD ["python", "src/app.py"]
+CMD ["python", "-u", "src/app.py"]

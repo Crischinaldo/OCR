@@ -15,7 +15,7 @@ class Database:
         drivername = 'postgresql'
         user = 'postgres'
         password = 'postgres'
-        host = 'localhost'
+        host = '172.18.0.2'
         database = 'docrec1'
 
         connection = '{drivername}://{user}:{password}@{host}/{database}'.format(

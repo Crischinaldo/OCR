@@ -37,7 +37,7 @@ class Evaluation:
     def durations():
 
         analytic = {}
-        with open('../data/evaluation.json', 'r') as json_file:
+        with open('./data/evaluation.json', 'r') as json_file:
             evaluation = json.load(json_file)
 
         analytic.update(evaluation)

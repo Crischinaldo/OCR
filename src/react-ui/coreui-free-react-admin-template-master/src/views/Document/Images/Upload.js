@@ -35,7 +35,7 @@ class Upload extends Component {
 };
 
   onDrop  = async (files) => {
-    const API = "http://localhost:8090/files";
+    const API = "http://127.0.0.1:5001/files";
     this.setState({
       files: this.state.files.concat(files),
       selectedFile: files[0]

@@ -18,7 +18,7 @@ class ClassificationException(Exception):
 
 
 class Classification:
-    text_clf = '../text_clf.sav'
+    text_clf = './text_clf.sav'
 
     def __init__(self, labels=labels):
         self.extractor = TextExtractor

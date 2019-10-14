@@ -8,15 +8,14 @@ import pandas as pd
 from pytesseract import Output
 from models.extraction.roi.coordinates import Coordinates
 from models.extraction.roi.invoice import RegionOfInterest
-locale.setlocale(locale.LC_ALL, 'german')
+
+locale.setlocale(locale.LC_ALL, "de_DE.UTF-8")
+    
 
 
 class TextExtractor:
 
-    tesseract_path = 'C:/Program Files/Tesseract-OCR/tesseract'
-
     def __init__(self):
-        pytesseract.pytesseract.tesseract_cmd = self.tesseract_path
         self.extractor = pytesseract
         self.patterns = {
             'balance_due': '\d{1,3}(?:[.]\d{3})*(?:[,]\d{2})',
@@ -72,7 +71,6 @@ class TextExtractor:
                 invoice_details = self.split_data(rec_text, labelled=True)
                 if invoice_details:
                     extraction.update({label: invoice_details})
-
 
         return {'result': extraction}
 

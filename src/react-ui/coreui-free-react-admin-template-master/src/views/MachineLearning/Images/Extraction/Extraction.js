@@ -19,7 +19,7 @@ class Extraction extends Component {
   extractedText = (file) => {
 
 
-    const API = "http://127.0.0.1:8090/extraction";
+    const API = "http://127.0.0.1:5001/extraction";
     let formData = new FormData();
     try {
 

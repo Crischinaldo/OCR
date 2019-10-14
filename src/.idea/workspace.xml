@@ -5,76 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="04cdebf0-ab62-4890-b0f3-78617639ad54" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../doc/documentation/#chapter2.lyx#" beforeDir="false" afterPath="$PROJECT_DIR$/../doc/documentation/#chapter2.lyx#" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../doc/documentation/#chapter3.lyx#" beforeDir="false" afterPath="$PROJECT_DIR$/../doc/documentation/#chapter3.lyx#" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../doc/documentation/#chapter5.lyx#" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../doc/documentation/#chapter6.lyx#" beforeDir="false" afterPath="$PROJECT_DIR$/../doc/documentation/#chapter6.lyx#" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../doc/documentation/#chapter7.lyx#" beforeDir="false" afterPath="$PROJECT_DIR$/../doc/documentation/#chapter7.lyx#" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../doc/documentation/abstract.lyx" beforeDir="false" afterPath="$PROJECT_DIR$/../doc/documentation/abstract.lyx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../doc/documentation/bib/thesis.bib" beforeDir="false" afterPath="$PROJECT_DIR$/../doc/documentation/bib/thesis.bib" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../doc/documentation/chapter1.lyx" beforeDir="false" afterPath="$PROJECT_DIR$/../doc/documentation/chapter1.lyx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../doc/documentation/chapter2.lyx" beforeDir="false" afterPath="$PROJECT_DIR$/../doc/documentation/chapter2.lyx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../doc/documentation/chapter3.lyx" beforeDir="false" afterPath="$PROJECT_DIR$/../doc/documentation/chapter3.lyx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../doc/documentation/chapter4.lyx" beforeDir="false" afterPath="$PROJECT_DIR$/../doc/documentation/chapter4.lyx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../doc/documentation/chapter5.lyx" beforeDir="false" afterPath="$PROJECT_DIR$/../doc/documentation/chapter5.lyx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../doc/documentation/chapter6.lyx" beforeDir="false" afterPath="$PROJECT_DIR$/../doc/documentation/chapter6.lyx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../doc/documentation/chapter7.lyx" beforeDir="false" afterPath="$PROJECT_DIR$/../doc/documentation/chapter7.lyx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../doc/documentation/chapter8.lyx" beforeDir="false" afterPath="$PROJECT_DIR$/../doc/documentation/chapter8.lyx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../doc/documentation/declaration-thl.lyx" beforeDir="false" afterPath="$PROJECT_DIR$/../doc/documentation/declaration-thl.lyx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../doc/documentation/images/services.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/../doc/documentation/images/services.PNG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../doc/documentation/introduction.lyx" beforeDir="false" afterPath="$PROJECT_DIR$/../doc/documentation/introduction.lyx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../doc/documentation/thesis.lyx" beforeDir="false" afterPath="$PROJECT_DIR$/../doc/documentation/thesis.lyx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../doc/documentation/title-thl.lyx" beforeDir="false" afterPath="$PROJECT_DIR$/../doc/documentation/title-thl.lyx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/block_detection-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/count_vectorizer-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/img-checkpoint.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/img-checkpoint.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/shit-checkpoint.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/API_log.log" beforeDir="false" afterPath="$PROJECT_DIR$/API/API_log.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/controllers/extraction.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/controllers/extraction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/API/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Dockerfile_Api" beforeDir="false" afterPath="$PROJECT_DIR$/API/Dockerfile_Api" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/src/models/classification.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/models/classification.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/src/models/evaluation.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/models/evaluation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/models/extraction.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/models/extraction/extraction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/text_clf.sav" beforeDir="false" afterPath="$PROJECT_DIR$/API/text_clf.sav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/block_detection.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/count_vectorizer.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/german-cities.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/german-cities.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/invoice1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mic/.ipynb_checkpoints/invoice_test-checkpoint" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mic/.ipynb_checkpoints/lieferbeleg0-checkpoint.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mic/.ipynb_checkpoints/lieferbeleg1-checkpoint.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mic/.ipynb_checkpoints/lieferbeleg2-checkpoint.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mic/Lieferschein-Muster-9-Lieferschein-Muster-Word-Of-Lieferschein-Muster.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mic/Vorlage-Paketaufkleber-Word-Schonste-Schon-Lieferschein-Vorlage-Zeitgenossisch-Entry-Level-Of-Vorlage-Paketaufkleber-Word.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mic/delivery_data.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mic/invoice0.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mic/invoice2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mic/invoice3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mic/invoice4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mic/lieferbeleg0.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mic/lieferbeleg1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mic/lieferbeleg2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mic/lieferbeleg3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mic/pages_vorlage_lieferschein_a.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mic/raw/Layout-Lieferschein-Seite-11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mic/raw/Lieferschein-Beispiel.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mic/raw/Lieferschein-Muster-2014-voll.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mic/raw/Lieferschein_Vorlage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/_nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/_nav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/scss/_custom.scss" beforeDir="false" afterPath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/scss/_custom.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/models/extraction/extraction.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/models/extraction/extraction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/service/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/service/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-ui/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-ui/Dockerfile_ui" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Dashboard/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Dashboard/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Documentation/Documentation.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Documentation/REST/RestApi.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Documentation/REST/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Documentation/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Images/Classification/Prediction.js" beforeDir="false" afterPath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Images/Classification/Prediction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Document/Images/Upload.js" beforeDir="false" afterPath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Document/Images/Upload.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Images/Classification/Classification.js" beforeDir="false" afterPath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Images/Classification/Classification.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Images/Extraction/Extraction.js" beforeDir="false" afterPath="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Images/Extraction/Extraction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rechnung.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rechnung.png" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -102,19 +46,22 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/_nav.js">
+        <entry file="file://$PROJECT_DIR$/API/Dockerfile_Api">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+            <state relative-caret-position="272">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/routes.js">
+        <entry file="file://$PROJECT_DIR$/API/src/service/database.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
+            <state relative-caret-position="68">
+              <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#36#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -122,8 +69,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/API/src/models/classification.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+            <state relative-caret-position="1136">
+              <caret line="74" selection-start-line="74" selection-end-line="74" />
               <folding>
                 <element signature="e#1#36#0" expanded="true" />
               </folding>
@@ -132,22 +79,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/API/src/controllers/classification.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
-              <caret line="21" column="36" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
-              <folding>
-                <element signature="e#24#69#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Dashboard/Dashboard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
-              <caret line="170" column="18" selection-start-line="170" selection-start-column="18" selection-end-line="170" selection-end-column="18" />
+            <state relative-caret-position="194">
+              <caret line="26" column="24" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
               <folding>
                 <element signature="e#0#42#0" expanded="true" />
               </folding>
@@ -156,45 +91,24 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/API/src/models/extraction/extraction.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="369">
-              <caret line="20" column="12" lean-forward="true" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Images/Classification/Classification.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="9" selection-start-line="9" selection-end-line="9" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Statistic/BarChart.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
-              <folding>
-                <element signature="e#17#43#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/API/src/models/evaluation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="651">
-              <caret line="39" column="24" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
+            <state relative-caret-position="663">
+              <caret line="39" column="19" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/API/src/models/extraction/extraction.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -245,14 +159,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Document/Images/Archive.js" />
-        <option value="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Documentation/Documentation.js" />
         <option value="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Base/Collapses/Collapses.js" />
         <option value="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Base/Tables/Tables.js" />
         <option value="$PROJECT_DIR$/API/src/controllers/files.py" />
         <option value="$PROJECT_DIR$/API/src/models/db/files.py" />
         <option value="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/App.js" />
-        <option value="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Document/Images/Upload.js" />
         <option value="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Prediction.js" />
         <option value="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Evaluation/Evaluation.js" />
         <option value="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Extraction.js" />
@@ -267,13 +178,11 @@
         <option value="$PROJECT_DIR$/API/src/service/validation.py" />
         <option value="$PROJECT_DIR$/API/src/controllers/evaluation.py" />
         <option value="$PROJECT_DIR$/API/src/controllers/home.py" />
-        <option value="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Images/Classification/Classification.js" />
         <option value="$PROJECT_DIR$/API/src/models/db/classifications.py" />
         <option value="$PROJECT_DIR$/API/src/service/_globals.py" />
         <option value="$PROJECT_DIR$/API/requirements.txt" />
         <option value="$PROJECT_DIR$/API/src/models/__init__.py" />
         <option value="$PROJECT_DIR$/API/src/__init__.py" />
-        <option value="$PROJECT_DIR$/API/src/app.py" />
         <option value="$PROJECT_DIR$/API/src/service/helpers.py" />
         <option value="$PROJECT_DIR$/API/src/service/preprocessing.py" />
         <option value="$PROJECT_DIR$/API/src/models/extraction.py" />
@@ -285,25 +194,30 @@
         <option value="$PROJECT_DIR$/API/src/models/extraction/roi/coordinates.py" />
         <option value="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/_nav.js" />
         <option value="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/routes.js" />
-        <option value="$PROJECT_DIR$/API/src/models/extraction/extraction.py" />
-        <option value="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Images/Extraction/Extraction.js" />
         <option value="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Images/Classification/Prediction.js" />
         <option value="$PROJECT_DIR$/API/src/controllers/classification.py" />
         <option value="$PROJECT_DIR$/API/data/durations.json" />
         <option value="$PROJECT_DIR$/API/evaluation.json" />
-        <option value="$PROJECT_DIR$/API/src/models/evaluation.py" />
         <option value="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Statistic/BarChart.js" />
         <option value="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/scss/_custom.scss" />
-        <option value="$PROJECT_DIR$/API/src/models/classification.py" />
+        <option value="$PROJECT_DIR$/API/src/app.py" />
         <option value="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Dashboard/Dashboard.js" />
+        <option value="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Document/Images/Upload.js" />
+        <option value="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Images/Classification/Classification.js" />
+        <option value="$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Images/Extraction/Extraction.js" />
+        <option value="$PROJECT_DIR$/API/src/models/classification.py" />
+        <option value="$PROJECT_DIR$/API/src/service/database.py" />
+        <option value="$PROJECT_DIR$/API/src/models/evaluation.py" />
+        <option value="$PROJECT_DIR$/API/Dockerfile_Api" />
+        <option value="$PROJECT_DIR$/API/src/models/extraction/extraction.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="-29" />
-    <option name="y" value="48" />
-    <option name="width" value="1895" />
-    <option name="height" value="1046" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="657" />
+    <option name="y" value="160" />
+    <option name="width" value="1896" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -348,75 +262,14 @@
             <path>
               <item name="src" type="b2602c69:ProjectViewProjectNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="react-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="API" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="src" type="b2602c69:ProjectViewProjectNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="react-ui" type="462c0819:PsiDirectoryNode" />
-              <item name="coreui-free-react-admin-template-master" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="src" type="b2602c69:ProjectViewProjectNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="react-ui" type="462c0819:PsiDirectoryNode" />
-              <item name="coreui-free-react-admin-template-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="src" type="b2602c69:ProjectViewProjectNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="react-ui" type="462c0819:PsiDirectoryNode" />
-              <item name="coreui-free-react-admin-template-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="scss" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="src" type="b2602c69:ProjectViewProjectNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="react-ui" type="462c0819:PsiDirectoryNode" />
-              <item name="coreui-free-react-admin-template-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="src" type="b2602c69:ProjectViewProjectNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="react-ui" type="462c0819:PsiDirectoryNode" />
-              <item name="coreui-free-react-admin-template-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="MachineLearning" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="src" type="b2602c69:ProjectViewProjectNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="react-ui" type="462c0819:PsiDirectoryNode" />
-              <item name="coreui-free-react-admin-template-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="MachineLearning" type="462c0819:PsiDirectoryNode" />
-              <item name="Images" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="src" type="b2602c69:ProjectViewProjectNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="react-ui" type="462c0819:PsiDirectoryNode" />
-              <item name="coreui-free-react-admin-template-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="MachineLearning" type="462c0819:PsiDirectoryNode" />
-              <item name="Images" type="462c0819:PsiDirectoryNode" />
-              <item name="Classification" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="src" type="b2602c69:ProjectViewProjectNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="react-ui" type="462c0819:PsiDirectoryNode" />
-              <item name="coreui-free-react-admin-template-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="Statistic" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -428,7 +281,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/API" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -519,11 +372,12 @@
       <workItem from="1570477208988" duration="6365000" />
       <workItem from="1570919705491" duration="9115000" />
       <workItem from="1570991613604" duration="5534000" />
+      <workItem from="1571031689373" duration="5696000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="253175000" />
+    <option name="totallyTimeSpent" value="258871000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -535,10 +389,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-29" y="48" width="1895" height="1046" extended-state="1" />
+    <frame x="-2" y="73" width="1264" height="698" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.88178915" visible="true" weight="0.24795641" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.88178915" visible="true" weight="0.25207296" />
       <window_info id="Structure" order="1" sideWeight="0.11821086" side_tool="true" weight="0.16968085" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -552,7 +406,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.3533569" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.24424973" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.24338624" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32902467" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -592,29 +446,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Dashboard/Dashboard.js</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/App.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="14" column="81" selection-start-line="14" selection-start-column="81" selection-end-line="14" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/node_modules/react-pdf/src/pdf.worker.entry.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -628,16 +465,6 @@
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/.PyCharm2018.3/system/python_stubs/-762174762/__builtin__.py" />
-    <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Document/Images/Upload.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="26" lean-forward="true" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Pages/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
@@ -691,7 +518,6 @@
     <entry file="file://$PROJECT_DIR$/API/src/service/logging_.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/API/API_log.log" />
     <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -737,23 +563,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/API/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/src/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="12" column="42" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
-          <folding>
-            <element signature="e#58#81#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/API/src/models/extraction/region.py" />
     <entry file="file://$PROJECT_DIR$/API/src/models/extraction/roi/coordinates.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -779,13 +588,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Images/Classification/Prediction.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="718">
-          <caret line="63" column="3" selection-start-line="63" selection-start-column="3" selection-end-line="63" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/API/data/durations.json" />
     <entry file="file://$PROJECT_DIR$/API/timedata.json" />
     <entry file="file://$PROJECT_DIR$/API/src/controllers/extraction.py">
@@ -808,13 +610,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Images/Extraction/Extraction.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1953">
-          <caret line="113" column="52" lean-forward="true" selection-start-line="113" selection-start-column="52" selection-end-line="113" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/scss/style.scss">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -825,10 +620,78 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/API/data/evaluation.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="41" selection-start-column="41" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/_nav.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/src/controllers/classification.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="21" column="36" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
+          <folding>
+            <element signature="e#24#69#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Document/Images/Upload.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="37" column="38" selection-start-line="37" selection-start-column="38" selection-end-line="37" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Dashboard/Dashboard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="26" column="24" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Images/Extraction/Extraction.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="18" column="29" lean-forward="true" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Images/Classification/Prediction.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/MachineLearning/Images/Classification/Classification.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" selection-start-line="9" selection-end-line="9" selection-end-column="37" />
+        <state relative-caret-position="255">
+          <caret line="33" column="38" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="38" />
+          <folding>
+            <element signature="e#27#67#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -842,73 +705,69 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/API/src/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="e#58#81#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/API_log.log">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/src/service/database.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/API/src/models/evaluation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="651">
-          <caret line="39" column="24" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
+        <state relative-caret-position="663">
+          <caret line="39" column="19" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/API/data/evaluation.json">
+    <entry file="file://$PROJECT_DIR$/API/Dockerfile_Api">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="41" selection-start-column="41" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/_nav.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        <state relative-caret-position="272">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/API/src/models/classification.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+        <state relative-caret-position="1136">
+          <caret line="74" selection-start-line="74" selection-end-line="74" />
           <folding>
             <element signature="e#1#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/API/src/controllers/classification.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="21" column="36" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
-          <folding>
-            <element signature="e#24#69#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/API/src/models/extraction/extraction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="20" column="12" lean-forward="true" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
+        <state relative-caret-position="204">
+          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-ui/coreui-free-react-admin-template-master/src/views/Dashboard/Dashboard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="170" column="18" selection-start-line="170" selection-start-column="18" selection-end-line="170" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#42#0" expanded="true" />
           </folding>
         </state>
       </provider>

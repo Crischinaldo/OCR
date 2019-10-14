@@ -3,15 +3,14 @@ version: '3'
 services:
   web:
     build:
-      context: ./react-ui/coreui
+      context: ./react-ui/coreui-free-react-admin-template-master
       dockerfile: Dockerfile_ui
     volumes:
-      - ./react-ui/coreui:/data/app
+      - ./react-ui/coreui-free-react-admin-template-master:/data/app
     ports:
         - "3000:3000"
     depends_on:
         - api
-  #  command: npm start
 
   api:
     build:
@@ -21,6 +20,10 @@ services:
       - ./API:/usr/src/app
     ports:
         - "5001:5000"
+    environment:
+      PYTHONUNBUFFERED: 1
+    
+    restart: always
     depends_on:
         - db.pg
 
